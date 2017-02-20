@@ -9,7 +9,6 @@ Documentación de gvSIG (ES)
    
 .. toctree::
    :hidden:
-   :glob:
 
    scripting_devel_guide/2.3/index.rst
    user_manual/2.2/index.rst

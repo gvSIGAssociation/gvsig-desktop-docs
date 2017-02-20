@@ -113,13 +113,7 @@ html_theme_options = {
     "collapsiblesidebar": "true",
     "sidebarbtncolor": "white",
     "bgcolor": "white",
-    "sidebarwidth": "320",
-    "headbgcolor": "white",
-    "footerbgcolor": "orange",
-    "headtextcolor": "#404040",
-    "headlinkcolor": "#404040",
-    "linkcolor": "#404040",
-    "visitedlinkcolor": "#404040"
+    "sidebarwidth": "320"
 }
 
 
