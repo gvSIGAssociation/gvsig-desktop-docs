@@ -6,11 +6,12 @@
 Documentación de gvSIG (ES)
 ===================================================
 
-   
+
 .. toctree::
    :hidden:
 
    scripting_devel_guide/2.3/index.rst
+   scripting_devel_guide/2.4/index.rst
    user_manual/2.2/index.rst
    user_manual/2.3/index.rst
    developers_quick_start/2.2/index.rst
@@ -19,10 +20,16 @@ Documentación de gvSIG (ES)
    gvsig_contributions/index.rst
    workshops/index.rst
    links.rst
-   
+
+gvSIG 2.4
+---------
+* `Documentación de Scripting 2.4`_
+
+.. _Documentación de Scripting 2.4: scripting_devel_guide/2.4/index.html
+
 gvSIG 2.3
 ---------
-   
+
 * `Documentación de Scripting`_
 * `Manual de usuario 2.3`_
 * :download:`Manual de usuario 2.3 (PDF) <user_manual/2.3/manual/gvsig-2.3.0-doc-1.0.0-es.pdf>`
@@ -46,5 +53,3 @@ gvSIG 2.2
 .. _Manual de usuario 2.2: user_manual/2.2/index.html
 .. _Guia de inicio rápido para desarrolladores: developers_quick_start/2.2/index.html
 .. _org.gvsig.fmap.dal: org.gvsig.fmap.dal/2.2/index.html
-
-
