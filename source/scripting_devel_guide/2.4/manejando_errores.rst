@@ -4,7 +4,10 @@
 Gestión de errores
 =================
 
-A la hora de capturar errores, una de las recomendaciones es utilizar la siguiente estructura try/except:
+Try/Exception
+-------------
+
+A la hora de capturar errores, una de las recomendaciones es utilizar la siguiente estructura try/except::
 
   # encoding: utf-8
 
@@ -29,9 +32,9 @@ Esta estructura permite capturar los errores tanto generados en la parte de Pyth
 
 
 Logger
-======
+------
 
-La forma correcta de volcar información en la consola es utilizar la función __logger__. Esta función se encuentra en la librería __gvsig_ para su uso desde Jython. Esta función tiene dos parámetros, uno el mensaje, y el otro el tipo de mensaje.
+La forma correcta de volcar información en la consola es utilizar la función __logger__. Esta función se encuentra en la librería __gvsig_ para su uso desde Jython. Esta función tiene dos parámetros, uno el mensaje, y el otro el tipo de mensaje::
 
   # encoding: utf-8
 

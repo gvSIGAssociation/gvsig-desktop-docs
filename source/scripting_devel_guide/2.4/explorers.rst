@@ -4,7 +4,7 @@
 Explorers
 =========
 
-Ejemplo de crear cómo crear una base de datos h2 y cargarla en una Vista.
+Ejemplo de crear cómo crear una base de datos h2 y cargarla en una Vista::
 
   # encoding: utf-8
 

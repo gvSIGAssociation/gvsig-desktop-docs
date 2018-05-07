@@ -14,19 +14,26 @@ Estas traducciones son una serie de cadenas con su equivalente en diferentes idi
 - text_en.properties
 
 El valor por defecto sin el identificativo del idima corresponderá al Español. Podemos crear diferentes para diferentes idiomas. El contenido de cada uno será similar el siguiente:
-- text.properties
-_Analysis=Analisis
-_Count_Duplicates_Table=Tabla conteo duplicados
-_Count_features_with_duplicates_field=Contar entidades con campos duplicados
 
-- text_en.properties
-_Analysis=Analysis
-_Count_Duplicates_Table=Count duplicates table
-_Count_features_with_duplicates_field=Count features with duplicates
+text.properties
+
+Contenido::
+
+  _Analysis=Analisis
+  _Count_Duplicates_Table=Tabla conteo duplicados
+  _Count_features_with_duplicates_field=Contar entidades con campos duplicados
+
+text_en.properties
+
+Contenido::
+
+  _Analysis=Analysis
+  _Count_Duplicates_Table=Count duplicates table
+  _Count_features_with_duplicates_field=Count features with duplicates
 
 Registro
 --------
-En el autorun o en la ejecución del script se deberán de agregar las traducciones creadas anteriormente. Se indicará la carpeta donde se encuentran localizadas y se ejecutaran las siguientes líneas de código:
+En el autorun o en la ejecución del script se deberán de agregar las traducciones creadas anteriormente. Se indicará la carpeta donde se encuentran localizadas y se ejecutaran las siguientes líneas de código::
 
   from org.gvsig.tools import ToolsLocator
   from java.io import File
@@ -43,7 +50,7 @@ Este código agregará los ficheros encontrados en la carpeta /i18n/ que comienc
 Utilización
 -----------
 
-Para hacer uso de las traducciones desde un script se necesitará acceder al manager de traducciones. Una vez hemos accedido al manager, se le podrá preguntar por la traducción de una cadena de caracteres específica. El manager devolverá el texto asociado a esa cadena en el idioma que esté gvSIG utilizando en ese momento.
+Para hacer uso de las traducciones desde un script se necesitará acceder al manager de traducciones. Una vez hemos accedido al manager, se le podrá preguntar por la traducción de una cadena de caracteres específica. El manager devolverá el texto asociado a esa cadena en el idioma que esté gvSIG utilizando en ese momento::
 
   from org.gvsig.tools import ToolsLocator
 
@@ -63,6 +70,8 @@ En el siguiente ejemplo buscamos un archivo de ayuda para un geoproceso. En este
 Existiría un script con una carpeta al lado denominada /help/ con dos ficheros xml.
 - countduplicates_es.xml
 - countduplicates_en.xml
+
+Ejemplo::
 
   def getHelpFile(self):
       name = "countduplicates"
