@@ -27,7 +27,7 @@ Descargar el ejemplo explicado a continuación: :download:`CentrarCoordenadas <e
 
 .. figure::  images/abeille_1.png
    :align:   center
-   
+
 Para crear una interfaz visual crearemos un nuevo formulario en Abeille.
 
 .. figure::  images/abeille_2.png
@@ -42,7 +42,7 @@ Presionamos el lugar en el que queremos situarlo en la cuadrícula.
 
 .. figure::  images/abeille_4.png
    :align:   center
-   
+
 Ahora podemos dotarle de nombre a la etiqueta. Este nombre es con el que accederemos al componente desde nuestro script. En este caso, le daremos de nombre ``lblName``.
 
 .. figure::  images/abeille_5.png
@@ -73,12 +73,12 @@ Repetimos el proceso para crear dos etiquetas más denominadas ``lblX`` y ``lblY
 
 .. figure::  images/abeille_8.png
    :align:   center
-   
+
 Ahora crearemos un ``text field`` o campo de texto. Este campo permitirá tanto mostrar valores, como permitir al usuario introducirlos:
 
 .. figure::  images/abeille_9.png
    :align:   center
-   
+
 Repetimos el mismo proceso anterior para la creación de dos *text fields* denominados ``txtX`` y ``txtY``.
 
 .. figure::  images/abeille_10.png
@@ -169,12 +169,12 @@ Aquí vemos como responde la aplicación a diferentes tamaños que le vamos dand
 
 Desde código podemos establecer el tamaño que queremos que tenga la ventana con la línea ``self.setPreferredSize(300,300)``, quedando algo similar según el script que tengamos a::
 
-    from gvsig import *
+    import gvsig
     from gvsig.libs.formpanel import FormPanel
 
     class Panel(FormPanel):
         def __init__(self):
-            FormPanel.__init__(self, os.path.join(os.path.dirname(__file__), "ui_basic.xml"))
+            FormPanel.__init__(self, gvsig.getResource(__file__, "ui_basic.xml"))
             self.setPreferredSize(300,300)
 
     def main(*args):
@@ -196,23 +196,22 @@ Primero vamos a crear una carpeta nueva en la que meter nuestro ejemplo.
 
 .. figure::  images/abeille_script_1.png
    :align:   center
-   
+
 Después, un script en esta carpeta denominado *centrar_coordenadas.py*.
 
 .. figure::  images/abeille_script_2.png
    :align:   center
-   
+
 Guardaremos el formulario explicado en el apartado anterior en esta carpeta.
 
 Ejemplo básico de la carga de una interfaz en un script::
 
-    from gvsig import *
+    import gvsig
     from gvsig.libs.formpanel import FormPanel
-    import os
 
     class Panel(FormPanel):
         def __init__(self):
-            FormPanel.__init__(self, os.path.join(os.path.dirname(__file__), "ui_basic.xml"))
+            FormPanel.__init__(self, gvsig.getResource(__file__, "ui_basic.xml"))
 
     def main(*args):
         l = Panel()
@@ -234,33 +233,29 @@ De esta forma no tenemos que preocuparnos de eventos, ya que la propia librería
 
     # encoding: utf-8
 
-    from gvsig import *
+    import gvsig
     from gvsig.libs.formpanel import FormPanel
-    import os
 
     class CenterCoordinates(FormPanel):
         def __init__(self):
-            FormPanel.__init__(self, 
-                                os.path.join(os.path.dirname(__file__), 
-                                            "centrar_coordenadas.xml")
-                                )
+            FormPanel.__init__(self,gvsig.getResource(__file__,"centrar_coordenadas.xml"))
 
         def btnCenter_click(self, *args):
             print "Clicked!"
-        
+
         def btnClose_click(self,*args):
             self.hide()
-        
+
     def main(*args):
         l = CenterCoordinates()
         l.showTool("Centrar Coordenadas")
         pass
-  
+
 Al ejecutar el script nos aparecerá una interfaz similar a esta:
 
 .. figure::  images/abeille_script_4.png
    :align:   center
-  
+
 Y lo que ocurre al presionar el botón *Centrar*, tal y como hemos programado en el método *btnCenter_click*, mostrará por consola la palabra *Clicked!*.
 
 .. figure::  images/abeille_script_5.png
@@ -275,7 +270,7 @@ Por ejemplo, también podríamos modificar el texto de etiquetas u otros valores
 
 .. figure::  images/abeille_script_7.png
    :align:   center
-   
+
 Como hemos visto, para acceder a nuestros componentes en el interfaz, lo haremos mediante *self. + nombre del componente.* Por ejemplo, vamos a implementar en el botón *Centrar*, que muestre por consola las coordenadas que el usuario escriba en las cajas de texto.
 
 Para ello haremos referencia a los componentes de cajas de texto ``txtX`` y ``txtY`` que hemos programado en la interfaz::
@@ -284,37 +279,33 @@ Para ello haremos referencia a los componentes de cajas de texto ``txtX`` y ``tx
         x = self.txtX.getText()
         y = self.txtY.getText()
         print "X: ", x, " Y: ", y
-      
+
 Aquí vemos como quedaría:
 
 .. figure::  images/abeille_script_6.png
    :align:   center
-   
+
 Ahora, para cumplir el propósito del script, centrar la vista en unas coordenadas que le establezcamos, solo tenemos que modificar el método *btnCenter_click* por algo similar a lo siguiente::
 
     # encoding: utf-8
 
-    from gvsig import *
+    import gvsig
     from gvsig import geom
     from gvsig.libs.formpanel import FormPanel
-    import os
 
     class CenterCoordinates(FormPanel):
         def __init__(self):
-            FormPanel.__init__(self, 
-                                os.path.join(os.path.dirname(__file__), 
-                                            "centrar_coordenadas.xml")
-                                )
+            FormPanel.__init__(self,gvsig.getResource(__file__, "centrar_coordenadas.xml"))
 
         def btnCenter_click(self, *args):
             x = float(self.txtX.getText())
             y = float(self.txtY.getText())
             point = geom.createPoint2D(x, y)
-            currentView().centerView(point.getEnvelope())
-        
+            gvsig.currentView().centerView(point.getEnvelope())
+
         def btnClose_click(self,*args):
             self.hide()
-        
+
     def main(*args):
         l = CenterCoordinates()
         l.showTool("Centrar Coordenadas")

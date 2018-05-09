@@ -14,6 +14,7 @@ Tabla de contenidos
    :numbered:
 
    introduccion.rst
+   editor_de_scripts.rst
    modelo_de_objetos_simplificado.rst
    modelo_de_clases_simplificado.rst
    modulo_commonsdialog.rst
@@ -35,6 +36,7 @@ Tabla de contenidos
    internacionalizacion.rst
    explorers.rst
    manejando_errores.rst
+   informacion_extra.rst
 
 Enlaces
 -------
