@@ -167,7 +167,7 @@ Ambos listeners correspondientes al mapcontext:
 
 Su función es la de capturar eventos correspondientes a las capas, tanto sueltas como en agrupaciones.
 
-Un ejemplo de código en uso sería el siguiente (código sacado del plugin TabbedToC https://github.com/gvSIGAssociation/gvsig-desktop-scripting-TabbedToC ):
+Un ejemplo de código en uso sería el siguiente (código sacado del plugin TabbedToC https://github.com/gvSIGAssociation/gvsig-desktop-scripting-TabbedToC )::
 
 	class UpdateToCListener(LayerListener,LayerCollectionListener):
 	  def __init__(self, id, callable):

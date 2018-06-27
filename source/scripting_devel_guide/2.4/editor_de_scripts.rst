@@ -104,7 +104,7 @@ Javadocs
 ++++++++
 Herramienta principal de ayuda del módulo de programación.
 
-.. figure::  images/ide_reemplazar.png
+.. figure::  images/ide_javadocs.png
    :align:   center
 
 
@@ -193,7 +193,7 @@ Filesystem Explorer
 
 Si deseas acceder con el explorer a la carpeta de un plugin, solo tienes que seleccionar la carpeta en la lista de proyectos e ir a: Herramientas --> Filysystem Explorer
 
-.. figure::  images/ide_reemplazar.png
+.. figure::  images/ide_filesystem.png
    :align:   center
 
 Use plugin
@@ -201,19 +201,24 @@ Use plugin
 
 En algunos casos, las librerías utilizadas en los plugins que estemos desarrollando tengan dependencias de otras librerías de gvSIG que se encuentran en algún plugin en concreto. Para asegurar que este plugin está cargado es necesario indicarlo mediante unas lineas de código que forzaran la carga de estos plugins. Estas líneas se obtendrán a través de esta herramienta. Se seleccionará el plugin que queremos utilizar y copiaremos las líneas que nos da al inicio del script en desarrollo.
 
-.. figure::  images/ide_reemplazar.png
+.. figure::  images/ide_useplugin.png
+   :align:   center
+   
+.. figure::  images/ide_useplugin_2.png
    :align:   center
 
 Git
 +++
-La herramienta de Git es una herramienta de control de versiones. Existe un artículo publicado en el blog sobre su uso.
+La herramienta de Git es una herramienta de control de versiones. Existe un `artículo sobre git`_ publicado en el blog sobre su uso.
 
-.. figure::  images/ide_reemplazar.png
+.. _artículo sobre git: https://blog.gvsig.org/2018/04/13/scripting-en-gvsig-integracion-con-git/
+
+.. figure::  images/ide_git.png
    :align:   center
 
 R
 +
 En el menú aparecerá un icono que lanzará una consola de R en caso de que esté instalado el plugin de R.
 
-.. figure::  images/ide_reemplazar.png
+.. figure::  images/ide_r.png
    :align:   center

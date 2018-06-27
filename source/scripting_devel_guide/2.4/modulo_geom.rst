@@ -992,22 +992,22 @@ Para ello, se busca el tipo de geometría que tiene una capa y se le pregunta si
 
 En este caso, que sean geometrías de tipo SURFACE::
 
-# encoding: utf-8
+    # encoding: utf-8
 
-import gvsig
-from org.gvsig.fmap.geom import Geometry
-from org.gvsig.fmap.geom import GeometryLocator
+    import gvsig
+    from org.gvsig.fmap.geom import Geometry
+    from org.gvsig.fmap.geom import GeometryLocator
 
-# Con geometrias normales se quedaria con el getGeometryType()
-def main(*args):
-  view = gvsig.currentView()
-  geomManager = GeometryLocator.getGeometryManager()
-  for layer in view.deepiterator():
-    getTypeVectorLayer = getattr(layer,"getTypeVectorLayer",None)
-    if getTypeVectorLayer != None:
-      geomType = getTypeVectorLayer()
-      print geomType.getName()
-      # depende lo fino que quieras hilar puedes sustituir SURFACE por POLYGON
-      if (geomManager.isSubtype(Geometry.TYPES.SURFACE,geomType.getType()) or
-        geomManager.isSubtype(Geometry.TYPES.MULTISURFACE,geomType.getType())):
-        print layer
+    # Con geometrias normales se quedaria con el getGeometryType()
+    def main(*args):
+    view = gvsig.currentView()
+    geomManager = GeometryLocator.getGeometryManager()
+    for layer in view.deepiterator():
+        getTypeVectorLayer = getattr(layer,"getTypeVectorLayer",None)
+        if getTypeVectorLayer != None:
+        geomType = getTypeVectorLayer()
+        print geomType.getName()
+        # depende lo fino que quieras hilar puedes sustituir SURFACE por POLYGON
+        if (geomManager.isSubtype(Geometry.TYPES.SURFACE,geomType.getType()) or
+            geomManager.isSubtype(Geometry.TYPES.MULTISURFACE,geomType.getType())):
+            print layer

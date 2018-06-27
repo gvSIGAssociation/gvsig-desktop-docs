@@ -30,6 +30,7 @@ Tabla de contenidos
    geoprocesos.rst
    docs_gvpy.rst
 
+   evaluadores.rst
    capturando_eventos.rst
    usando_librerias_externas.rst
    rscript.rst
