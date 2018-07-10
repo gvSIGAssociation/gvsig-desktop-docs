@@ -38,7 +38,7 @@ Ejemplo::
 
     class MonitorEscala(ViewPortListener, FormPanel):
             def __init__(self, mapContext):
-                    FormPanel.__init__(self, os.path.join(os.path.dirname(__file__),"monitor_escala.xml"))
+                    FormPanel.__init__(self, getResource(__file__,"monitor_escala.xml"))
 
                     self.mapContext = mapContext
 
@@ -117,10 +117,7 @@ Código::
 
     class Coordenadas(FormPanel, PointListener):
         def __init__(self, viewdoc):
-            FormPanel.__init__(self,
-                                os.path.join(os.path.dirname(__file__),
-                                            "coordenadas.xml")
-                                )
+            FormPanel.__init__(self, getResource(__file__, "coordenadas.xml"))
             self.viewdoc = viewdoc
             self.mapControl = self.viewdoc.getWindowOfView().getMapControl()
             self.mapControl.addBehavior("TestGetXYPointTool", PointBehavior(self))
