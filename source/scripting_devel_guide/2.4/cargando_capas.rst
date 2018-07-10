@@ -42,20 +42,22 @@ Cargando capas
 Recursos en rutas relativas: getResource()
 ------------------------------------------
 
-En muchas ocasiones es necesario hacer referencia a ficheros que tengamos dentro de nuestro módulo, es decir, obtener la ruta completa de un fichero a partir de la ruta relativa en la que se encuentre nuestro script, independientemente de donde este instalado o del sistema. Para ello nos ayudamos de la función ``os.path.dirname(__file__)`` que devuelve la ruta de la carpeta de nuestro script en ejecución.
+En muchas ocasiones es necesario hacer referencia a ficheros que tengamos dentro de nuestro módulo, es decir, obtener la ruta completa de un fichero a partir de la ruta relativa en la que se encuentre nuestro script, independientemente de donde este instalado o del sistema. Para ello nos ayudamos de la función ``getResource(__file__)`` que devuelve la ruta de la carpeta de nuestro script en ejecución.
 
-En este caso, ``__file__``, nos devuelve la ruta del script en ejecución::
+Esta constante debe de ser usada siempre usando la función getResource para que obtenga correctamente su ruta.
+
+En este caso, nos devuelve la ruta del script en ejecución::
 
     import gvsig
 
     def main(*args):
-        print __file__
+        print getResource(__file__)
 
 En mi caso la ruta es::
 
     /home/osc/gvsig-devel/master_scripts/testing_getResource.py
 
-Con la función ``os.path.dirname()`` lo que hacemos es sacar el directorio donde se encuentra el script. Ejemplo de uso::
+Con la función lo que hacemos es sacar el directorio donde se encuentra el script. Ejemplo de uso::
 
     # encoding: utf-8
     import os
@@ -64,10 +66,10 @@ Con la función ``os.path.dirname()`` lo que hacemos es sacar el directorio dond
     def main(*args):
         """Obtener ruta absoluta de ficheros en la carpeta de ejecucion del script"""
 
-        path_script = os.path.dirname(__file__)
+        path_script = getResource(__file__)
         print "Path script: ", path_script
         print "Ruta relativa: data/fichero.xx"
-        print "Ruta absoluta: ", os.path.join(path_script, "data", "fichero.xx")
+        print "Ruta absoluta: ", getResource(__file__, "data", "fichero.xx")
 
 Salida por consola será::
 
@@ -76,8 +78,6 @@ Salida por consola será::
     Ruta absoluta:  c:\gvdevel\gvsig\gvSIG-desktop-2.3.0-2441-RC2-win-x86_64\home\gvSIG\plugins\org.gvsig.scripting.app.mainplugin\scripts\data\fichero.xx
 
 De esta forma estaríamos accediendo a la carpeta ``/datos/`` dentro de nuestro módulo.
-
-Hemos incorporado en la librería de ``gvsig`` una función ``gvsig.getResource()`` que nos ayuda a realizar esta operación de forma más sencilla.
 
 Por ejemplo::
 
@@ -145,7 +145,7 @@ Ejemplo::
     def main(*args):
 
         # Get resource path
-        shape_path = os.path.join(os.path.dirname(__file__),"data","jaen.shp")
+        shape_path = getResource(__file__,"data","jaen.shp")
 
         # loadShapeFile function
         s1 = loadShapeFile(shape_path)
@@ -169,10 +169,10 @@ Ejemplo::
     def main(*args):
 
         # Load Raster File
-        raster_path = os.path.join(os.path.dirname(__file__),"data","mdt_jaen.tif")
+        raster_path = getResource(__file__,"data","mdt_jaen.tif")
         r1 = loadRasterFile(raster_path)
 
-        raster_uri = File(os.path.join(os.path.dirname(__file__),"data","fichero.xx")).toURI()
+        raster_uri = File(getResource(__file__,"data","fichero.xx")).toURI()
         r2 = loadLayer("Gdal Store", uri=raster_uri)
 
 Ficheros DBF
