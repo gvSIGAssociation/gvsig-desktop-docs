@@ -1,0 +1,938 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>10. Módulo de geometrías: geom &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="11. Interfaces visuales" href="interfaces_visuales.html" />
+    <link rel="prev" title="9. Trabajando con capas: FLayer" href="trabajando_con_capas.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="interfaces_visuales.html" title="11. Interfaces visuales"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="trabajando_con_capas.html" title="9. Trabajando con capas: FLayer"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="modulo-de-geometrias-geom">
+<h1>10. Módulo de geometrías: geom<a class="headerlink" href="#modulo-de-geometrias-geom" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Una geometría es un objeto que contiene información geométrica. Estas geometrías tienen un tipo principal: Point, Line, Polygon.. y un subtipo o dimensión: D2, D3, D2M..</p>
+<p>Para el Módulo de Scripting hemos creado la librería gvsig.geom que nos ayudará para crear rápidamente las geometrías que necesitemos. Para algunas operaciones más complicadas tendremos que usar la API de gvSIG.</p>
+<p>Para establecer estos tipos y subtipos lo haremos utilizando las constantes que se incluyen en la librería.</p>
+<p>Constantes que aparecen en la librería <code class="docutils literal"><span class="pre">gvsig.geom</span></code> para la creación de geometrías:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#GeometryTypes</span>
+<span class="n">AGGREGATE</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">AGGREGATE</span>
+<span class="n">ARC</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">ARC</span>
+<span class="n">CIRCLE</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">CIRCLE</span>
+<span class="n">CURVE</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">CURVE</span>
+<span class="n">ELLIPSE</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">ELLIPSE</span>
+<span class="n">ELLIPTICARC</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">ELLIPTICARC</span>
+<span class="n">GEOMETRY</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">GEOMETRY</span>
+<span class="n">MULTICURVE</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">MULTICURVE</span>
+<span class="n">MULTIPOINT</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">MULTIPOINT</span>
+<span class="n">MULTISOLID</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">MULTISOLID</span>
+<span class="n">MULTISURFACE</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">MULTISURFACE</span>
+<span class="n">NULL</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">NULL</span>
+<span class="n">POINT</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">POINT</span>
+<span class="n">SOLID</span> <span class="o">=</span>  <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">SOLID</span>
+<span class="n">SPLINE</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">SPLINE</span>
+<span class="n">SURFACE</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">SURFACE</span>
+
+<span class="c1"># Common named geometry types</span>
+<span class="n">POLYGON</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">SURFACE</span>
+<span class="n">LINE</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">CURVE</span>
+<span class="n">MULTILINE</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">MULTICURVE</span>
+<span class="n">MULTIPOLYGON</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">TYPES</span><span class="o">.</span><span class="n">MULTISURFACE</span>
+
+<span class="c1"># geometrySubTypes</span>
+<span class="n">D2</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">SUBTYPES</span><span class="o">.</span><span class="n">GEOM2D</span>
+<span class="n">D2M</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">SUBTYPES</span><span class="o">.</span><span class="n">GEOM2DM</span>
+<span class="n">D3</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">SUBTYPES</span><span class="o">.</span><span class="n">GEOM3D</span>
+<span class="n">D3M</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">SUBTYPES</span><span class="o">.</span><span class="n">GEOM3DM</span>
+<span class="n">UNKNOWN</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">SUBTYPES</span><span class="o">.</span><span class="n">UNKNOWN</span>
+
+<span class="c1"># Dimensions</span>
+<span class="n">DIMENSIONS</span> <span class="o">=</span> <span class="n">Geometry</span><span class="o">.</span><span class="n">DIMENSIONS</span>
+</pre></div>
+</div>
+<p>Ejemplo testeando la librería de geom:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gvsig</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">gvsig</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="n">geom</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="c1"># Create Polygon</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create Polygon&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">()</span>
+    <span class="n">pol_1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">(</span><span class="n">vertexes</span><span class="o">=</span><span class="p">[</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+    <span class="nb">print</span> <span class="s2">&quot;pol_1: &quot;</span><span class="p">,</span> <span class="n">pol_1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">pol_2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">(</span><span class="n">vertexes</span><span class="o">=</span><span class="p">[</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+    <span class="nb">print</span> <span class="s2">&quot;pol_2: &quot;</span><span class="p">,</span> <span class="n">pol_2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">pol_3</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">(</span><span class="n">vertexes</span><span class="o">=</span><span class="p">[</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+    <span class="nb">print</span> <span class="s2">&quot;pol_3: &quot;</span><span class="p">,</span> <span class="n">pol_3</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">pol_4</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="nb">print</span> <span class="s2">&quot;pol_4: &quot;</span><span class="p">,</span> <span class="n">pol_4</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+
+    <span class="c1"># Create MultiPolygon</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create MultiPolygon&quot;</span>
+    <span class="n">multipolygon1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createMultiPolygon</span><span class="p">()</span>
+    <span class="n">multipolygon1</span><span class="o">.</span><span class="n">addSurface</span><span class="p">(</span><span class="n">pol_1</span><span class="p">)</span>
+    <span class="n">multipolygon1</span><span class="o">.</span><span class="n">addSurface</span><span class="p">(</span><span class="n">pol_2</span><span class="p">)</span>
+    <span class="n">multipolygon1</span><span class="o">.</span><span class="n">addSurface</span><span class="p">(</span><span class="n">pol_3</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;multipolygon1: &quot;</span><span class="p">,</span> <span class="n">multipolygon1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="n">multipolygon2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createMultiPolygon</span><span class="p">(</span><span class="n">polygons</span><span class="o">=</span><span class="p">[</span><span class="n">pol_1</span><span class="p">,</span> <span class="n">pol_2</span><span class="p">,</span> <span class="n">pol_3</span><span class="p">])</span>
+    <span class="nb">print</span> <span class="s2">&quot;multipolygon2: &quot;</span><span class="p">,</span> <span class="n">multipolygon2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;p2:&quot;</span><span class="p">,</span> <span class="n">p2</span>
+    <span class="n">line2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createLine</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="p">[[</span><span class="mi">10</span><span class="p">,</span><span class="mi">19</span><span class="p">],</span><span class="n">p2</span><span class="p">,[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+    <span class="nb">print</span> <span class="n">line2</span>
+    <span class="nb">print</span> <span class="n">line2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D3M</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D3</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;point y: &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;point z&quot;</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+    <span class="nb">print</span> <span class="s2">&quot;preparing 3d&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createLine</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D3M</span><span class="p">,[(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">8</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">95</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">)])</span>
+    <span class="nb">print</span> <span class="n">x</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="c1"># Create point</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create Point&quot;</span>
+    <span class="n">point1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">point2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createGeometry</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">POINT</span><span class="p">)</span>
+    <span class="n">point2</span><span class="o">.</span><span class="n">setX</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">point2</span><span class="o">.</span><span class="n">setY</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;Point1: &quot;</span><span class="p">,</span> <span class="n">point1</span>
+    <span class="nb">print</span> <span class="s2">&quot;Point2: &quot;</span><span class="p">,</span> <span class="n">point2</span>
+
+    <span class="n">point1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># Create line</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create Line&quot;</span>
+    <span class="n">line1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createGeometry</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">LINE</span><span class="p">)</span>
+    <span class="n">line1</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">line1</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="s2">&quot;Line1: &quot;</span><span class="p">,</span> <span class="n">line1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot; === LINE == &quot;</span>
+    <span class="n">line2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createLine</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="p">[[</span><span class="mi">10</span><span class="p">,</span><span class="mi">19</span><span class="p">],</span> <span class="n">point1</span> <span class="p">,</span><span class="n">p2</span><span class="p">,[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+    <span class="nb">print</span> <span class="s2">&quot;Line2 object: &quot;</span><span class="p">,</span> <span class="n">line2</span>
+    <span class="nb">print</span> <span class="s2">&quot;Line2: &quot;</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">getVertex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">getVertex</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">getVertex</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">getVertex</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Create polygon</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create Polygon&quot;</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createGeometry</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">POLYGON</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+
+    <span class="nb">print</span> <span class="s2">&quot;JTS of the Polygon 1: &quot;</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">setVertex</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="s2">&quot;JTS of the Polygon 1 modified: &quot;</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="n">poli_1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="nb">print</span> <span class="s2">&quot;Poli_1&quot;</span><span class="p">,</span> <span class="n">poli_1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">poli_2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+    <span class="nb">print</span> <span class="s2">&quot;Poli_2&quot;</span><span class="p">,</span> <span class="n">poli_2</span>
+
+    <span class="c1"># Create gvSIG geometry from a WKT or WKB</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create gvSIG geometry from WKT or WKB&quot;</span>
+    <span class="n">wkt</span> <span class="o">=</span> <span class="s2">&quot;POLYGON ((0 0, 150 150, 100 0, 0 0))&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createGeometryFromWKT</span><span class="p">(</span><span class="n">wkt</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;Polygon from WKT: &quot;</span><span class="p">,</span> <span class="n">x</span>
+    <span class="nb">print</span> <span class="s2">&quot;Type polygon: &quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># Create 3D geometry</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create 3D Geometry&quot;</span>
+    <span class="n">p3d</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createGeometry</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">POINT</span><span class="p">,</span> <span class="n">geom</span><span class="o">.</span><span class="n">D3</span><span class="p">)</span>
+    <span class="n">p3d</span><span class="o">.</span><span class="n">setX</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">p3d</span><span class="o">.</span><span class="n">setY</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">p3d</span><span class="o">.</span><span class="n">setZ</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;Point 3D: &quot;</span><span class="p">,</span> <span class="n">p3d</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">p3d</span><span class="p">)</span>
+    <span class="n">p1_3d</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;Point 3D P1: &quot;</span><span class="p">,</span> <span class="n">p1_3d</span>
+
+    <span class="c1"># Create Multipoint</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create Multipoint: &quot;</span>
+    <span class="n">multipoint1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createMultiPoint</span><span class="p">(</span><span class="n">points</span><span class="o">=</span><span class="p">[</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span>
+    <span class="nb">print</span> <span class="s2">&quot;multipoint1: &quot;</span><span class="p">,</span> <span class="n">multipoint1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">multipoint1</span><span class="o">.</span><span class="n">addPrimitive</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="s2">&quot;multipoint1 modified: &quot;</span><span class="p">,</span> <span class="n">multipoint1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="n">multipoint2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createMultiPoint</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="s2">&quot;multipoint2: &quot;</span><span class="p">,</span> <span class="n">multipoint2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="n">multipoint3</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createMultiPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D3</span><span class="p">,[[</span><span class="mi">19</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">35</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+    <span class="nb">print</span> <span class="s2">&quot;multipoint3: &quot;</span><span class="p">,</span> <span class="n">multipoint3</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="c1"># Create Polygon</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create Polygon&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">()</span>
+    <span class="n">pol_1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">(</span><span class="n">vertexes</span><span class="o">=</span><span class="p">[</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+    <span class="nb">print</span> <span class="s2">&quot;pol_1: &quot;</span><span class="p">,</span> <span class="n">pol_1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">pol_2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">(</span><span class="n">vertexes</span><span class="o">=</span><span class="p">[</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+    <span class="nb">print</span> <span class="s2">&quot;pol_2: &quot;</span><span class="p">,</span> <span class="n">pol_2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">pol_3</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">(</span><span class="n">vertexes</span><span class="o">=</span><span class="p">[</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+    <span class="nb">print</span> <span class="s2">&quot;pol_3: &quot;</span><span class="p">,</span> <span class="n">pol_3</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">pol_4</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="nb">print</span> <span class="s2">&quot;pol_4: &quot;</span><span class="p">,</span> <span class="n">pol_4</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+
+    <span class="c1"># Create MultiPolygon</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create MultiPolygon&quot;</span>
+    <span class="n">multipolygon1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createMultiPolygon</span><span class="p">()</span>
+    <span class="n">multipolygon1</span><span class="o">.</span><span class="n">addSurface</span><span class="p">(</span><span class="n">pol_1</span><span class="p">)</span>
+    <span class="n">multipolygon1</span><span class="o">.</span><span class="n">addSurface</span><span class="p">(</span><span class="n">pol_2</span><span class="p">)</span>
+    <span class="n">multipolygon1</span><span class="o">.</span><span class="n">addSurface</span><span class="p">(</span><span class="n">pol_3</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;multipolygon1: &quot;</span><span class="p">,</span> <span class="n">multipolygon1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="n">multipolygon2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createMultiPolygon</span><span class="p">(</span><span class="n">polygons</span><span class="o">=</span><span class="p">[</span><span class="n">pol_1</span><span class="p">,</span> <span class="n">pol_2</span><span class="p">,</span> <span class="n">pol_3</span><span class="p">])</span>
+    <span class="nb">print</span> <span class="s2">&quot;multipolygon2: &quot;</span><span class="p">,</span> <span class="n">multipolygon2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="n">multipolygon3</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createMultiPolygon</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,[[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">]],</span><span class="n">pol_4</span><span class="p">])</span>
+    <span class="nb">print</span> <span class="s2">&quot;multipolygon3: &quot;</span><span class="p">,</span> <span class="n">multipolygon3</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="c1"># CreateLine</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create Line&quot;</span>
+    <span class="n">line1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createLine</span><span class="p">()</span>
+
+
+    <span class="n">line1</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">line1</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="s2">&quot;line1: &quot;</span><span class="p">,</span> <span class="n">line1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">line2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createLine</span><span class="p">(</span><span class="n">vertexes</span><span class="o">=</span><span class="p">[</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)])</span>
+    <span class="nb">print</span> <span class="s2">&quot;line2: &quot;</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">line3</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createLine</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
+    <span class="nb">print</span> <span class="s2">&quot;line3: &quot;</span><span class="p">,</span> <span class="n">line3</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="c1"># Create MultiLine</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create MultiLine&quot;</span>
+    <span class="n">multiline1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createMultiLine</span><span class="p">()</span>
+    <span class="n">multiline1</span><span class="o">.</span><span class="n">addCurve</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span>
+    <span class="n">multiline1</span><span class="o">.</span><span class="n">addCurve</span><span class="p">(</span><span class="n">line2</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;multiline1: &quot;</span><span class="p">,</span> <span class="n">multiline1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="n">multiline2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createMultiLine</span><span class="p">(</span><span class="n">lines</span><span class="o">=</span><span class="p">[</span><span class="n">line1</span><span class="p">,</span> <span class="n">line2</span><span class="p">],</span> <span class="n">subtype</span><span class="o">=</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;multiline2: &quot;</span><span class="p">,</span> <span class="n">multiline2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+
+    <span class="c1"># Create Envelope</span>
+    <span class="n">envelope</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createEnvelope</span><span class="p">(</span><span class="n">pointMin</span><span class="o">=</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">pointMax</span><span class="o">=</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="s2">&quot;envelope: &quot;</span><span class="p">,</span> <span class="n">envelope</span>
+    <span class="n">env1</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createEnvelope</span><span class="p">(</span><span class="n">point1</span><span class="p">,[</span><span class="mi">38</span><span class="p">,</span><span class="mi">29</span><span class="p">])</span>
+    <span class="nb">print</span> <span class="s2">&quot;env1: &quot;</span><span class="p">,</span> <span class="n">env1</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">env1</span><span class="p">)</span>
+
+    <span class="c1"># Create from WKT</span>
+    <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create geometr from WKT&quot;</span>
+    <span class="n">wkt</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createGeometryFromWKT</span><span class="p">(</span><span class="s2">&quot;MULTIPOLYGON (((4 5, 3 3, 3 2, 4 5)), ((4 5, 3 3, 3 2, 4 5)), ((4 5, 3 3, 3 2, 4 5)))&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;wkt: &quot;</span><span class="p">,</span> <span class="n">wkt</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+    <span class="c1"># Create 2D</span>
+    <span class="n">pg</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="n">pg</span>
+    <span class="n">lg</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createLine2D</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="n">lg</span>
+    <span class="n">mg</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon2D</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="n">mg</span>
+    <span class="n">mg2</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPolygon2D</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">25</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="n">pg</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+    <span class="nb">print</span> <span class="n">mg2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="n">x</span>
+</pre></div>
+</div>
+<div class="section" id="punto">
+<h2>10.1. Punto<a class="headerlink" href="#punto" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Creando puntos:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create Point&quot;</span>
+        <span class="n">point1</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">point2</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+
+        <span class="n">point3</span> <span class="o">=</span> <span class="n">createGeometry</span><span class="p">(</span><span class="n">POINT</span><span class="p">)</span>
+        <span class="n">point3</span><span class="o">.</span><span class="n">setX</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+        <span class="n">point3</span><span class="o">.</span><span class="n">setY</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+
+        <span class="n">point4</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D3M</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;Point1: &quot;</span><span class="p">,</span> <span class="n">point1</span>
+        <span class="nb">print</span> <span class="s2">&quot;Point2: &quot;</span><span class="p">,</span> <span class="n">point2</span>
+        <span class="nb">print</span> <span class="s2">&quot;Point3: &quot;</span><span class="p">,</span> <span class="n">point3</span>
+        <span class="nb">print</span> <span class="s2">&quot;Point4: &quot;</span><span class="p">,</span> <span class="n">point4</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Create</span> <span class="n">Point</span>
+<span class="n">Point1</span><span class="p">:</span>  <span class="n">POINT</span> <span class="n">Z</span> <span class="p">(</span><span class="mf">10.0</span> <span class="mf">10.0</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="n">Point2</span><span class="p">:</span>  <span class="n">POINT</span> <span class="p">(</span><span class="mf">15.0</span> <span class="mf">7.0</span><span class="p">)</span>
+<span class="n">Point3</span><span class="p">:</span>  <span class="n">POINT</span> <span class="p">(</span><span class="mf">15.0</span> <span class="mf">15.0</span><span class="p">)</span>
+<span class="n">Point4</span><span class="p">:</span>  <span class="n">POINT</span> <span class="n">ZM</span> <span class="p">(</span><span class="mf">5.0</span> <span class="mf">18.0</span> <span class="mf">3.0</span> <span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Creando punto con 3 dimensiones:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="c1">#Create 3D Geometry</span>
+        <span class="n">p3d</span> <span class="o">=</span> <span class="n">createGeometry</span><span class="p">(</span><span class="n">POINT</span><span class="p">,</span> <span class="n">D3</span><span class="p">)</span>
+        <span class="n">p3d</span><span class="o">.</span><span class="n">setX</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">p3d</span><span class="o">.</span><span class="n">setY</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="n">p3d</span><span class="o">.</span><span class="n">setZ</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+        <span class="nb">print</span> <span class="n">p3d</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">POINT</span> <span class="n">Z</span> <span class="p">(</span><span class="mi">10</span> <span class="mi">10</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="linea">
+<h2>10.2. Línea<a class="headerlink" href="#linea" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Creando líneas:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">line1</span> <span class="o">=</span> <span class="n">createGeometry</span><span class="p">(</span><span class="n">LINE</span><span class="p">)</span>
+        <span class="n">line1</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">line1</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+        <span class="nb">print</span> <span class="s2">&quot;Line1: &quot;</span><span class="p">,</span> <span class="n">line1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Line1</span><span class="p">:</span>  <span class="n">LINESTRING</span> <span class="p">(</span><span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Accediendo a los vértices de la línea:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">line1</span> <span class="o">=</span> <span class="n">createGeometry</span><span class="p">(</span><span class="n">LINE</span><span class="p">)</span>
+        <span class="n">line1</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">line1</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+        <span class="nb">print</span> <span class="s2">&quot;Line1: &quot;</span><span class="p">,</span> <span class="n">line1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">01</span><span class="p">)</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># List of vertex or coordinates</span>
+        <span class="n">vertx</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">10</span><span class="p">,</span><span class="mi">19</span><span class="p">],</span> <span class="n">p1</span> <span class="p">,</span><span class="n">p2</span><span class="p">,[</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+        <span class="n">line2</span> <span class="o">=</span> <span class="n">createLine</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="n">vertx</span><span class="p">)</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Line2 object: &quot;</span><span class="p">,</span> <span class="n">line2</span>
+        <span class="nb">print</span> <span class="s2">&quot;Line2: &quot;</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">getVertex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">getVertex</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">getVertex</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">getVertex</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Line1</span><span class="p">:</span>  <span class="n">LINESTRING</span> <span class="p">(</span><span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">Line2</span> <span class="nb">object</span><span class="p">:</span>  <span class="n">Line</span><span class="p">:</span><span class="mi">2</span><span class="n">D</span>
+<span class="n">Line2</span><span class="p">:</span>  <span class="n">LINESTRING</span> <span class="p">(</span><span class="mi">10</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">1</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">10.0</span> <span class="mf">19.0</span><span class="p">)</span>
+<span class="mi">2</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">3.0</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="mi">3</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">1.0</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="mi">4</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">5.0</span> <span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="poligono">
+<h2>10.3. Polígono<a class="headerlink" href="#poligono" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Creando polígonos:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">g</span> <span class="o">=</span> <span class="n">createGeometry</span><span class="p">(</span><span class="n">POLYGON</span><span class="p">,</span> <span class="n">D2</span><span class="p">)</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;WKT Polygon: &quot;</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="n">poli_1</span> <span class="o">=</span> <span class="n">createPolygon</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+        <span class="nb">print</span> <span class="s2">&quot;Poli_1&quot;</span><span class="p">,</span> <span class="n">poli_1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="n">poli_2</span> <span class="o">=</span> <span class="n">createPolygon</span><span class="p">(</span><span class="n">D3</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+        <span class="nb">print</span> <span class="s2">&quot;Poli_2&quot;</span><span class="p">,</span> <span class="n">poli_2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WKT</span> <span class="n">Polygon</span><span class="p">:</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">Poli_1</span> <span class="n">POLYGON</span> <span class="p">((</span><span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">Poli_2</span> <span class="n">POLYGON</span> <span class="n">Z</span> <span class="p">((</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multipunto">
+<h2>10.4. Multipunto<a class="headerlink" href="#multipunto" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Creando multipunto:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="c1"># Create Multipoint</span>
+        <span class="n">multipoint1</span> <span class="o">=</span> <span class="n">createMultiPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="p">[</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;multipoint1: &quot;</span><span class="p">,</span> <span class="n">multipoint1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="n">multipoint2</span> <span class="o">=</span> <span class="n">createMultiPoint</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;multipoint2: &quot;</span><span class="p">,</span> <span class="n">multipoint2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="n">multipoint3</span> <span class="o">=</span> <span class="n">createMultiPoint</span><span class="p">(</span><span class="n">D3</span><span class="p">,[[</span><span class="mi">19</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">35</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+        <span class="nb">print</span> <span class="s2">&quot;multipoint3: &quot;</span><span class="p">,</span> <span class="n">multipoint3</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">multipoint1</span><span class="p">:</span>  <span class="n">MULTIPOINT</span> <span class="p">(</span><span class="mi">10</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">multipoint2</span><span class="p">:</span>  <span class="n">MULTIPOINT</span> <span class="n">EMPTY</span>
+<span class="n">multipoint3</span><span class="p">:</span>  <span class="n">MULTIPOINT</span> <span class="n">Z</span> <span class="p">(</span><span class="mi">19</span> <span class="mi">10</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">35</span> <span class="mi">5</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Añadiendo punto a una geometría de tipo multipunto:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="c1"># Create Multipoint</span>
+        <span class="n">multipoint1</span> <span class="o">=</span> <span class="n">createMultiPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="p">[</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;multipoint1: &quot;</span><span class="p">,</span> <span class="n">multipoint1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="n">multipoint1</span><span class="o">.</span><span class="n">addPrimitive</span><span class="p">(</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="nb">print</span> <span class="s2">&quot;multipoint1 modified: &quot;</span><span class="p">,</span> <span class="n">multipoint1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">multipoint1</span><span class="p">:</span>  <span class="n">MULTIPOINT</span> <span class="p">(</span><span class="mi">10</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">multipoint1</span> <span class="n">modified</span><span class="p">:</span>  <span class="n">MULTIPOINT</span> <span class="p">(</span><span class="mi">10</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multilinea">
+<h2>10.5. Multilínea<a class="headerlink" href="#multilinea" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Creando multilíneas:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+<span class="c1"># CreateLine</span>
+        <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Create Line&quot;</span>
+        <span class="n">line1</span> <span class="o">=</span> <span class="n">createLine</span><span class="p">()</span>
+
+        <span class="n">line1</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">line1</span><span class="o">.</span><span class="n">addVertex</span><span class="p">(</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+        <span class="n">line2</span> <span class="o">=</span> <span class="n">createLine</span><span class="p">(</span><span class="n">vertexes</span><span class="o">=</span><span class="p">[</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">createPoint2D</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)])</span>
+        <span class="n">line3</span> <span class="o">=</span> <span class="n">createLine</span><span class="p">(</span><span class="n">D2</span><span class="p">,[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">]])</span>
+
+        <span class="c1"># Create MultiLine</span>
+        <span class="n">multiline1</span> <span class="o">=</span> <span class="n">createMultiLine</span><span class="p">()</span>
+        <span class="n">multiline1</span><span class="o">.</span><span class="n">addCurve</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span>
+        <span class="n">multiline1</span><span class="o">.</span><span class="n">addCurve</span><span class="p">(</span><span class="n">line2</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;multiline1: &quot;</span><span class="p">,</span> <span class="n">multiline1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="n">multiline2</span> <span class="o">=</span> <span class="n">createMultiLine</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="n">lines</span><span class="o">=</span><span class="p">[</span><span class="n">line1</span><span class="p">,</span> <span class="n">line2</span><span class="p">])</span>
+        <span class="nb">print</span> <span class="s2">&quot;multiline2: &quot;</span><span class="p">,</span> <span class="n">multiline2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="n">multiline3</span> <span class="o">=</span> <span class="n">createGeometry</span><span class="p">(</span><span class="n">MULTICURVE</span><span class="p">,</span> <span class="n">D2</span><span class="p">)</span>
+        <span class="n">multiline3</span><span class="o">.</span><span class="n">addCurve</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span>
+        <span class="n">multiline3</span><span class="o">.</span><span class="n">addCurve</span><span class="p">(</span><span class="n">line3</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;multiline3: &quot;</span><span class="p">,</span> <span class="n">multiline3</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Create</span> <span class="n">Line</span>
+<span class="n">multiline1</span><span class="p">:</span>  <span class="n">MULTILINESTRING</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">multiline2</span><span class="p">:</span>  <span class="n">MULTILINESTRING</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">multiline3</span><span class="p">:</span>  <span class="n">MULTILINESTRING</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multipoligono">
+<h2>10.6. Multipolígono<a class="headerlink" href="#multipoligono" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Creando multipolígonos:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="c1"># Create Polygon</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">createPolygon</span><span class="p">()</span>
+        <span class="n">pol_1</span> <span class="o">=</span> <span class="n">createPolygon</span><span class="p">(</span><span class="n">vertexes</span><span class="o">=</span><span class="p">[</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+        <span class="n">pol_2</span> <span class="o">=</span> <span class="n">createPolygon</span><span class="p">(</span><span class="n">vertexes</span><span class="o">=</span><span class="p">[</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+        <span class="n">pol_3</span> <span class="o">=</span> <span class="n">createPolygon</span><span class="p">(</span><span class="n">vertexes</span><span class="o">=</span><span class="p">[</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)])</span>
+        <span class="n">pol_4</span> <span class="o">=</span> <span class="n">createPolygon</span><span class="p">(</span><span class="n">D2</span><span class="p">,[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+
+
+        <span class="c1"># Create MultiPolygon</span>
+        <span class="n">multipolygon1</span> <span class="o">=</span> <span class="n">createMultiPolygon</span><span class="p">()</span>
+        <span class="n">multipolygon1</span><span class="o">.</span><span class="n">addSurface</span><span class="p">(</span><span class="n">pol_1</span><span class="p">)</span>
+        <span class="n">multipolygon1</span><span class="o">.</span><span class="n">addSurface</span><span class="p">(</span><span class="n">pol_2</span><span class="p">)</span>
+        <span class="n">multipolygon1</span><span class="o">.</span><span class="n">addSurface</span><span class="p">(</span><span class="n">pol_3</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;multipolygon1: &quot;</span><span class="p">,</span> <span class="n">multipolygon1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="n">multipolygon2</span> <span class="o">=</span> <span class="n">createMultiPolygon</span><span class="p">(</span><span class="n">polygons</span><span class="o">=</span><span class="p">[</span><span class="n">pol_1</span><span class="p">,</span> <span class="n">pol_2</span><span class="p">,</span> <span class="n">pol_3</span><span class="p">])</span> <span class="c1">#2D as default</span>
+        <span class="nb">print</span> <span class="s2">&quot;multipolygon2: &quot;</span><span class="p">,</span> <span class="n">multipolygon2</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="n">multipolygon3</span> <span class="o">=</span> <span class="n">createMultiPolygon</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="p">[[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]],</span>
+                                                                                        <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">]],</span>
+                                                                                        <span class="n">pol_4</span><span class="p">])</span>
+        <span class="nb">print</span> <span class="s2">&quot;multipolygon3: &quot;</span><span class="p">,</span> <span class="n">multipolygon3</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="n">multipolygon4</span> <span class="o">=</span> <span class="n">createMultiPolygon</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;multipolygon4: &quot;</span><span class="p">,</span> <span class="n">multipolygon4</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">multipolygon1</span><span class="p">:</span>  <span class="n">MULTIPOLYGON</span> <span class="p">(((</span><span class="mi">4</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)),</span> <span class="p">((</span><span class="mi">4</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)),</span> <span class="p">((</span><span class="mi">4</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)))</span>
+<span class="n">multipolygon2</span><span class="p">:</span>  <span class="n">MULTIPOLYGON</span> <span class="p">(((</span><span class="mi">4</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)),</span> <span class="p">((</span><span class="mi">4</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)),</span> <span class="p">((</span><span class="mi">4</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)))</span>
+<span class="n">multipolygon3</span><span class="p">:</span>  <span class="n">MULTIPOLYGON</span> <span class="p">(((</span><span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">)),</span> <span class="p">((</span><span class="mi">2</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="mi">5</span><span class="p">)),</span> <span class="p">((</span><span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">)))</span>
+<span class="n">multipolygon4</span><span class="p">:</span>  <span class="n">MULTIPOLYGON</span> <span class="n">EMPTY</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="envelope">
+<h2>10.7. Envelope<a class="headerlink" href="#envelope" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Crear Envelope del tipo <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/geom/jts/primitive/Envelope2D.html">Envelope2D</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="c1"># Create Envelope</span>
+        <span class="n">envelope</span> <span class="o">=</span> <span class="n">createEnvelope</span><span class="p">(</span><span class="n">pointMin</span><span class="o">=</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="n">pointMax</span><span class="o">=</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+        <span class="nb">print</span> <span class="s2">&quot;envelope: &quot;</span><span class="p">,</span> <span class="n">envelope</span>
+        <span class="n">point1</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">env1</span> <span class="o">=</span> <span class="n">createEnvelope</span><span class="p">(</span><span class="n">point1</span><span class="p">,[</span><span class="mi">38</span><span class="p">,</span><span class="mi">29</span><span class="p">])</span>
+        <span class="nb">print</span> <span class="s2">&quot;env1: &quot;</span><span class="p">,</span> <span class="n">env1</span>
+        <span class="nb">print</span> <span class="s2">&quot;env1 type: &quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">env1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">envelope</span><span class="p">:</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mf">10.0</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">10.0</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">10.0</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="n">env1</span><span class="p">:</span>  <span class="n">POLYGON</span> <span class="p">((</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="mf">29.0</span><span class="p">,</span> <span class="mf">38.0</span> <span class="mf">29.0</span><span class="p">,</span> <span class="mf">38.0</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="n">env1</span> <span class="nb">type</span><span class="p">:</span>  <span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;org.gvsig.fmap.geom.jts.primitive.Envelope2D&#39;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wkt">
+<h2>10.8. WKT<a class="headerlink" href="#wkt" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Crear geometría desde un WKT:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="c1"># Create from WKT</span>
+        <span class="n">wkt</span> <span class="o">=</span> <span class="n">createGeometryFromWKT</span><span class="p">(</span><span class="s2">&quot;MULTIPOLYGON (((4 5, 3 3, 3 2, 4 5)), ((4 5, 3 3, 3 2, 4 5)), ((4 5, 3 3, 3 2, 4 5)))&quot;</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;wkt: &quot;</span><span class="p">,</span> <span class="n">wkt</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wkt</span><span class="p">:</span>  <span class="n">MULTIPOLYGON</span> <span class="p">(((</span><span class="mi">4</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)),</span> <span class="p">((</span><span class="mi">4</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)),</span> <span class="p">((</span><span class="mi">4</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="operaciones-espaciales">
+<h2>10.9. Operaciones espaciales<a class="headerlink" href="#operaciones-espaciales" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Puedes consultar todas las operaciones espaciales en el interfaz de geometrías <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/geom/Geometry.html">Geometry</a></p>
+<p>Distancia entre puntos:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="c1"># Creamos punto2</span>
+        <span class="n">point1</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">point2</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Distance 2D: &quot;</span><span class="p">,</span> <span class="n">point1</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">point2</span><span class="p">)</span>
+
+        <span class="n">point3</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">point4</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Distance 2D: &quot;</span><span class="p">,</span> <span class="n">point3</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">point4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Distance</span> <span class="mi">2</span><span class="n">D</span><span class="p">:</span>  <span class="mf">14.1421356237</span>
+<span class="n">Distance</span> <span class="mi">2</span><span class="n">D</span><span class="p">:</span>  <span class="mf">14.1421356237</span>
+</pre></div>
+</div>
+<p>Moviendo un punto:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="c1"># Creamos punto2</span>
+        <span class="n">point1</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;Point 1: &quot;</span><span class="p">,</span> <span class="n">point1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+
+        <span class="c1">#Move point</span>
+        <span class="n">point1</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;Moved point by 5, -3: &quot;</span><span class="p">,</span> <span class="n">point1</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Point</span> <span class="mi">1</span><span class="p">:</span>  <span class="n">POINT</span> <span class="p">(</span><span class="mi">10</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">Moved</span> <span class="n">point</span> <span class="n">by</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span>  <span class="n">POINT</span> <span class="p">(</span><span class="mi">15</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Operaciones entre polígonos y líneas:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="c1"># Creamos punto2</span>
+        <span class="n">point1</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">buffer1</span> <span class="o">=</span> <span class="n">point1</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+        <span class="n">line1</span> <span class="o">=</span> <span class="n">createLine</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="p">[[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;Intersects?: &quot;</span><span class="p">,</span> <span class="n">buffer1</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Intersection: &quot;</span><span class="p">,</span> <span class="n">buffer1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span><span class="o">.</span><span class="n">convertToWKT</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Intersects?:  True
+Intersection:  LINESTRING (-5 -5, 7.071067811865473 7.071067811865473)
+</pre></div>
+</div>
+<p>Operaciones espaciales entre polígonos:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="c1"># Creamos punto2</span>
+        <span class="n">point1</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Aplicamos un area de influencia buffer(m)</span>
+        <span class="n">buffer1</span> <span class="o">=</span> <span class="n">point1</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Buffer1 Area: &quot;</span><span class="p">,</span> <span class="n">buffer1</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+
+        <span class="c1"># Creamos punto 2</span>
+        <span class="n">point2</span> <span class="o">=</span> <span class="n">createPoint</span><span class="p">(</span><span class="n">D2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">buffer2</span> <span class="o">=</span> <span class="n">point2</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Buffer2 Area: &quot;</span><span class="p">,</span> <span class="n">buffer2</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+
+        <span class="c1"># Union</span>
+        <span class="n">buffer12_union</span> <span class="o">=</span> <span class="n">buffer1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">buffer2</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Buffer12 Union Area: &quot;</span><span class="p">,</span> <span class="n">buffer12_union</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+
+        <span class="c1"># Differencia</span>
+        <span class="n">buffer12_diff</span> <span class="o">=</span> <span class="n">buffer1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">buffer2</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Buffer12 Difference Area: &quot;</span><span class="p">,</span> <span class="n">buffer12_diff</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Buffer1</span> <span class="n">Area</span><span class="p">:</span>  <span class="mf">312.144515226</span>
+<span class="n">Buffer2</span> <span class="n">Area</span><span class="p">:</span>  <span class="mf">78.0361288065</span>
+<span class="n">Buffer12</span> <span class="n">Union</span> <span class="n">Area</span><span class="p">:</span>  <span class="mf">335.886462528</span>
+<span class="n">Buffer12</span> <span class="n">Difference</span> <span class="n">Area</span><span class="p">:</span>  <span class="mf">257.850333721</span>
+</pre></div>
+</div>
+<p>Creando un polígono, aplicarle un área de influencia, añadirle un anillo interno y agregarlo en una capa nueva:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">pol_1</span> <span class="o">=</span> <span class="n">createPolygon</span><span class="p">(</span><span class="n">D2M</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">300</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">300</span><span class="p">,</span><span class="mi">300</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">300</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)])</span>
+
+
+        <span class="c1"># Add interior ring</span>
+        <span class="n">pol_1x</span> <span class="o">=</span> <span class="n">createPolygon</span><span class="p">(</span><span class="n">D2M</span><span class="p">,</span> <span class="n">pol_1</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+        <span class="n">pol_1x</span><span class="o">.</span><span class="n">addInteriorRing</span><span class="p">(</span><span class="n">pol_1</span><span class="p">)</span>
+
+        <span class="n">schema</span> <span class="o">=</span> <span class="n">createSchema</span><span class="p">()</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span> <span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setGeometryType</span><span class="p">(</span><span class="n">POLYGON</span><span class="p">,</span> <span class="n">D2M</span><span class="p">)</span>
+
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">createShape</span><span class="p">(</span><span class="n">schema</span> <span class="p">,</span><span class="n">CRS</span><span class="o">=</span><span class="s1">&#39;EPSG:25830&#39;</span><span class="p">)</span>
+
+        <span class="n">shape</span><span class="o">.</span><span class="n">edit</span><span class="p">()</span>
+        <span class="n">shape</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ID</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">GEOMETRY</span><span class="o">=</span><span class="n">pol_1x</span><span class="p">)</span>
+        <span class="n">shape</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="n">currentView</span><span class="p">()</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<img alt="../../_images/geom_poligono_hueco.png" src="../../_images/geom_poligono_hueco.png" />
+</div>
+<p>Ejemplo para extraer todos los vértices de una capa de polígonos en forma de multipuntos:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="n">geom</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Extraer vertices de poligonos como multipuntos &quot;&quot;&quot;</span>
+
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
+
+    <span class="n">sch</span> <span class="o">=</span> <span class="n">createFeatureType</span><span class="p">()</span>
+    <span class="n">sch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span> <span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span>
+    <span class="n">sch</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setGeometryType</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">MULTIPOINT</span><span class="p">,</span> <span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">)</span>
+    <span class="n">shp</span> <span class="o">=</span> <span class="n">createShape</span><span class="p">(</span><span class="n">sch</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+        <span class="n">gf</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+        <span class="n">shp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GEOMETRY</span><span class="o">=</span><span class="n">gf</span><span class="o">.</span><span class="n">toPoints</span><span class="p">())</span>
+
+    <span class="n">shp</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">currentView</span><span class="p">()</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">shp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Resultado:</p>
+<div class="figure align-center">
+<img alt="../../_images/geom_vertices.png" src="../../_images/geom_vertices.png" />
+</div>
+<p>Con una pequeña modificación, podemos hacer que añada un punto por cada vértice, recorriendo las geometrías de multipunto y extrayendo uno a uno sus puntos:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="n">geom</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Extraer vertices de poligonos como multipuntos &quot;&quot;&quot;</span>
+
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
+
+    <span class="n">sch</span> <span class="o">=</span> <span class="n">createFeatureType</span><span class="p">()</span>
+    <span class="n">sch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span> <span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span>
+    <span class="n">sch</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setGeometryType</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">POINT</span><span class="p">,</span> <span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">)</span>
+    <span class="n">shp</span> <span class="o">=</span> <span class="n">createShape</span><span class="p">(</span><span class="n">sch</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+        <span class="n">gf</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">gf</span><span class="p">:</span>
+            <span class="n">shp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GEOMETRY</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+
+    <span class="n">shp</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">currentView</span><span class="p">()</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">shp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Otra forma de recorrer los vertices podría ser haciendo uso del método <code class="docutils literal"><span class="pre">getVertex</span></code> y <code class="docutils literal"><span class="pre">getNumVertices</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="n">geom</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Extraer vertices de poligonos como multipuntos &quot;&quot;&quot;</span>
+
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+        <span class="n">gf</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+        <span class="n">numvertices</span> <span class="o">=</span> <span class="n">gf</span><span class="o">.</span><span class="n">getNumVertices</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;Vertices: &quot;</span><span class="p">,</span> <span class="n">numvertices</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">numvertices</span><span class="p">):</span>
+            <span class="nb">print</span> <span class="n">gf</span><span class="o">.</span><span class="n">getVertex</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1">#geometria de tipo punto</span>
+</pre></div>
+</div>
+<p>Dando por consola una salida similar a:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Vertices</span><span class="p">:</span>  <span class="mi">7</span>
+<span class="n">POINT</span> <span class="p">(</span><span class="mf">274.17769116287</span> <span class="mf">194.9280163662371</span><span class="p">)</span>
+<span class="n">POINT</span> <span class="p">(</span><span class="mf">275.81171697787</span> <span class="mf">166.3325646037371</span><span class="p">)</span>
+<span class="n">POINT</span> <span class="p">(</span><span class="mf">248.03327812287003</span> <span class="mf">105.05659654123708</span><span class="p">)</span>
+<span class="n">POINT</span> <span class="p">(</span><span class="mf">145.90666468537003</span> <span class="mf">40.5125768487371</span><span class="p">)</span>
+<span class="n">POINT</span> <span class="p">(</span><span class="mf">162.24692283537004</span> <span class="mf">128.74997085873707</span><span class="p">)</span>
+<span class="n">POINT</span> <span class="p">(</span><span class="mf">207.99964565537007</span> <span class="mf">140.1881515637371</span><span class="p">)</span>
+<span class="n">POINT</span> <span class="p">(</span><span class="mf">274.17769116287</span> <span class="mf">194.9280163662371</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transformacion-entre-proyecciones">
+<h2>10.10. Transformación entre proyecciones<a class="headerlink" href="#transformacion-entre-proyecciones" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En el siguiente ejemplo vemos como transformar una geometría entre dos proyecciones:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Convertir geometria entre proyecciones &quot;&quot;&quot;</span>
+
+    <span class="n">crs1</span> <span class="o">=</span> <span class="n">getCRS</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">)</span>
+    <span class="n">crs2</span> <span class="o">=</span> <span class="n">getCRS</span><span class="p">(</span><span class="s1">&#39;EPSG:32630&#39;</span><span class="p">)</span>
+
+    <span class="c1">#Get IProjection</span>
+    <span class="c1">#view1 = currentProject().getViews()[0].getProjection()</span>
+    <span class="c1">#view2 = currentProject().getViews()[1].getProjection()</span>
+
+    <span class="c1">#Get ICoordTrans</span>
+    <span class="n">ICoordTrans1</span> <span class="o">=</span> <span class="n">crs1</span><span class="o">.</span><span class="n">getCT</span><span class="p">(</span><span class="n">crs2</span><span class="p">)</span>
+
+    <span class="n">point</span> <span class="o">=</span> <span class="n">createPoint2D</span><span class="p">(</span><span class="o">-</span><span class="mf">0.375</span><span class="p">,</span><span class="mf">39.466</span><span class="p">)</span> <span class="c1">#Valencia</span>
+    <span class="nb">print</span> <span class="s2">&quot;point: &quot;</span><span class="p">,</span> <span class="n">point</span>
+    <span class="n">point</span><span class="o">.</span><span class="n">reProject</span><span class="p">(</span><span class="n">ICoordTrans1</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;reprojected: &quot;</span><span class="p">,</span> <span class="n">point</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">10. Módulo de geometrías: geom</a><ul>
+<li><a class="reference internal" href="#punto">10.1. Punto</a></li>
+<li><a class="reference internal" href="#linea">10.2. Línea</a></li>
+<li><a class="reference internal" href="#poligono">10.3. Polígono</a></li>
+<li><a class="reference internal" href="#multipunto">10.4. Multipunto</a></li>
+<li><a class="reference internal" href="#multilinea">10.5. Multilínea</a></li>
+<li><a class="reference internal" href="#multipoligono">10.6. Multipolígono</a></li>
+<li><a class="reference internal" href="#envelope">10.7. Envelope</a></li>
+<li><a class="reference internal" href="#wkt">10.8. WKT</a></li>
+<li><a class="reference internal" href="#operaciones-espaciales">10.9. Operaciones espaciales</a></li>
+<li><a class="reference internal" href="#transformacion-entre-proyecciones">10.10. Transformación entre proyecciones</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="trabajando_con_capas.html"
+                        title="capítulo anterior">9. Trabajando con capas: FLayer</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="interfaces_visuales.html"
+                        title="próximo capítulo">11. Interfaces visuales</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/scripting_devel_guide/2.3/modulo_geom.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="interfaces_visuales.html" title="11. Interfaces visuales"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="trabajando_con_capas.html" title="9. Trabajando con capas: FLayer"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

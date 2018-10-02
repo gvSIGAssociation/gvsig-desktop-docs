@@ -1,0 +1,196 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>4. Estructura de un proyecto &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="5. Las dependencias en los distintos proyectos" href="05_the_project_dependencies.html" />
+    <link rel="prev" title="3. Trabajando con un IDE, Netbeans" href="03_working_with_the_netbeans_ide.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="05_the_project_dependencies.html" title="5. Las dependencias en los distintos proyectos"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="03_working_with_the_netbeans_ide.html" title="3. Trabajando con un IDE, Netbeans"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >gvSIG 2.3.1. Guía de inicio rápido para el desarrollador</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="00_index.html" accesskey="U">Construyendo nuestro primer plugin</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="estructura-de-un-proyecto">
+<h1>4. Estructura de un proyecto<a class="headerlink" href="#estructura-de-un-proyecto" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Puede resultarle útil consultar la documentación existente
+en la <em>Guía para desarrolladores</em> relacionada con esto, que
+puede encontrar en la sección
+<a class="reference external" href="http://docs.gvsig.org/plone/projects/gvsig-desktop/docs/devel/gvsig-devel-guide/2.0.0/crear-un-proyecto-para-gvsig/estructura-de-un-proyecto-en-gvsig">Estructura de un proyecto en gvSIG</a> asi como en
+<a class="reference external" href="http://docs.gvsig.org/plone/projects/gvsig-desktop/docs/devel/gvsig-devel-guide/2.0.0/crear-un-proyecto-para-gvsig/que-cosas-debemos-tener-en-cuenta-antes-de-desarrollar-nuestro-plugin">Cosas a tener en cuenta antes de desarrollar un plugin</a> .</p>
+</div>
+<p>Vamos a echarle un vistazo al código del proyecto.
+Los proyectos que encontraremos son:</p>
+<ul>
+<li><p class="first"><em>org.gvsig.landregistryviewer</em>. Se trata de un proyecto Maven con varios subproyectos. En ellos
+encontraremos dividido, la parte de la lógica, con su API
+e implementación, así como la parte de interface de usuario asociada a los componentes
+de la lógica, también con su API e implementación, y un proyecto que nos permitirá
+probar esa lógica e interfaces de usuario sin necesidad de arrancar gvSIG. En general
+los distintos componentes que encontremos aquí serán independientes del framework
+de Andami así como de los plugins de gvSIG, siendo dependientes únicamente de otras
+librerías. Los proyectos que nos encontraremos serán:</p>
+<ul>
+<li><p class="first"><em>org.gvsig.landregistryviewer.lib</em> con la lógica de nuestro proyecto</p>
+<ul class="simple">
+<li><em>org.gvsig.landregistryviewer.lib.api</em></li>
+<li><em>org.gvsig.landregistryviewer.lib.impl</em></li>
+</ul>
+</li>
+<li><p class="first"><em>org.gvsig.landregistryviewer.swing</em> con el interface de usuario de nuestros
+componentes lógicos.</p>
+<ul class="simple">
+<li><em>org.gvsig.landregistryviewer.swing.api</em></li>
+<li><em>org.gvsig.landregistryviewer.swing.impl</em></li>
+</ul>
+</li>
+<li><p class="first"><em>org.gvsig.landregistryviewer.main</em>, nuestro <em>main</em> de pruebas.</p>
+</li>
+<li><p class="first"><em>org.gvsig.landregistryviewer.app</em>. Este proyecto contendrá la implementación de los distintos plugins que
+se van a añadir a gvSIG. Normalmente usará los componentes de los proyecto <em>org.gvsig.landregistryviewer.lib</em> y <em>org.gvsig.landregistryviewer.swing</em>, y se encargará de la integración de estos en gvSIG. En el ejemplo solo hay un subproyecto, <em>org.gvsig.landregistryviewer.app.mainplugin</em> ya que vamos a aportar un único plugin. Si tuviésemos necesidad de aportar más de un plugin tendríamos un subproyecto por plugin.</p>
+<p>Tendremos que tener especial atención a la hora de decidir cuantos plugins vamos a tener en nuestro proyecto. Normalmente nos será más comodo tener un solo plugin; sin embargo es aconsejable dividir nuestro proyecto en plugins que aporten funcionalidad independiente teniendo cuidado de no crear demasiados plugins muy pequeños. Deberemos mantener un equilibrio entre un solo plugin monolitico que aporte toda nuestra funcionalidad o tener muchos plugins muy pequeños.</p>
+<p>Hay que tener en cuenta que el plugin es la unidad minima que puede instalar un usuario, y una division adecuada en distintos plugins puede permitir al usuario instalar mas o menos funcionalidad. Por ejemplo, dentro de proyecto <em>org.gvsig.chart</em>, podemos encontrar tres plugins distintos:</p>
+<ul class="simple">
+<li><em>org.gvsig.chart.app.mainplugin</em>, que aporta la funcionalidad básica de manejo de documentos de graficas.</li>
+<li><em>org.gvsig.chart.app.layoutplugin</em> aporta la integración de los documentos de graficas en el layout.</li>
+<li><em>org.gvsig.chart.app.legendplugin</em> aporta la integración de los documentos de graficas en las leyendas de las capas.</li>
+</ul>
+<p>Estas tres funcionalidades podian haber estado integradas en un solo plugin; pero se prefirio dividirlo en tres para facilitar el mantenimiento y dar al usuario la posibilidad de poder instalar, por ejemplo, la integracion con la leyenda sin tener que instalar la integracion con el layout.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="03_working_with_the_netbeans_ide.html"
+                        title="capítulo anterior">3. Trabajando con un IDE, Netbeans</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="05_the_project_dependencies.html"
+                        title="próximo capítulo">5. Las dependencias en los distintos proyectos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/developers_quick_start/2.3/05_building_our_first_plugin/04_project_structure.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="05_the_project_dependencies.html" title="5. Las dependencias en los distintos proyectos"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="03_working_with_the_netbeans_ide.html" title="3. Trabajando con un IDE, Netbeans"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >gvSIG 2.3.1. Guía de inicio rápido para el desarrollador</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="00_index.html" >Construyendo nuestro primer plugin</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

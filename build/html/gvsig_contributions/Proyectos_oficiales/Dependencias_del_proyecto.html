@@ -1,0 +1,238 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Dependencias del proyecto &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dependencias-del-proyecto">
+<h1>Dependencias del proyecto<a class="headerlink" href="#dependencias-del-proyecto" title="Enlazar permanentemente con este título">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Version:</th><td class="field-body">1.2</td>
+</tr>
+</tbody>
+</table>
+<p>Para especificar las dependencias de nuestro proyecto
+tendremos que rellenar la <a class="reference external" href="templates/project-dependencies.html">plantilla</a> en formato <a class="reference external" href="http://docutils.sourceforge.net/rst.html">ReST</a>
+que existe para tal proposito.</p>
+<p>Si estamos usando <em>maven</em> como herramienta de construcción
+podremos suministrar el informe de dependencias que genera
+este al contruir el <em>site</em> de nuestro proyecto, no siendo
+necesario entonces seguir el formato indicado en la
+<a class="reference external" href="templates/project-dependencies.html">plantilla</a>.</p>
+<p>Esta <a class="reference external" href="templates/project-dependencies.html">plantilla</a> describe las dependencias que tiene
+nuestro proyecto en tiempo de <em>compilación</em>, <em>ejecución</em>
+y <em>ejecución de tests</em>, así como las dependencias transitivas
+y de dónde obtener las librerías que no forman parte ya
+de gvSIG.</p>
+<p>Es conveniente aclarar que distinguiremos entre <em>librerías
+que forman parte de gvSIG</em> de las que no. Entendemos
+por <em>librerías que forman parte de gvSIG</em> aquellas que
+han sido construidas a partir de fuentes que están dentro
+de alguno de los proyectos de gvSIG. Las librerías de
+otros proyectos, estén usadas o no ya en algún proyecto de
+gvSIG, a efectos de esta <a class="reference external" href="templates/project-dependencies.html">plantilla</a>, no se considera que
+formen parte de gvSIG.</p>
+<p>Encontraremos las siguientes secciones en la plantilla:</p>
+<ul>
+<li><p class="first"><em>Project Dependencies</em></p>
+<p>A la hora de especificar las dependencias, estas deberán ser
+dependencias con otras librerías, tanto de
+librerías que ya forman parte de gvSIG como de nuevas librerías
+que precise nuestro proyecto.</p>
+<p>Nunca deberemos indicar como dependencias otros proyectos
+de nuestro workspace de eclipse. Si fuese ese el caso,
+deberemos indicar como dependencias las librerías que
+genere ese proyecto al compilarse.</p>
+<ul>
+<li><p class="first"><em>Compile</em></p>
+<p>Aquí especificaremos las dependencias en tiempo de compilación
+de nuestro proyecto.</p>
+</li>
+<li><p class="first"><em>Runtime</em></p>
+<p>Aquí indicaremos las dependencias de nuestro proyecto
+en tiempo de ejecución.</p>
+</li>
+<li><p class="first"><em>Test</em></p>
+<p>Aquí indicaremos las dependencias de nuestro proyecto
+para la ejecución de los test del proyecto.</p>
+</li>
+</ul>
+<p>En proyectos para gvSIG previos a la versión 2.0.0, y que
+no utilicen <em>mavem</em> como mecanismo de construcción, si no
+tenemos claro que librerías son necesarias en cada momento
+indicaremos las mismas en los tres apartados, aunque siempre
+que se conozcan, es aconsejable especificarlas correctamente.</p>
+<ul>
+<li><p class="first"><em>Dependency Tree</em></p>
+<p>En esta sección especificaremos las relaciones de
+dependencia que existan entre las distintas librerías
+del proyecto. Se trata de una vista en forma de arbol
+que nos muestre las dependencias transitivas de cada una
+de las dependencias de nuestro proyecto.</p>
+<p>Para las dependencias de <em>librerías que ya formen parte
+de gvSIG</em> no es preciso especificar las dependencias transitivas
+de estas, siendo obligatorio para todas las demas librerías de
+nuestro proyecto.</p>
+</li>
+<li><p class="first"><em>Licenses</em></p>
+<p>En esta sección listaremos las distintas licencias de las
+librerías que usa nuestro proyecto y no forman parte
+de gvSIG.</p>
+<p>Tendremos una entrada por licencia y dentro de esta las
+distintas librerías que se distribuyen con esa licencia.</p>
+<p>No incluiremos aquí las <em>librerías que ya forman parte de gvSIG</em>.</p>
+<p>Si hay librerías de las que desconocemos su licencia,
+las colocaremos en una entrada <em>unknow</em>, aunque esto
+puede ocasionar que nuestro proyecto no sea aceptado como
+un proyecto oficial de gvSIG.</p>
+</li>
+<li><p class="first"><em>Dependency Repository Locations</em></p>
+<p>En esta sección indicaremos para las librerías que no
+forman parte de gvSIG dónde está el repositorio oficial
+del que descargar la versión de la librería que precisa
+nuestro proyecto.</p>
+<p>Si estamos usando <em>maven</em> como herramienta de construcción
+podremos indicar uno de los repositorios oficiales de maven
+desde el que descargar la librería.</p>
+</li>
+</ul>
+</li>
+</ul>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">Registro de cambios</span><a class="headerlink" href="#id1" title="Enlace permanente a esta tabla">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">version</th>
+<th class="head">Descripcion</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1.1</td>
+<td>Modificadda la redaccion del parrafo sobre como obtener la plantilla</td>
+</tr>
+<tr class="row-odd"><td>1.2</td>
+<td>Adaptación a la nueva infraestructura</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/gvsig_contributions/Proyectos_oficiales/Dependencias_del_proyecto.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

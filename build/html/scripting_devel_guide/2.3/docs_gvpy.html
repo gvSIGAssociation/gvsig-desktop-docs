@@ -1,0 +1,467 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>14. gvpy: Guía de uso &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="15. Capturando eventos: Listeners" href="capturando_eventos.html" />
+    <link rel="prev" title="13. Geoprocesos" href="geoprocesos.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="capturando_eventos.html" title="15. Capturando eventos: Listeners"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="geoprocesos.html" title="13. Geoprocesos"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gvpy-guia-de-uso">
+<span id="label-gvpy"></span><h1><a class="toc-backref" href="#id1">14. gvpy: Guía de uso</a><a class="headerlink" href="#gvpy-guia-de-uso" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><strong>Lanzar geoprocesos desde el Módulo de Scripting</strong></p>
+<p>Los geoprocesos de gvSIG y SEXTANTE ahora están accesibles con una sola línea de código y pueden formar parte de tus scripts. Podrás ejecutarlos desde la consola de Jython o desde el Scripting Composer, ubicados ambos dentro del módulo de Scripting. Este módulo de programación solo está disponible en la nueva versión de gvSIG 2.x en adelante.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Ya que existe la posibilidad de generar geoprocesos e incorporarlos a la caja de herramientas mediante Scripting, estos geoprocesos también serán accesibles desde gvpy.</p>
+</div>
+<div class="section" id="contenidos">
+<h2><a class="toc-backref" href="#id2">14.1. Contenidos</a><a class="headerlink" href="#contenidos" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="contents topic" id="contenido">
+<p class="topic-title first">Contenido</p>
+<ul class="simple">
+<li><a class="reference internal" href="#gvpy-guia-de-uso" id="id1">gvpy: Guía de uso</a><ul>
+<li><a class="reference internal" href="#contenidos" id="id2">Contenidos</a></li>
+<li><a class="reference internal" href="#libreria-gvpy" id="id3">Librería gvpy</a></li>
+<li><a class="reference internal" href="#algoritmos" id="id4">Algoritmos</a></li>
+<li><a class="reference internal" href="#parametros-del-algoritmo" id="id5">Parámetros del algoritmo</a></li>
+<li><a class="reference internal" href="#linea-de-codigo" id="id6">Línea de código</a></li>
+<li><a class="reference internal" href="#parametros-de-entrada" id="id7">Parámetros de entrada</a><ul>
+<li><a class="reference internal" href="#tipos-de-capas-geometrias" id="id8">Tipos de capas / geometrías</a></li>
+<li><a class="reference internal" href="#parametros-de-tipo-capa" id="id9">Parámetros de tipo Capa</a></li>
+<li><a class="reference internal" href="#parametros-multi-input-en-desarrollo" id="id10">Parámetros Multi input (en desarrollo)</a></li>
+<li><a class="reference internal" href="#parametros-raster-banda" id="id11">Parámetros Raster + Banda</a></li>
+<li><a class="reference internal" href="#parametro-point" id="id12">Parámetro Point</a></li>
+<li><a class="reference internal" href="#parametros-fixed-table" id="id13">Parámetros Fixed table</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#archivos-de-salida" id="id14">Archivos de salida</a></li>
+<li><a class="reference internal" href="#atributos-extra" id="id15">Atributos extra</a><ul>
+<li><a class="reference internal" href="#extent" id="id16">EXTENT</a></li>
+<li><a class="reference internal" href="#cellsize-y-cellsizez" id="id17">CELLSIZE y CELLSIZEZ</a></li>
+<li><a class="reference internal" href="#path" id="id18">PATH</a></li>
+<li><a class="reference internal" href="#outview" id="id19">OUTVIEW</a></li>
+<li><a class="reference internal" href="#name" id="id20">NAME</a></li>
+<li><a class="reference internal" href="#addlayer" id="id21">ADDLAYER</a></li>
+<li><a class="reference internal" href="#output-filter" id="id22">OUTPUT_FILTER</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model2script-sextante-model-to-script" id="id23">model2script: SEXTANTE model to Script</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="libreria-gvpy">
+<h2><a class="toc-backref" href="#id3">14.2. Librería gvpy</a><a class="headerlink" href="#libreria-gvpy" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para poder importar esta librería en tus scripts lo único que debes de hacer es escribir al inicio de tu código o en la Consola de Jython esto:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gvsig.libs.gvpy</span>
+</pre></div>
+</div>
+<p>o:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig.libs</span> <span class="k">import</span> <span class="n">gvpy</span>
+</pre></div>
+</div>
+<p>Esto te permitirá utilizar la librería y acceder a todas sus funciones.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En esta documentación damos por hecho que hemos usado el segundo tipo de importación al principio del script o de la consola.</p>
+</div>
+</div>
+<div class="section" id="algoritmos">
+<h2><a class="toc-backref" href="#id4">14.3. Algoritmos</a><a class="headerlink" href="#algoritmos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los algoritmos que están disponibles desde la librería de gvpy también los encontrarás en la Caja de Herramientas, puedes acceder a ella en <span class="menuselection">Herramientas ‣ Geoprocesamiento ‣ Caja de Herramientas</span></p>
+<p>Tendrás acceso tanto a los algoritmos de geoprocesamiento de gvSIG como de SEXTANTE.</p>
+<p>En esta Caja de Herramientas podemos realizar búsquedas de algoritmos, pero también desde gvpy.</p>
+<p>Si abrimos la Consola de Jython (Herramientas-Scripting-Jython Console) y escribimos <cite>from gvsig.libs import gvpy</cite> ya podemos acceder a sus funcionalidades. Estos comandos también podemos utilizarlos desde el Scripting Composer desde un script nuevo.</p>
+<p>Por ejemplo, si queremos buscar un algoritmo que genere vectores aleatorios podemos hacer una búsqueda del tipo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gvpy</span><span class="o">.</span><span class="n">algSearch</span><span class="p">(</span><span class="s2">&quot;aleatorias&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">La descripción de los algoritmos, tanto en gvSIG-Geoprocesos y SEXTANTE, dependen del idioma en el que tengamos instalado gvSIG, así que para que funcionen las búsquedas se tendrán que realizar en este idioma determinado.</p>
+</div>
+<p>De los resultados que nos aparecen, podemos ver un algoritmo denominado: <code class="docutils literal"><span class="pre">randomvector</span></code></p>
+</div>
+<div class="section" id="parametros-del-algoritmo">
+<h2><a class="toc-backref" href="#id5">14.4. Parámetros del algoritmo</a><a class="headerlink" href="#parametros-del-algoritmo" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Si queremos conocer más sobre el algoritmo podemos escribir el mismo comando que hemos usado antes:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gvpy</span><span class="o">.</span><span class="n">algSearch</span><span class="p">(</span><span class="s2">&quot;randomvector&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Si la búsqueda coincide exactamente con el nombre de un algoritmo, la información que nos muestra gvpy será la información sobre ese algoritmo, su descripción y sus parámetros:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gvpy</span><span class="o">.</span><span class="n">algHelp</span><span class="p">(</span><span class="s2">&quot;randomvector&quot;</span><span class="p">)</span>
+<span class="o">*</span> <span class="n">Algorithm</span> <span class="n">help</span><span class="p">:</span>
+<span class="n">Capa</span> <span class="n">vectorial</span> <span class="n">con</span> <span class="n">geometrias</span> <span class="n">aleatorias</span>
+<span class="o">*</span>
+<span class="n">Usage</span><span class="p">:</span> <span class="n">runalg</span><span class="p">(</span> <span class="s2">&quot;randomvector&quot;</span><span class="p">,</span>
+                                                           <span class="n">COUNT</span><span class="p">[</span><span class="n">Numerical</span> <span class="n">Value</span><span class="p">],</span>
+                                                           <span class="n">TYPE</span><span class="p">[</span><span class="n">Selection</span><span class="p">],</span>
+                                                           <span class="n">RESULT</span><span class="p">[</span><span class="n">output</span> <span class="n">vector</span> <span class="n">layer</span><span class="p">],</span>
+                                                           <span class="p">);</span>
+</pre></div>
+</div>
+<p>Lo mismo, podemos hacer la búsqueda en la <strong>caja de herramientas</strong>. Si entramos en el algoritmo podemos ver ayuda sobre lo que hace y abajo a la izquierda aparece el nombre clave del algoritmo (si no aparece, cierra la ventana y vuelve a abrir el geoproceso).</p>
+</div>
+<div class="section" id="linea-de-codigo">
+<h2><a class="toc-backref" href="#id6">14.5. Línea de código</a><a class="headerlink" href="#linea-de-codigo" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Ahora que <strong>conocemos los parámetros necesarios</strong> para ejecutar el algoritmo, los escribiremos en forma de línea de código.</p>
+<p>Hay que <strong>escribir gvpy</strong> delante para acceder a la función que se encuentra dentro de la librería. El atributo RESULT, siempre que se refieran a los archivos de salida (output vector, etc), <strong>no deberemos ponerlos</strong>, ya que estos están gestionados por otro parámetro PATH que explicamos más adelante.</p>
+<p>Ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gvpy</span><span class="o">.</span><span class="n">runalg</span><span class="p">(</span><span class="s2">&quot;randomvector&quot;</span><span class="p">,</span> <span class="n">COUNT</span><span class="o">=</span> <span class="p">,</span> <span class="n">TYPE</span><span class="o">=</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Estos parámetros del ejemplo se refieren a:
+- <strong>COUNT</strong>: número de geometrías aleatorias que queremos generar
+- <strong>TYPE</strong>: tipo de geometrías que queremos generar (polígono/línea/punto)</p>
+<p>Ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gvpy</span><span class="o">.</span><span class="n">runalg</span><span class="p">(</span><span class="s2">&quot;randomvector&quot;</span><span class="p">,</span> <span class="n">COUNT</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">TYPE</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Este algoritmo <strong>ya lo podríamos ejecutar</strong> en nuestra consola de Jython o en nuestros scripts.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Recuerda que si no estableces el atributo ADDLAYER=False deberás de tener una <strong>VISTA abierta</strong> para la correcta ejecución del proceso, sino el programa no sabrá sobre qué espacio trabajar. Por lo general, antes de ejecutar tus scripts, abre un proyecto nuevo, abre una vista nueva, y entonces, accede al módulo de Scripting de la manera que desees.</p>
+</div>
+<p>Recomiendo escribirlo con el formato anterior pero también, siempre que guardemos el orden que nos dan los parámetros, podemos escribirlos sin especificar que atributo es.</p>
+<p>Ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gvpy</span><span class="o">.</span><span class="n">runalg</span><span class="p">(</span><span class="s2">&quot;randomvector&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Y para ser compatible con unas funcionalidades extra, también es posible si todos los parámetros los pasamos como texto con las comillas puestas:</p>
+<p>Ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gvpy</span><span class="o">.</span><span class="n">runalg</span><span class="p">(</span><span class="s2">&quot;randomvector&quot;</span><span class="p">,</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parametros-de-entrada">
+<h2><a class="toc-backref" href="#id7">14.6. Parámetros de entrada</a><a class="headerlink" href="#parametros-de-entrada" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="tipos-de-capas-geometrias">
+<h3><a class="toc-backref" href="#id8">14.6.1. Tipos de capas / geometrías</a><a class="headerlink" href="#tipos-de-capas-geometrias" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Por si nos olvidamos qué número corresponde a qué tipo de geometría o de capa, existen unas constantes dentro de gvpy para ayudarnos a recordarlas.</p>
+<p>En el ejemplo anterior, el parámetro <cite>TYPE</cite> que hace referencia a este tipo de polígonos, podemos escribirlo de diferentes maneras ayudándonos de estas constantes.</p>
+<p>Tipo polígono: corresponde al valor 0, o también como gvpy.TYPE_POLYGON
+Tipo línea: corresponde al valor 1, o también como gvpy.TYPE_LINE
+Tipo punto: corresponde al valor 2, o también como gvpy.TYPE_POINT</p>
+<p>Estos dos ejemplos son iguales:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gvpy</span><span class="o">.</span><span class="n">runalg</span><span class="p">(</span><span class="s2">&quot;randomvector&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">gvpy</span><span class="o">.</span><span class="n">runalg</span><span class="p">(</span><span class="s2">&quot;randomvector&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="n">gvpy</span><span class="o">.</span><span class="n">TYPE_POLYGON</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parametros-de-tipo-capa">
+<h3><a class="toc-backref" href="#id9">14.6.2. Parámetros de tipo Capa</a><a class="headerlink" href="#parametros-de-tipo-capa" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si el <strong>algoritmo nos pide un parámetro de tipo capa</strong> (ya sea tabla, vectorial o raster), tendremos que cargar esta capa en una variable y pasarla como parámetro.</p>
+<p>En la <strong>librería de gvsig</strong> existen diversas formas. Podemos ver más información sobre su uso en el apartado de <a class="reference internal" href="../2.4/cargando_capas.html#label-cargando-capas"><span class="std std-ref">Cargando capas</span></a></p>
+<p>Además, como explico en el siguiente apartado, <strong>se pueden capturar las capas resultado de la ejecución de un algoritmo</strong>, para poder ser usadas en otro apartado del script o ser pasadas como parámetro para otros geoprocesos.</p>
+</div>
+<div class="section" id="parametros-multi-input-en-desarrollo">
+<h3><a class="toc-backref" href="#id10">14.6.3. Parámetros Multi input (en desarrollo)</a><a class="headerlink" href="#parametros-multi-input-en-desarrollo" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si son de tipo Vector se incluirán mediante una lista Ej. [vectorLayer1, vectorLayer2, ….. ]</p>
+</div>
+<div class="section" id="parametros-raster-banda">
+<h3><a class="toc-backref" href="#id11">14.6.4. Parámetros Raster + Banda</a><a class="headerlink" href="#parametros-raster-banda" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si son de tipo raster + banda se incluyen con una tupla Ej. (raster, 1)</p>
+<p>Ej. Usando multi input de rasters:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">runalg</span><span class="p">(</span><span class="s2">&quot;vectorizetrees&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="n">raster1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">raster2</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span> <span class="s2">&quot;capa1&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parametro-point">
+<h3><a class="toc-backref" href="#id12">14.6.5. Parámetro Point</a><a class="headerlink" href="#parametro-point" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Se puede pasar como texto: «100.0, 150.0» o como geometría de gvSIG <cite>geom.createPoint(geom.D2, 100.0, 150.0)</cite>.</p>
+</div>
+<div class="section" id="parametros-fixed-table">
+<h3><a class="toc-backref" href="#id13">14.6.6. Parámetros Fixed table</a><a class="headerlink" href="#parametros-fixed-table" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Se tienen que añadir como texto (string), con una sucesión de números a modo de lista.
+Ej. <code class="docutils literal"><span class="pre">LUT=&quot;1,1,1,0,0,0&quot;</span></code></p>
+</div>
+</div>
+<div class="section" id="archivos-de-salida">
+<h2><a class="toc-backref" href="#id14">14.7. Archivos de salida</a><a class="headerlink" href="#archivos-de-salida" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los archivos de salida (RESULT) son la capa o capas que generarán como resultado el ejecutar nuestro algoritmo, también salidas de tipo texto. Si no se especifica se guardarán en una carpeta temporal:
+<cite>C:UsersOscarAppDataLocalTemptmp-andami</cite></p>
+<p>Nosotros estableceremos la ruta que queremos con el comando PATH para indicar ruta y nombre. Explicación sobre PATH en el apartado de Atributos Extra.</p>
+<p>Además, <strong>podemos capturar estas capas</strong> para poder seguir utilizándolas en nuestro script recogiendo la salida del algoritmo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">capa</span> <span class="o">=</span> <span class="n">gvpy</span><span class="o">.</span><span class="n">runalg</span><span class="p">(</span><span class="s2">&quot;randomvector&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>De esta forma la variable <cite>capa</cite> contendrá las capas de gvSIG que son el resultado de lanzar el algoritmo. Si realizamos un <cite>print capa</cite> podremos ver como contiene una capa resultado.</p>
+<p>Si el algoritmo generase dos o más capas como resultado, nos devolvería una lista con todas ellas, y podríamos acceder a ellas de la forma:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="n">capa</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">capa</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">capa</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="atributos-extra">
+<h2><a class="toc-backref" href="#id15">14.8. Atributos extra</a><a class="headerlink" href="#atributos-extra" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>A parte de los parámetros del algoritmo, podremos designar otros <strong>atributos opcionales</strong> que permitirán modificar otras variables tales como la ruta de salida, región de análisis, etc.</p>
+<div class="section" id="extent">
+<h3><a class="toc-backref" href="#id16">14.8.1. EXTENT</a><a class="headerlink" href="#extent" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Define la región de análisis del algoritmo a utilizar. Por ejemplo en nuestros algoritmo anterior hará que las geometrías aleatorias estén todas contenidas en esta región.</p>
+<p>Se escribirá: <cite>EXTENT =</cite> dentro del algoritmo</p>
+<p>Podemos declararla de diversas formas:</p>
+<ul class="simple">
+<li><strong>Nombre de la Vista</strong> (string): Buscará la Vista con ese nombre en nuestro proyecto. El comando en el que está basado es en: <code class="docutils literal"><span class="pre">currentProject().getView(name)`.</span> <span class="pre">Ejemplo</span> <span class="pre">`EXTENT=&quot;Vista1&quot;</span></code></li>
+<li><strong>Vista</strong> ( <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/app/project/documents/view/DefaultViewDocument.html">DefaultViewDocument</a> ): Le pasamos directamente la Vista y cogerá la región en la que las capas de esta se expanden. Ejemplo: <code class="docutils literal"><span class="pre">EXTENT=currentView()</span></code></li>
+<li><strong>Layer</strong> ( <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/mapcontext/layers/FLyrDefault.html">FLyrDefault</a> ): Extensión de la capa ya sea vectorial o raster. Ejemplo: <code class="docutils literal"><span class="pre">EXTENT=capa</span></code>, basado en nuestro ejemplo anterior cogería la extensión de la capa generada por nuestro algoritmo.</li>
+<li><strong>Lista</strong> (Python list): Pasando las coordenadas de la región. Las esquinas inferior izquierda y superior derecha, incluyendo la coordenada Z. Ejemplo: <code class="docutils literal"><span class="pre">EXTENT=[100,100,0,500,500,0]</span></code></li>
+<li><strong>Por defualt</strong>: Si no se le indica, intentará coger el <code class="docutils literal"><span class="pre">currentView()</span></code>, Vista del proyecto actual. En caso de que este no contenga ninguna capa, cogerá las coordenadas predeterminadas de: <code class="docutils literal"><span class="pre">EXTENT=[0,0,0,100,100,0]</span></code></li>
+</ul>
+</div>
+<div class="section" id="cellsize-y-cellsizez">
+<h3><a class="toc-backref" href="#id17">14.8.2. CELLSIZE y CELLSIZEZ</a><a class="headerlink" href="#cellsize-y-cellsizez" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Estos dos comandos se aplican también a la región de análisis, y son utilizados solamente para aquellos algoritmos que generen una capa de tipo Raster. Corresponderán al tamaño de las celdas en (x,y) y en (z).</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Muchas veces en este tipo de algoritmo <strong>salta un error porque la región de análisis es excesivamente grande</strong>. Esto lo podemos <strong>solucionar aumentando el tamaño de las celdas</strong></p>
+</div>
+<p>Ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CELLSIZE</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">CELLSIZEZ</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="path">
+<h3><a class="toc-backref" href="#id18">14.8.3. PATH</a><a class="headerlink" href="#path" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Con este atributo podemos designar el nombre y la ruta de las capas resultado.</p>
+<p>Según las capas resultado que genere el algoritmo, esto lo podemos ver cuando utilizamos el comando gvpy.algHelp(«») viendo cuantas capas de salida (output) tiene, nos lo devolverá de dos formas diferentes:
+- Si solo devuelve una capa, podemos introducir la ruta como: <cite>PATH=»C://capa_01.shp»</cite>
+- Si devuelves dos o más, las podemos introducir en forma de lista: <cite>PATH=[«C://1.shp», «C://2.shp»]</cite></p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Si el fichero ya existe se podrucirá un error durante la ejecución del geoproceso.</p>
+</div>
+</div>
+<div class="section" id="outview">
+<h3><a class="toc-backref" href="#id19">14.8.4. OUTVIEW</a><a class="headerlink" href="#outview" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Nos permite seleccionar en que Vista queremos que se carguen los archivos de salida de nuestros algoritmos ejecutados.</p>
+<p>Podemos introducirla tanto como por su nombre:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">OUTVIEW</span><span class="o">=</span><span class="s2">&quot;Vista1&quot;</span>
+</pre></div>
+</div>
+<p>o por el objeto de tipo Vista:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">OUTVIEW</span><span class="o">=</span><span class="n">currentView</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="name">
+<h3><a class="toc-backref" href="#id20">14.8.5. NAME</a><a class="headerlink" href="#name" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Anteriormente este atributo era denominado TOCNAME.</p>
+</div>
+<p>Este atributo nos permite modificar el nombre con el que aparecen las capas en el TOC. Es independiente del nombre que tenga la capa. Por ejemplo, nos permitiría acceder a la capa a través del nombre mediante <cite>gvsig.currentView().getLayer(name)</cite>.</p>
+<p>Ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NAME</span><span class="o">=</span><span class="s2">&quot;Resultado Vector 01&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="addlayer">
+<h3><a class="toc-backref" href="#id21">14.8.6. ADDLAYER</a><a class="headerlink" href="#addlayer" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si queremos generar una capa en el geoproceso pero no añadirla a ninguna vista, podemos establecer el parámetro ADDLAYER como <code class="docutils literal"><span class="pre">True</span></code> o <code class="docutils literal"><span class="pre">False</span></code>. Por defecto será <code class="docutils literal"><span class="pre">True</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Por lo general, es muy cómodo usar este atributo en False. Si queremos después añadir la capa a una vista especifica solo necesitaremos capturar la capa de salida del geoproceso y añadirla con <code class="docutils literal"><span class="pre">view.addLayer(capa)</span></code></p>
+</div>
+<p>Ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ADDLAYER</span><span class="o">=</span><span class="kc">False</span>
+</pre></div>
+</div>
+<p>Ejemplo de uso:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer_result</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">runalg</span><span class="p">(</span><span class="s2">&quot;vectorize&quot;</span><span class="p">,</span> <span class="n">layer1</span><span class="p">,</span> <span class="n">ADDLAYER</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">currentView</span><span class="p">()</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">layer_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="output-filter">
+<h3><a class="toc-backref" href="#id22">14.8.7. OUTPUT_FILTER</a><a class="headerlink" href="#output-filter" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En algunos geoprocesos la salida de capas es múltiple y puede realizarse en diferente orden la salida de estos resultados. Estos geoprocesos al ejecutarse desde la Toolbox añaden los resultados a la Vista que tenemos abierta, la diferencia entre sus capas viene dada en su nombre.</p>
+<p>Para ejecutarlo desde Scripting una opción posible es establecer un filtrado del nombre de la capa resultado que queremos.</p>
+<p>Por ejemplo, en el geoproceso de Kriging una de estas capas de salida establece en su nombre «interpolado», aquí vemos como hacemos para capturar solo esta capa de salida:</p>
+<p>Ejemplo de uso:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">proc1</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">runalg</span><span class="p">(</span><span class="s2">&quot;kriging&quot;</span><span class="p">,</span> <span class="n">layer1</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;5.0&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;0.0&quot;</span><span class="p">,</span> <span class="s2">&quot;100.0&quot;</span><span class="p">,</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span> <span class="n">ADDLAYER</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">OUTPUT_FILTER</span><span class="o">=</span><span class="s2">&quot;interpolado&quot;</span><span class="p">,</span> <span class="n">EXTENT</span><span class="o">=</span><span class="n">layer1</span><span class="p">,</span> <span class="n">CELLSIZE</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">CELLSIZEZ</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="model2script-sextante-model-to-script">
+<h2><a class="toc-backref" href="#id23">14.9. model2script: SEXTANTE model to Script</a><a class="headerlink" href="#model2script-sextante-model-to-script" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Convierte tus ficheros <cite>sextante.model</cite>, creados por el Model Builder, en scripts. Tan solo utiliza la función <cite>gvpy.model2script</cite> con la ruta del fichero model, y la ruta del nuevo fichero que vas a crear. Luego deberás de mover tu script a la carpeta de Scripting que está en:
+<code class="docutils literal"><span class="pre">C:\Users\[user]\gvSIG\plugins\org.gvsig.scripting.app.extension\scripts</span></code>
+o copiar y pegar en un nuevo script.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Esta función esta en desarrollo y aún puede contener errores o resultados incompletos.</p>
+</div>
+<p>Ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gvpy</span><span class="o">.</span><span class="n">model2script</span><span class="p">(</span><span class="s2">&quot;C://gsoc//test02.model&quot;</span><span class="p">,</span> <span class="s2">&quot;C://gsoc//nuevoScript.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">14. gvpy: Guía de uso</a><ul>
+<li><a class="reference internal" href="#contenidos">14.1. Contenidos</a></li>
+<li><a class="reference internal" href="#libreria-gvpy">14.2. Librería gvpy</a></li>
+<li><a class="reference internal" href="#algoritmos">14.3. Algoritmos</a></li>
+<li><a class="reference internal" href="#parametros-del-algoritmo">14.4. Parámetros del algoritmo</a></li>
+<li><a class="reference internal" href="#linea-de-codigo">14.5. Línea de código</a></li>
+<li><a class="reference internal" href="#parametros-de-entrada">14.6. Parámetros de entrada</a><ul>
+<li><a class="reference internal" href="#tipos-de-capas-geometrias">14.6.1. Tipos de capas / geometrías</a></li>
+<li><a class="reference internal" href="#parametros-de-tipo-capa">14.6.2. Parámetros de tipo Capa</a></li>
+<li><a class="reference internal" href="#parametros-multi-input-en-desarrollo">14.6.3. Parámetros Multi input (en desarrollo)</a></li>
+<li><a class="reference internal" href="#parametros-raster-banda">14.6.4. Parámetros Raster + Banda</a></li>
+<li><a class="reference internal" href="#parametro-point">14.6.5. Parámetro Point</a></li>
+<li><a class="reference internal" href="#parametros-fixed-table">14.6.6. Parámetros Fixed table</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#archivos-de-salida">14.7. Archivos de salida</a></li>
+<li><a class="reference internal" href="#atributos-extra">14.8. Atributos extra</a><ul>
+<li><a class="reference internal" href="#extent">14.8.1. EXTENT</a></li>
+<li><a class="reference internal" href="#cellsize-y-cellsizez">14.8.2. CELLSIZE y CELLSIZEZ</a></li>
+<li><a class="reference internal" href="#path">14.8.3. PATH</a></li>
+<li><a class="reference internal" href="#outview">14.8.4. OUTVIEW</a></li>
+<li><a class="reference internal" href="#name">14.8.5. NAME</a></li>
+<li><a class="reference internal" href="#addlayer">14.8.6. ADDLAYER</a></li>
+<li><a class="reference internal" href="#output-filter">14.8.7. OUTPUT_FILTER</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#model2script-sextante-model-to-script">14.9. model2script: SEXTANTE model to Script</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="geoprocesos.html"
+                        title="capítulo anterior">13. Geoprocesos</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="capturando_eventos.html"
+                        title="próximo capítulo">15. Capturando eventos: Listeners</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/scripting_devel_guide/2.3/docs_gvpy.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="capturando_eventos.html" title="15. Capturando eventos: Listeners"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="geoprocesos.html" title="13. Geoprocesos"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

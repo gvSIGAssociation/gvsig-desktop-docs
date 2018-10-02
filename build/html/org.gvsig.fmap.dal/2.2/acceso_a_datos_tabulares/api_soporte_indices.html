@@ -1,0 +1,376 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>10. Soporte de índices &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="11. Transformaciones sobre almacenes" href="api_transformacion_sobre_almacenes.html" />
+    <link rel="prev" title="9. La pila de comandos de edición" href="api_pila_comandos_edicion.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="api_transformacion_sobre_almacenes.html" title="11. Transformaciones sobre almacenes"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="api_pila_comandos_edicion.html" title="9. La pila de comandos de edición"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >org.gvsig.fmap.dal</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../acceso_a_datos_tabulares.html" >4. Acceso a datos tabulares</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">API de los servicios asociados al consumidor de datos</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="soporte-de-indices">
+<h1>10. Soporte de índices<a class="headerlink" href="#soporte-de-indices" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>En esta sección se dará una breve introducción a los siguientes conceptos
+u operaciones sobre un almacén de datos:</p>
+<ul class="simple">
+<li>Alcance del soporte de índices</li>
+<li>Crear un índice sobre un almacén</li>
+<li>Obtener los índices de un almacén</li>
+<li>Obtener un índice por nombre</li>
+<li>Consultar un índice<ul>
+<li>Coincidencia (match)</li>
+<li>Rango</li>
+<li>N elementos más cercanos</li>
+<li>N elementos más cercanos con tolerancia</li>
+</ul>
+</li>
+<li>El índice<ul>
+<li>Obtener su tipo de dato</li>
+<li>Obtener su nombre</li>
+<li>Obtener los atributos asociados</li>
+<li>Insertar un elemento</li>
+<li>Eliminar un elemento</li>
+</ul>
+</li>
+<li>Algunas recomendaciones sobre el uso de índices</li>
+</ul>
+<div class="section" id="alcance-del-soporte-de-indices">
+<h2>10.1. Alcance del soporte de índices<a class="headerlink" href="#alcance-del-soporte-de-indices" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El soporte de índices que ofrece DAL actualmente consiste en la creación y manejo de índices temporales y locales a nivel de aplicación. El formato y ubicación real en que estos índices se almacenan depende de la librería que provee la implementación y no forma parte de las características del API.</p>
+<p>Una vez se ha creado un índice sobre un almacén, éste lo utilizará para optimizar las consultas de forma automática cuando considere oportuno. A pesar de que este es el uso común, también se puede acceder a un índice manualmente y manipular su contenido.</p>
+</div>
+<div class="section" id="crear-un-indice-sobre-un-almacen">
+<h2>10.2. Crear un índice sobre un almacén<a class="headerlink" href="#crear-un-indice-sobre-un-almacen" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para crear un índice sobre un almacén de fenómenos, se utiliza el método createIndex(…) de la interfaz <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStore.html">FeatureStore</a> . Este método recibe como parámetros el tipo de fenómeno <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureType.html">FeatureType</a> y el nombre del atributo (que debe pertenecer al tipo de fenómeno especificado) sobre el que se desea crear un índice. Así mismo es necesario indicar un nombre para el índice, que servirá para identificarlo.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">DataManager</span> <span class="n">manager</span><span class="o">;</span>
+<span class="n">DataStoreParameters</span> <span class="n">params</span><span class="o">;</span>
+<span class="n">FeatureStore</span> <span class="n">store</span><span class="o">;</span>
+<span class="n">manager</span> <span class="o">=</span> <span class="n">DALLocator</span><span class="o">.</span><span class="na">getDataManager</span><span class="o">();</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="na">createStoreParameters</span><span class="o">(</span><span class="s">&quot;Shape&quot;</span><span class="o">);</span>
+<span class="n">params</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">&quot;shpfileName&quot;</span><span class="o">,</span><span class="s">&quot;data/prueba.shp&quot;</span><span class="o">);</span>
+<span class="n">store</span> <span class="o">=</span> <span class="o">(</span><span class="n">FeatureStore</span><span class="o">)</span> <span class="n">manager</span><span class="o">.</span><span class="na">createStore</span><span class="o">(</span><span class="n">params</span><span class="o">);</span>
+<span class="n">FeatureType</span> <span class="n">fType</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="na">getDefaultFeatureType</span><span class="o">();</span>
+<span class="n">store</span><span class="o">.</span><span class="na">createIndex</span><span class="o">(</span><span class="n">fType</span><span class="o">,</span> <span class="s">&quot;municipio&quot;</span><span class="o">,</span> <span class="s">&quot;municipios_idx&quot;</span><span class="o">);</span>
+<span class="n">store</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+</pre></div>
+</div>
+<p>La creación de un índice puede ser una operación costosa, por lo que el método se ha sobrecargado para admitir un observador, de manera que el proceso se pueda lanzar en segundo plano, y el observador sea notificado del progreso del mismo.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="o">(...)</span>
+<span class="n">store</span><span class="o">.</span><span class="na">createIndex</span><span class="o">(</span><span class="n">fType</span><span class="o">,</span> <span class="s">&quot;municipio&quot;</span><span class="o">,</span> <span class="s">&quot;municipios_idx&quot;</span><span class="o">,</span> <span class="k">this</span><span class="o">);</span>
+<span class="o">(...)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="obtener-los-indices-de-un-almacen">
+<h2>10.3. Obtener los índices de un almacén<a class="headerlink" href="#obtener-los-indices-de-un-almacen" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los índices de un almacén están almacenados en un <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureIndex.html">FeatureIndexes</a> . Se obtiene a partir del almacén y se puede iterar sobre él para acceder a todos los índices disponibles:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="o">(...)</span>
+<span class="n">FeatureIndexes</span> <span class="n">indexes</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="na">getIndexes</span><span class="o">();</span>
+<span class="n">Iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">indexes</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+   <span class="n">FeatureIndex</span> <span class="n">index</span> <span class="o">=</span> <span class="o">(</span><span class="n">FeatureIndex</span><span class="o">)</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">index</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+<span class="o">}</span>
+<span class="o">(...)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="obtener-un-indice-por-nombre">
+<h2>10.4. Obtener un índice por nombre<a class="headerlink" href="#obtener-un-indice-por-nombre" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El siguiente ejemplo muestra como obtener un índice del que se conoce el nombre:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="o">(...)</span>
+<span class="n">FeatureIndex</span> <span class="n">index</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="na">getIndexes</span><span class="o">().</span><span class="na">getFeatureIndex</span><span class="o">(</span><span class="s">&quot;municipio_idx&quot;</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">index</span><span class="o">.</span><span class="na">getDataType</span><span class="o">());</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">index</span><span class="o">.</span><span class="na">getAttributeNames</span><span class="o">());</span>
+<span class="o">(...)</span>
+</pre></div>
+</div>
+<p>Como se observa en el ejemplo, el índice dispone de un método <em>getAttributeNames</em> que devuelve una <em>List</em> de <em>String</em> que contienen los nombres de los atributos indexados. En la actualidad sólo se soporta la creación de índices sobre un sólo atributo (en el método <em>createIndex</em> sólo se puede especificar un atributo), sin embargo el índice está preparado por si en el futuro se soporta la creación de índices multi-atributo.</p>
+</div>
+<div class="section" id="consultar-un-indice">
+<h2>10.5. Consultar un índice<a class="headerlink" href="#consultar-un-indice" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hay varias modalidades de consulta de un índice.</p>
+<div class="section" id="coincidencia-match">
+<h3>10.5.1. Coincidencia (match)<a class="headerlink" href="#coincidencia-match" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Este tipo de consulta devuelve los elementos del índice que intersectan con el conjunto definido por el objeto que se pasa como parámetro. Es decir, si se pasa un número entero y el índice es de tipo entero, entonces devolverá los elementos que sean iguales al número entero. Si por el contrario el parámetro representa un intervalo numérico entonces la consulta devolverá todos los elementos que pertenecen al intervalo. Si el índice es espacial y el parámetro es una geometría entonces la consulta devuelve los elementos que intersectan con ella. En el caso de datos espaciales, hay que tener en cuenta que los índices clasifican los <em>extent</em> de las geometrías con una precisión relativa a la granularidad (o profundidad) del índice por lo que se da el caso de que en el resultado hay geometrías que no intersectan realmente con la geometría parámetro, sino que lo que se devuelve es una aproximación que siempre es un superconjunto del resultado exacto.</p>
+<p>El siguiente ejemplo hace una consulta espacial de tipo <em>match</em> sobre un índice:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="o">(...)</span>
+<span class="n">GeometryManager</span> <span class="n">gf</span> <span class="o">=</span> <span class="n">GeometryLocator</span><span class="o">.</span><span class="na">getGeometryManager</span><span class="o">();</span>
+<span class="n">Geometry</span> <span class="n">geom</span> <span class="o">=</span> <span class="n">gf</span><span class="o">.</span><span class="na">createSurface</span><span class="o">(</span><span class="k">new</span> <span class="n">GeneralPathX</span><span class="o">(</span>
+    <span class="k">new</span> <span class="n">Rectangle</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">100</span><span class="o">,</span><span class="mi">100</span><span class="o">)),</span>
+    <span class="n">Geometry</span><span class="o">.</span><span class="na">SUBTYPES</span><span class="o">.</span><span class="na">GEOM2D</span><span class="o">);</span>
+<span class="n">FeatureSet</span> <span class="n">set</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="na">getMatchFeatureSet</span><span class="o">(</span><span class="n">geom</span><span class="o">.</span><span class="na">getEnvelope</span><span class="o">());</span>
+<span class="n">Iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">set</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+<span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+   <span class="n">Feature</span> <span class="n">feat</span> <span class="o">=</span> <span class="o">(</span><span class="n">Feature</span><span class="o">)</span> <span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">feat</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+<span class="o">}</span>
+<span class="o">(...)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rango">
+<h3>10.5.2. Rango<a class="headerlink" href="#rango" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Este tipo de consulta recibe dos parámetros que delimitan un rango o intervalo. La consulta devuelve los elementos que pertenecen a este intervalo. Es un tipo de consulta pensado para atributos alfanuméricos o tipos de datos con una relación de orden, ya que en el caso de los datos espaciales no existe esta relación de orden y para filtrar por un rango se usa el tipo <em>match</em> y el rango viene representado por una geometría.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="o">(...)</span>
+<span class="n">FeatureSet</span> <span class="n">set</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="na">getRangeFeatureSet</span><span class="o">(</span><span class="n">value1</span><span class="o">,</span> <span class="n">value2</span><span class="o">);</span>
+<span class="o">(...)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="n-elementos-mas-cercanos">
+<h3>10.5.3. N elementos más cercanos<a class="headerlink" href="#n-elementos-mas-cercanos" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Este tipo de consulta devuelve los n elementos más cercanos al valor de referencia que se pasa como parámetro.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="o">(...)</span>
+<span class="n">FeatureSet</span> <span class="n">set</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="na">getNearestFeatureSet</span><span class="o">(</span><span class="n">count</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+<span class="o">(...)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="n-elementos-mas-cercanos-con-tolerancia">
+<h3>10.5.4. N elementos más cercanos con tolerancia<a class="headerlink" href="#n-elementos-mas-cercanos-con-tolerancia" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Este tipo de consulta funciona igual que la anterior pero se especifica una distancia máxima permitida del valor de referencia. Esta distancia máxima, o tolerancia, sirve para obtener N elementos como máximo, estando todos ellos a una distancia del valor de referencia menor o igual que la tolerancia indicada.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="o">(...)</span>
+<span class="n">FeatureSet</span> <span class="n">set</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="na">getNearestFeatureSet</span><span class="o">(</span><span class="n">count</span><span class="o">,</span> <span class="n">value</span><span class="o">,</span> <span class="n">tolerance</span><span class="o">);</span>
+<span class="o">(...)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="el-indice">
+<h2>10.6. El índice<a class="headerlink" href="#el-indice" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El índice dispone de un conjunto de servicios para obtener información sobre él así como para manipular su contenido directamente. Son los siguientes:</p>
+<div class="section" id="obtener-su-tipo-de-dato">
+<h3>10.6.1. Obtener su tipo de dato<a class="headerlink" href="#obtener-su-tipo-de-dato" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El tipo de dato viene expresado por una de las constantes definidas en <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/DataTypes.html">DataTypes</a></p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="cm">/** Data type */</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getDataType</span><span class="o">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="obtener-su-nombre">
+<h3>10.6.2. Obtener su nombre<a class="headerlink" href="#obtener-su-nombre" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El nombre identifica al índice dentro de un almacén.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="cm">/** Index name */</span>
+<span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="obtener-los-atributos-asociados">
+<h3>10.6.3. Obtener los atributos asociados<a class="headerlink" href="#obtener-los-atributos-asociados" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La lista de nombres de los atributos indexados en el índice. En principio siempre tendrá un sólo elemento ya que de momento sólo se soporta la indexación por un único atributo. El servicio se incluye en previsión de que en el futuro se de soporte a índices compuestos.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="cm">/** Attribute names */</span>
+<span class="kd">public</span> <span class="n">List</span> <span class="nf">getAttributeNames</span><span class="o">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="insertar-un-elemento">
+<h3>10.6.4. Insertar un elemento<a class="headerlink" href="#insertar-un-elemento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Permite insertar un fenómeno o un conjunto de fenómenos en el índice.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Inserts a Feature in the index.</span>
+<span class="cm"> * The Feature must contain a column that matches this index&#39;s column (name and data type)</span>
+<span class="cm"> * @param feat</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">insert</span><span class="o">(</span><span class="n">Feature</span> <span class="n">feat</span><span class="o">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Inserts a FeatureSet into this index</span>
+<span class="cm"> * FeatureType is not checked so it will accept any FeatureType</span>
+<span class="cm"> * as long as exists a column with a valid name</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">insert</span><span class="o">(</span><span class="n">FeatureSet</span> <span class="n">data</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">DataException</span><span class="o">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="eliminar-un-elemento">
+<h3>10.6.5. Eliminar un elemento<a class="headerlink" href="#eliminar-un-elemento" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Permite eliminar un fenómeno o un conjunto de fenómenos del índice.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Deletes a Feature in the index.</span>
+<span class="cm"> * The Feature must contain a column that matches this index&#39;s column (name and data type)</span>
+<span class="cm"> * @param feat</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="n">Feature</span> <span class="n">feat</span><span class="o">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Deletes a FeatureSet from this index</span>
+<span class="cm"> * FeatureType is not checked so it will accept any FeatureType</span>
+<span class="cm"> * as long as exists a column with a valid name</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="n">FeatureSet</span> <span class="n">data</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">FeatureIndexException</span><span class="o">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="algunas-recomendaciones-sobre-el-uso-de-indices">
+<h2>10.7. Algunas recomendaciones sobre el uso de índices<a class="headerlink" href="#algunas-recomendaciones-sobre-el-uso-de-indices" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El uso normal de los índices consiste únicamente en crearlos, porque es el propio almacén quien decide cuándo utilizarlos. Aun así es posible crear un índice y añadir o eliminar elementos al mismo. Esta posibilidad se ha dejado abierta para casos especiales en que se quiera tener control sobre el índice.</p>
+<p>Se recomienda no crear índices locales para bases de datos que soporten índices. Es mucho mejor crear el índice en la base de datos (claro que normalmente hay que ser administrador de la misma) y así que sea la propia base de datos quien decida cuándo usarlo.</p>
+<p>En cuanto a la creación de los índices, debido al coste de esta operación normalmente es recomendable ejecutar el proceso de indexación en segundo plano.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">10. Soporte de índices</a><ul>
+<li><a class="reference internal" href="#alcance-del-soporte-de-indices">10.1. Alcance del soporte de índices</a></li>
+<li><a class="reference internal" href="#crear-un-indice-sobre-un-almacen">10.2. Crear un índice sobre un almacén</a></li>
+<li><a class="reference internal" href="#obtener-los-indices-de-un-almacen">10.3. Obtener los índices de un almacén</a></li>
+<li><a class="reference internal" href="#obtener-un-indice-por-nombre">10.4. Obtener un índice por nombre</a></li>
+<li><a class="reference internal" href="#consultar-un-indice">10.5. Consultar un índice</a><ul>
+<li><a class="reference internal" href="#coincidencia-match">10.5.1. Coincidencia (match)</a></li>
+<li><a class="reference internal" href="#rango">10.5.2. Rango</a></li>
+<li><a class="reference internal" href="#n-elementos-mas-cercanos">10.5.3. N elementos más cercanos</a></li>
+<li><a class="reference internal" href="#n-elementos-mas-cercanos-con-tolerancia">10.5.4. N elementos más cercanos con tolerancia</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#el-indice">10.6. El índice</a><ul>
+<li><a class="reference internal" href="#obtener-su-tipo-de-dato">10.6.1. Obtener su tipo de dato</a></li>
+<li><a class="reference internal" href="#obtener-su-nombre">10.6.2. Obtener su nombre</a></li>
+<li><a class="reference internal" href="#obtener-los-atributos-asociados">10.6.3. Obtener los atributos asociados</a></li>
+<li><a class="reference internal" href="#insertar-un-elemento">10.6.4. Insertar un elemento</a></li>
+<li><a class="reference internal" href="#eliminar-un-elemento">10.6.5. Eliminar un elemento</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#algunas-recomendaciones-sobre-el-uso-de-indices">10.7. Algunas recomendaciones sobre el uso de índices</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="api_pila_comandos_edicion.html"
+                        title="capítulo anterior">9. La pila de comandos de edición</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="api_transformacion_sobre_almacenes.html"
+                        title="próximo capítulo">11. Transformaciones sobre almacenes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/org.gvsig.fmap.dal/2.2/acceso_a_datos_tabulares/api_soporte_indices.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="api_transformacion_sobre_almacenes.html" title="11. Transformaciones sobre almacenes"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="api_pila_comandos_edicion.html" title="9. La pila de comandos de edición"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >org.gvsig.fmap.dal</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../acceso_a_datos_tabulares.html" >4. Acceso a datos tabulares</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >API de los servicios asociados al consumidor de datos</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

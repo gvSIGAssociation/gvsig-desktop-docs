@@ -1,0 +1,557 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>7. Acceso a objectos en gvSIG &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="8. Trabajando con esquemas: FeatureType" href="trabajando_con_esquemas.html" />
+    <link rel="prev" title="6. Otras fuentes de datos" href="otras_fuentes_datos.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="trabajando_con_esquemas.html" title="8. Trabajando con esquemas: FeatureType"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="otras_fuentes_datos.html" title="6. Otras fuentes de datos"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="acceso-a-objectos-en-gvsig">
+<h1>7. Acceso a objectos en gvSIG<a class="headerlink" href="#acceso-a-objectos-en-gvsig" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="funciones-current">
+<h2>7.1. Funciones current<a class="headerlink" href="#funciones-current" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Son aquellas funciones que nos ayudan a acceder de una forma rápida a partes de gvSIG que estén en ejecución o cargadas en ese momento. Tales pueden ser como la Vista que tenemos abierta o la capa que tenemos selecciona en esa Vista.</p>
+<p>Estas funciones se encuentran dentro de la librería <code class="docutils literal"><span class="pre">gvsig</span></code> y son:</p>
+<dl class="function">
+<dt id="currentProject">
+<code class="descname">currentProject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#currentProject" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Devuelve el proyecto actual de gvSIG</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="currentDocument">
+<code class="descname">currentDocument</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#currentDocument" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Devuelve el documento actual (Vista o Tabla)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="currentView">
+<code class="descname">currentView</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#currentView" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Devuelve la Vista activa o None. Si no hay Vista activa devuelve un error de RuntimeException</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="currentLayer">
+<code class="descname">currentLayer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#currentLayer" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Devuelve la capa activa en la Vista</p>
+</dd></dl>
+
+<p>Por ejemplo, teniendo un Proyecto con una Vista abierta y una capa cargada y seleccionada en esta Vista, ejecutando:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gvsig</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">project</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">currentProject</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;project: &quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;project.name: &quot;</span><span class="p">,</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="n">view</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">currentView</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;view: &quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;view.name: &quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;layer: &quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;layer.name: &quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<p>Dando como resultado en la consola algo similar a:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">script</span> <span class="n">acceso</span><span class="o">.</span>
+<span class="n">project</span><span class="p">:</span>  <span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;org.gvsig.app.project.DefaultProject&#39;</span><span class="o">&gt;</span>
+<span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>  <span class="n">Sin</span> <span class="n">título</span>
+<span class="n">view</span><span class="p">:</span>  <span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;org.gvsig.app.project.documents.view.DefaultViewDocument&#39;</span><span class="o">&gt;</span>
+<span class="n">view</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>  <span class="n">Sin</span> <span class="n">título</span>
+<span class="n">layer</span><span class="p">:</span>  <span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;org.gvsig.fmap.mapcontext.layers.vectorial.FLyrVect&#39;</span><span class="o">&gt;</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>  <span class="n">points_layer</span><span class="o">-</span><span class="mi">57</span><span class="n">ab8d7e99c</span>
+<span class="n">Script</span> <span class="n">acceso</span> <span class="n">terminated</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="proyecto">
+<h2>7.2. Proyecto<a class="headerlink" href="#proyecto" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La clase Project ( <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/app/project/DefaultProject.html">DefaultProject</a> ) se encarga de la gestión de los documentos que tengamos en gvSIG. Este se encarga de las Vistas, Tablas, Mapas, Gráficas y otros que pueden venir desde otras extensiones como el de Series de mapas.</p>
+<p>Para acceder a esta clase podemos usar <a class="reference internal" href="../2.4/acceso_a_objetos.html#currentProject" title="currentProject"><code class="xref py py-func docutils literal"><span class="pre">currentProject()</span></code></a>, nos devolverá la instancia del proyecto que se encuentra actualmente abierto en gvSIG.</p>
+<p>Por ejemplo, podemos obtener su nombre y la proyección establecida en el proyecto:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">project</span> <span class="o">=</span> <span class="n">currentProject</span><span class="p">()</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+        <span class="n">prjcode</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">getProjectionCode</span><span class="p">()</span>
+        <span class="n">prj</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">getProjection</span><span class="p">()</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;Project Name: &quot;</span><span class="p">,</span> <span class="n">name</span>
+        <span class="nb">print</span> <span class="s2">&quot;Projection Code: &quot;</span><span class="p">,</span> <span class="n">prjcode</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">prjcode</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Projection: &quot;</span><span class="p">,</span> <span class="n">prj</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">prj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Muestra por consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Project</span> <span class="n">Name</span><span class="p">:</span>  <span class="n">Sin</span> <span class="n">título</span>
+<span class="n">Projection</span> <span class="n">Code</span><span class="p">:</span>  <span class="n">EPSG</span><span class="p">:</span><span class="mi">4326</span> <span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;unicode&#39;</span><span class="o">&gt;</span>
+<span class="n">Projection</span><span class="p">:</span>  <span class="n">EPSG</span><span class="p">:</span><span class="mi">4326</span> <span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;org.gvsig.crs.Crs&#39;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>En este caso, <cite>getProjection()</cite> es un método implementado en la API de gvSIG, y <cite>getProjectionCode()</cite> es un método inyectado en la API de gvSIG desde las librerías de Jython desarrolladas.</p>
+</div>
+<div class="section" id="documento-vista">
+<h2>7.3. Documento Vista<a class="headerlink" href="#documento-vista" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El documento Vista ( <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/app/project/documents/view/DefaultViewDocument.html">DefaultViewDocument</a> ) contendrá las capas de nuestro proyecto, en el podremos visualizarlas y editarlas.</p>
+<p>Para acceder a las Vistas creadas en un Proyecto, podremos usar dos funciones: <a class="reference internal" href="../2.4/acceso_a_objetos.html#currentView" title="currentView"><code class="xref py py-func docutils literal"><span class="pre">currentView()</span></code></a> o <a class="reference internal" href="../2.4/acceso_a_objetos.html#currentDocument" title="currentDocument"><code class="xref py py-func docutils literal"><span class="pre">currentDocument()</span></code></a> para acceder a la Vista activa, o  <cite>currentProject().getView(«Nombre»)</cite> para acceder a una determinada Vista:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="n">project</span> <span class="o">=</span> <span class="n">currentProject</span><span class="p">()</span>
+
+    <span class="c1"># Acceso a vista con nombre &quot;Vista1&quot;</span>
+    <span class="n">view1</span> <span class="o">=</span> <span class="n">currentProject</span><span class="p">()</span><span class="o">.</span><span class="n">getView</span><span class="p">(</span><span class="s2">&quot;Vista1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Una Vista pueden contener diferentes capas o servicios cargados. Un Proyecto puede contener varias vistas. Por ejemplo, con el siguiente script listaremos todas las Vistas que se encuentren en nuestro proyecto:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">project</span> <span class="o">=</span> <span class="n">currentProject</span><span class="p">()</span>
+        <span class="n">views</span> <span class="o">=</span> <span class="n">project</span><span class="p">()</span><span class="o">.</span><span class="n">getViews</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">view</span> <span class="ow">in</span> <span class="n">views</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="n">view</span>
+</pre></div>
+</div>
+<p>También podemos realizar otras operaciones. Por ejemplo, podemos crear una Vista nueva en nuestro Proyecto y cambiarle la proyección que tiene:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">project</span> <span class="o">=</span> <span class="n">currentProject</span><span class="p">()</span>
+
+        <span class="c1"># Creamos nueva vista</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">createView</span><span class="p">(</span><span class="s2">&quot;Nueva Vista&quot;</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;Vista nueva: &quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;Proyeccion de la Vista: &quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">getProjectionCode</span><span class="p">()</span>
+
+        <span class="c1"># Nos ayudamos de una funcion para obtener el crs object</span>
+        <span class="c1"># correspondiente a un codigo crs</span>
+        <span class="n">newcrs</span> <span class="o">=</span> <span class="n">getCRS</span><span class="p">(</span><span class="s2">&quot;EPSG:32630&quot;</span><span class="p">)</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">setProjection</span><span class="p">(</span><span class="n">newcrs</span><span class="p">)</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;Nueva proyeccion de la Vista: &quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">getProjectionCode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>En el caso de que ya exista una Vista con ese nombre, se añadirá a él un indice. Si volvemos a ejecutar el script anterior, el nombre de la nueva vista será: «Nueva Vista - 1».</p>
+<p>Si tenemos la Vista anteriormente creada abierta en gvSIG, podemos acceder directamente a esa Vista abierta cuando ejecutamos nuestro script mediante <a class="reference internal" href="../2.4/acceso_a_objetos.html#currentView" title="currentView"><code class="xref py py-func docutils literal"><span class="pre">currentView()</span></code></a>. Por ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">view</span> <span class="o">=</span> <span class="n">currentView</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;Nombre de la Vista: &quot;</span><span class="p">,</span> <span class="n">view</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Podemos centrar la vista en el punto que queramos:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">view</span> <span class="o">=</span> <span class="n">currentView</span><span class="p">()</span>
+        <span class="n">encuadre</span> <span class="o">=</span> <span class="n">createEnvelope</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">getMapContext</span><span class="p">()</span><span class="o">.</span><span class="n">getViewPort</span><span class="p">()</span><span class="o">.</span><span class="n">setEnvelope</span><span class="p">(</span><span class="n">encuadre</span><span class="p">)</span>
+
+        <span class="n">view</span><span class="o">.</span><span class="n">centerView</span><span class="p">(</span><span class="n">createEnvelope</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">],[</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="documento-tabla">
+<h2>7.4. Documento Tabla<a class="headerlink" href="#documento-tabla" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Otro tipo de documentos que tenemos en nuestro proyecto son las Tablas ( <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/impl/DefaultFeatureStore.html">DefaultFeatureStore</a> ). Estas tablas pueden hacer referencia tanto a tablas añadidas a gvSIG como a tablas de atributos de las capas u otras que aparezcan en este gestor.</p>
+<p>De la misma forma que los documentos vista, podemos utilizar la función <code class="xref py py-func docutils literal"><span class="pre">currentTable()</span></code> o <a class="reference internal" href="../2.4/acceso_a_objetos.html#currentDocument" title="currentDocument"><code class="xref py py-func docutils literal"><span class="pre">currentDocument()</span></code></a> o <cite>project.getTable(«Name»)</cite>.</p>
+</div>
+<div class="section" id="capas">
+<h2>7.5. Capas<a class="headerlink" href="#capas" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Cualquier capa o servicio añadido a nuestras Vistas serán accesibles mediante Scripting.</p>
+<p>Por ejemplo, una operación básica en herramientas que creemos, sería la creación de una <strong>capa vectorial</strong> y añadirla a una Vista nueva:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="c1"># Creamos esquema para la capa</span>
+        <span class="n">ft</span> <span class="o">=</span> <span class="n">createFeatureType</span><span class="p">()</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span> <span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Establecemos el tipo del geometria.</span>
+        <span class="c1"># Usamos constantes POINT y D2 que se encuentran</span>
+        <span class="c1"># dentro de la libreria gvsig.geom</span>
+        <span class="n">ft</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setGeometryType</span><span class="p">(</span><span class="n">POINT</span><span class="p">,</span> <span class="n">D2</span><span class="p">)</span>
+
+        <span class="c1"># Creamos la capa nueva con el nuevo esquema</span>
+        <span class="c1"># La funcion se encarga de establecer un path temporal</span>
+        <span class="n">shp</span> <span class="o">=</span> <span class="n">createShape</span><span class="p">(</span><span class="n">ft</span><span class="p">)</span>
+
+        <span class="c1"># Agregamos la capa a nuesta vista nueva</span>
+        <span class="c1"># Se creara con el nombre de View 001 por defecto</span>
+        <span class="n">newview</span> <span class="o">=</span> <span class="n">currentProject</span><span class="p">()</span><span class="o">.</span><span class="n">createView</span><span class="p">()</span>
+        <span class="n">newview</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">shp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tenemos la opción de iterar sobre todas las capas que tenga una Vista:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">view</span> <span class="o">=</span> <span class="n">currentView</span><span class="p">()</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">getLayers</span><span class="p">()</span>
+
+        <span class="c1"># Acceder iterando las capas</span>
+        <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Iterando: &quot;</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Capa: &quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span>
+                <span class="nb">print</span> <span class="s2">&quot; Tipo: &quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">getTypeVectorLayer</span><span class="p">()</span><span class="o">.</span><span class="n">getFullName</span><span class="p">()</span>
+
+        <span class="c1"># Acceder mediante indices</span>
+        <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Mediante indices: &quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">layers</span><span class="p">)):</span>
+                <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Capa: &quot;</span><span class="p">,</span> <span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span>
+                <span class="nb">print</span> <span class="s2">&quot; Tipo: &quot;</span><span class="p">,</span> <span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">getTypeVectorLayer</span><span class="p">()</span><span class="o">.</span><span class="n">getFullName</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Si tenemos una Vista con tres capas, el resultado por consola será similar al siguiente:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Iterando</span><span class="p">:</span>
+        <span class="n">Capa</span><span class="p">:</span>  <span class="n">tmpshp</span><span class="o">-</span><span class="mi">57</span><span class="n">ae45dd1765</span>  <span class="n">Tipo</span><span class="p">:</span>  <span class="n">Point</span><span class="p">:</span><span class="mi">2</span><span class="n">D</span>
+        <span class="n">Capa</span><span class="p">:</span>  <span class="n">tmpshp</span><span class="o">-</span><span class="mi">57</span><span class="n">ae45f712b6</span>  <span class="n">Tipo</span><span class="p">:</span>  <span class="n">MultiCurve</span><span class="p">:</span><span class="mi">2</span><span class="n">D</span>
+        <span class="n">Capa</span><span class="p">:</span>  <span class="n">tmpshp</span><span class="o">-</span><span class="mi">57</span><span class="n">ae45fe1112</span>  <span class="n">Tipo</span><span class="p">:</span>  <span class="n">MultiSurface</span><span class="p">:</span><span class="mi">3</span><span class="n">DM</span>
+
+<span class="n">Mediante</span> <span class="n">indices</span><span class="p">:</span>
+        <span class="n">Capa</span><span class="p">:</span>  <span class="n">tmpshp</span><span class="o">-</span><span class="mi">57</span><span class="n">ae45dd1765</span>  <span class="n">Tipo</span><span class="p">:</span>  <span class="n">Point</span><span class="p">:</span><span class="mi">2</span><span class="n">D</span>
+        <span class="n">Capa</span><span class="p">:</span>  <span class="n">tmpshp</span><span class="o">-</span><span class="mi">57</span><span class="n">ae45f712b6</span>  <span class="n">Tipo</span><span class="p">:</span>  <span class="n">MultiCurve</span><span class="p">:</span><span class="mi">2</span><span class="n">D</span>
+        <span class="n">Capa</span><span class="p">:</span>  <span class="n">tmpshp</span><span class="o">-</span><span class="mi">57</span><span class="n">ae45fe1112</span>  <span class="n">Tipo</span><span class="p">:</span>  <span class="n">MultiSurface</span><span class="p">:</span><span class="mi">3</span><span class="n">DM</span>
+</pre></div>
+</div>
+<p>Si quieres acceder a capas ya existentes en la Vista podrías hacerlo mediante <code class="docutils literal"><span class="pre">currentView().getLayer(&quot;Nombre&quot;)</span></code>, si la tenemos seleccionada en la tabla de contenidos (TOC) mediante <a class="reference internal" href="../2.4/acceso_a_objetos.html#currentLayer" title="currentLayer"><code class="xref py py-func docutils literal"><span class="pre">currentLayer()</span></code></a></p>
+<p>Otros métodos que podemos usar sobre una capa añadida son los de <code class="docutils literal"><span class="pre">.setVisible(True)</span></code> para modificar su visibilidad en la Vista, o `` layer.setActive(True)`` para modificar su selección dentro de la Tabla de Contenidos.</p>
+</div>
+<div class="section" id="grupo-de-entidades-featureset">
+<h2>7.6. Grupo de entidades: FeatureSet<a class="headerlink" href="#grupo-de-entidades-featureset" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para obtener las entidades de una capa o tabla, podemos hacer una petición mediante <code class="docutils literal"><span class="pre">layer.features()</span></code>, la cual hace una petición al <strong>store</strong> de la capa, y nos devuelve un featureSet ( <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/impl/featureset/DefaultFeatureSet.html">DefaultFeatureSet</a> ) con el filtrado o orden que le asignemos. Este featureSet nos permite iterar sobre las entidades de la capa.</p>
+<p>Después, por ejemplo, podemos acceder a estas entidades y a sus valores mediante el método <code class="docutils literal"><span class="pre">getValues()</span></code> sobre cada <code class="docutils literal"><span class="pre">feature</span></code>, el cual devuelve un diccionario que podemos imprimir:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;Numero entidades: &quot;</span><span class="p">,</span> <span class="n">features</span><span class="o">.</span><span class="n">getSize</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="n">feature</span><span class="o">.</span><span class="n">getValues</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Por consola el resultado en este caso sería:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Numero</span> <span class="n">entidades</span><span class="p">:</span>  <span class="mi">7</span>
+<span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature1&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">1.0</span> <span class="mf">2.0</span><span class="p">)}</span>
+<span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">5.0</span> <span class="mf">3.0</span><span class="p">)}</span>
+<span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">3.0</span> <span class="mf">3.0</span><span class="p">)}</span>
+<span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">2.0</span> <span class="mf">1.0</span><span class="p">)}</span>
+<span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature3&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">2.0</span> <span class="mf">6.0</span><span class="p">)}</span>
+<span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature3&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">6.0</span> <span class="mf">2.0</span><span class="p">)}</span>
+<span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature3&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">2.0</span> <span class="mf">7.0</span><span class="p">)}</span>
+</pre></div>
+</div>
+<p>Podemos hacer diferentes filtrados que devolverían diferentes featureSet. El parámetro <code class="docutils literal"><span class="pre">expresion</span></code> pide un String que haga de filtro, el parámetro <code class="docutils literal"><span class="pre">sortBy</span></code> el campo sobre el que se ordenará el featureSet, el parámetro <code class="docutils literal"><span class="pre">asc</span></code> ordenará en orden ascendente o descendente según el campo seleccionado.</p>
+<p>Unos ejemplos de filtrados y sus resultados:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="n">expresion</span><span class="o">=</span><span class="s2">&quot;ID &lt; 4&quot;</span><span class="p">,</span> <span class="n">sortby</span><span class="o">=</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="n">asc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature1&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">1.0</span> <span class="mf">2.0</span><span class="p">)}</span>
+    <span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">5.0</span> <span class="mf">3.0</span><span class="p">)}</span>
+    <span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">3.0</span> <span class="mf">3.0</span><span class="p">)}</span>
+
+    <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="n">expresion</span><span class="o">=</span><span class="s2">&quot;ID &lt; 4 AND 1 &lt; ID&quot;</span><span class="p">,</span> <span class="n">sortby</span><span class="o">=</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="n">asc</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">5.0</span> <span class="mf">3.0</span><span class="p">)}</span>
+    <span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">3.0</span> <span class="mf">3.0</span><span class="p">)}</span>
+
+<span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="n">expresion</span><span class="o">=</span><span class="s2">&quot;ID &lt; 4 AND NAME != &#39;Feature1&#39;&quot;</span><span class="p">,</span> <span class="n">asc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">5.0</span> <span class="mf">3.0</span><span class="p">)}</span>
+    <span class="p">{</span><span class="sa">u</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="n">L</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span> <span class="n">POINT</span> <span class="p">(</span><span class="mf">3.0</span> <span class="mf">3.0</span><span class="p">)}</span>
+</pre></div>
+</div>
+<p>Otras opciones más avanzadas usando la API de gvSIG:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span> <span class="c1">#layer_append_features.main()</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Show features: &quot;</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="n">f</span>
+
+        <span class="n">fquery</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getDataStore</span><span class="p">()</span><span class="o">.</span><span class="n">createFeatureQuery</span><span class="p">()</span>
+        <span class="n">fquery</span><span class="o">.</span><span class="n">addAttributeName</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">)</span>
+        <span class="n">fquery</span><span class="o">.</span><span class="n">addAttributeName</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span>
+
+        <span class="c1">#FeatureQuery</span>
+        <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">FQuery&quot;</span>
+        <span class="c1">#fquery.setLimit(3)</span>
+        <span class="n">fset</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getDataStore</span><span class="p">()</span><span class="o">.</span><span class="n">getFeatureSet</span><span class="p">(</span><span class="n">fquery</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fset</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="n">i</span>
+
+        <span class="c1">#FeatureQueryOrder</span>
+        <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Fquery order geometry&quot;</span>
+        <span class="n">forder</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getDataStore</span><span class="p">()</span><span class="o">.</span><span class="n">createFeatureQuery</span><span class="p">()</span><span class="o">.</span><span class="n">getOrder</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="n">forder</span>
+        <span class="n">forder</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">fquery</span><span class="o">.</span><span class="n">setOrder</span><span class="p">(</span><span class="n">forder</span><span class="p">)</span>
+
+        <span class="n">fsetorder</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getDataStore</span><span class="p">()</span><span class="o">.</span><span class="n">getFeatureSet</span><span class="p">(</span><span class="n">fquery</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fsetorder</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="n">i</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="entidad">
+<h2>7.7. Entidad<a class="headerlink" href="#entidad" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Antes hemos visto que podemos acceder a los valores de cada entidad ( <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/impl/DefaultFeature.html">DefaultFeature</a> ) con <code class="docutils literal"><span class="pre">getValues()</span></code>, pero también podemos acceder directamente mediante <code class="docutils literal"><span class="pre">feature.FIELD</span></code> o feature.get(«Field»). Por ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="s2">&quot;ID: &quot;</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot; NAME: &quot;</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;NAME&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>La salida por consola será:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ID</span><span class="p">:</span>  <span class="mi">1</span>  <span class="n">NAME</span><span class="p">:</span>  <span class="n">Feature1</span>
+<span class="n">ID</span><span class="p">:</span>  <span class="mi">2</span>  <span class="n">NAME</span><span class="p">:</span>  <span class="n">Feature2</span>
+<span class="n">ID</span><span class="p">:</span>  <span class="mi">3</span>  <span class="n">NAME</span><span class="p">:</span>  <span class="n">Feature2</span>
+<span class="n">ID</span><span class="p">:</span>  <span class="mi">4</span>  <span class="n">NAME</span><span class="p">:</span>  <span class="n">Feature2</span>
+<span class="n">ID</span><span class="p">:</span>  <span class="mi">5</span>  <span class="n">NAME</span><span class="p">:</span>  <span class="n">Feature3</span>
+<span class="n">ID</span><span class="p">:</span>  <span class="mi">6</span>  <span class="n">NAME</span><span class="p">:</span>  <span class="n">Feature3</span>
+<span class="n">ID</span><span class="p">:</span>  <span class="mi">7</span>  <span class="n">NAME</span><span class="p">:</span>  <span class="n">Feature3</span>
+</pre></div>
+</div>
+<div class="section" id="seleccion">
+<h3>7.7.1. Selección<a class="headerlink" href="#seleccion" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Otro tipo de featureSet es el <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/impl/DefaultFeatureSelection.html">DefaultFeatureSelection</a>. Hace referencia a los objetos que tengamos seleccionados en la capa.</p>
+<p>Un ejemplo de su uso, teniendo 3 entidades seleccionadas:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span>
+        <span class="c1">#features = layer.features()</span>
+        <span class="n">selection</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getSelection</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">selection</span><span class="p">:</span>
+                <span class="nb">print</span> <span class="s2">&quot;ID: &quot;</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot; NAME: &quot;</span><span class="p">,</span> <span class="n">feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;NAME&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dando como resultado:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ID</span><span class="p">:</span>  <span class="mi">1</span>  <span class="n">NAME</span><span class="p">:</span>  <span class="n">Feature1</span>
+<span class="n">ID</span><span class="p">:</span>  <span class="mi">2</span>  <span class="n">NAME</span><span class="p">:</span>  <span class="n">Feature2</span>
+<span class="n">ID</span><span class="p">:</span>  <span class="mi">3</span>  <span class="n">NAME</span><span class="p">:</span>  <span class="n">Feature2</span>
+</pre></div>
+</div>
+<p>Disponemos de dos métodos especiales para esta clase como son el <code class="docutils literal"><span class="pre">.selectAll()</span></code> para seleccionar todas las entidades de esa capa o <code class="docutils literal"><span class="pre">.deselectAll()</span></code> para deseleccionar todos ellos.</p>
+<p>Por ejemplo, añadiremos a la selección ciertas entidades que cumplan un criterio:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span>
+
+        <span class="c1">#Entidades de la capa</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
+
+        <span class="c1">#Seleccion de entidades</span>
+        <span class="n">selection</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getSelection</span><span class="p">()</span>
+        <span class="n">selection</span><span class="o">.</span><span class="n">deselectAll</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">feature</span><span class="o">.</span><span class="n">ID</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+                        <span class="c1"># Agregamos entidades a la seleccion</span>
+                        <span class="n">selection</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Si quisiéramos eliminar entidades de la selección, podríamos usar el método <code class="docutils literal"><span class="pre">.deselect(feature)</span></code></p>
+<p>Por otra parte, también podríamos crear una selección o varias desde Scripting:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="c1"># Create a new selection</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
+        <span class="n">newselection</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getDataStore</span><span class="p">()</span><span class="o">.</span><span class="n">createSelection</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">ID</span><span class="o">!=</span><span class="mi">10</span><span class="p">:</span>
+                        <span class="n">newselection</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="n">layer</span><span class="o">.</span><span class="n">getDataStore</span><span class="p">()</span><span class="o">.</span><span class="n">setSelection</span><span class="p">(</span><span class="n">newselection</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">7. Acceso a objectos en gvSIG</a><ul>
+<li><a class="reference internal" href="#funciones-current">7.1. Funciones current</a></li>
+<li><a class="reference internal" href="#proyecto">7.2. Proyecto</a></li>
+<li><a class="reference internal" href="#documento-vista">7.3. Documento Vista</a></li>
+<li><a class="reference internal" href="#documento-tabla">7.4. Documento Tabla</a></li>
+<li><a class="reference internal" href="#capas">7.5. Capas</a></li>
+<li><a class="reference internal" href="#grupo-de-entidades-featureset">7.6. Grupo de entidades: FeatureSet</a></li>
+<li><a class="reference internal" href="#entidad">7.7. Entidad</a><ul>
+<li><a class="reference internal" href="#seleccion">7.7.1. Selección</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="otras_fuentes_datos.html"
+                        title="capítulo anterior">6. Otras fuentes de datos</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="trabajando_con_esquemas.html"
+                        title="próximo capítulo">8. Trabajando con esquemas: FeatureType</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/scripting_devel_guide/2.3/acceso_a_objetos.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="trabajando_con_esquemas.html" title="8. Trabajando con esquemas: FeatureType"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="otras_fuentes_datos.html" title="6. Otras fuentes de datos"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

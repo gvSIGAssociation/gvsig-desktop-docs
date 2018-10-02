@@ -1,0 +1,411 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>9. Trabajando con capas: FLayer &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="10. Módulo de geometrías: geom" href="modulo_geom.html" />
+    <link rel="prev" title="8. Trabajando con esquemas: FeatureType" href="trabajando_con_esquemas.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="modulo_geom.html" title="10. Módulo de geometrías: geom"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="trabajando_con_esquemas.html" title="8. Trabajando con esquemas: FeatureType"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="trabajando-con-capas-flayer">
+<h1>9. Trabajando con capas: FLayer<a class="headerlink" href="#trabajando-con-capas-flayer" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Trabajando con capas <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/mapcontext/layers/FLayer.html">FLayer</a></p>
+<dl class="function">
+<dt id="createShape">
+<code class="descname">createShape</code><span class="sig-paren">(</span><em>definition</em><span class="optional">[</span>, <em>filename=None</em>, <em>geometryType=None</em>, <em>CRS=None</em>, <em>prefixname=&quot;tmpshp&quot;</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#createShape" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Creates a new shape layer. If geometryType is None, will take geometry type from the definition. If parameter geometryType and the geometry type inside the definition are different, raises an error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first last simple">
+<li><strong>definition</strong> – Layer schema
+:type definition: DefaultFeatureType</li>
+<li><strong>filename</strong> (<em>str</em>) – Full path</li>
+<li><strong>geometryType</strong> – <table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">type geometryType:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">GeometryType</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>CRS</strong> (<em>str</em>) – CRS Code
+:param str prefixname: first part of the temp name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<p>La interfaz FLayer viene implementada en varias capas de uso común como son las capas vectoriales o raster.</p>
+<div class="section" id="capas-vectoriales-flyrvect">
+<h2>9.1. Capas vectoriales: FLyrVect<a class="headerlink" href="#capas-vectoriales-flyrvect" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Unas de las operaciones más importantes es el trabajo con capas vectoriales <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/mapcontext/layers/vectorial/FLyrVect.html">FLyrVect</a>. Hemos querido simplificar al máximo posible el trabajo con ellas, sobretodo si eres un nuevo desarrollador.</p>
+<p>Ya hemos visto anteriormente la generación de esquemas que pueden ser usados en capas vectoriales. La única condición de estos esquemas es que contengan un campo <code class="docutils literal"><span class="pre">GEOMETRY</span></code> con un tipo de geometría establecido.</p>
+<div class="section" id="crear-capa-vectorial">
+<h3>9.1.1. Crear capa vectorial<a class="headerlink" href="#crear-capa-vectorial" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para la generación de capas hemos simplificado al máximo la función :py:func:<code class="docutils literal"><span class="pre">createShape(definition)</span></code>. El único parámetro obligatorio será el esquema de la capa con su campo geometría.</p>
+<p>Por ejemplo, lo mínimo necesario para crear una capa es:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">schema</span> <span class="o">=</span> <span class="n">createFeatureType</span><span class="p">()</span> <span class="c1"># DefaultFeatureType</span>
+
+        <span class="n">schema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span> <span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setGeometryType</span><span class="p">(</span><span class="n">POINT</span><span class="p">,</span> <span class="n">D2</span><span class="p">)</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">createShape</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>De esta forma, si la ruta o el nombre del fichero no es importante para nosotros, algo muy común a la hora de generar capas para resultados de geoprocesos o similares, la función se encargará de asignarle una ruta en una carpeta temporal y un nombre aleatorio (basado en códigos de tiempo).</p>
+<p>Otra forma sería usar directamente la funcion <cite>createLayer()</cite>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="o">=</span> <span class="n">createLayer</span><span class="p">(</span><span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span>
+                    <span class="n">servertype</span><span class="o">=</span><span class="s2">&quot;FilesystemExplorer&quot;</span><span class="p">,</span>
+                    <span class="n">layertype</span><span class="o">=</span><span class="s2">&quot;Shape&quot;</span><span class="p">,</span>
+                    <span class="n">shpFile</span><span class="o">=</span><span class="s2">&quot;/home/osc/temp/test1.shp&quot;</span><span class="p">,</span>
+                    <span class="n">CRS</span><span class="o">=</span><span class="s2">&quot;EPSG:25830&quot;</span><span class="p">,</span>
+                    <span class="n">geometryType</span><span class="o">=</span><span class="n">geom</span><span class="o">.</span><span class="n">POINT</span>
+                    <span class="p">)</span>
+</pre></div>
+</div>
+<p>Así en el script anterior podemos añadir las líneas:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="s2">&quot;Nombre: &quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span>
+<span class="nb">print</span> <span class="s2">&quot;Ruta: &quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">.</span><span class="n">getDataStore</span><span class="p">()</span><span class="o">.</span><span class="n">getFullName</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Que darán como resultado el nombre y ruta de la capa, similar a:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Nombre</span><span class="p">:</span>  <span class="n">tmpshp</span><span class="o">-</span><span class="mi">57</span><span class="n">afa1381035</span>
+<span class="n">Ruta</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">Oscar</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">tmp</span><span class="o">-</span><span class="n">andami</span>\<span class="n">tmpshp</span><span class="o">-</span><span class="mi">57</span><span class="n">afa1381035</span><span class="o">.</span><span class="n">shp</span>
+</pre></div>
+</div>
+<p>Si necesitas crear varias capas y necesitas poder diferenciarlas, por ejemplo, al enlazar una serie de operaciones, podemos establecer el parámetro <code class="docutils literal"><span class="pre">prefixname</span></code> el cual modificará la primera parte del nombre, pero seguirá creando todo el resto de ruta temporal y asegurándonos que será un nombre único:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">schema</span> <span class="o">=</span> <span class="n">createFeatureType</span><span class="p">()</span> <span class="c1"># DefaultFeatureType</span>
+
+        <span class="n">schema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span> <span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setGeometryType</span><span class="p">(</span><span class="n">POINT</span><span class="p">,</span> <span class="n">D2</span><span class="p">)</span>
+        <span class="n">shape1</span> <span class="o">=</span> <span class="n">createShape</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">prefixname</span><span class="o">=</span><span class="s2">&quot;resultado&quot;</span><span class="p">)</span>
+        <span class="n">shape2</span> <span class="o">=</span> <span class="n">createShape</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">prefixname</span><span class="o">=</span><span class="s2">&quot;errores&quot;</span><span class="p">)</span>
+        <span class="n">shape3</span> <span class="o">=</span> <span class="n">createShape</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">prefixname</span><span class="o">=</span><span class="s2">&quot;puntos&quot;</span><span class="p">)</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;Nombre: &quot;</span><span class="p">,</span> <span class="n">shape1</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Ruta: &quot;</span><span class="p">,</span> <span class="n">shape1</span><span class="o">.</span><span class="n">getDataStore</span><span class="p">()</span><span class="o">.</span><span class="n">getFullName</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;Nombre: &quot;</span><span class="p">,</span> <span class="n">shape2</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Ruta: &quot;</span><span class="p">,</span> <span class="n">shape2</span><span class="o">.</span><span class="n">getDataStore</span><span class="p">()</span><span class="o">.</span><span class="n">getFullName</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;Nombre: &quot;</span><span class="p">,</span> <span class="n">shape3</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Ruta: &quot;</span><span class="p">,</span> <span class="n">shape3</span><span class="o">.</span><span class="n">getDataStore</span><span class="p">()</span><span class="o">.</span><span class="n">getFullName</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Por consola muestra el nombre de las capas como indicábamos:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Nombre</span><span class="p">:</span>  <span class="n">resultado</span><span class="o">-</span><span class="mi">57</span><span class="n">afa4f612c9</span>         <span class="n">Ruta</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">Oscar</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">tmp</span><span class="o">-</span><span class="n">andami</span>\<span class="n">resultado</span><span class="o">-</span><span class="mi">57</span><span class="n">afa4f612c9</span><span class="o">.</span><span class="n">shp</span>
+<span class="n">Nombre</span><span class="p">:</span>  <span class="n">errores</span><span class="o">-</span><span class="mi">57</span><span class="n">afa4f613a6</span>   <span class="n">Ruta</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">Oscar</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">tmp</span><span class="o">-</span><span class="n">andami</span>\<span class="n">errores</span><span class="o">-</span><span class="mi">57</span><span class="n">afa4f613a6</span><span class="o">.</span><span class="n">shp</span>
+<span class="n">Nombre</span><span class="p">:</span>  <span class="n">puntos</span><span class="o">-</span><span class="mi">57</span><span class="n">afa4f61446</span>    <span class="n">Ruta</span><span class="p">:</span>  <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">Oscar</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">tmp</span><span class="o">-</span><span class="n">andami</span>\<span class="n">puntos</span><span class="o">-</span><span class="mi">57</span><span class="n">afa4f61446</span><span class="o">.</span><span class="n">shp</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modificar-esquema-de-una-capa">
+<h3>9.1.2. Modificar esquema de una capa<a class="headerlink" href="#modificar-esquema-de-una-capa" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El siguiente script modificará el esquema de una capa. Para ello tenemos que crear un esquema nuevo basado en el anterior de la capa mediante <code class="docutils literal"><span class="pre">createFeatureType(layer_schema)</span></code>, realizar las modificaciones y actualizar la capa:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="n">geom</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updating schema of existent layer&quot;&quot;&quot;</span>
+
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span>
+
+        <span class="n">schema</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getSchema</span><span class="p">()</span>
+        <span class="n">newschema</span> <span class="o">=</span> <span class="n">createSchema</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
+        <span class="n">newschema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ID2&quot;</span><span class="p">,</span> <span class="s2">&quot;STRING&quot;</span><span class="p">)</span>
+
+        <span class="n">layer</span><span class="o">.</span><span class="n">edit</span><span class="p">()</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">newschema</span><span class="p">)</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="operaciones-con-entidades">
+<h3>9.1.3. Operaciones con entidades<a class="headerlink" href="#operaciones-con-entidades" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Una vez creada la capa nueva o accedido a una de ellas con <code class="docutils literal"><span class="pre">currentLayer()</span></code> o <code class="docutils literal"><span class="pre">view.getLayer(&quot;Name&quot;)</span></code>, podemos acceder a sus entidades mediante el método <code class="docutils literal"><span class="pre">.features()</span></code>, tal y como explicamos en la guía de Acceso a datos.</p>
+<p>Lo siguiente que haremos es añadir datos a esta capa vectorial. Para ello ponemos la capa en modo de edición mediante <code class="docutils literal"><span class="pre">layer.edit()</span></code> y agregamos las entidades con <code class="docutils literal"><span class="pre">layer.append(args)</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="n">schema</span> <span class="o">=</span> <span class="n">createFeatureType</span><span class="p">()</span> <span class="c1"># DefaultFeatureType</span>
+
+        <span class="n">schema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;INTEGER&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span> <span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">setGeometryType</span><span class="p">(</span><span class="n">POINT</span><span class="p">,</span> <span class="n">D2</span><span class="p">)</span>
+
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">createShape</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">prefixname</span><span class="o">=</span><span class="s2">&quot;resultado&quot;</span><span class="p">)</span>
+
+
+        <span class="nb">print</span> <span class="s2">&quot;Nombre: &quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Ruta: &quot;</span><span class="p">,</span> <span class="n">shape</span><span class="o">.</span><span class="n">getDataStore</span><span class="p">()</span><span class="o">.</span><span class="n">getFullName</span><span class="p">()</span>
+
+        <span class="n">shape</span><span class="o">.</span><span class="n">edit</span><span class="p">()</span>
+        <span class="c1"># Setting arguments</span>
+        <span class="n">shape</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ID</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">NAME</span><span class="o">=</span><span class="s2">&quot;Valencia&quot;</span><span class="p">,</span> <span class="n">GEOMETRY</span><span class="o">=</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+        <span class="c1"># Diccionary</span>
+        <span class="n">shape</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;ID&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;NAME&quot;</span><span class="p">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">,</span> <span class="s2">&quot;GEOMETRY&quot;</span><span class="p">:</span><span class="n">createPoint2D</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">)})</span>
+        <span class="n">shape</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="n">currentView</span><span class="p">()</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Otro ejemplo añadiendo entidades, usando también la forma con la que se haría desde Java:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gvsig</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">gvsig</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="n">geom</span>
+
+<span class="kn">from</span> <span class="nn">org.gvsig.fmap.dal.feature</span> <span class="k">import</span> <span class="n">FeatureStore</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+        <span class="c1"># Creating new layer</span>
+        <span class="n">schema</span> <span class="o">=</span> <span class="n">createSchema</span><span class="p">()</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;INTEGER&quot;</span><span class="p">)</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;STRING&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span> <span class="s2">&quot;GEOMETRY&quot;</span><span class="p">)</span>
+        <span class="n">schema</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setGeometryType</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">POINT</span><span class="p">,</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">)</span>
+
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">createShape</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">prefixname</span><span class="o">=</span><span class="s2">&quot;points_layer&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Insert with newfeature</span>
+        <span class="n">store</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatureStore</span><span class="p">()</span>
+
+        <span class="n">newfeature</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">createNewFeature</span><span class="p">()</span>
+        <span class="n">newfeature</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">newfeature</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span><span class="s2">&quot;Feature1&quot;</span><span class="p">)</span>
+        <span class="n">newfeature</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;GEOMETRY&quot;</span><span class="p">,</span> <span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+        <span class="n">layer</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="n">FeatureStore</span><span class="o">.</span><span class="n">MODE_APPEND</span><span class="p">)</span> <span class="c1">#solo para capas recien creadas</span>
+        <span class="n">store</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">newfeature</span><span class="p">)</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="c1"># Insert with append</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">edit</span><span class="p">()</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ID</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span><span class="n">GEOMETRY</span><span class="o">=</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+        <span class="n">layer</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)})</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span><span class="s1">&#39;Feature2&#39;</span><span class="p">,</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)})</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span><span class="s1">&#39;Feature3&#39;</span><span class="p">,</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)})</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span><span class="s1">&#39;Feature3&#39;</span><span class="p">,</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)})</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;ID&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="s1">&#39;NAME&#39;</span><span class="p">:</span><span class="s1">&#39;Feature3&#39;</span><span class="p">,</span><span class="s1">&#39;GEOMETRY&#39;</span><span class="p">:</span><span class="n">geom</span><span class="o">.</span><span class="n">createPoint</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">D2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">)})</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+        <span class="c1"># Add layer to the view</span>
+        <span class="n">currentView</span><span class="p">()</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+
+        <span class="nb">print</span> <span class="s2">&quot;Features info&quot;</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">():</span>
+                <span class="nb">print</span> <span class="n">l</span>
+</pre></div>
+</div>
+<p>Si al final del script anterior añadimos las siguientes líneas, veremos un ejemplo para eliminar entidades:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="s2">&quot;ID &lt; 6&quot;</span><span class="p">)</span> <span class="c1">#DefaultFeatureSet</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">edit</span><span class="p">()</span>
+<span class="nb">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">features</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+        <span class="n">features</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Para modificar los valores de las entidades que contiene nuestra capa:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span><span class="o">.</span><span class="n">edit</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="n">i</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getEditable</span><span class="p">()</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;Modified_4&quot;</span><span class="p">)</span>
+        <span class="n">features</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Se puede realizar copias de entidades (features) y poder modificarlas después en su capa original.</p>
+<p>Ejemplo: Extraemos ciertas entidades de una capa que contiene un Campo1 de tipo Long. Estas entidades las copiamos a una lista. Después, modificamos estas entidades y las volvemos a modificar sobre la capa inicial:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="s1">&#39;Campo1&gt;2&#39;</span><span class="p">,</span><span class="n">sortBy</span><span class="o">=</span><span class="s2">&quot;Campo1&quot;</span><span class="p">,</span><span class="n">asc</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">lista</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="n">f</span>
+        <span class="n">copia</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">getCopy</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">copia</span><span class="p">)</span>
+        <span class="n">lista</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">copia</span><span class="p">)</span>
+
+    <span class="nb">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span>
+    <span class="n">layer</span><span class="o">.</span><span class="n">edit</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Campo1&#39;</span><span class="p">)</span><span class="o">+</span><span class="mf">0.01</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">getEditable</span><span class="p">()</span>
+        <span class="n">i</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Campo1&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="s2">&quot;new value&quot;</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Campo1&#39;</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">featureSet</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">features</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">layer</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9. Trabajando con capas: FLayer</a><ul>
+<li><a class="reference internal" href="#capas-vectoriales-flyrvect">9.1. Capas vectoriales: FLyrVect</a><ul>
+<li><a class="reference internal" href="#crear-capa-vectorial">9.1.1. Crear capa vectorial</a></li>
+<li><a class="reference internal" href="#modificar-esquema-de-una-capa">9.1.2. Modificar esquema de una capa</a></li>
+<li><a class="reference internal" href="#operaciones-con-entidades">9.1.3. Operaciones con entidades</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="trabajando_con_esquemas.html"
+                        title="capítulo anterior">8. Trabajando con esquemas: FeatureType</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="modulo_geom.html"
+                        title="próximo capítulo">10. Módulo de geometrías: geom</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/scripting_devel_guide/2.3/trabajando_con_capas.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="modulo_geom.html" title="10. Módulo de geometrías: geom"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="trabajando_con_esquemas.html" title="8. Trabajando con esquemas: FeatureType"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

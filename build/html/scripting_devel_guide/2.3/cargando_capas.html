@@ -1,0 +1,368 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>5. Cargando capas &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="6. Otras fuentes de datos" href="otras_fuentes_datos.html" />
+    <link rel="prev" title="4. Módulo commonsdialog" href="modulo_commonsdialog.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="otras_fuentes_datos.html" title="6. Otras fuentes de datos"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="modulo_commonsdialog.html" title="4. Módulo commonsdialog"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cargando-capas">
+<span id="label-cargando-capas"></span><h1>5. Cargando capas<a class="headerlink" href="#cargando-capas" title="Enlazar permanentemente con este título">¶</a></h1>
+<dl class="function">
+<dt>
+<code class="descname">loadShapeFile(shpFile, **parameters):</code></dt>
+<dd><p>Add an existing shape file to the view. Returns Layer shape file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>shpFile</strong> – absolute file path to the shape</li>
+<li><strong>CRS</strong> (<em>string</em>) – projection code</li>
+<li><strong>gvViewName</strong> (<em>string</em>) – name of the view where to be loaded</li>
+<li><strong>gvLayerName</strong> (<em>string</em>) – name of the layer inside gvsig</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><p class="first">shpFile: string</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">shape</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">loadRasterFile(filename, **parameters):</code></dt>
+<dd><p>Add an existing raster file to the view. Returns Layer Raster file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<em>str</em>) – absolute file path to the raster</li>
+<li><strong>CRS</strong> (<em>string</em>) – projection code</li>
+<li><strong>gvViewName</strong> (<em>string</em>) – name of the view where to be loaded</li>
+<li><strong>gvLayerName</strong> (<em>string</em>) – name of the layer inside gvsig</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body"><p class="first last">raster layer</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">loadDBF(filename):</code></dt>
+<dt>
+<code class="descname">Open an existing dbf file</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parámetros:</th><td class="field-body"><strong>filename</strong> (<em>str</em>) – absolute file path to the DBF file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Devuelve:</th><td class="field-body">dbf</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="recursos-en-rutas-relativas-getresource">
+<h2>5.1. Recursos en rutas relativas: getResource()<a class="headerlink" href="#recursos-en-rutas-relativas-getresource" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En muchas ocasiones es necesario hacer referencia a ficheros que tengamos dentro de nuestro módulo, es decir, obtener la ruta completa de un fichero a partir de la ruta relativa en la que se encuentre nuestro script, independientemente de donde este instalado o del sistema. Para ello nos ayudamos de la función <code class="docutils literal"><span class="pre">os.path.dirname(__file__)</span></code> que devuelve la ruta de la carpeta de nuestro script en ejecución.</p>
+<p>En este caso, <code class="docutils literal"><span class="pre">__file__</span></code>, nos devuelve la ruta del script en ejecución:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gvsig</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="vm">__file__</span>
+</pre></div>
+</div>
+<p>En mi caso la ruta es:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">osc</span><span class="o">/</span><span class="n">gvsig</span><span class="o">-</span><span class="n">devel</span><span class="o">/</span><span class="n">master_scripts</span><span class="o">/</span><span class="n">testing_getResource</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Con la función <code class="docutils literal"><span class="pre">os.path.dirname()</span></code> lo que hacemos es sacar el directorio donde se encuentra el script. Ejemplo de uso:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">gvsig</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Obtener ruta absoluta de ficheros en la carpeta de ejecucion del script&quot;&quot;&quot;</span>
+
+    <span class="n">path_script</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;Path script: &quot;</span><span class="p">,</span> <span class="n">path_script</span>
+    <span class="nb">print</span> <span class="s2">&quot;Ruta relativa: data/fichero.xx&quot;</span>
+    <span class="nb">print</span> <span class="s2">&quot;Ruta absoluta: &quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_script</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;fichero.xx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Salida por consola será:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Path</span> <span class="n">script</span><span class="p">:</span>  <span class="n">c</span><span class="p">:</span>\<span class="n">gvdevel</span>\<span class="n">gvsig</span>\<span class="n">gvSIG</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="mf">2.3</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2441</span><span class="o">-</span><span class="n">RC2</span><span class="o">-</span><span class="n">win</span><span class="o">-</span><span class="n">x86_64</span>\<span class="n">home</span>\<span class="n">gvSIG</span>\<span class="n">plugins</span>\<span class="n">org</span><span class="o">.</span><span class="n">gvsig</span><span class="o">.</span><span class="n">scripting</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">mainplugin</span>\<span class="n">scripts</span>
+<span class="n">Ruta</span> <span class="n">relativa</span><span class="p">:</span> <span class="n">data</span><span class="o">/</span><span class="n">fichero</span><span class="o">.</span><span class="n">xx</span>
+<span class="n">Ruta</span> <span class="n">absoluta</span><span class="p">:</span>  <span class="n">c</span><span class="p">:</span>\<span class="n">gvdevel</span>\<span class="n">gvsig</span>\<span class="n">gvSIG</span><span class="o">-</span><span class="n">desktop</span><span class="o">-</span><span class="mf">2.3</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">2441</span><span class="o">-</span><span class="n">RC2</span><span class="o">-</span><span class="n">win</span><span class="o">-</span><span class="n">x86_64</span>\<span class="n">home</span>\<span class="n">gvSIG</span>\<span class="n">plugins</span>\<span class="n">org</span><span class="o">.</span><span class="n">gvsig</span><span class="o">.</span><span class="n">scripting</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">mainplugin</span>\<span class="n">scripts</span>\<span class="n">data</span>\<span class="n">fichero</span><span class="o">.</span><span class="n">xx</span>
+</pre></div>
+</div>
+<p>De esta forma estaríamos accediendo a la carpeta <code class="docutils literal"><span class="pre">/datos/</span></code> dentro de nuestro módulo.</p>
+<p>Hemos incorporado en la librería de <code class="docutils literal"><span class="pre">gvsig</span></code> una función <code class="docutils literal"><span class="pre">gvsig.getResource()</span></code> que nos ayuda a realizar esta operación de forma más sencilla.</p>
+<p>Por ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">import</span> <span class="nn">gvsig</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">getResource</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span><span class="s2">&quot;testing.py&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;path: &quot;</span><span class="p">,</span> <span class="n">x</span>
+    <span class="nb">print</span> <span class="s2">&quot;type: &quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Podemos comparar la ruta por consola:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">path</span><span class="p">:</span>  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">osc</span><span class="o">/</span><span class="n">gvsig</span><span class="o">-</span><span class="n">devel</span><span class="o">/</span><span class="n">master_scripts</span><span class="o">/</span><span class="n">testing</span><span class="o">.</span><span class="n">py</span>
+<span class="nb">type</span><span class="p">:</span>  <span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;unicode&#39;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Pudiendo añadirle tantos parámetros como carpetas sea necesario recorrer:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">import</span> <span class="nn">gvsig</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">getResource</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span><span class="s2">&quot;Game&quot;</span><span class="p">,</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;testing.py&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;path: &quot;</span><span class="p">,</span> <span class="n">x</span>
+    <span class="nb">print</span> <span class="s2">&quot;type: &quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Muestra por consola la ruta:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">path</span><span class="p">:</span>  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">osc</span><span class="o">/</span><span class="n">gvsig</span><span class="o">-</span><span class="n">devel</span><span class="o">/</span><span class="n">master_scripts</span><span class="o">/</span><span class="n">Game</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">testing</span><span class="o">.</span><span class="n">py</span>
+<span class="nb">type</span><span class="p">:</span>  <span class="o">&lt;</span><span class="nb">type</span> <span class="s1">&#39;unicode&#39;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Podemos usar la función para otro tipo de rutas asegurándonos que será correcta independientemente del sistema:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gvsig</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">getResource</span><span class="p">(</span><span class="s2">&quot;/home/osc/temp/&quot;</span><span class="p">,</span><span class="s2">&quot;test1.dbf&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;path: &quot;</span><span class="p">,</span> <span class="n">x</span>
+    <span class="nb">print</span> <span class="s2">&quot;type: &quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="funcion-de-carga-loadlayer">
+<h2>5.2. Función de carga: loadLayer<a class="headerlink" href="#funcion-de-carga-loadlayer" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Las funciones posteriores se apoyan todas en una función principal denominada <code class="docutils literal"><span class="pre">loadLayer</span></code>.</p>
+<p>Ejemplo de uso para un fichero raster:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="o">=</span> <span class="n">loadLayer</span><span class="p">(</span><span class="s1">&#39;Gdal Store&#39;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">getCRS</span><span class="p">(</span><span class="s2">&quot;EPSG:3042&quot;</span><span class="p">),</span><span class="n">uri</span><span class="o">=</span><span class="n">File</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\temp\mdt20_3_etrs89.tif&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toURI</span><span class="p">(),</span><span class="n">gvViewName</span><span class="o">=</span><span class="n">currentView</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="capas-vectoriales">
+<h2>5.3. Capas Vectoriales<a class="headerlink" href="#capas-vectoriales" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para cargar capas vectoriales usaremos la función <code class="xref py py-func docutils literal"><span class="pre">loadShapeFile()</span></code>. Esta es una función de apoyo que llama a la función <code class="docutils literal"><span class="pre">createLayer()</span></code> más genérica.</p>
+<p>Ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">java.io</span> <span class="k">import</span> <span class="n">File</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="c1"># Get resource path</span>
+    <span class="n">shape_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;jaen.shp&quot;</span><span class="p">)</span>
+
+    <span class="c1"># loadShapeFile function</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">loadShapeFile</span><span class="p">(</span><span class="n">shape_path</span><span class="p">)</span>
+
+    <span class="c1"># LoadLayer function</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">loadLayer</span><span class="p">(</span><span class="s2">&quot;Shape&quot;</span><span class="p">,</span> <span class="n">shpFile</span><span class="o">=</span><span class="n">xfile</span><span class="p">,</span> <span class="n">CRS</span><span class="o">=</span><span class="s2">&quot;EPSG:25830&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="capas-raster">
+<h2>5.4. Capas Raster<a class="headerlink" href="#capas-raster" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para cargar capas raster usaremos la función <code class="xref py py-func docutils literal"><span class="pre">loadRasterFile()</span></code>. Esta es una función de apoyo que llama a la función <code class="docutils literal"><span class="pre">createLayer()</span></code> más genérica.</p>
+<p>Si necesitamos transformar una ruta a formato <code class="docutils literal"><span class="pre">uri</span></code> podemos hacerlo apoyándonos en la clase de Java: <code class="docutils literal"><span class="pre">java.io.File</span></code>:</p>
+<p>Ejemplo:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">java.io</span> <span class="k">import</span> <span class="n">File</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="c1"># Load Raster File</span>
+    <span class="n">raster_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;mdt_jaen.tif&quot;</span><span class="p">)</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="n">loadRasterFile</span><span class="p">(</span><span class="n">raster_path</span><span class="p">)</span>
+
+    <span class="n">raster_uri</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;fichero.xx&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">toURI</span><span class="p">()</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">loadLayer</span><span class="p">(</span><span class="s2">&quot;Gdal Store&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="n">raster_uri</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ficheros-dbf">
+<h2>5.5. Ficheros DBF<a class="headerlink" href="#ficheros-dbf" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para trabajar con la creación y carga de ficheros DBF existen las funciones <code class="docutils literal"><span class="pre">createDBF(schema)</span></code>  y <code class="docutils literal"><span class="pre">loadDBF(dbfFile)</span></code>. Siendo un objecto <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/impl/DefaultFeatureStore.html">DefaultFeatureStore</a></p>
+<p>Ejemplo de uso:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="n">schema</span> <span class="o">=</span> <span class="n">createSchema</span><span class="p">()</span>
+    <span class="n">schema</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">,</span> <span class="s2">&quot;INTEGER&quot;</span><span class="p">)</span>
+    <span class="n">dbf</span> <span class="o">=</span> <span class="n">createDBF</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">prefixname</span><span class="o">=</span><span class="s2">&quot;summary&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="n">dbf</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">dbf</span><span class="p">)</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">dbf</span><span class="o">.</span><span class="n">getFullName</span><span class="p">()</span>
+    <span class="n">loadDBF</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. Cargando capas</a><ul>
+<li><a class="reference internal" href="#recursos-en-rutas-relativas-getresource">5.1. Recursos en rutas relativas: getResource()</a></li>
+<li><a class="reference internal" href="#funcion-de-carga-loadlayer">5.2. Función de carga: loadLayer</a></li>
+<li><a class="reference internal" href="#capas-vectoriales">5.3. Capas Vectoriales</a></li>
+<li><a class="reference internal" href="#capas-raster">5.4. Capas Raster</a></li>
+<li><a class="reference internal" href="#ficheros-dbf">5.5. Ficheros DBF</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="modulo_commonsdialog.html"
+                        title="capítulo anterior">4. Módulo commonsdialog</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="otras_fuentes_datos.html"
+                        title="próximo capítulo">6. Otras fuentes de datos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/scripting_devel_guide/2.3/cargando_capas.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="otras_fuentes_datos.html" title="6. Otras fuentes de datos"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="modulo_commonsdialog.html" title="4. Módulo commonsdialog"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

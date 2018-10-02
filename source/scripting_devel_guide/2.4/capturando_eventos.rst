@@ -154,6 +154,16 @@ La interfaz contiene los componentes importantes de: ``txtX`` y ``txtY`` para qu
 
 Descarga del script: :download:`Coordenadas <ejemplos/gvSIG-desktop-2.3.0-coordenadas-1.0.0-0-testing-all-all-j1_7.gvspkg>`
 
+Notese que en este caso estamos utilizando el comportamiento de PointBehavior. Este comportamiento se ejecuta cuando hacemos un click sobre la Vista. Por ejemplo, otro tipo de comportamiento es el MouseMovementBehavior que se ejecutará a cada pixel que nos movamos por la Vista con el ratón sin necesidad de hacer click. Para adaptar el script anteroir habría que cambiar un par de lineas y el import::
+
+    from org.gvsig.fmap.mapcontrol.tools.Behavior import MouseMovementBehavior
+    ....
+        class Coordenadas(FormPanel, PointListener):
+            def __init__(self, viewdoc):
+                .....
+                self.mapControl.addBehavior("TestGetXYPointTool", MouseMovementBehavior(self))
+                .....
+    
 LayerListener & LayerCollectionListener
 ---------------------------------------
 

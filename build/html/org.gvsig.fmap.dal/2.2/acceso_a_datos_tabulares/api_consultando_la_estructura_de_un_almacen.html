@@ -1,0 +1,247 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>3. Consultando la estructura de un almacen &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="4. Creación de un nuevo almacén" href="api_creacion_de_un_nuevo_almacen.html" />
+    <link rel="prev" title="2. Modificación de la estructura de un almacén" href="api_modificacion_de_la_estructura_de_un_almacen.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="api_creacion_de_un_nuevo_almacen.html" title="4. Creación de un nuevo almacén"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="api_modificacion_de_la_estructura_de_un_almacen.html" title="2. Modificación de la estructura de un almacén"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >org.gvsig.fmap.dal</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../acceso_a_datos_tabulares.html" >4. Acceso a datos tabulares</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">API de los servicios asociados al consumidor de datos</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="consultando-la-estructura-de-un-almacen">
+<h1>3. Consultando la estructura de un almacen<a class="headerlink" href="#consultando-la-estructura-de-un-almacen" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Para consultar la estructura de los fenómenos de un almacén, <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStore.html">FeatureStore</a>,
+dispone de dos acciones:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStore.html#getDefaultFeatureType()">getDefaultFeatureType</a>, que devuelve el tipo de fenómeno
+por defecto del almacén</li>
+<li><a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStore.html#getFeatureTypes()">getFeatureTypes</a> que devuelve una lista con todos los tipos
+de fenómeno que hay en el almacén.</li>
+</ul>
+<p>Las primeras preguntas que tendemos ha hacernos cuando vemos estos métodos
+son:</p>
+<ul class="simple">
+<li>¿ Qué es eso del tipo de fenómeno por defecto ?</li>
+<li>¿ Por qué una lista de tipos de fenómenos ?</li>
+</ul>
+<p>Las dos preguntas van estrechamente ligadas.</p>
+<p>Normalmente estamos acostumbrados a encontrarnos <em>almacenes</em> como
+ficheros <em>shapes</em>, <em>dxf</em>, <em>dgn</em> o bases de datos como <em>postgreSQL</em> en los que
+los fenómenos tienen una estructura común a todo el almacén. Sin embargo
+hay escenarios en los que eso puede no ser así. Por ejemplo, podemos encontrarnos
+un fichero GML en el que los fenómenos tienen dos, tres o mas estructuras distintas
+a lo largo el fichero. La forma de consultar cual es la estructura de los
+fenómenos seria a través del método <cite>getFeatureTypes</cite> , que nos dará una lista
+con un <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureType.html">FeatureType</a> por cada tipo de fenómeno del almacén.
+Como durante mucho tiempo hemos manejado almacenes que solo soportan un tipo
+de fenómeno, se ha introducido el método <cite>getDefaultFeatureType</cite> en el almacén para
+facilitar el acceso al <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureType.html">FeatureType</a> cuando solo existe un tipo de fenómeno.</p>
+<p>¿ Y qué pasa si invocamos al <em>getDefaultFeatureType</em> sobre un almacén con varios
+tipos de fenómenos ?</p>
+<p>Este nos devolverá un <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureType.html">FeatureType</a> de forma arbitraria dependiendo del tipo de
+almacén con el que estemos trabajando.</p>
+<p>En general, a no ser que estemos seguros de que solo hay un tipo de fenómenos en el
+almacén deberemos usar <cite>getFeatureTypes</cite> para acceder a la estructura de estos.
+Siempre podemos consultar el <em>size</em> de la lista para determinar cuantos tipos de
+fenómeno tenemos.</p>
+<p>Una vez hemos conseguido un <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureType.html">FeatureType</a>, podemos pensar en el como en una lista de
+descriptores de los atributos del fenómeno, disponiendo de un método <em>size</em> que nos
+dice cuantos atributos tiene el fenómeno que describe, un método <em>get</em> que nos
+devolverá un <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureAttributeDescriptor.html">FeatureAttributeDescriptor</a>, por nombre o índice, o un iterador sobre
+estos.</p>
+<p>Veamos cuales son las principales acciones que podemos encontrarnos en un <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureType.html">FeatureType</a>
+que nos permitan interrogarle para saber de la estructura
+del fenómeno:</p>
+<ul class="simple">
+<li><em>size</em>, nos devuelve el numero de atributos que tiene el fenómeno.</li>
+<li><em>get</em>, que dándole un nombre o un índice de atributo nos devolverá
+un descripción de las propiedades del atributo, <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/">FeatureAttributeDescriptor</a> .</li>
+<li><em>getIndex</em>, que dándole un nombre de atributo nos devuelve el índice
+de este.</li>
+<li><em>getDefaultGeometryAttributeName</em>, nos da el nombre del atributo que es
+la geometría por defecto de este almacén. Normalmente gvSIG pintará esta
+geometría cuando tenga que obtener una representación gráfica del almacén.</li>
+<li><em>getDefaultGeometryAttributeIndex</em>, nos da el índice del atributo que es
+la geometría por defecto de este almacén.</li>
+<li><em>getDefaultSRS</em>. Nos devuelve la cadena que representa al SRS de la geometría
+por defecto.</li>
+<li><em>getSRSs</em>. Un fenómeno puede contener mas de un atributo de tipo geometría,
+y cada atributo de tipo geometría puede tener un SRS diferente. Este método
+nos devolverá una lista con los SRSs de todos los atributos de tipo geometría.</li>
+<li><em>iterator</em>. Nos devuelve un iterador sobre los descriptores de atributos del
+fenómeno.</li>
+</ul>
+<p>Conviene también dar un vistazo, aunque sea superficial, a los principales métodos
+u operaciones que podemos encontrar en el <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/">FeatureAttributeDescriptor</a>.</p>
+<ul class="simple">
+<li><em>getName</em>, que nos informara sobre el nombre del atributo.</li>
+<li><em>getDataType</em> y <em>getDataTypeName</em>, que nos dirá de que tipo son los
+datos asociados al atributo. La lista de tipos soportados están definidos
+en el interface <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/DataTypes.html">DataTypes</a> .</li>
+<li><em>getDefaultValue</em>, nos dirá cual es el valor por defecto del atributo.</li>
+<li><em>getIndex</em>, nos dirá el índice numérico asociado al atributo.</li>
+<li><em>getSize</em>, para los tipos de datos que lo precisen , por ejemplo las
+cadenas, nos informa de cual es su tamaño.</li>
+<li><em>getEvaluator</em>, que nos devolverá una instancia del <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/tools/evaluator/Evaluator.html">Evaluator</a> asociado
+al atributo, en caso de que este sea un atributo calculado.</li>
+<li><em>allowNull</em>, nos informa de si ese atributo permite o no valores nulos.</li>
+<li><em>isPrimaryKey</em>, nos dirá si ese atributo forma parte de la clave
+primaria que usa el proveedor de datos para identificar al fenómeno.</li>
+<li><em>isReadOnly</em>, que nos dirá si ese atributo puede ser actualizado o no.</li>
+</ul>
+<p>Veamos ahora un pequeño ejemplo en el que se nos muestra como podemos obtener
+el nombre de los atributos y su tipo de datos asociados a un <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureType.html">FeatureType</a>.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">FeatureType</span> <span class="n">featureType</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="na">getDefaultFeatureType</span><span class="o">();</span>
+<span class="n">Iterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">featureType</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+<span class="k">while</span><span class="o">(</span> <span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">()</span> <span class="o">)</span> <span class="o">{</span>
+  <span class="n">attribute</span> <span class="o">=</span> <span class="o">(</span><span class="n">FeatureAttributeDescriptor</span><span class="o">)</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">attribute</span><span class="o">.</span><span class="na">getDataTypeName</span><span class="o">();</span>
+  <span class="k">if</span><span class="o">(</span> <span class="n">attribute</span><span class="o">.</span><span class="na">getSize</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&quot;[&quot;</span><span class="o">+</span><span class="n">attribute</span><span class="o">.</span><span class="na">getSize</span><span class="o">()+</span><span class="s">&quot;]&quot;</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">attribute</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">);</span>
+  <span class="n">Evaluator</span> <span class="n">eval</span> <span class="o">=</span> <span class="n">attribute</span><span class="o">.</span><span class="na">getEvaluator</span><span class="o">();</span>
+  <span class="k">if</span><span class="o">(</span> <span class="n">eval</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">attribute</span><span class="o">.</span><span class="na">getName</span><span class="o">()+</span><span class="s">&quot;, &quot;</span><span class="o">+</span><span class="n">attribute</span><span class="o">.</span><span class="na">getDataTypeName</span><span class="o">()+</span><span class="s">&quot; -- Calculado &quot;</span><span class="o">+</span> <span class="n">eval</span><span class="o">.</span><span class="na">getCQL</span><span class="o">());</span>
+  <span class="o">}</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="api_modificacion_de_la_estructura_de_un_almacen.html"
+                        title="capítulo anterior">2. Modificación de la estructura de un almacén</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="api_creacion_de_un_nuevo_almacen.html"
+                        title="próximo capítulo">4. Creación de un nuevo almacén</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/org.gvsig.fmap.dal/2.2/acceso_a_datos_tabulares/api_consultando_la_estructura_de_un_almacen.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="api_creacion_de_un_nuevo_almacen.html" title="4. Creación de un nuevo almacén"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="api_modificacion_de_la_estructura_de_un_almacen.html" title="2. Modificación de la estructura de un almacén"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >org.gvsig.fmap.dal</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../acceso_a_datos_tabulares.html" >4. Acceso a datos tabulares</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >API de los servicios asociados al consumidor de datos</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

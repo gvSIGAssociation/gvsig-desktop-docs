@@ -1,0 +1,562 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>8. Integrándolo con gvSIG &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="9. Distribuyendo nuestro proyecto" href="09_distribution_of_the_project.html" />
+    <link rel="prev" title="7. La librería con la presentación" href="07_the_library_containing_the_user_interface.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="09_distribution_of_the_project.html" title="9. Distribuyendo nuestro proyecto"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="07_the_library_containing_the_user_interface.html" title="7. La librería con la presentación"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >gvSIG 2.3.1. Guía de inicio rápido para el desarrollador</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="00_index.html" accesskey="U">Construyendo nuestro primer plugin</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="integrandolo-con-gvsig">
+<h1>8. Integrándolo con gvSIG<a class="headerlink" href="#integrandolo-con-gvsig" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Hasta ahora hemos visto cómo crear nuestros componentes, lógica e interface de usuario, usando
+las librerías de gvSIG para acceder a los datos geográficos o para presentarlos, así como una
+forma simple de crear una pequeña aplicación que los utilice. Vamos a ver ahora como integraríamos
+esas funcionalidades en la aplicación gvSIG.</p>
+<p>Si observamos los proyectos que tenemos en nuestro workspace veremos que aun hay uno sobre el que
+no hemos trabajado, <strong>org.gvsig.visor.app.mainplugin</strong> . Es aquí donde está implementado nuestro
+plugin. Antes de ver el código del plugin comentar un detalle. Cuando describíamos lo que tenía
+que hacer nuestro plugin, dijimos que debía presentar un <em>splash</em> personalizado. Veamos primero
+como podemos hacer esto.</p>
+<p>En la carpeta <em>«src/main/resources»</em> encontraremos una carpeta <em>theme</em>, y dentro de esta un
+fichero <em>andami-theme.xml</em>. Este fichero es el encargado de especificar al framework de andami
+que <em>splash</em> se debe presentar así como si hay que utilizar alguna imagen de fondo en el MDI
+de la aplicación o los iconos de las ventanas de gvSIG. Andami, al arrancar, buscará en las
+carpetas de los plugins uno que tenga la carpeta <em>theme</em> y dentro este fichero y cuando
+encuentre uno lo utilizará. El fichero xml de nuestro ejemplo contiene:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;AndamiProperties&gt;</span>
+    <span class="nt">&lt;ApplicationImages&gt;</span>
+        <span class="nt">&lt;SplashImages&gt;</span>
+            <span class="nt">&lt;Splash</span>
+                <span class="na">path=</span><span class="s">&quot;splash.png&quot;</span>
+                <span class="na">timer=</span><span class="s">&quot;10000&quot;</span>
+                <span class="na">x=</span><span class="s">&quot;225&quot;</span> <span class="na">y=</span><span class="s">&quot;50&quot;</span>
+                <span class="na">fontsize=</span><span class="s">&quot;16&quot;</span> <span class="na">color=</span><span class="s">&quot;80,170,240&quot;</span>
+                <span class="na">version=</span><span class="s">&quot;gvSIG 2.3.1-2501 final (LandregistryViewer)&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/SplashImages&gt;</span>
+        <span class="c">&lt;!--</span>
+<span class="c">        &lt;BackgroundImage path=&quot;gvsig-proj-black-wallpaper.png&quot;/&gt;</span>
+<span class="c">        &lt;BackgroundColor color=&quot;0,0,0&quot;/&gt;</span>
+<span class="c">        --&gt;</span>
+        <span class="nt">&lt;WallpaperType</span> <span class="na">value=</span><span class="s">&quot;CENTERED&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;Icon</span> <span class="na">path=</span><span class="s">&quot;$GVSIG_INSTALL/theme/gvsig-icon16x16.png&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/ApplicationImages&gt;</span>
+    <span class="nt">&lt;ApplicationName</span> <span class="na">value=</span><span class="s">&quot;gvSIG 2.3.1-2501 final (LandregistryViewer)&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;priority</span> <span class="na">value=</span><span class="s">&quot;100&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/AndamiProperties&gt;</span>
+</pre></div>
+</div>
+<p>Por defecto las rutas que aparezcan en el fichero se interpretarán relativas a
+la ubicación de este fichero, disponiendo de una variable <em>GVSIG_INSTALL</em> que
+apuntará a la carpeta en la que está instalado gvSIG. En el ejemplo podemos
+ver como en el tag <em>Splash</em> no se indica ruta para el fichero <em>«splash.png»</em>,
+usándose el fichero que hay en la carpeta del plugin mientras que en el tag
+<em>Icon</em> se usa la variable <em>GVSIG_INSTALL</em> para hacer referencia al fichero
+que hay en el tema por defecto de Andami.</p>
+<p>Podemos arrancar gvSIG y comprobar que sale el <em>splash</em> indicado en
+nuestro fichero <em>andami-theme.xml</em>.</p>
+<p>Una vez visto como podemos cambiar el <em>splash</em>, podemos echar un vistazo a la
+extensión de nuestro plugin.</p>
+<p>Vamos a ver ahora como se añaden menus y botones a gvSIG. En la carpeta:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">resources</span><span class="o">-</span><span class="n">plugin</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>En contraremos el fichero <em>«config.xml»</em>. Contendra:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</span>
+<span class="nt">&lt;plugin-config&gt;</span>
+    <span class="nt">&lt;depends</span> <span class="na">plugin-name=</span><span class="s">&quot;org.gvsig.app.mainplugin&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;resourceBundle</span> <span class="na">name=</span><span class="s">&quot;text&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;libraries</span> <span class="na">library-dir=</span><span class="s">&quot;lib&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;extensions&gt;</span>
+        <span class="nt">&lt;extension</span> <span class="na">class-name=</span><span class="s">&quot;org.gvsig.landregistryviewer.app.mainplugin.LandRegistryViewerExtension&quot;</span>
+                           <span class="na">description=</span><span class="s">&quot;&quot;</span>
+                           <span class="na">active=</span><span class="s">&quot;true&quot;</span>
+                           <span class="na">priority=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;action</span>
+                <span class="na">name=</span> <span class="s">&quot;view-show-land-regisytry-information&quot;</span>
+                <span class="na">label=</span><span class="s">&quot;_Show_land_registry_information&quot;</span>
+                <span class="na">tooltip=</span><span class="s">&quot;_Show_land_registry_information&quot;</span>
+                <span class="na">action-command=</span><span class="s">&quot;view-show-land-regisytry-information&quot;</span>
+                <span class="na">icon=</span><span class="s">&quot;view-show-land-regisytry-information&quot;</span>
+                <span class="na">position=</span><span class="s">&quot;001009000000&quot;</span>
+                <span class="na">accelerator=</span><span class="s">&quot;&quot;</span>
+            <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;menu</span>
+                <span class="na">text=</span><span class="s">&quot;View/_Show_land_registry_information&quot;</span>
+                <span class="na">name=</span><span class="s">&quot;view-show-land-regisytry-information&quot;</span>
+            <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;tool-bar</span> <span class="na">name=</span><span class="s">&quot;LandRegistryViewer&quot;</span> <span class="na">position=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;action-tool</span> <span class="na">name=</span><span class="s">&quot;view-show-land-regisytry-information&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/tool-bar&gt;</span>
+
+        <span class="nt">&lt;/extension&gt;</span>
+
+        <span class="nt">&lt;extension</span> <span class="na">class-name=</span><span class="s">&quot;org.gvsig.landregistryviewer.app.mainplugin.DisableEditingExtension&quot;</span>
+                           <span class="na">description=</span><span class="s">&quot;&quot;</span>
+                           <span class="na">active=</span><span class="s">&quot;true&quot;</span>
+                           <span class="na">priority=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+
+            <span class="nt">&lt;action</span>
+                <span class="na">name=</span> <span class="s">&quot;layer-start-editing-customized&quot;</span>
+                <span class="na">label=</span><span class="s">&quot;start_edition&quot;</span>
+                <span class="na">tooltip=</span><span class="s">&quot;start_edition&quot;</span>
+                <span class="na">position=</span><span class="s">&quot;600700000&quot;</span>
+                <span class="na">action-command=</span><span class="s">&quot;layer-start-editing&quot;</span>
+                <span class="na">icon=</span><span class="s">&quot;layer-start-editing&quot;</span>
+                <span class="na">accelerator=</span><span class="s">&quot;&quot;</span>
+            <span class="nt">/&gt;</span>
+
+
+        <span class="nt">&lt;/extension&gt;</span>
+    <span class="nt">&lt;/extensions&gt;</span>
+<span class="nt">&lt;/plugin-config&gt;</span>
+</pre></div>
+</div>
+<p>Vamos a ir viendo parte por parte que tenemos en el. Las primeras lineas dentro del tag <em>plugin-config</em>…</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span>...
+<span class="nt">&lt;plugin-config&gt;</span>
+    <span class="nt">&lt;depends</span> <span class="na">plugin-name=</span><span class="s">&quot;org.gvsig.app.mainplugin&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;resourceBundle</span> <span class="na">name=</span><span class="s">&quot;text&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;libraries</span> <span class="na">library-dir=</span><span class="s">&quot;lib&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;extensions&gt;</span>
+...
+</pre></div>
+</div>
+<p>Se encargan de:</p>
+<ul>
+<li><p class="first">Tag <strong>depends</strong>. Indica que este plugin depende del plugin <em>org.gvsig.app.mainplugin</em>.
+¿ Esto que quiere decir ? principalmente dos cosas,
+por un lado que el nuestro plugin se inicializara siempre despues de
+<em>org.gvsig.app.mainplugin</em>, y que se incluira en el classpath de nuestro
+plugin el classpath que tenga el plugin <em>org.gvsig.app.mainplugin</em>.
+Con esto nos aseguramos que desde nuetro plugin tendremos acceso a todos
+los componentes definidos en <em>org.gvsig.app.mainplugin</em> y los plugins de
+los que este dependa.</p>
+<p>Es importante señalar que podemos indicar que dependemos de mas de un
+plugin, de forma que podamos tener acceso no solo a los componentes de
+<em>org.gvsig.app.mainplugin</em>, si no ademas, por ejemplo, a los del layout.
+Para esto simplemente repetiremos este tag indicando en cada uno un plugin
+del que dependamos.</p>
+</li>
+<li><p class="first">Tag <strong>resourceBundle</strong>. Indica donde ir a buscar los recurso de internacionalizacion de nuestro
+plugin.</p>
+</li>
+<li><p class="first">Tag <strong>libraries</strong>. Indica donde ha de ir a buscar los jars que tenga nuestro plugin.
+Normalmente el classpath de nuestro plugin estara compuesto, por la ruta a la carpeta de nuestro
+plugin, y la ruta indicada en este tag.</p>
+</li>
+</ul>
+<p>Lo siguiente que encontraremos es el tag <strong>extensions</strong>. Un plugin contiene extensiones… asociadas cada una
+de ellas a una clase que implementaremos en nuestro codigo. En esta seccion del <em>config.xml</em>,
+se definen que estensiones se van a cargar de nuestro plugin. Asi vemos que se definen dos extensiones
+que se corresponderan con las clases <em>LandRegistryViewerExtension</em> y <em>DisableEditingExtension</em>.</p>
+<p>En cada una de estas extensiones se definiran todas las acciones que precisemos y que luego se asociaran a menus o botones.
+Por ejemplo, en <em>LandRegistryViewerExtension</em> se define la accion <em>view-show-land-regisytry-information</em>:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span>...
+            <span class="nt">&lt;action</span>
+                <span class="na">name=</span> <span class="s">&quot;view-show-land-regisytry-information&quot;</span>
+                <span class="na">label=</span><span class="s">&quot;_Show_land_registry_information&quot;</span>
+                <span class="na">tooltip=</span><span class="s">&quot;_Show_land_registry_information&quot;</span>
+                <span class="na">action-command=</span><span class="s">&quot;view-show-land-regisytry-information&quot;</span>
+                <span class="na">icon=</span><span class="s">&quot;view-show-land-regisytry-information&quot;</span>
+                <span class="na">position=</span><span class="s">&quot;001009000000&quot;</span>
+                <span class="na">accelerator=</span><span class="s">&quot;&quot;</span>
+            <span class="nt">/&gt;</span>
+...
+</pre></div>
+</div>
+<p>Que luego es usada para definir una entrada de menu y un boton en la barra de botones de gvSIG:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span>...
+            <span class="nt">&lt;menu</span>
+                <span class="na">text=</span><span class="s">&quot;View/_Show_land_registry_information&quot;</span>
+                <span class="na">name=</span><span class="s">&quot;view-show-land-regisytry-information&quot;</span>
+            <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;tool-bar</span> <span class="na">name=</span><span class="s">&quot;LandRegistryViewer&quot;</span> <span class="na">position=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;action-tool</span> <span class="na">name=</span><span class="s">&quot;view-show-land-regisytry-information&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/tool-bar&gt;</span>
+...
+</pre></div>
+</div>
+<p>Vamos ahora a ver el código de nuestro <em>plugin</em>. Veremos que existen
+tres clases:</p>
+<ul class="simple">
+<li><em>LandRegistryViewerExtension</em>.</li>
+<li><em>PropertiesOfBlockListener</em>.</li>
+<li><em>DisableEditingExtension</em>.</li>
+</ul>
+<p>Vamos a ir viendo el codigo de estas tres clases.</p>
+<p>La clase <em>LandRegistryViewerExtension</em> es la encargada de gestionar la integración del
+codigo que hemos visto en las librerias de la logica y el interface de usuario con gvSIG.
+Es la encargada de gestionar las herramientas que nuestro plugin añade a gvSIG en forma
+de menus y botones en la barra de herramientas.</p>
+<p>Los métodos mas relevantes que vamos a encontrar en la clase <em>LandRegistryViewerExtension</em> son:</p>
+<ul>
+<li><p class="first"><strong>initialize</strong>. Se invoca al cargar la extensión. Aquí nos limitaremos a registrar
+servicios que ofrezca nuestra extensión. En nuestro caso nos limitaremos a registrar en
+el tema de iconos de la aplicacion las imagenes que vaya a usar nuestro plugin:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">PluginsManager</span> <span class="n">manager</span> <span class="o">=</span> <span class="n">PluginsLocator</span><span class="o">.</span><span class="na">getManager</span><span class="o">();</span>
+<span class="n">IconThemeHelper</span><span class="o">.</span><span class="na">registerIcon</span><span class="o">(</span><span class="s">&quot;action&quot;</span><span class="o">,</span> <span class="s">&quot;view-show-land-regisytry-information&quot;</span><span class="o">,</span> <span class="k">this</span><span class="o">);</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><strong>postInitialize</strong>. Se invoca durante la inicialización de los plugins, una vez invocado
+al método <em>initialize</em> de todas las extensiones. Esto nos garantiza que cuando se ejecuta
+estarán disponinles prácticamente todos los servicios de gvSIG. Aprovecharemos este método
+para:</p>
+<ul>
+<li><p class="first">Crear el manager de la parte de lógica de nuestra librería.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="o">{</span>
+    <span class="n">manager</span> <span class="o">=</span> <span class="n">LandRegistryViewerLocator</span><span class="o">.</span><span class="na">getManager</span><span class="o">();</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Inicializar los <em>stores</em> a través de la función <em>initializeStores</em>.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="k">this</span><span class="o">.</span><span class="na">initializeStores</span><span class="o">();</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Y por último crear y mostrar la venta con nuestra vista, a través del método <em>createViewWindow</em>.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span>    <span class="n">viewWindow</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">createViewWindow</span><span class="o">();</span>
+
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">LoadLayerException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Vamos a ver con un poco más de detalle cómo se realiza esto. Antes de empezar
+lo primero que haremos será obtener una referencia del objeto <em>aplicacion</em> y del
+manager de <em>proyectos</em>:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">ApplicationManager</span> <span class="n">application</span> <span class="o">=</span> <span class="n">ApplicationLocator</span><span class="o">.</span><span class="na">getManager</span><span class="o">();</span>
+
+<span class="n">ProjectManager</span> <span class="n">projectManager</span> <span class="o">=</span> <span class="n">application</span><span class="o">.</span><span class="na">getProjectManager</span><span class="o">();</span>
+</pre></div>
+</div>
+<p>Ademas de estos dos <em>managers</em> obtendremos tambien el <em>manager</em> encargado de gestionar la
+internacionalización de la aplicación, que usaremos para traducir algunas de las cadenas
+que vamos a utilizar.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">I18nManager</span> <span class="n">i18nManager</span> <span class="o">=</span> <span class="n">ToolsLocator</span><span class="o">.</span><span class="na">getI18nManager</span><span class="o">();</span>
+</pre></div>
+</div>
+<p>Una vez disponemos de estas referencias, podemos crear nuestra vista:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="c1">// 1. Create a new view and set the name.</span>
+<span class="n">ViewManager</span> <span class="n">viewManager</span> <span class="o">=</span> <span class="o">(</span><span class="n">ViewManager</span><span class="o">)</span> <span class="n">projectManager</span><span class="o">.</span><span class="na">getDocumentManager</span><span class="o">(</span><span class="n">ViewManager</span><span class="o">.</span><span class="na">TYPENAME</span><span class="o">);</span>
+<span class="n">ViewDocument</span> <span class="n">view</span> <span class="o">=</span> <span class="o">(</span><span class="n">ViewDocument</span><span class="o">)</span> <span class="n">viewManager</span><span class="o">.</span><span class="na">createDocument</span><span class="o">();</span>
+
+<span class="n">view</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">i18nManager</span><span class="o">.</span><span class="na">getTranslation</span><span class="o">(</span><span class="n">MY_VIEW_NAME</span><span class="o">));</span>
+<span class="c1">// Setting view&#39;s projection to shapefile&#39;s known CRS</span>
+<span class="n">view</span><span class="o">.</span><span class="na">getMapContext</span><span class="o">().</span><span class="na">setProjection</span><span class="o">(</span><span class="n">CRSFactory</span><span class="o">.</span><span class="na">getCRS</span><span class="o">(</span><span class="s">&quot;EPSG:23030&quot;</span><span class="o">));</span>
+</pre></div>
+</div>
+<p>Para crear la vista, pediremos al <em>ProjectManager</em> que nos devuelva el manager de vistas, y a
+este le pediremos una nueva instancia del documento vista. Debemos recordar aquí,
+que una de las principales
+funcionalidades de los <em>manager</em> es actuar a modo de factorías para obtener instancias de los
+objetos que gestiona ese <em>manager</em>. Una vez disponemos del documento vista, le asignaremos el
+nombre que nosotros consideremos oportuno.</p>
+<p>Con la vista ya creada, procederemos a ver cómo hemos de hacer para añadir a ésta las capas que
+necesitemos. Para ello crearemos una capa con las manzamas, esto lo realizaremos a través
+del método <em>createLayer</em>, indicándole el nombre de la capa y el <em>store</em> en que queremos que
+se base:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="c1">// 2. Create a new layer with the blocks</span>
+<span class="n">FLyrVect</span> <span class="n">layer</span> <span class="o">=</span> <span class="o">(</span><span class="n">FLyrVect</span><span class="o">)</span> <span class="n">application</span><span class="o">.</span><span class="na">getMapContextManager</span><span class="o">().</span><span class="na">createLayer</span><span class="o">(</span>
+        <span class="n">i18nManager</span><span class="o">.</span><span class="na">getTranslation</span><span class="o">(</span><span class="s">&quot;_Blocks&quot;</span><span class="o">),</span> <span class="k">this</span><span class="o">.</span><span class="na">manager</span><span class="o">.</span><span class="na">getBlocks</span><span class="o">());</span>
+
+<span class="c1">// Add a new property to the layer to identify.</span>
+<span class="n">layer</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s">&quot;ViewerLayer&quot;</span><span class="o">,</span> <span class="n">Boolean</span><span class="o">.</span><span class="na">TRUE</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>Con la capa ya creada, añadiremos al <em>mapa</em> de la vista la nueva capa:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="c1">// 3. Add this layer to the mapcontext of the new view.</span>
+<span class="n">view</span><span class="o">.</span><span class="na">getMapContext</span><span class="o">().</span><span class="na">getLayers</span><span class="o">().</span><span class="na">addLayer</span><span class="o">(</span><span class="n">layer</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>Añadiremos al proyecto corriente la vista:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="c1">// 4. Add the view to the current project.</span>
+<span class="n">projectManager</span><span class="o">.</span><span class="na">getCurrentProject</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">view</span><span class="o">);</span>
+</pre></div>
+</div>
+<p>Y por último nos encargaremos de presentar la ventana asocida a la vista que
+acabamos de crear:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="c1">// 5. Force to show the view&#39;s window.</span>
+<span class="n">IView</span> <span class="n">viewWindow</span> <span class="o">=</span> <span class="o">(</span><span class="n">IView</span><span class="o">)</span> <span class="n">viewManager</span><span class="o">.</span><span class="na">getMainWindow</span><span class="o">(</span><span class="n">view</span><span class="o">);</span>
+
+<span class="n">application</span><span class="o">.</span><span class="na">getUIManager</span><span class="o">().</span><span class="na">addWindow</span><span class="o">(</span><span class="n">viewWindow</span><span class="o">,</span> <span class="n">GridBagConstraints</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">application</span><span class="o">.</span><span class="na">getUIManager</span><span class="o">().</span><span class="na">setMaximum</span><span class="o">((</span><span class="n">IWindow</span><span class="o">)</span> <span class="n">viewWindow</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">PropertyVetoException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&quot;Can&#39;t maximize view.&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Una vez ya tenemos mostrada la ventana de la vista, precisaremos registrar en el
+componente gráfico del mapa la nueva herramienta que aportamos:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="c1">// 6. Register my tool in the mapcontrol of the view.</span>
+<span class="n">PropertiesOfBlockListener</span> <span class="n">listener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PropertiesOfBlockListener</span><span class="o">();</span>
+<span class="n">viewWindow</span><span class="o">.</span><span class="na">getMapControl</span><span class="o">().</span><span class="na">addBehavior</span><span class="o">(</span><span class="n">TOOL_NAME</span><span class="o">,</span> <span class="k">new</span> <span class="n">PointBehavior</span><span class="o">(</span><span class="n">listener</span><span class="o">));</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Con todo esto tendremos inicializado nuestro plugin.</p>
+</li>
+<li><p class="first"><em>execute</em>. Este metodo será invocado cada vez que el usuario interactue con las opciones
+de menú o botones que se configuraron en el fichero <em>config.xml</em> de nuestro plugin.
+En nuestro caso, se configuró para que se dispare este evento cuando el usuario
+quisiese activar la herramienta de información sobre parcelas catastrales de
+una manzana. Así que el código que tendríamos que tener ahí debe corresponderse
+con esto:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">(</span><span class="n">ACTION_SETINFOTOOL</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">actionCommand</span><span class="o">))</span> <span class="o">{</span>
+    <span class="c1">// Set the tool in the mapcontrol of the active view.</span>
+    <span class="n">ApplicationManager</span> <span class="n">application</span> <span class="o">=</span> <span class="n">ApplicationLocator</span><span class="o">.</span><span class="na">getManager</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">application</span><span class="o">.</span><span class="na">getActiveWindow</span><span class="o">()</span> <span class="o">!=</span> <span class="n">viewWindow</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">viewWindow</span><span class="o">.</span><span class="na">getMapControl</span><span class="o">().</span><span class="na">setTool</span><span class="o">(</span><span class="n">TOOL_NAME</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Observaremos que lo primero que hacemos es comprobar si el comando que recibimos
+es el correspondiente a la activación de nuestra herramienta, y que fijamos
+en el <em>config.xml</em>. Esto es debido a que en una misma extensión podemos
+agrupar varias herramientas, indicando nombres de comando distintos en el
+<em>config.xml</em> para cada una de ellas.</p>
+<p>Una vez sabemos que se está tratando de activar nuestra herramienta de información,
+comprobaremos si está activa la ventana de nuestra vista, ya que sobre otras vistas u
+otros tipos de documento, no debemos hacer nada. Y por último, nos dedicaremos
+a activar nuestra herramienta en el mapa de la vista. Herramenta que habíamos registrado
+en el metodo <em>createViewWindow</em>.</p>
+</li>
+<li><p class="first"><em>isVisible</em>. En este método deberemos informar si los menús y botones asociados a nuestra
+herramienta deben estar visibles. En nuestro caso dejaremos visible nuestra herramienta
+siempre que la ventana activa sea la de nuestra vista:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">ApplicationManager</span> <span class="n">application</span> <span class="o">=</span> <span class="n">ApplicationLocator</span><span class="o">.</span><span class="na">getManager</span><span class="o">();</span>
+<span class="k">return</span> <span class="n">application</span><span class="o">.</span><span class="na">getActiveWindow</span><span class="o">()</span> <span class="o">==</span> <span class="n">viewWindow</span><span class="o">;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><em>isEnabled</em>, que devolveremos siempre “true”, ya que nuestra herramienta estará activa
+siempre que esté visible, y allí ya pusimos las comprobaciones necesarias. Si la
+logica de nuestra herramienta permite que no esté activa en algunos casos para
+los que sí se permite que esté visible, será aquí donde deberemos realizar esas comprobaciones.</p>
+</li>
+</ul>
+<p>Para terminar vamos a comentar muy de pasada como hemos creado la herramienta sobre la vista.
+Una herramienta es la conjuncion de dos componentes, un <em>Behavior</em> y un <em>Listener</em>. El <em>Behavior</em> es el encargado
+de interactuar con el usuario para recoger la informacion que se precise de este. En nuestro caso
+hemos usado un <em>PointBehavior</em>, es decir, este componente se encarga de recoger un <em>click</em> del usuario
+y una vez recogido le pasa la informacion al <em>Listener</em> para que este la procese. En gvSIG podemos encontrarnos
+ya definidos algunos tipos de <em>Behaviors</em>, como pueden ser:</p>
+<ul class="simple">
+<li>CircleBehavior, captura de usuario la informacion necesaria para definir un circulo.</li>
+<li>MoveBehavior, captura del usuario la informacion para desplazar la vista sobre el mapa.</li>
+<li>PointBehavior, captura un click del usuario</li>
+<li>PolylineBehavior</li>
+<li>PolygonBehavior</li>
+<li>RectangleBehavior</li>
+<li>MouseWheelBehavior</li>
+</ul>
+<p>Siendo en general suficientes para la gran mayoria de herramientas que precisemos.
+Nosotros deberemos de implementar el <em>Listener</em> que se encargue de realizar la operacion que queramos con los datos capturados por el <em>Behavior</em>.</p>
+<p>Vamos a echarle un vistazo a nuestra clase <em>Listener</em>, <em>PropertiesOfBlockListener</em>.</p>
+<blockquote>
+<div><div class="highlight-java"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PropertiesOfBlockListener</span> <span class="kd">extends</span> <span class="n">AbstractPointListener</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">PropertiesOfBlockListener</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="kd">private</span> <span class="n">JLandRegistryViewerBlockPanel</span> <span class="n">blockPanel</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">point</span><span class="o">(</span><span class="n">PointEvent</span> <span class="n">event</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">BehaviorException</span> <span class="o">{</span>
+        <span class="n">ApplicationManager</span> <span class="n">application</span> <span class="o">=</span> <span class="n">ApplicationLocator</span><span class="o">.</span><span class="na">getManager</span><span class="o">();</span>
+        <span class="n">I18nManager</span> <span class="n">i18nManager</span> <span class="o">=</span> <span class="n">ToolsLocator</span><span class="o">.</span><span class="na">getI18nManager</span><span class="o">();</span>
+        <span class="n">LandRegistryViewerManager</span> <span class="n">logicManager</span> <span class="o">=</span> <span class="n">LandRegistryViewerLocator</span><span class="o">.</span><span class="na">getManager</span><span class="o">();</span>
+        <span class="n">LandRegistryViewerSwingManager</span> <span class="n">guiManager</span> <span class="o">=</span> <span class="n">LandRegistryViewerSwingLocator</span><span class="o">.</span><span class="na">getSwingManager</span><span class="o">();</span>
+
+        <span class="n">LandRegistryViewerBlock</span> <span class="n">block</span><span class="o">;</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="n">logicManager</span><span class="o">.</span><span class="na">getBlock</span><span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getMapPoint</span><span class="o">());</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">block</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">if</span><span class="o">(</span> <span class="k">this</span><span class="o">.</span><span class="na">blockPanel</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">)</span> <span class="o">{</span>
+                    <span class="k">this</span><span class="o">.</span><span class="na">blockPanel</span> <span class="o">=</span> <span class="n">guiManager</span><span class="o">.</span><span class="na">createJLandRegistryViewerBlockPanel</span><span class="o">(</span><span class="n">block</span><span class="o">);</span>
+                    <span class="n">JComponent</span> <span class="n">panel</span> <span class="o">=</span> <span class="n">blockPanel</span><span class="o">.</span><span class="na">asJComponent</span><span class="o">();</span>
+                <span class="n">ToolsSwingLocator</span><span class="o">.</span><span class="na">getWindowManager</span><span class="o">().</span><span class="na">showWindow</span><span class="o">(</span>
+                            <span class="n">panel</span><span class="o">,</span>
+                            <span class="n">i18nManager</span><span class="o">.</span><span class="na">getTranslation</span><span class="o">(</span><span class="s">&quot;_Block_registry_information&quot;</span><span class="o">),</span>
+                            <span class="n">WindowManager</span><span class="o">.</span><span class="na">MODE</span><span class="o">.</span><span class="na">TOOL</span>
+                        <span class="o">);</span>
+                <span class="n">panel</span><span class="o">.</span><span class="na">addAncestorListener</span><span class="o">(</span><span class="k">new</span> <span class="n">AncestorListener</span><span class="o">()</span> <span class="o">{</span>
+                                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ancestorRemoved</span><span class="o">(</span><span class="n">AncestorEvent</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
+                                            <span class="n">blockPanel</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                                    <span class="o">}</span>
+                                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ancestorMoved</span><span class="o">(</span><span class="n">AncestorEvent</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
+                                    <span class="o">}</span>
+                                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ancestorAdded</span><span class="o">(</span><span class="n">AncestorEvent</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
+                                    <span class="o">}</span>
+                            <span class="o">});</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="k">this</span><span class="o">.</span><span class="na">blockPanel</span><span class="o">.</span><span class="na">setLandRegistryViewerBlock</span><span class="o">(</span><span class="n">block</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">LandRegistryViewerException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">warn</span><span class="o">(</span><span class="s">&quot;Can&#39;t show block registry information&quot;</span><span class="o">,</span><span class="n">e</span><span class="o">);</span>
+            <span class="n">application</span><span class="o">.</span><span class="na">message</span><span class="o">(</span>
+                            <span class="n">i18nManager</span><span class="o">.</span><span class="na">getTranslation</span><span class="o">(</span><span class="s">&quot;_Cant_show_block_registry_information&quot;</span><span class="o">),</span>
+                            <span class="n">JOptionPane</span><span class="o">.</span><span class="na">WARNING_MESSAGE</span>
+            <span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Básicamente derivaremos de AbstractPointListener sobre-escribiendo el método point que es llamado para realizar la acción asociada a esta herramienta. Este método se limitará a llamar a nuestro método getBlocks a partir de la posición del mapa sobre la que se hizo clic, y si se obtiene alguna manzana en ese punto se creará nuestro panel para presentar esa información en una ventana.</p>
+<p>Dos cosas a destacar:</p>
+<ul class="simple">
+<li>Cuando consultemos al parámetro event por las coordenadas del punto sobre el que se ha hecho
+clic se ha de hacer a través del método <em>getMapPoint</em> para asegurarnos que nos lo devuelve en
+coordenadas del mapa y no de pantalla.</li>
+<li>Cuando creemos el panel para presentar la informacion, nos quedaremos escuchando el evento
+<em>ancestorRemoved</em>, para saber cuando el usuario cierre la ventana y asi poder reutilizar la
+ventana mientras este abierta y saber que hay que abrir una nueva en caso de que el usuario
+la cierre.</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="07_the_library_containing_the_user_interface.html"
+                        title="capítulo anterior">7. La librería con la presentación</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="09_distribution_of_the_project.html"
+                        title="próximo capítulo">9. Distribuyendo nuestro proyecto</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/developers_quick_start/2.3/05_building_our_first_plugin/08_integration_with_gvsig.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="09_distribution_of_the_project.html" title="9. Distribuyendo nuestro proyecto"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="07_the_library_containing_the_user_interface.html" title="7. La librería con la presentación"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >gvSIG 2.3.1. Guía de inicio rápido para el desarrollador</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="00_index.html" >Construyendo nuestro primer plugin</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

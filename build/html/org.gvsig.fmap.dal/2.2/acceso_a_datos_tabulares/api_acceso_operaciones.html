@@ -1,0 +1,193 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>7. Acceso a operaciones específicas del almacén &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="8. Soporte para atributos calculados" href="api_soporte_para_atributos_calculados.html" />
+    <link rel="prev" title="6. Bloqueo de fenómenos" href="api_bloqueo_de_fenomenos.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="api_soporte_para_atributos_calculados.html" title="8. Soporte para atributos calculados"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="api_bloqueo_de_fenomenos.html" title="6. Bloqueo de fenómenos"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >org.gvsig.fmap.dal</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../acceso_a_datos_tabulares.html" >4. Acceso a datos tabulares</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">API de los servicios asociados al consumidor de datos</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="acceso-a-operaciones-especificas-del-almacen">
+<h1>7. Acceso a operaciones específicas del almacén<a class="headerlink" href="#acceso-a-operaciones-especificas-del-almacen" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Hasta ahora hemos estado viendo una serie de servicios que un almacén de datos,
+a través del <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStore.html">FeatureStore</a> ofrece sin importarnos qué tipo de almacén de datos
+sea. Son servicios que ofrecen de forma <em>estándar</em> todos los almacenes de datos
+tabulares. Sin embargo, podemos encontrarnos que para algún tipo especial de
+almacén de datos este ofrezca algún servicio extra, bien porque el propio
+proveedor de datos lo suministra, bien porque alguna librería externa suministra
+ese servicio y lo ofrece a través del propio almacén.</p>
+<p>Cuando nos referimos a <em>operaciones</em>, nos referimos a estos servicios extra que
+pueden estar asociados a un almacén especifico.</p>
+<p>Para acceder a estas operaciones lo hacemos a través de la utilidad <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/tools/dynobject/DynObject.html">DynObject</a> que
+presenta la librería <a class="reference external" href="http://docs.gvsig.org/plone/projects/gvsig-desktop/docs/devel/org.gvsig.fmap.dal/2.0.0/featurestore/consumer-services/org.gvsig.tools">libTools org.gvsig.tools</a> . La clase <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStore.html">prefixFeatureStore</a> implementa el interface <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/tools/dynobject/DynObject.html">DynObject</a>
+usando el nombre de clase dinámica <em>FeatureStore</em>. Llegados a este punto es recomendable
+que repase la documentación de esta utilidad antes de seguir (<a class="reference external" href="http://docs.gvsig.org/plone/projects/gvsig-desktop/docs/devel/org.gvsig.fmap.dal/2.0.0/featurestore/consumer-services/org.gvsig.tools/org.gvsig.tools.dynobject">libtools - DynObject</a>),
+aunque si no lo hace
+intentaremos dar las descripciones necesarias para que pueda entender el uso
+que se hace de ella desde el <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStore.html">FeatureStore</a>.</p>
+<p>El <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStore.html">FeatureStore</a> por implementar el interface <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/tools/dynobject/DynObject.html">DynObject</a> dispone de un método, <em>getDynClass</em>,
+que nos devolverá un objeto <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/tools/dynobject/DynClass.html">DynClass</a>. Este contiene una definición de métodos y atributos
+añadidos dinámicamente a la instancia de nuestro almacén. Podemos usar ese <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/tools/dynobject/DynClass.html">DynClass</a> para
+interrogar por los métodos añadidos de la siguiente forma:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">DynMethod</span><span class="o">[]</span> <span class="n">methods</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="na">getDynClass</span><span class="o">().</span><span class="na">getDynMethods</span><span class="o">();</span>
+<span class="k">for</span><span class="o">(</span> <span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">methods</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++</span> <span class="o">)</span> <span class="o">{</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&quot;method &#39;&quot;</span><span class="o">+</span> <span class="n">methods</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;&#39;&quot;</span><span class="o">);</span>
+<span class="k">if</span><span class="o">(</span> <span class="n">methods</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getDescription</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&quot;, &quot;</span><span class="o">+</span> <span class="n">methods</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getDescription</span><span class="o">());</span>
+<span class="o">}</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;.&quot;</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Con este ejemplo obtendremos un listado de métodos u operaciones que han sido añadidos a nuestro almacén, con su nombre y su descripción si la tuviese.</p>
+<p>¿ Y cómo invocamos a esas operaciones o métodos ?</p>
+<p>Supongamos que sabemos que hay almacenes que pueden suministrar una leyenda específica para sus datos mediante una operación getLegend. Podemos utilizar el siguiente código para invocar a esa operación y obtener la leyenda en caso de que nuestro almacén lo soporte.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="k">if</span><span class="o">(</span> <span class="n">store</span><span class="o">.</span><span class="na">getDynClass</span><span class="o">().</span><span class="na">getDynMethod</span><span class="o">(</span><span class="s">&quot;getLegend&quot;</span><span class="o">)!=</span> <span class="kc">null</span> <span class="o">)</span> <span class="o">{</span>
+<span class="n">ILegend</span> <span class="n">Legend</span> <span class="o">=</span> <span class="o">(</span><span class="n">ILegend</span><span class="o">)</span><span class="n">store</span><span class="o">.</span><span class="na">invokeDynMethod</span><span class="o">(</span><span class="s">&quot;getLegend&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>De cara al uso de las operaciones especificas que puede presentar un almacén de datos, estas son las principales operaciones que vamos a tener que realizar:</p>
+<ul class="simple">
+<li>consultar de que operaciones disponemos.</li>
+<li>invocar a alguna de esas operaciones.</li>
+</ul>
+<p>Si queremos saber más sobre cómo crear sus propias operaciones consulte el apartado Servicios asociados al proveedor de datos, SPI.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="api_bloqueo_de_fenomenos.html"
+                        title="capítulo anterior">6. Bloqueo de fenómenos</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="api_soporte_para_atributos_calculados.html"
+                        title="próximo capítulo">8. Soporte para atributos calculados</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/org.gvsig.fmap.dal/2.2/acceso_a_datos_tabulares/api_acceso_operaciones.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="api_soporte_para_atributos_calculados.html" title="8. Soporte para atributos calculados"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="api_bloqueo_de_fenomenos.html" title="6. Bloqueo de fenómenos"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >org.gvsig.fmap.dal</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../acceso_a_datos_tabulares.html" >4. Acceso a datos tabulares</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >API de los servicios asociados al consumidor de datos</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

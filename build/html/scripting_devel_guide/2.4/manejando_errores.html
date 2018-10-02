@@ -1,0 +1,193 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>22. Gestión de errores &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="23. Recopilación post" href="informacion_extra.html" />
+    <link rel="prev" title="21. Explorers" href="explorers.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="informacion_extra.html" title="23. Recopilación post"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="explorers.html" title="21. Explorers"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Documentación de Scripting en gvSIG 2.4</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gestion-de-errores">
+<span id="label-handling-errors"></span><h1>22. Gestión de errores<a class="headerlink" href="#gestion-de-errores" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="try-exception">
+<h2>22.1. Try/Exception<a class="headerlink" href="#try-exception" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>A la hora de capturar errores, una de las recomendaciones es utilizar la siguiente estructura try/except:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">import</span> <span class="nn">gvsig</span>
+<span class="kn">from</span> <span class="nn">java.lang</span> <span class="k">import</span> <span class="n">Throwable</span><span class="p">,</span> <span class="n">RuntimeException</span>
+<span class="kn">from</span> <span class="nn">java.lang</span> <span class="k">import</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">JException</span><span class="p">,</span> <span class="n">Error</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span> <span class="ne">Exception</span>
+    <span class="nb">print</span> <span class="n">JException</span>
+    <span class="nb">print</span> <span class="n">Throwable</span>
+    <span class="nb">print</span> <span class="n">RuntimeException</span>
+
+    <span class="k">try</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="n">Throwable</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">:</span>
+      <span class="n">ex</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+      <span class="nb">print</span> <span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="n">ex</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Esta estructura permite capturar los errores tanto generados en la parte de Python, como en la parte de Java. Además, en la variable «ex» nos aparecerá información suficiente para manejar y sacar información del error.</p>
+</div>
+<div class="section" id="logger">
+<h2>22.2. Logger<a class="headerlink" href="#logger" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La forma correcta de volcar información en la consola es utilizar la función __logger__. Esta función se encuentra en la librería __gvsig_ para su uso desde Jython. Esta función tiene dos parámetros, uno el mensaje, y el otro el tipo de mensaje:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">import</span> <span class="nn">gvsig</span>
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="n">logger</span>
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="n">LOGGER_WARN</span><span class="p">,</span><span class="n">LOGGER_INFO</span><span class="p">,</span><span class="n">LOGGER_ERROR</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">logger</span><span class="p">(</span><span class="s2">&quot;Proceso finalizado&quot;</span><span class="p">,</span> <span class="n">LOGGER_INFO</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">22. Gestión de errores</a><ul>
+<li><a class="reference internal" href="#try-exception">22.1. Try/Exception</a></li>
+<li><a class="reference internal" href="#logger">22.2. Logger</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="explorers.html"
+                        title="capítulo anterior">21. Explorers</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="informacion_extra.html"
+                        title="próximo capítulo">23. Recopilación post</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/scripting_devel_guide/2.4/manejando_errores.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="informacion_extra.html" title="23. Recopilación post"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="explorers.html" title="21. Explorers"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Documentación de Scripting en gvSIG 2.4</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

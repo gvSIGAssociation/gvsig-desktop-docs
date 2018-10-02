@@ -1,0 +1,276 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Introduccion &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="contents topic" id="contenidos">
+<p class="topic-title first">Contenidos</p>
+<ul class="simple">
+<li><a class="reference internal" href="#introduccion" id="id4">Introduccion</a></li>
+<li><a class="reference internal" href="#contexto" id="id5">Contexto</a></li>
+<li><a class="reference internal" href="#vision-general" id="id6">Vision general</a></li>
+<li><a class="reference internal" href="#detalle-del-acceso-tabular" id="id7">Detalle del acceso tabular</a></li>
+</ul>
+</div>
+<div class="section" id="introduccion">
+<h1><a class="toc-backref" href="#id4">Introduccion</a><a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Este documento describe la capa de acceso a datos de gvSIG (denominada Data Access Library, DAL para abreviar) tras la reingeniería realizada en la rama v2_0_0_prep.</p>
+<p>Con DAL se pretende dotar a gvSIG de una capa de abstracción que permita al núcleo de la aplicación operar de forma homogénea con diferentes fuentes y formatos de datos. Su arquitectura se basa en la flexibilidad y la robustez, y por ello aspectos como el desacoplamiento y la trazabilidad son esenciales en su diseño. Algunas características de DAL:</p>
+<ul class="simple">
+<li>Es extensible a través de un marco común.</li>
+<li>Reduce el acoplamiento entre las distintas capas de la aplicación y los proveedores de datos.</li>
+<li>Mejora la trazabilidad en el acceso a datos.</li>
+</ul>
+</div>
+<div class="section" id="contexto">
+<h1><a class="toc-backref" href="#id5">Contexto</a><a class="headerlink" href="#contexto" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>En el siguiente diagrama podemos ver donde encajan los distintos componentes
+de la librería de acceso a datos en gvSIG.</p>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/contexto.png" src="../../../_images/contexto.png" />
+<p class="caption"><span class="caption-text">Diagrama de contexto</span></p>
+</div>
+<p>Los componentes que formarían parte de la librería de acceso a datos serían:</p>
+<ul class="simple">
+<li>La librería de acceso a datos</li>
+<li>Los distintos almacenes de datos</li>
+<li>Las operaciones, manejo de leyendas específicos de algunos formatos.</li>
+</ul>
+<p>Íntimamente relacionados con estos estaría la librería de geometrías, y las librerías
+de manejo de DWG y DXF.</p>
+</div>
+<div class="section" id="vision-general">
+<h1><a class="toc-backref" href="#id6">Vision general</a><a class="headerlink" href="#vision-general" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>El acceso a datos de gvSIG contiene dos grandes conjuntos de interfaces:</p>
+<ul class="simple">
+<li>El primero para los consumidores de datos o API.</li>
+<li>Y el segundo, para los proveedores de datos de la librería  o SPI.</li>
+</ul>
+<p>La descripción de cada uno de esos grupos de interfaces se realizará por separado, distinguiendo en todo momento entre los servicios que se ofrecen al consumidor de datos y al proveedor de éstos.</p>
+<p>En la arquitectura de la librería de acceso a datos, DAL, existen tres piezas fundamentales que se encuentran interrelacionadas entre sí:</p>
+<ul class="simple">
+<li>Control de recursos, Resource. Identifica qué recursos están siendo
+usados en todo momento por los distintos proveedores de datos de la
+librería, pudiendo solicitar que se liberen en un momento dado.</li>
+<li>Acceso a los servicios de un servidor de datos, DataServerExplorer.
+Permite determinar qué almacenes de datos hay en un servidor, así como
+crear nuevos almacenes. Los principales tipos de servidores soportados
+son:<ul>
+<li>Sistemas de ficheros en local, <em>FilesystemServerExplorer</em>.</li>
+<li>Sistemas de bases de datos con soporte JDBC, <em>JDBCServerExplorer</em>.</li>
+<li>Sistemas remotos basados en WMS/WCS.</li>
+<li>Sistemas remotos basados en WFS/WFS-T, <em>WFSServerExplorer</em>.</li>
+</ul>
+</li>
+<li>Acceso a los datos de un almacen, DataStore. Nos permite el acceso a
+datos de tipos como:<ul>
+<li>dbf/shp</li>
+<li>dxf</li>
+<li>GML</li>
+<li>Bases de datos PostgreSQL</li>
+</ul>
+</li>
+</ul>
+<p>El API provee de una primera capa de abstracción que representa al acceso a datos independientemente de si estamos accediendo a datos tabulares, vectoriales o coberturas raster, para luego disponer de especializaciones dependiendo de si estamos accediendo a datos vectoriales o coberturas raster.</p>
+<p>En la primera aproximación a la librería nos encontramos una serie de clases e interfaces que son independientes del tipo de datos y de su origen. Estas son:</p>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/Diagrama2.png" src="../../../_images/Diagrama2.png" />
+<p class="caption"><span class="caption-text">Figura 2</span></p>
+</div>
+<ul class="simple">
+<li><em>DALLocator</em>. Se trata del locator de la librería. Nos proporciona los servicios de localización del DataManager y el ResourceManager a usar por la librería.</li>
+<li><em>DataManager</em>. Se trata de la factoría que nos da acceso al API de acceso a
+datos. A partir de él podemos acceder a los <em>almacenes</em> de datos o <em>explorar</em>
+los <em>almacenes de datos</em> que nos suministra un servidor o servicio dado. Es
+el punto de entrada a todo el modelo de objetos.</li>
+<li><em>DataStore</em>. Representa un almacén de datos. Un fichero shape o una tabla de
+una base de datos, y dispone de mecanismos para acceder a sus datos, su estructura
+y tipo, así como en qué forma se pueden modificar éstos.</li>
+<li><em>DataStoreParameters</em>. Representa el conjunto de parámetros que se necesitan
+para poder acceder al almacén de datos. Por ejemplo, si estamos accediendo
+a un fichero dbf, contendrá la ruta al fichero.</li>
+<li><em>DataSet</em>. Representa un conjunto de datos del almacén de datos.
+El <em>DataStore</em> contiene mecanismos para acceder a los datos, permitiendo
+aplicar filtros u órdenes a éstos, así como información contextual que
+pueda ser útil a la hora de decidir cómo ha de realizarse de forma óptima
+la recuperación de éstos desde el almacén.</li>
+<li><em>DataQuery</em>. Representa el conjunto de valores que conforman las condiciones
+en las que se basará el <em>DataSet</em> para recuperar y devolver los datos.</li>
+<li><em>DataServerExplorer</em>. Nos permite obtener la lista de <em>almacenes</em> disponibles en un
+servidor o servicio dado. Así podemos pedirle que nos dé la lista de tablas
+de una base de datos o de ficheros susceptibles de ser tratados como almacenes,
+por ejemplo shapes, dbfs o dxfs, que existan en una capeta dada. A partir
+de la información que nos suministre sobre cada <em>almacén</em>, podremos crear
+el <em>DataStore</em> adecuado para acceder a sus datos.</li>
+<li><em>DataExplorerParameters</em>. Representa el juego de parámetros necesario para
+poder acceder al servidor o servicio y poder consular los almacenes de datos
+que éste sirve.</li>
+</ul>
+<p>Así, puede pasarle un <em>DataStoreParameters</em> al <em>DataManager</em> para obtener un <em>DataStore</em>, y a partir de éste realizar consultas contra ese almacén o modificar sus datos. Una consulta devolverá un <em>DataSet</em> y a partir de él podrá acceder a los datos. Si queremos saber qué almacenes de datos tenemos en un servidor podemos pedirle un <em>DataServerExplorer</em> al <em>DataManager</em> y éste nos informará de los almacenes de datos que hay disponibles.</p>
+<p>A partir de esta primera capa de abstracción que provee la librería, aparecen dos
+grandes especializaciones de ella:</p>
+<ul class="simple">
+<li>Por un lado aparece una especialización que nos da acceso a datos de tipo
+tabular, bien sean de tipo alfanumérico o vectorial.</li>
+<li>Por otro, una especialización que nos abre el acceso a datos de tipo
+coberturas raster.</li>
+</ul>
+<p>En adelante describiremos cada una de estas especializaciones, primero
+centrándonos en el acceso a datos tabulares y después a los raster.</p>
+<p>También trataremos más adelante cómo llevar la gestión de los recursos usados por
+la librería, ficheros, conexiones a BBDD, conexiones a servicios remotos, …</p>
+</div>
+<div class="section" id="detalle-del-acceso-tabular">
+<h1><a class="toc-backref" href="#id7">Detalle del acceso tabular</a><a class="headerlink" href="#detalle-del-acceso-tabular" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Partiendo de la arquitectura general del API de acceso a datos, podemos
+ver como encaja la especialización del acceso a datos tabulares dentro de ella.</p>
+<p>Dentro del acceso a datos tabulares se incluye tanto el acceso a datos de
+carácter alfanumérico como vectorial, soportando que uno o varios atributos
+de un ítem o fenómeno sean de tipo vectorial.</p>
+<p>Nos encontraremos las siguientes clases e interfaces mostradas en el siguiente
+gráfico.</p>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/Diagrama3.png" src="../../../_images/Diagrama3.png" />
+<p class="caption"><span class="caption-text">Acceso a datos tabulares</span></p>
+</div>
+<ul class="simple">
+<li><em>FeatureStore</em>, como especialización de <em>DataStore</em>.
+Añade funcionalidades propias del acceso a datos alfanuméricos
+y vectoriales. Conoce de <em>fenómenos</em>, cómo consultar sus valores
+o su estructura, así como de acciones específicas para acceder
+a ellos.</li>
+<li><em>FeatureSet</em>, como especialización de <em>DataSet</em>.
+Conoce los fenómenos y es capaz de iterar sobre ellos.</li>
+<li><em>FeatureQuery</em>, como especialización de <em>DataQuery</em>. Contiene
+información relevante sobre la definición de filtros y su ordenación
+que hace uso del conocimiento de estar trabajando sobre datos alfanuméricos
+y vectoriales.</li>
+<li><em>Feature</em>. Aparece como contenedor de un fenómeno, permitiendo acceder
+a la información de éste.</li>
+<li><em>FeatureType</em>. Aparece como el contenedor de la estructura de un fenómeno.
+Qué atributos tiene o de qué tipo son.</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduccion</a></li>
+<li><a class="reference internal" href="#contexto">Contexto</a></li>
+<li><a class="reference internal" href="#vision-general">Vision general</a></li>
+<li><a class="reference internal" href="#detalle-del-acceso-tabular">Detalle del acceso tabular</a></li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/gvsig_contributions/Proyectos_oficiales/templates/ejemplo_de_analisis1.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

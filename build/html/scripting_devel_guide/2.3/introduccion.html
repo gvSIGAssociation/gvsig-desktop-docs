@@ -1,0 +1,366 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>1. Introducción &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="2. Modelo de objetos simplificado" href="modelo_de_objetos_simplificado.html" />
+    <link rel="prev" title="Documentación de Scripting en gvSIG 2.3" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="modelo_de_objetos_simplificado.html" title="2. Modelo de objetos simplificado"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Documentación de Scripting en gvSIG 2.3"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="introduccion">
+<h1>1. Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="que-es-el-modulo-de-scripting">
+<h2>1.1. Qué es el Módulo de Scripting<a class="headerlink" href="#que-es-el-modulo-de-scripting" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El Módulo de Scripting es un módulo de programación integrado completamente en gvSIG 2.</p>
+<p>Este módulo se integró desde las versiones 2.x de gvSIG, y ha sufrido importantes mejoras en gvSIG 2.3.</p>
+</div>
+<div class="section" id="que-necesitas">
+<h2>1.2. Qué necesitas<a class="headerlink" href="#que-necesitas" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para seguir esta guía tan solo necesitas tener instalado la versión de gvSIG 2.3. El Scripting Framework o Módulo de Scripting vienen instalados por defecto.</p>
+<p>La última versión disponible de gvSIG 2 que podrás encontrar en:
+<a class="reference external" href="http://www.gvsig.com/es/productos/gvsig-desktop/descargas">http://www.gvsig.com/es/productos/gvsig-desktop/descargas</a></p>
+<p>También será necesario tener instalado el paquete de <strong>Scripting Composer Tools</strong>. Este paquete es un conjunto de herramientas desarrollado para facilitar la tarea del desarrollador. Incluye herramientas de autocompletado, code navigator, la herramienta de interfaces visuales Abeille, entre otros. Se podrán instalar directamente desde el <strong>Administrador de Complementos</strong>.</p>
+<p>Iremos a <span class="menuselection">Herramientas ‣ Administrador de Complementos</span> y seleccionaremos <code class="docutils literal"><span class="pre">Instalación</span> <span class="pre">estándar</span></code>.</p>
+<div class="figure align-center">
+<img alt="../../_images/inst_1.png" src="../../_images/inst_1.png" />
+</div>
+<p>Haremos una busqueda de las <strong>Composer Tools</strong>:</p>
+<div class="figure align-center">
+<img alt="../../_images/inst_2.png" src="../../_images/inst_2.png" />
+</div>
+<p>Cuando la instalación a finalizado, abriendo el <span class="menuselection">Herramientas ‣ Scripting ‣ Editor de Scripts</span>, podremos comprobar que aparece la carpeta <code class="docutils literal"><span class="pre">ScriptingComposerTools</span></code> y que se ha instalado correctamente.</p>
+<div class="figure align-center">
+<img alt="../../_images/inst_3.png" src="../../_images/inst_3.png" />
+</div>
+<p>Es necesario reiniciar gvSIG para su uso. Si volvemos a abrir el Editor de Scripts, veremos que aparecen una serie de botones extra en la barra de Herramientas:</p>
+<div class="figure align-center">
+<img alt="../../_images/inst_4.png" src="../../_images/inst_4.png" />
+</div>
+</div>
+<div class="section" id="que-nos-permite">
+<h2>1.3. Qué nos permite<a class="headerlink" href="#que-nos-permite" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Este módulo de programación nos dará la oportunidad programar nuestras propias herramientas y extensiones para gvSIG.</p>
+<p>Los scripts los podremos modificar, adaptar, intercambiar y desarrollar de una manera sencilla, y lo más importante, rápida.</p>
+<p>Una de las ventajas es que dada la facilidad del lenguaje Python, no será necesario tener conocimientos extensos de programación ni de cómo funciona al completo la arquitectura de gvSIG para poder desarrollar la herramienta que necesitemos.</p>
+<p>Las posibilidades son infinitas, nos permitirá:
+- Automatizar tareas
+- Añadir funcionalidades
+- Crear nuevos geoprocesos
+- Personalizar gvSIG
+- Creación de extensiones (Plugins)
+- Uso de la API de gvSIG: tratamiento de espaciales, conexiones de datos, generación de mapas, etc.</p>
+</div>
+<div class="section" id="que-lenguaje-utilizamos">
+<h2>1.4. Qué lenguaje utilizamos<a class="headerlink" href="#que-lenguaje-utilizamos" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El lenguaje principal en el que hemos centrado el desarrollo es Jython <a class="reference external" href="http://www.jython.org/">http://www.jython.org/</a> , aunque también se pueden ejecutar scripts en Groovy, R..</p>
+<p><strong>Jython es una implementación de Python realizada en Java.</strong></p>
+<p>Esta implementación nos permite trabajar con la API de gvSIG (aplicación realizada en Java) usando scripts utilizando la sintaxis de Python, facilitando mucho el desarrollo y ejecución de estos, solo necesitando tener instalado gvSIG para poder programar.</p>
+<p>Esto nos da unas ventajas enormes, por un lado, Python es un lenguaje muy sencillo de aprender, por otro lado, no se necesita de una compilación previa con un IDE externo, sino que la compilación del código necesario se realiza sobre la marcha, cada vez que ejecutamos nuestro script. Esto nos permite realizar modificaciones en nuestros script e irlo probando mientras tenemos gvSIG abierto.</p>
+<p>Además, tiene compatibilidad con muchas de las librerías de Python existentes, y todas (o mayoría) de Java.</p>
+</div>
+<div class="section" id="como-acceder-al-modulo-de-scripting">
+<h2>1.5. Cómo acceder al Módulo de Scripting<a class="headerlink" href="#como-acceder-al-modulo-de-scripting" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Una vez instalado gvSIG 2 ya lo podemos abrir. Para acceder a este módulo de programación lo haremos a través del menú <span class="menuselection">Herramientas ‣ Scripting</span>. Aquí nos encontraremos con 3 opciones:</p>
+<div class="section" id="scripting-launcher">
+<h3>1.5.1. Scripting Launcher<a class="headerlink" href="#scripting-launcher" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="figure align-center">
+<img alt="../../_images/scripting_launcher.png" src="../../_images/scripting_launcher.png" />
+</div>
+<p>Se trata de un lanzador de scripts, una lista con accesos directos a los scripts que tenemos.
+Según vayamos creando y almacenando nuestros scripts, estos pasaran a formar parte de esta lista que podremos tener abierta y accesible para ejecutar un script que necesitemos en cualquier momento con un doble click. Es muy cómodo si preparamos scripts para ejecutarlos mientras estemos trabajando, una forma rápida de tenerlos a mano.</p>
+</div>
+<div class="section" id="scripting-composer">
+<h3>1.5.2. Scripting Composer<a class="headerlink" href="#scripting-composer" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="figure align-center">
+<img alt="../../_images/scripting_composer.png" src="../../_images/scripting_composer.png" />
+</div>
+<p>Es la pantalla principal de este módulo. Aquí podremos crear, ordenar y almacenar todos nuestros scripts.</p>
+<p>Los botones principales: Nuevo, Abrir, Guardar, Guardar y Ejecutar, Cerrar.. Una vez creemos un fichero nuevo, podremos escribir nuestro código.</p>
+<p>La ejecución del script aparecerá reflejada en la consola que se sitúa en la parte inferior,</p>
+</div>
+<div class="section" id="jython-console">
+<h3>1.5.3. Jython Console<a class="headerlink" href="#jython-console" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="figure align-center">
+<img alt="../../_images/scripting_console.png" src="../../_images/scripting_console.png" />
+</div>
+<p>Es una consola que nos permitirá ejecutar código directamente, ejecutándose línea a línea. Nos permite consultar variables y ver cómo se van modificando.</p>
+<p>Otra función interesante es que nos ofrecerá una ayuda de los comandos que están disponibles según el código que estemos escribiendo, o qué tipo de métodos tienen disponibles las diferentes clases de gvSIG.</p>
+</div>
+</div>
+<div class="section" id="librerias-de-gvsig-para-scripting">
+<h2>1.6. Librerías de gvSIG para Scripting<a class="headerlink" href="#librerias-de-gvsig-para-scripting" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hemos creado una librería escrita en Jython denominada <code class="docutils literal"><span class="pre">gvsig</span></code>. Su función es inyectar métodos extra en estas clases de Java ya existentes en la API de gvSIG y ampliar mediante nuevas funciones la potencia y facilidad de uso de este módulo.</p>
+<p>Su objetivo es el disminuir el número de líneas requeridas para realizar ciertas operaciones y hacer accesible la API de gvSIG de una manera más sencilla desde Jython.</p>
+<p>Las librerías Java de las que se compone gvSIG están totalmente accesibles desde nuestros scripts en Jython, siendo posible sin ninguna restricción en el acceso a ellas y en la creación de extensiones de la misma forma que si las hiciéramos directamente en Java.</p>
+</div>
+<div class="section" id="organizacion-de-la-libreria-gvsig">
+<h2>1.7. Organización de la librería gvsig<a class="headerlink" href="#organizacion-de-la-libreria-gvsig" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El Módulo de Scripting viene con diversas librerías:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">gvsig</span></code>: pertenecen las funciones principales de gvSIG, principalmente para el acceso y manejo de datos. Contiene funciones útiles y los métodos inyectados en las clases de gvSIG. También contiene el resto de módulos que explicamos.</li>
+<li><code class="docutils literal"><span class="pre">gvsig.commonsdialog</span></code>: encargada de la generación de ventanas, desde a mensajes de alerta a rutas de ficheros.</li>
+<li><code class="docutils literal"><span class="pre">gvsig.geom</span></code>: contiene todas las funciones relacionadas con las geometrías</li>
+</ul>
+<p>Además, hemos incluido otras clases importantes que nos ayudarán mucho la generación de scripts:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">gvsig.libs.formpanel.FormPanel</span></code>: Esta clase nos ayudará en la generación de script con interfaces visuales</li>
+<li><code class="docutils literal"><span class="pre">gvsig.libs.gvpy</span></code>: Librería para la ejecución de geoprocesos desde Scripting</li>
+<li><code class="docutils literal"><span class="pre">gvsig.libs.toolbox.ToolboxProcess</span></code>: Clase para la creación de geoprocesos que serán añadidos a la Toolbox y podrán ser utilizados desde el Modelizador.</li>
+<li><code class="docutils literal"><span class="pre">gvsig.libs.load_project.load_project()</span></code>: Función para abrir un proyecto en gvSIG desde un fichero.</li>
+<li>etc</li>
+</ul>
+<p>Es recomendable importar tan solo las librerías necesarias para la ejecución del script.</p>
+<p>Si nuestro script contiene otras librerías propias que también hemos programado, al realizar su importación podemos forzar la recarga de estas librerías (sino los cambios no se verán reflejados) utilizando la función <cite>reload()</cite>. La forma correcta de hacerlo sería:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lib</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">lib</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creacion-de-un-script">
+<h2>1.8. Creación de un script<a class="headerlink" href="#creacion-de-un-script" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para crear un script nuevo, trabajaremos en el <strong>Scripting Composer</strong> presiona el botón de Nuevo <img alt="new" src="../../_images/icon-new.png" /> situado arriba a la izquierda, o en <span class="menuselection">Archivo ‣ Nuevo</span> se nos abrirá una pantalla sobre el tipo de script a crear.</p>
+<div class="figure align-center">
+<img alt="../../_images/nuevo_script.png" src="../../_images/nuevo_script.png" />
+</div>
+<p>En esta pantalla debemos escribir el nombre y descripción de lo que vayamos a crear. En el tipo de archivo podremos elegir qué crear. Las opciones son:</p>
+<ul class="simple">
+<li>Script: Programa con código lineal que podremos ejecutar.</li>
+<li>Dialog: Programa con código y una interfaz visual. (No recomendado, para scripts con interfaz visual usaremos también el tipo script)</li>
+<li>Project: Aún no habilitado, para futuras versiones.</li>
+<li>Folder: Crea una carpeta en nuestra lista de «Scripts de usuario».</li>
+</ul>
+<p>Podemos elegir el lenguaje de programación que prefiramos. Los lenguajes soportados son:
+- ECMAScript
+- Python: es el lenguaje en que tenemos centrado el desarrollo
+- Groovy
+- R
+- Scala</p>
+<div class="figure align-center">
+<img alt="../../_images/nuevo_script_lenguajes.png" src="../../_images/nuevo_script_lenguajes.png" />
+</div>
+<p>En <code class="docutils literal"><span class="pre">Save</span> <span class="pre">on</span></code> podremos elegir en qué carpeta guardamos nuestro nuevo script. Las dos últimas cajas de texto son sobre información del Autor y Versión.</p>
+<p>Hacemos click en «Accept». Esto creará nuestro nuevo script en blanco, que aparecerá abierto para su edición. Veremos que aparece nuevo en nuestro listado de scripts de usuario y se abre una pestaña con el nombre del script. En esta pestaña un asterisco aparecerá indicando si el script contiene cambios que no han sido guardados. Debajo aparece nuestro código que por defecto trae una plantilla con la estructura básica, y debajo del todo encontramos la salida por consola.</p>
+<p>Los scripts creados se almacenan en la carpeta de gvSIG <code class="docutils literal"><span class="pre">C:\Users\*\gvSIG\plugins\org.gvsig.scripting.app.extension</span></code>. De forma similar en la <code class="docutils literal"><span class="pre">/home/</span></code> de Linux.
+Ahora nos disponemos a escribir nuestro primer script. El ejemplo que nos viene por defecto es totalmente válido:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">import</span> <span class="nn">gvsig</span>
+
+<span class="hll"><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+</span>
+    <span class="c1">#Remove this lines and add here your code</span>
+
+    <span class="k">print</span> <span class="s2">&quot;hola mundo&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+</td></tr></table></div>
+<p>En primer lugar, realiza una importación de la librería que vamos a utilizar, la librería de scripting <code class="docutils literal"><span class="pre">gvsig</span></code>, y luego define dentro de la función principal main(), el comando print que hará salir nuestro valor por consola.</p>
+<div class="figure align-center">
+<img alt="../../_images/scripting_composer_2.png" src="../../_images/scripting_composer_2.png" />
+</div>
+<p>En Scripting en gvSIG, la función que se va a ejecutar por defecto <strong>será siempre la función main()</strong>, así que debemos de introducir todo nuestro código en esta función.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Todos nuestros scripts deben de contener la función main() para su correcta ejecución. No será obligatorio si van a ser usados como librerías.</p>
+</div>
+<p>Para ejecutar un script guardando <img alt="save" src="../../_images/icon-save.png" /> y ejecutando <img alt="execute" src="../../_images/icon-execute.png" /> o directamente presionaremos el botón <img alt="saveandexecute" src="../../_images/icon-saveandexecute.png" /> y veremos su ejecución por consola.</p>
+<p>Podemos comprobar que la salida por consola es de «hola mundo», siendo este el objetivo que buscábamos. Con esto hemos ejecutado nuestro primer script con éxito.</p>
+<p>Esta estructura es la estructura básica de un script en gvSIG 2.3.</p>
+<p>Si abrimos ahora el Scripting Launcher, en el menú de Scripting, veremos que ya aparece nuestro script en el nuevo listado.</p>
+<p>Si queremos comprobar nuestros scripts en el disco duro estarán en la carpeta:</p>
+<ul class="simple">
+<li>En una vesión instalable en Windows: <code class="docutils literal"><span class="pre">C:\Users\NombreUsuario\gvSIG\plugins\org.gvsig.scripting.app.extension\scripts</span></code></li>
+<li>En una vesión portable en Windows: <code class="docutils literal"><span class="pre">\gvSIG_carpeta_instalacion\home\gvSIG\plugins\org.gvsig.scripting.app.extension\scripts</span></code></li>
+</ul>
+<p>En esta carpeta podemos copiar o pegar los scripts, fijándonos en copiar ambos archivos <code class="docutils literal"><span class="pre">.py</span></code> y <code class="docutils literal"><span class="pre">.inf</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Lo recomendable es generar los scripts dentro de su propia carpeta. Esto nos permitirá usarlos como módulos dándonos varias opciones: usar ficheros autorun.py (autoejecutable al inicio de gvSIG), fichero __init__.py (nos permitirá trabajar como si fuera un módulo permitiéndonos importar librerías que estén en la misma carpeta) y la creación de paquetes de Scripts</p>
+</div>
+</div>
+<div class="section" id="generando-paquetes-de-scripts">
+<h2>1.9. Generando paquetes de scripts<a class="headerlink" href="#generando-paquetes-de-scripts" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Una vez hemos creado un script en su propia carpeta con todo lo necesario, podemos generar un paquete de gvSIG <code class="docutils literal"><span class="pre">.gvspkg</span></code> para enviarlo o subirlo. Con este paquete podremos <strong>realizar la instalación del script desde el Administrador de Complementos</strong>. Su uso es muy intuitivo.</p>
+<p>La herramienta se encuentra en el Scripting Componser, en el menú <span class="menuselection">Herramientas ‣ Paquete de script</span>.</p>
+<p>Seleccionamos la carpeta que contiene nuestra extensión:</p>
+<div class="figure align-center">
+<img alt="../../_images/empaquetador_1.png" src="../../_images/empaquetador_1.png" />
+</div>
+<p>Establecemos las propiedades del paquete:</p>
+<div class="figure align-center">
+<img alt="../../_images/empaquetador_2.png" src="../../_images/empaquetador_2.png" />
+</div>
+<p>Las opciones de salida:</p>
+<p>La ruta será similar a esta: <code class="docutils literal"><span class="pre">gvSIG-desktop-2.3.0-2441-RC2-win-x86_64\install\gvSIG-desktop-2.3.0-ExportadorCapas-1.0.0-0-testing-all-all-j1_7.gvspkg</span></code>.</p>
+<div class="figure align-center">
+<img alt="../../_images/empaquetador_3.png" src="../../_images/empaquetador_3.png" />
+</div>
+<p>Y terminado, ya aprecerá nuestro extensión en formato <code class="docutils literal"><span class="pre">.gvspkg</span></code> para poderse instalar desde el Administrador de Complementos</p>
+<div class="figure align-center">
+<img alt="../../_images/empaquetador_4.png" src="../../_images/empaquetador_4.png" />
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Introducción</a><ul>
+<li><a class="reference internal" href="#que-es-el-modulo-de-scripting">1.1. Qué es el Módulo de Scripting</a></li>
+<li><a class="reference internal" href="#que-necesitas">1.2. Qué necesitas</a></li>
+<li><a class="reference internal" href="#que-nos-permite">1.3. Qué nos permite</a></li>
+<li><a class="reference internal" href="#que-lenguaje-utilizamos">1.4. Qué lenguaje utilizamos</a></li>
+<li><a class="reference internal" href="#como-acceder-al-modulo-de-scripting">1.5. Cómo acceder al Módulo de Scripting</a><ul>
+<li><a class="reference internal" href="#scripting-launcher">1.5.1. Scripting Launcher</a></li>
+<li><a class="reference internal" href="#scripting-composer">1.5.2. Scripting Composer</a></li>
+<li><a class="reference internal" href="#jython-console">1.5.3. Jython Console</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#librerias-de-gvsig-para-scripting">1.6. Librerías de gvSIG para Scripting</a></li>
+<li><a class="reference internal" href="#organizacion-de-la-libreria-gvsig">1.7. Organización de la librería gvsig</a></li>
+<li><a class="reference internal" href="#creacion-de-un-script">1.8. Creación de un script</a></li>
+<li><a class="reference internal" href="#generando-paquetes-de-scripts">1.9. Generando paquetes de scripts</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">Documentación de Scripting en gvSIG 2.3</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="modelo_de_objetos_simplificado.html"
+                        title="próximo capítulo">2. Modelo de objetos simplificado</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/scripting_devel_guide/2.3/introduccion.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="modelo_de_objetos_simplificado.html" title="2. Modelo de objetos simplificado"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Documentación de Scripting en gvSIG 2.3"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Documentación de Scripting en gvSIG 2.3</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

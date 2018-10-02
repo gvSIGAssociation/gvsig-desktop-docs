@@ -1,0 +1,235 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>2. Framework de plugins, Andami &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="3. Ventanas" href="03_windows.html" />
+    <link rel="prev" title="1. org.gvsig.tools" href="01_org_gvsig_tools.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="03_windows.html" title="3. Ventanas"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="01_org_gvsig_tools.html" title="1. org.gvsig.tools"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >gvSIG 2.3.1. Guía de inicio rápido para el desarrollador</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="00_index.html" accesskey="U">Arquitectura básica de gvSIG</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="framework-de-plugins-andami">
+<h1>2. Framework de plugins, Andami<a class="headerlink" href="#framework-de-plugins-andami" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><em>Andami</em> es el framework que utiliza gvSIG para componer la aplicación.
+Principalmente provee dos tipos de servicios, por un lado de gestión y
+carga de <em>plugins</em> y por otro, la gestión de ventanas que componen el interfaz
+de usuario.</p>
+<p>En este punto vamos a centrarnos un poquito en la gestión de <em>plugins</em>.
+<em>Andami</em> proporciona un lanzador para la aplicación que inicializa el
+sistema de <em>plugins</em>, y se encarga de cargar los <em>plugins</em> que están
+instalados en la aplicación. Un <em>plugin</em> es una unidad funcional que
+puede proveer:</p>
+<ul class="simple">
+<li>Opciones de menús a instalar en la aplicación</li>
+<li>Nuevos botones y barras de herramientas</li>
+<li>Nuevos proveedores de datos</li>
+<li>Nuevos tipos de documentos</li>
+</ul>
+<p>Normalmente, en una instalación de gvSIG, encontraremos una carpeta <em>gvSIG/extensiones</em>. Esta carpeta contiene dentro los distintos <em>plugins</em> que están
+instalados en la aplicación. Cada <em>plugin</em> está contenido en una carpeta, y dentro
+de esta, nos encontraremos, siempre, los ficheros:</p>
+<ul>
+<li><p class="first"><strong>config.xml</strong>. Es obligatorio que exista. Identifica la carpeta como un plugin. En el encontraremos información sobre:</p>
+<ul>
+<li><p class="first">Dónde encontrar las clases de ese plugin</p>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Aunque actualmente no existe documentación relacionada
+con esto para la versión 2 de gvSIG, en general, la
+documentación existente para gvSIG 1, será válida.
+Puede encontrar esta información en la descripción del <a class="reference external" href="http://docs.gvsig.org/plone/docdev/docs/v1_0/gvsig/andami/plugins-extensiones/fichero-config-xml">fichero config.xml</a>
+que hay para gvSIG 1.</p>
+</div>
+</li>
+<li><p class="first">Que clases deben ser cargadas como <em>extensiones</em> (IExtension).</p>
+</li>
+<li><p class="first">Si ese plugin depende de algún otro plugin</p>
+</li>
+<li><p class="first">Qué opciones de menú añade el plugin a la aplicación</p>
+</li>
+<li><p class="first">Qué barras de herramientas y botones añade el plugin.</p>
+</li>
+</ul>
+</li>
+<li><p class="first"><strong>package.info</strong>, que informa sobre la versión, nombre, identificador
+o descripción del plugin. Sería algo así como el contenedor de los metadatos
+del plugin, y nos permite identificarlo para poder actualizarlo o
+reinstalarlo.</p>
+</li>
+</ul>
+<p>Adicionalmente podemos encontrarnos una carpeta <strong>theme</strong>, en la que está la configuración
+del splash de la aplicación, iconos de las ventanas o colores de fondo.</p>
+<p>Aunque el mecanismo para añadir nueva funcionalidad a gvSIG es aportando nuevos
+plugins, estos a su vez contendrán una o más <em>extensiones</em>, siendo estas extensiones
+las que implementarán la funcionalidad a aportar. Así pues, tendremos que un
+<em>plugin</em> contendrá <em>extensiones</em>.</p>
+<p>Relacionado con el manejo de <em>plugins</em> las principales piezas que nos vamos a
+encontrar son:</p>
+<ul class="simple">
+<li><strong>PluginsLocator</strong>, que nos dará acceso al <em>manager</em> de plugins a través de un
+método estático <em>getManager</em>.</li>
+<li><strong>PluginsManager</strong>, que nos proporciona métodos para interrogar sobre qué
+plugins hay cargados y qué extensión tienen cada uno de estos.</li>
+<li>La clase <strong>PluginsServices</strong> que representa la instancia de un plugin dado.</li>
+<li>El interface <strong>IExtension</strong>, que representa una acción o bloque de acciones
+a incorporar a gvSIG.</li>
+</ul>
+<p>De estas entidades nos vamos a detener un poco más en la interface <strong>IExtension</strong>- Esta
+es la interface que deberemos implementar para poder añadir un nuevo botón u
+opción de menú. En esta interface nos encontraremos los métodos:</p>
+<ul class="simple">
+<li><strong>Initialize</strong>, este método se ejecuta cuando se carga la extensión, en la
+inicialización del plugin. Hay que tener en cuenta que cuando se invoque
+a este método es posible que no hayan sido cargadas e inicializadas todas
+las extensiones de gvSIG. Normalmente aquí realizaremos la inicialización
+de componentes de nuestra extensión que deban ser usados por otras extensiones.</li>
+<li><strong>postInitilize</strong>, se invoca en la indización la la extensión. Justo despues
+de haber invocado al método <em>initialize</em> de todas las extensiones de gvSIG.
+Normalmente, aquí realizaremos la inicialización de componentes de nuestra
+extensión que requieran de otras extensiones.</li>
+<li><strong>terminate</strong>, se invoca cuando gvSIG precisa descargar esa extensión. Normalmente
+esto se producirá al cierre de la aplicación. Aquí deberemos asegurarnos que sean
+liberados los recursos del sistema que tenga reservados nuestra extensión.</li>
+<li><strong>execute</strong>. Este método se ejecuta cada vez que el usuario interactúa con el
+menú o botón de la barra de herramientas asociado a la extensión. Normalmente
+será donde se implemente la ejecución de nuestra funcionalidad.</li>
+<li><strong>isEnable</strong>, es invocado cuando se precisa saber si el interfaz de usuario
+asociado a la extensión (botones u opciones de menú) deben estar habilitados.</li>
+<li><strong>isVisible</strong>, es invocado cuando se precisa saber si el interfaz de usuario
+asociado a la extensión (botones u opciones de menú) deben estar visibles.</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="01_org_gvsig_tools.html"
+                        title="capítulo anterior">1. org.gvsig.tools</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="03_windows.html"
+                        title="próximo capítulo">3. Ventanas</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/developers_quick_start/2.3/03_gvsig_basic_architecture/02_andami_the_plugins_framework.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="03_windows.html" title="3. Ventanas"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="01_org_gvsig_tools.html" title="1. org.gvsig.tools"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >gvSIG 2.3.1. Guía de inicio rápido para el desarrollador</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="00_index.html" >Arquitectura básica de gvSIG</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,706 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>11. Transformaciones sobre almacenes &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="5. Binarios" href="../binarios.html" />
+    <link rel="prev" title="10. Soporte de índices" href="api_soporte_indices.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../binarios.html" title="5. Binarios"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="api_soporte_indices.html" title="10. Soporte de índices"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >org.gvsig.fmap.dal</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../acceso_a_datos_tabulares.html" >4. Acceso a datos tabulares</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">API de los servicios asociados al consumidor de datos</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="transformaciones-sobre-almacenes">
+<h1>11. Transformaciones sobre almacenes<a class="headerlink" href="#transformaciones-sobre-almacenes" title="Enlazar permanentemente con este título">¶</a></h1>
+</div>
+<div class="section" id="introduccion">
+<h1>12. Introducción<a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Una transformación es un algoritmo que a partir de un fenómeno de un tipo produce otro fenómeno de otro tipo distinto, sin modificar el original. En otras palabras, copia una <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/Feature.html">Feature</a> cuyo <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureType.html">FeatureType</a> es A en otra <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/Feature.html">Feature</a> cuyo <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureType.html">FeatureType</a> es B, siendo la transformación <em>T</em> una función de correspondencia entre los <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureType.html">FeatureType</a> <em>A</em> y <em>B</em>: <em>T(A)=B</em>.</p>
+<p>Este mecanismo se ha ideado para dar la posibilidad de crear vistas sobre almacenes de datos sin que sea necesario modificar los mismos, para que los datos se presenten al usuario de forma diferente a como están realmente estructurados.</p>
+<p>DAL ofrece una interfaz para poder añadir transformaciones a un almacén. Esta interfaz se llama <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStoreTransform.html">FeatureStoreTransform</a>.</p>
+</div>
+<div class="section" id="la-interfaz-featurestoretransform">
+<h1>13. La interfaz FeatureStoreTransform<a class="headerlink" href="#la-interfaz-featurestoretransform" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Esta interfaz representa a una transformación y permite:</p>
+<ul class="simple">
+<li>Obtener el tipo de fenómeno por defecto de la transformación así como la lista completa de sus tipos de fenómeno si tiene más de uno.</li>
+<li>Obtener y fijar el almacén que es objeto de la transformación.</li>
+<li>aplicar la transformación a un fenómeno.</li>
+</ul>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">FeatureStoreTransform</span> <span class="kd">extends</span> <span class="n">Persistent</span> <span class="o">{</span>
+
+  <span class="kd">public</span> <span class="n">FeatureType</span> <span class="nf">getDefaultFeatureType</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">DataException</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="n">List</span> <span class="nf">getFeatureTypes</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">DataException</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="n">FeatureType</span> <span class="nf">getSourceFeatureTypeFrom</span><span class="o">(</span><span class="n">FeatureType</span> <span class="n">targetFeatureType</span><span class="o">);</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyTransform</span><span class="o">(</span><span class="n">Feature</span> <span class="n">source</span><span class="o">,</span> <span class="n">EditableFeature</span> <span class="n">target</span><span class="o">)</span>
+          <span class="kd">throws</span> <span class="n">DataException</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setFeatureStore</span><span class="o">(</span><span class="n">FeatureStore</span> <span class="n">featureStore</span><span class="o">);</span>
+
+  <span class="kd">public</span> <span class="n">FeatureStore</span> <span class="nf">getFeatureStore</span><span class="o">();</span>
+
+  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTransformsOriginalValues</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="obtener-las-transformaciones-de-un-almacen">
+<h1>14. Obtener las transformaciones de un almacén<a class="headerlink" href="#obtener-las-transformaciones-de-un-almacen" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Las transformaciones de un almacén se guardan en un contenedor de transformaciones de tipo <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStoreTransforms.html">FeatureStoreTransforms</a>. Se obtiene así:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">FeatureStore</span> <span class="n">store</span> <span class="o">=</span> <span class="o">(...);</span>
+
+<span class="n">FeatureStoreTransforms</span> <span class="n">transforms</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="na">getTransforms</span><span class="o">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="anadir-una-transformacion-a-un-almacen">
+<h1>15. Añadir una transformación a un almacén<a class="headerlink" href="#anadir-una-transformacion-a-un-almacen" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Las transformaciones se añaden a través del <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStoreTransforms.html">FeatureStoreTransforms</a> asociado al almacén:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">FeatureStore</span> <span class="n">store</span> <span class="o">=</span> <span class="o">(...);</span>
+<span class="n">FeatureStoreTransform</span> <span class="n">transform</span> <span class="o">=</span> <span class="o">(...);</span>
+
+<span class="o">(...)</span>
+
+<span class="n">store</span><span class="o">.</span><span class="na">getTransforms</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">transform</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ejemplo-de-implementacion-de-una-transformacion">
+<h1>16. Ejemplo de implementación de una transformación<a class="headerlink" href="#ejemplo-de-implementacion-de-una-transformacion" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Para facilitar la implementación de transformaciones, existe una clase abstracta que aporta una implementación de
+<a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStoreTransform.html">FeatureStoreTransform</a> y se recomienda extender. Esta clase se llama <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/AbstractFeatureStoreTransform.html">AbstractFeatureStoreTransform</a>.</p>
+<p>Al implementar una transformación, hay que tener en cuenta tres aspectos  que no son evidentes porque no forman parte de la interfaz:</p>
+<ol class="arabic simple">
+<li><em>Constructor vacío</em>: Al tratarse de una entidad persistente requiere un constructor sin parámetros para poder instanciarse cuando aún no se dispone de los datos persistidos.</li>
+<li><em>Implementar los métodos de Persistent_</em>: para que el almacén pueda almacenarse y recuperar el estado en el que se persistió, las transformaciones deben ser capaces de persistir y recargarse.</li>
+<li><em>Método de inicialización</em>: Por el mismo motivo, conviene realizar la inicialización en un método aparte del constructor (por ejemplo <em>initialize(…)</em>). De esta forma quien utilice la transformación llamará al método de inicialización pasándole la información necesaria, una vez se disponga de ella.</li>
+</ol>
+<div class="section" id="anadir-un-atributo-calculado">
+<h2>16.1. Añadir un atributo calculado<a class="headerlink" href="#anadir-un-atributo-calculado" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El siguiente ejemplo muestra cómo se implementa una sencilla transformación. Esta transformación añade un attributo geométrico al <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureType.html">FeatureType</a> a partir de dos atributos de tipo numérico que contienen las <em>X</em> y las <em>Y</em>:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm">  *</span>
+<span class="cm">  * This transform adds a new attribute of type Geometry to the</span>
+<span class="cm">  * original store&#39;s default FeatureType. When applying the transform</span>
+<span class="cm">  * to a single feature this new attribute is assigned the value of a</span>
+<span class="cm">  * point whose coordinates proceed from two numeric attributes from the</span>
+<span class="cm">  * store, called xname, yname.</span>
+<span class="cm">  *</span>
+<span class="cm">  */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTransform</span> <span class="kd">extends</span> <span class="n">AbstractFeatureStoreTransform</span> <span class="o">{</span>
+
+  <span class="kd">private</span> <span class="n">String</span> <span class="n">geomName</span><span class="o">;</span>
+      <span class="kd">private</span> <span class="n">String</span> <span class="n">xname</span><span class="o">;</span>
+      <span class="kd">private</span> <span class="n">String</span> <span class="n">yname</span><span class="o">;</span>
+
+  <span class="kd">private</span> <span class="n">GeometryManager</span> <span class="n">geomManager</span><span class="o">;</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       * A default constructor with out parameters</span>
+<span class="cm">       */</span>
+      <span class="kd">public</span> <span class="nf">MyTransform</span><span class="o">()</span> <span class="o">{</span>
+              <span class="k">this</span><span class="o">.</span><span class="na">geomManager</span> <span class="o">=</span> <span class="n">GeometryLocator</span><span class="o">.</span><span class="na">getGeometryManager</span><span class="o">();</span>
+
+      <span class="o">}</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       * Initializes the transform by assigning the source store and the names of</span>
+<span class="cm">       * the necessary attributes.</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param store</span>
+<span class="cm">       *            source store.</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param geomName</span>
+<span class="cm">       *            name of the geometry attribute in the default feature type</span>
+<span class="cm">       *            from the source store.</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param xname</span>
+<span class="cm">       *            name of the attribute containing the X coordinates</span>
+<span class="cm">       *</span>
+<span class="cm">       * @param yname</span>
+<span class="cm">       *            name of the attribute containing the Y coordinates</span>
+<span class="cm">       *</span>
+<span class="cm">       * @throws DataException</span>
+<span class="cm">       */</span>
+      <span class="kd">public</span> <span class="n">MyTransform</span> <span class="nf">initialize</span><span class="o">(</span><span class="n">FeatureStore</span> <span class="n">store</span><span class="o">,</span> <span class="n">String</span> <span class="n">geomName</span><span class="o">,</span>
+                      <span class="n">String</span> <span class="n">xname</span><span class="o">,</span> <span class="n">String</span> <span class="n">yname</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">DataException</span> <span class="o">{</span>
+
+              <span class="c1">// Initialize some data</span>
+              <span class="n">setFeatureStore</span><span class="o">(</span><span class="n">store</span><span class="o">);</span>
+              <span class="k">this</span><span class="o">.</span><span class="na">geomName</span> <span class="o">=</span> <span class="n">geomName</span><span class="o">;</span>
+              <span class="k">this</span><span class="o">.</span><span class="na">xname</span> <span class="o">=</span> <span class="n">xname</span><span class="o">;</span>
+              <span class="k">this</span><span class="o">.</span><span class="na">yname</span> <span class="o">=</span> <span class="n">yname</span><span class="o">;</span>
+
+              <span class="c1">// obtain the feature type, add the new attribute</span>
+              <span class="c1">// and keep a reference to the</span>
+              <span class="c1">// resulting feature type</span>
+              <span class="n">EditableFeatureType</span> <span class="n">type</span> <span class="o">=</span> <span class="n">getFeatureStore</span><span class="o">().</span><span class="na">getDefaultFeatureType</span><span class="o">()</span>
+                              <span class="o">.</span><span class="na">getEditable</span><span class="o">();</span>
+              <span class="n">type</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">geomName</span><span class="o">,</span> <span class="n">DataTypes</span><span class="o">.</span><span class="na">GEOMETRY</span><span class="o">);</span>
+              <span class="n">List</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+              <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">type</span><span class="o">.</span><span class="na">getNotEditableCopy</span><span class="o">());</span>
+              <span class="n">setFeatureTypes</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="o">(</span><span class="n">FeatureType</span><span class="o">)</span> <span class="n">list</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+              <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+      <span class="o">}</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       * Applies this transform to a target editable feature, using data from the</span>
+<span class="cm">       * source feature.</span>
+<span class="cm">       */</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyTransform</span><span class="o">(</span><span class="n">Feature</span> <span class="n">source</span><span class="o">,</span> <span class="n">EditableFeature</span> <span class="n">target</span><span class="o">)</span>
+                      <span class="kd">throws</span> <span class="n">DataException</span> <span class="o">{</span>
+
+              <span class="c1">// copy source feature data over target feature</span>
+              <span class="n">target</span><span class="o">.</span><span class="na">copyFrom</span><span class="o">(</span><span class="n">source</span><span class="o">);</span>
+
+              <span class="c1">// calculate and assign new attribute&#39;s value</span>
+              <span class="n">Geometry</span> <span class="n">geom</span><span class="o">;</span>
+              <span class="k">try</span> <span class="o">{</span>
+                      <span class="n">geom</span> <span class="o">=</span> <span class="n">geomManager</span><span class="o">.</span><span class="na">createPoint</span><span class="o">(</span><span class="n">source</span><span class="o">.</span><span class="na">getDouble</span><span class="o">(</span><span class="n">xname</span><span class="o">),</span> <span class="n">source</span>
+                                      <span class="o">.</span><span class="na">getDouble</span><span class="o">(</span><span class="n">yname</span><span class="o">),</span> <span class="n">Geometry</span><span class="o">.</span><span class="na">SUBTYPES</span><span class="o">.</span><span class="na">GEOM2D</span><span class="o">);</span>
+              <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">CreateGeometryException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                      <span class="k">throw</span> <span class="k">new</span> <span class="n">ReadException</span><span class="o">(</span><span class="s">&quot;XYTranform&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+              <span class="o">}</span>
+              <span class="n">target</span><span class="o">.</span><span class="na">setGeometry</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">geomName</span><span class="o">,</span> <span class="n">geom</span><span class="o">);</span>
+      <span class="o">}</span>
+
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveToState</span><span class="o">(</span><span class="n">PersistentState</span> <span class="n">state</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">PersistenceException</span> <span class="o">{</span>
+              <span class="n">state</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s">&quot;xname&quot;</span><span class="o">,</span> <span class="n">xname</span><span class="o">);</span>
+              <span class="n">state</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s">&quot;yname&quot;</span><span class="o">,</span> <span class="n">yname</span><span class="o">);</span>
+              <span class="n">state</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s">&quot;geomName&quot;</span><span class="o">,</span> <span class="n">geomName</span><span class="o">);</span>
+      <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">loadFromState</span><span class="o">(</span><span class="n">PersistentState</span> <span class="n">state</span><span class="o">)</span>
+                      <span class="kd">throws</span> <span class="n">PersistenceException</span> <span class="o">{</span>
+              <span class="k">this</span><span class="o">.</span><span class="na">xname</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;xname&quot;</span><span class="o">);</span>
+              <span class="k">this</span><span class="o">.</span><span class="na">yname</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;yname&quot;</span><span class="o">);</span>
+              <span class="k">this</span><span class="o">.</span><span class="na">geomName</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;geomName&quot;</span><span class="o">);</span>
+      <span class="o">}</span>
+
+  <span class="cm">/**</span>
+<span class="cm">   * Returns the FeatureType to use to get data from original store</span>
+<span class="cm">   */</span>
+      <span class="kd">public</span> <span class="n">FeatureType</span> <span class="nf">getSourceFeatureTypeFrom</span><span class="o">(</span><span class="n">FeatureType</span> <span class="n">targetFeatureType</span><span class="o">)</span> <span class="o">{</span>
+              <span class="n">EditableFeatureType</span> <span class="n">ed</span> <span class="o">=</span> <span class="n">targetFeatureType</span><span class="o">.</span><span class="na">getEditable</span><span class="o">();</span>
+              <span class="n">ed</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">geomName</span><span class="o">);</span>
+              <span class="k">return</span> <span class="n">ed</span><span class="o">.</span><span class="na">getNotEditableCopy</span><span class="o">();</span>
+      <span class="o">}</span>
+
+      <span class="cm">/**</span>
+<span class="cm">       * Informs that original values of store don&#39;t will be modified</span>
+<span class="cm">       */</span>
+      <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTransformsOriginalValues</span><span class="o">()</span> <span class="o">{</span>
+              <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+      <span class="o">}</span>
+
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Y para aplicar la transformación haríamos algo como:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">FeatureStoreTransform</span> <span class="n">transform</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MyTransform</span><span class="o">().</span><span class="na">initialize</span><span class="o">(</span><span class="n">store</span><span class="o">,</span><span class="s">&quot;geom&quot;</span><span class="o">,</span><span class="s">&quot;x&quot;</span><span class="o">,</span><span class="s">&quot;y&quot;</span><span class="o">);</span>
+<span class="n">store</span><span class="o">.</span><span class="na">getTransforms</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">transform</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="join-de-dos-almacenes">
+<h2>16.2. JOIN de dos almacenes<a class="headerlink" href="#join-de-dos-almacenes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El siguiente ejemplo realiza una operación <em>JOIN</em> parcial sobre dos tipos de fenómeno de dos almacenes. Siendo <em>A</em> el conjunto de atributos de un tipo de fenómeno y <em>B</em> el conjunto de atributos de otro tipo de fenómeno, definimos nuestra transformación como la unión de <em>A</em> con un subconjunto de <em>B</em>. El subconjunto de <em>B</em> se especifica como parámetro con un array con el nombre de los atributos que se desea incluir en la unión.</p>
+<p>Además de la transformación del tipo de fenómeno, al que se le añaden nuevos atributos, la unión de los datos de los dos almacenes se realiza utilizando el atributo especificado como clave ajena, de forma que para cada fenómeno del almacén principal se busca un fenómeno en el segundo almacén tal que  keyAttr1 == keyAttr2.</p>
+<p>Si existen atributos que se llaman igual en ambos tipos de fenómeno, en la unión resultante se renombrará los de <em>B</em>.</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">JoinTransform</span> <span class="kd">extends</span> <span class="n">AbstractFeatureStoreTransform</span> <span class="o">{</span>
+
+       <span class="cm">/**</span>
+<span class="cm">        * Store from which the join transform will get the additional attributes</span>
+<span class="cm">        */</span>
+       <span class="kd">private</span> <span class="n">FeatureStore</span> <span class="n">store2</span><span class="o">;</span>
+
+       <span class="cm">/**</span>
+<span class="cm">        * name of the key attr in store1 that will be used to match features in</span>
+<span class="cm">        * store2</span>
+<span class="cm">        */</span>
+       <span class="kd">private</span> <span class="n">String</span> <span class="n">keyAttr1</span><span class="o">;</span>
+
+       <span class="cm">/**</span>
+<span class="cm">        * name of the key attr in store2 that will be used to match features in</span>
+<span class="cm">        * store1</span>
+<span class="cm">        */</span>
+       <span class="kd">private</span> <span class="n">String</span> <span class="n">keyAttr2</span><span class="o">;</span>
+
+       <span class="cm">/**</span>
+<span class="cm">        * names of the attributes to join from store2 to store1</span>
+<span class="cm">        */</span>
+       <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">attrs</span><span class="o">;</span>
+
+       <span class="cm">/**</span>
+<span class="cm">        * Attribute names may change after transformation if they are repeated in</span>
+<span class="cm">        * both stores. This map keeps correspondence between store2 original names</span>
+<span class="cm">        * and their transformed counterparts.</span>
+<span class="cm">        */</span>
+       <span class="kd">private</span> <span class="n">Map</span> <span class="n">targetNamesMap</span><span class="o">;</span>
+
+       <span class="kd">private</span> <span class="n">JoinTransformEvaluator</span> <span class="n">evaluator</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+       <span class="kd">private</span> <span class="n">FeatureType</span> <span class="n">originalFeatureType</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+       <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">attrsForQuery</span><span class="o">;</span>
+
+       <span class="cm">/**</span>
+<span class="cm">        * A default constructor</span>
+<span class="cm">        */</span>
+       <span class="kd">public</span> <span class="nf">JoinTransform</span><span class="o">()</span> <span class="o">{</span>
+               <span class="n">targetNamesMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span>
+       <span class="o">}</span>
+
+       <span class="cm">/**</span>
+<span class="cm">        * Initializes all the necessary data for this transform</span>
+<span class="cm">        *</span>
+<span class="cm">        * @param store1</span>
+<span class="cm">        *            store whose default feature type is the target of this</span>
+<span class="cm">        *            transform</span>
+<span class="cm">        *</span>
+<span class="cm">        * @param store2</span>
+<span class="cm">        *            store whose default feature type will provide the new</span>
+<span class="cm">        *            attributes to join</span>
+<span class="cm">        *</span>
+<span class="cm">        * @param keyAttr1</span>
+<span class="cm">        *            key attribute in store1 that matches keyAttr2 in store2</span>
+<span class="cm">        *            (foreign key), used for joining both stores.</span>
+<span class="cm">        *</span>
+<span class="cm">        * @param keyAttr2</span>
+<span class="cm">        *            key attribute in store2 that matches keyAttr1 in store2</span>
+<span class="cm">        *            (foreign key), used for joining both stores.</span>
+<span class="cm">        *</span>
+<span class="cm">        * @param attrs</span>
+<span class="cm">        *            names of the attributes in store2 that will be joined to</span>
+<span class="cm">        *            store1.</span>
+<span class="cm">        */</span>
+       <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">(</span><span class="n">FeatureStore</span> <span class="n">store1</span><span class="o">,</span> <span class="n">FeatureStore</span> <span class="n">store2</span><span class="o">,</span>
+                       <span class="n">String</span> <span class="n">keyAttr1</span><span class="o">,</span> <span class="n">String</span> <span class="n">keyAttr2</span><span class="o">,</span>
+                       <span class="n">String</span><span class="o">[]</span> <span class="n">attrs</span><span class="o">)</span>
+                       <span class="kd">throws</span> <span class="n">DataException</span> <span class="o">{</span>
+
+               <span class="k">if</span> <span class="o">(</span><span class="n">store1</span> <span class="o">==</span> <span class="n">store2</span><span class="o">)</span> <span class="o">{</span>
+                       <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot;store1 == store2&quot;</span><span class="o">);</span>
+               <span class="o">}</span>
+
+               <span class="c1">// Initialize needed data</span>
+               <span class="k">this</span><span class="o">.</span><span class="na">setFeatureStore</span><span class="o">(</span><span class="n">store1</span><span class="o">);</span>
+               <span class="k">this</span><span class="o">.</span><span class="na">store2</span> <span class="o">=</span> <span class="n">store2</span><span class="o">;</span>
+               <span class="k">this</span><span class="o">.</span><span class="na">keyAttr1</span> <span class="o">=</span> <span class="n">keyAttr1</span><span class="o">;</span>
+               <span class="k">this</span><span class="o">.</span><span class="na">keyAttr2</span> <span class="o">=</span> <span class="n">keyAttr2</span><span class="o">;</span>
+               <span class="k">this</span><span class="o">.</span><span class="na">attrs</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">;</span>
+
+               <span class="c1">// calculate this transform resulting feature type</span>
+               <span class="c1">// by adding all specified attrs from store2 to store1&#39;s default</span>
+               <span class="c1">// feature type</span>
+               <span class="k">this</span><span class="o">.</span><span class="na">originalFeatureType</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getFeatureStore</span><span class="o">()</span>
+                               <span class="o">.</span><span class="na">getDefaultFeatureType</span><span class="o">();</span>
+
+               <span class="n">EditableFeatureType</span> <span class="n">type</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getFeatureStore</span><span class="o">().</span><span class="na">getDefaultFeatureType</span><span class="o">().</span><span class="na">getEditable</span><span class="o">();</span>
+
+               <span class="n">FeatureType</span> <span class="n">type2</span> <span class="o">=</span> <span class="n">store2</span><span class="o">.</span><span class="na">getDefaultFeatureType</span><span class="o">();</span>
+
+               <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">attrs</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                       <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+
+                       <span class="c1">// If an attribute already exists with the same name in store1&#39;s</span>
+                       <span class="c1">// default feature type,</span>
+                       <span class="c1">// calculate an alternate name and add it to our type</span>
+                       <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+                       <span class="k">while</span> <span class="o">(</span><span class="n">type</span><span class="o">.</span><span class="na">getIndex</span><span class="o">(</span><span class="n">name</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                               <span class="n">name</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">&quot;_&quot;</span> <span class="o">+</span> <span class="o">++</span><span class="n">j</span><span class="o">;</span>
+                       <span class="o">}</span>
+                       <span class="n">type</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">name</span><span class="o">,</span>
+                                       <span class="n">type2</span><span class="o">.</span><span class="na">getAttributeDescriptor</span><span class="o">(</span><span class="n">attrs</span><span class="o">[</span><span class="n">i</span><span class="o">]).</span><span class="na">getDataType</span><span class="o">());</span>
+
+                       <span class="c1">// keep correspondence between original name and transformed name</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">targetNamesMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">attrs</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">name</span><span class="o">);</span>
+               <span class="o">}</span>
+               <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">targetNamesMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">keyAttr2</span><span class="o">))</span> <span class="o">{</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">attrsForQuery</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">attrs</span><span class="o">;</span>
+               <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                       <span class="n">ArrayList</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">attrs</span><span class="o">.</span><span class="na">length</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+                       <span class="n">list</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">attrs</span><span class="o">));</span>
+                       <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">keyAttr2</span><span class="o">);</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">attrsForQuery</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">[])</span> <span class="n">list</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{});</span>
+               <span class="o">}</span>
+
+               <span class="c1">// assign calculated feature type as this transform&#39;s feature type</span>
+               <span class="n">FeatureType</span><span class="o">[]</span> <span class="n">types</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FeatureType</span><span class="o">[]</span> <span class="o">{</span> <span class="n">type</span><span class="o">.</span><span class="na">getNotEditableCopy</span><span class="o">()</span> <span class="o">};</span>
+               <span class="n">setFeatureTypes</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">types</span><span class="o">),</span> <span class="n">types</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+       <span class="o">}</span>
+
+       <span class="cm">/**</span>
+<span class="cm">        *</span>
+<span class="cm">        *</span>
+<span class="cm">        * @param source</span>
+<span class="cm">        *</span>
+<span class="cm">        * @param target</span>
+<span class="cm">        *</span>
+<span class="cm">        * @throws DataException</span>
+<span class="cm">        */</span>
+       <span class="kd">public</span> <span class="kt">void</span> <span class="nf">applyTransform</span><span class="o">(</span><span class="n">Feature</span> <span class="n">source</span><span class="o">,</span> <span class="n">EditableFeature</span> <span class="n">target</span><span class="o">)</span>
+                       <span class="kd">throws</span> <span class="n">DataException</span> <span class="o">{</span>
+
+               <span class="c1">// copy the data from store1 into the resulting feature</span>
+               <span class="k">this</span><span class="o">.</span><span class="na">copySourceToTarget</span><span class="o">(</span><span class="n">source</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>
+
+               <span class="c1">// ask store2 for the specified attributes, filtering by the key</span>
+               <span class="c1">// attribute value</span>
+               <span class="c1">// from the source feature</span>
+               <span class="n">JoinTransformEvaluator</span> <span class="n">eval</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getEvaluator</span><span class="o">();</span>
+               <span class="n">eval</span><span class="o">.</span><span class="na">updateValue</span><span class="o">(</span><span class="n">source</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">keyAttr1</span><span class="o">));</span>
+
+               <span class="n">FeatureQuery</span> <span class="n">query</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getFeatureStore</span><span class="o">().</span><span class="na">createFeatureQuery</span><span class="o">();</span>
+               <span class="n">query</span><span class="o">.</span><span class="na">setAttributeNames</span><span class="o">(</span><span class="n">attrsForQuery</span><span class="o">);</span>
+               <span class="n">query</span><span class="o">.</span><span class="na">setFilter</span><span class="o">(</span><span class="n">eval</span><span class="o">);</span>
+
+               <span class="n">FeatureSet</span> <span class="n">set</span> <span class="o">=</span> <span class="n">store2</span><span class="o">.</span><span class="na">getFeatureSet</span><span class="o">(</span><span class="n">query</span><span class="o">);</span>
+
+               <span class="c1">// In this join implementation, we will take only the first matching</span>
+               <span class="c1">// feature found in store2</span>
+
+               <span class="n">FeatureAttributeDescriptor</span> <span class="n">attr</span><span class="o">;</span>
+               <span class="n">Feature</span> <span class="n">feat</span><span class="o">;</span>
+               <span class="n">String</span> <span class="n">targetName</span><span class="o">;</span>
+
+               <span class="n">Iterator</span> <span class="n">itAttr</span><span class="o">;</span>
+
+               <span class="n">DisposableIterator</span> <span class="n">itFeat</span> <span class="o">=</span> <span class="n">set</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+               <span class="k">if</span> <span class="o">(</span><span class="n">itFeat</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+                       <span class="n">feat</span> <span class="o">=</span> <span class="o">(</span><span class="n">Feature</span><span class="o">)</span> <span class="n">itFeat</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+
+                       <span class="c1">// copy all attributes from joined feature to target</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">copyJoinToTarget</span><span class="o">(</span><span class="n">feat</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>
+               <span class="o">}</span>
+               <span class="n">itFeat</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+               <span class="n">set</span><span class="o">.</span><span class="na">dispose</span><span class="o">();</span>
+       <span class="o">}</span>
+
+       <span class="cm">/**</span>
+<span class="cm">        * @param feat</span>
+<span class="cm">        * @param target</span>
+<span class="cm">        */</span>
+       <span class="kd">private</span> <span class="kt">void</span> <span class="nf">copyJoinToTarget</span><span class="o">(</span><span class="n">Feature</span> <span class="n">join</span><span class="o">,</span> <span class="n">EditableFeature</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+               <span class="n">Iterator</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">targetNamesMap</span><span class="o">.</span><span class="na">entrySet</span><span class="o">()</span>
+                               <span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+               <span class="n">Entry</span> <span class="n">entry</span><span class="o">;</span>
+               <span class="n">FeatureType</span> <span class="n">trgType</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="na">getType</span><span class="o">();</span>
+               <span class="n">FeatureAttributeDescriptor</span> <span class="n">attr</span><span class="o">;</span>
+               <span class="k">while</span> <span class="o">(</span><span class="n">iter</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+                       <span class="n">entry</span> <span class="o">=</span> <span class="o">(</span><span class="n">Entry</span><span class="o">)</span> <span class="n">iter</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+                       <span class="n">attr</span> <span class="o">=</span> <span class="n">trgType</span><span class="o">.</span><span class="na">getAttributeDescriptor</span><span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+                       <span class="k">if</span> <span class="o">(</span><span class="n">attr</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                               <span class="n">target</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">attr</span><span class="o">.</span><span class="na">getIndex</span><span class="o">(),</span> <span class="n">join</span><span class="o">.</span><span class="na">get</span><span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()));</span>
+                       <span class="o">}</span>
+               <span class="o">}</span>
+
+
+       <span class="o">}</span>
+
+       <span class="cm">/**</span>
+<span class="cm">        * @param source</span>
+<span class="cm">        * @param target</span>
+<span class="cm">        */</span>
+       <span class="kd">private</span> <span class="kt">void</span> <span class="nf">copySourceToTarget</span><span class="o">(</span><span class="n">Feature</span> <span class="n">source</span><span class="o">,</span> <span class="n">EditableFeature</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+               <span class="n">FeatureAttributeDescriptor</span> <span class="n">attr</span><span class="o">,</span> <span class="n">attrTrg</span><span class="o">;</span>
+               <span class="n">FeatureType</span> <span class="n">ftSrc</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="na">getType</span><span class="o">();</span>
+               <span class="n">FeatureType</span> <span class="n">ftTrg</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="na">getType</span><span class="o">();</span>
+
+
+               <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">source</span><span class="o">.</span><span class="na">getType</span><span class="o">().</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                       <span class="n">attr</span> <span class="o">=</span> <span class="n">ftSrc</span><span class="o">.</span><span class="na">getAttributeDescriptor</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                       <span class="k">if</span> <span class="o">(</span><span class="n">ftTrg</span><span class="o">.</span><span class="na">getIndex</span><span class="o">(</span><span class="n">attr</span><span class="o">.</span><span class="na">getName</span><span class="o">())</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                               <span class="k">try</span> <span class="o">{</span>
+                                       <span class="n">target</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">attr</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="n">source</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+                               <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IllegalArgumentException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                                       <span class="n">attrTrg</span> <span class="o">=</span> <span class="n">ftTrg</span><span class="o">.</span><span class="na">getAttributeDescriptor</span><span class="o">(</span><span class="n">attr</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+                                       <span class="n">target</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">attrTrg</span><span class="o">.</span><span class="na">getIndex</span><span class="o">(),</span> <span class="n">attrTrg</span><span class="o">.</span><span class="na">getDefaultValue</span><span class="o">());</span>
+                               <span class="o">}</span>
+
+                       <span class="o">}</span>
+               <span class="o">}</span>
+
+       <span class="o">}</span>
+
+       <span class="kd">private</span> <span class="n">JoinTransformEvaluator</span> <span class="nf">getEvaluator</span><span class="o">()</span> <span class="o">{</span>
+               <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">evaluator</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">evaluator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JoinTransformEvaluator</span><span class="o">(</span><span class="n">keyAttr2</span><span class="o">);</span>
+               <span class="o">}</span>
+               <span class="k">return</span> <span class="n">evaluator</span><span class="o">;</span>
+
+       <span class="o">}</span>
+
+       <span class="kd">private</span> <span class="kd">class</span> <span class="nc">JoinTransformEvaluator</span> <span class="kd">implements</span> <span class="n">Evaluator</span> <span class="o">{</span>
+
+               <span class="kd">private</span> <span class="n">String</span> <span class="n">attribute</span><span class="o">;</span>
+               <span class="kd">private</span> <span class="n">Object</span> <span class="n">value</span><span class="o">;</span>
+               <span class="kd">private</span> <span class="n">String</span> <span class="n">cql</span><span class="o">;</span>
+               <span class="kd">private</span> <span class="n">EvaluatorFieldsInfo</span> <span class="n">info</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+               <span class="c1">//              private int attributeIndex;</span>
+
+               <span class="kd">public</span> <span class="nf">JoinTransformEvaluator</span><span class="o">(</span><span class="n">String</span> <span class="n">attribute</span><span class="o">)</span> <span class="o">{</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">attribute</span> <span class="o">=</span> <span class="n">attribute</span><span class="o">;</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">info</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EvaluatorFieldsInfo</span><span class="o">();</span>
+
+                       <span class="c1">//                      this.attributeIndex = attrIndex;</span>
+               <span class="o">}</span>
+
+               <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateValue</span><span class="o">(</span><span class="n">Object</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">cql</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">attribute</span> <span class="o">+</span> <span class="s">&quot;= &#39;&quot;</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">+</span> <span class="s">&quot;&#39;&quot;</span><span class="o">;</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">info</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EvaluatorFieldsInfo</span><span class="o">();</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">info</span><span class="o">.</span><span class="na">addMatchFieldValue</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">attribute</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>
+               <span class="o">}</span>
+
+               <span class="kd">public</span> <span class="n">Object</span> <span class="nf">evaluate</span><span class="o">(</span><span class="n">EvaluatorData</span> <span class="n">arg0</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">EvaluatorException</span> <span class="o">{</span>
+                       <span class="n">Object</span> <span class="n">curValue</span> <span class="o">=</span> <span class="n">arg0</span><span class="o">.</span><span class="na">getDataValue</span><span class="o">(</span><span class="n">attribute</span><span class="o">);</span>
+                       <span class="k">if</span> <span class="o">(</span><span class="n">curValue</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                               <span class="k">return</span> <span class="k">new</span> <span class="n">Boolean</span><span class="o">(</span><span class="n">value</span> <span class="o">==</span> <span class="kc">null</span><span class="o">);</span>
+                       <span class="o">}</span>
+                       <span class="k">return</span> <span class="k">new</span> <span class="n">Boolean</span><span class="o">(</span><span class="n">curValue</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">value</span><span class="o">));</span>
+               <span class="o">}</span>
+
+               <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCQL</span><span class="o">()</span> <span class="o">{</span>
+                       <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">cql</span><span class="o">;</span>
+               <span class="o">}</span>
+
+               <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>
+                       <span class="k">return</span> <span class="s">&quot;Evaluates join transform match&quot;</span><span class="o">;</span>
+               <span class="o">}</span>
+
+               <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+                       <span class="k">return</span> <span class="s">&quot;JoinTransformEvaluator&quot;</span><span class="o">;</span>
+               <span class="o">}</span>
+
+               <span class="kd">public</span> <span class="n">EvaluatorFieldsInfo</span> <span class="nf">getFieldsInfo</span><span class="o">()</span> <span class="o">{</span>
+                       <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">info</span><span class="o">;</span>
+               <span class="o">}</span>
+
+       <span class="o">}</span>
+
+
+
+       <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveToState</span><span class="o">(</span><span class="n">PersistentState</span> <span class="n">state</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">PersistenceException</span> <span class="o">{</span>
+               <span class="n">state</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s">&quot;store1&quot;</span><span class="o">,</span> <span class="n">getFeatureStore</span><span class="o">());</span>
+               <span class="n">state</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s">&quot;store2&quot;</span><span class="o">,</span> <span class="n">store2</span><span class="o">);</span>
+               <span class="n">state</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s">&quot;keyAttr1&quot;</span><span class="o">,</span> <span class="n">keyAttr1</span><span class="o">);</span>
+               <span class="n">state</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s">&quot;keyAttr2&quot;</span><span class="o">,</span> <span class="n">keyAttr2</span><span class="o">);</span>
+               <span class="n">state</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="s">&quot;attrs&quot;</span><span class="o">,</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">attrs</span><span class="o">));</span>
+       <span class="o">}</span>
+
+       <span class="kd">public</span> <span class="kt">void</span> <span class="nf">loadFromState</span><span class="o">(</span><span class="n">PersistentState</span> <span class="n">state</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">PersistenceException</span> <span class="o">{</span>
+               <span class="n">List</span> <span class="n">attrsTmp</span> <span class="o">=</span> <span class="o">(</span><span class="n">List</span><span class="o">)</span> <span class="n">state</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;attrs&quot;</span><span class="o">);</span>
+               <span class="n">String</span><span class="o">[]</span> <span class="n">aattrs</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">[])</span> <span class="n">attrsTmp</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">attrsTmp</span><span class="o">.</span><span class="na">size</span><span class="o">()]);</span>
+               <span class="k">try</span> <span class="o">{</span>
+                       <span class="k">this</span><span class="o">.</span><span class="na">initialize</span><span class="o">(</span>
+                                       <span class="o">(</span><span class="n">FeatureStore</span><span class="o">)</span> <span class="n">state</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;store1&quot;</span><span class="o">),</span>
+                                       <span class="o">(</span><span class="n">FeatureStore</span><span class="o">)</span> <span class="n">state</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;store2&quot;</span><span class="o">),</span>
+                                       <span class="n">state</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;keyAttr1&quot;</span><span class="o">),</span>
+                                       <span class="n">state</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;keyAttr2&quot;</span><span class="o">),</span>
+                                       <span class="n">aattrs</span><span class="o">);</span>
+               <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">DataException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                       <span class="k">throw</span> <span class="k">new</span> <span class="n">PersistenceException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+               <span class="o">}</span>
+
+       <span class="o">}</span>
+
+
+       <span class="kd">public</span> <span class="n">FeatureType</span> <span class="nf">getSourceFeatureTypeFrom</span><span class="o">(</span><span class="n">FeatureType</span> <span class="n">arg0</span><span class="o">)</span> <span class="o">{</span>
+               <span class="n">EditableFeatureType</span> <span class="n">orgType</span> <span class="o">=</span> <span class="n">originalFeatureType</span><span class="o">.</span><span class="na">getEditable</span><span class="o">();</span>
+               <span class="n">Iterator</span> <span class="n">iter</span> <span class="o">=</span> <span class="n">arg0</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+               <span class="n">FeatureAttributeDescriptor</span> <span class="n">attr</span><span class="o">;</span>
+               <span class="n">ArrayList</span> <span class="n">toRetain</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+               <span class="k">while</span> <span class="o">(</span><span class="n">iter</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+                       <span class="n">attr</span> <span class="o">=</span> <span class="o">(</span><span class="n">FeatureAttributeDescriptor</span><span class="o">)</span> <span class="n">iter</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+                       <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">targetNamesMap</span><span class="o">.</span><span class="na">containsValue</span><span class="o">(</span><span class="n">attr</span><span class="o">.</span><span class="na">getName</span><span class="o">()))</span> <span class="o">{</span>
+                               <span class="k">continue</span><span class="o">;</span>
+                       <span class="o">}</span>
+                       <span class="n">toRetain</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">attr</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+               <span class="o">}</span>
+
+               <span class="k">if</span> <span class="o">(!</span><span class="n">toRetain</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">keyAttr1</span><span class="o">))</span> <span class="o">{</span>
+                       <span class="n">toRetain</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">keyAttr1</span><span class="o">);</span>
+               <span class="o">}</span>
+
+               <span class="n">iter</span> <span class="o">=</span> <span class="n">originalFeatureType</span><span class="o">.</span><span class="na">iterator</span><span class="o">();</span>
+               <span class="k">while</span> <span class="o">(</span><span class="n">iter</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+                       <span class="n">attr</span> <span class="o">=</span> <span class="o">(</span><span class="n">FeatureAttributeDescriptor</span><span class="o">)</span> <span class="n">iter</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+                       <span class="k">if</span> <span class="o">(!</span><span class="n">toRetain</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">attr</span><span class="o">.</span><span class="na">getName</span><span class="o">()))</span> <span class="o">{</span>
+                               <span class="n">orgType</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">attr</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+                       <span class="o">}</span>
+
+               <span class="o">}</span>
+
+               <span class="k">return</span> <span class="n">orgType</span><span class="o">.</span><span class="na">getNotEditableCopy</span><span class="o">();</span>
+       <span class="o">}</span>
+
+       <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isTransformsOriginalValues</span><span class="o">()</span> <span class="o">{</span>
+               <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+       <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>Y para aplicar la transformacion hariamos algo como:</p>
+<div class="highlight-java"><div class="highlight"><pre><span></span><span class="n">String</span><span class="o">[]</span> <span class="n">attrNames</span> <span class="o">=</span> <span class="o">(...);</span>
+
+<span class="n">FeatureStoreTransform</span> <span class="n">transform</span> <span class="o">=</span> <span class="k">new</span> <span class="n">JoinTransform</span><span class="o">().</span><span class="na">initialize</span><span class="o">(</span><span class="n">store</span><span class="o">,</span> <span class="n">store2</span><span class="o">,</span> <span class="s">&quot;featId&quot;</span><span class="o">,</span> <span class="s">&quot;featId&quot;</span><span class="o">,</span> <span class="n">attrNames</span><span class="o">);</span>
+<span class="n">store</span><span class="o">.</span><span class="na">getTransforms</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">transform</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">11. Transformaciones sobre almacenes</a></li>
+<li><a class="reference internal" href="#introduccion">12. Introducción</a></li>
+<li><a class="reference internal" href="#la-interfaz-featurestoretransform">13. La interfaz FeatureStoreTransform</a></li>
+<li><a class="reference internal" href="#obtener-las-transformaciones-de-un-almacen">14. Obtener las transformaciones de un almacén</a></li>
+<li><a class="reference internal" href="#anadir-una-transformacion-a-un-almacen">15. Añadir una transformación a un almacén</a></li>
+<li><a class="reference internal" href="#ejemplo-de-implementacion-de-una-transformacion">16. Ejemplo de implementación de una transformación</a><ul>
+<li><a class="reference internal" href="#anadir-un-atributo-calculado">16.1. Añadir un atributo calculado</a></li>
+<li><a class="reference internal" href="#join-de-dos-almacenes">16.2. JOIN de dos almacenes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="api_soporte_indices.html"
+                        title="capítulo anterior">10. Soporte de índices</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="../binarios.html"
+                        title="próximo capítulo">5. Binarios</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/org.gvsig.fmap.dal/2.2/acceso_a_datos_tabulares/api_transformacion_sobre_almacenes.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../binarios.html" title="5. Binarios"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="api_soporte_indices.html" title="10. Soporte de índices"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >org.gvsig.fmap.dal</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../acceso_a_datos_tabulares.html" >4. Acceso a datos tabulares</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >API de los servicios asociados al consumidor de datos</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

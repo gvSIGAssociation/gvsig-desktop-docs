@@ -1,0 +1,259 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>14. Leyendas &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="15. Geoprocesos" href="geoprocesos.html" />
+    <link rel="prev" title="13. Interfaces visuales" href="interfaces_visuales.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="geoprocesos.html" title="15. Geoprocesos"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="interfaces_visuales.html" title="13. Interfaces visuales"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Documentación de Scripting en gvSIG 2.4</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="leyendas">
+<h1>14. Leyendas<a class="headerlink" href="#leyendas" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="en-capas-vectoriales">
+<h2>14.1. En capas vectoriales<a class="headerlink" href="#en-capas-vectoriales" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Podemos crear y establecer leyendas a capas vectoriales.</p>
+<p>Un ejemplo es la creación de una leyenda de intervalos para una capa de puntos:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="n">geom</span>
+<span class="kn">from</span> <span class="nn">java.awt</span> <span class="k">import</span> <span class="n">Color</span>
+<span class="kn">from</span> <span class="nn">org.gvsig.symbology.fmap.mapcontext.rendering.legend.impl</span> <span class="k">import</span> <span class="n">VectorialIntervalLegend</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Create interval legend &quot;&quot;&quot;</span>
+
+        <span class="n">vil</span> <span class="o">=</span> <span class="n">VectorialIntervalLegend</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">POINT</span><span class="p">)</span>
+
+        <span class="n">vil</span><span class="o">.</span><span class="n">setStartColor</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+        <span class="n">vil</span><span class="o">.</span><span class="n">setEndColor</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+        <span class="n">vil</span><span class="o">.</span><span class="n">setIntervalType</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">store</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span><span class="o">.</span><span class="n">getFeatureStore</span><span class="p">()</span>
+        <span class="n">ii</span> <span class="o">=</span> <span class="n">vil</span><span class="o">.</span><span class="n">calculateIntervals</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">geom</span><span class="o">.</span><span class="n">POINT</span><span class="p">)</span>
+
+        <span class="n">vil</span><span class="o">.</span><span class="n">setIntervals</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+
+        <span class="n">currentLayer</span><span class="p">()</span><span class="o">.</span><span class="n">setLegend</span><span class="p">(</span><span class="n">vil</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Podemos ver los diferentes parámetros que soporta <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/symbology/fmap/mapcontext/rendering/legend/impl/VectorialIntervalLegend.html">VectorialIntervalLegend</a>. Se establece un color de inicio y de final, un tipo de intervalo, y el número de intervalos que queremos.</p>
+<p>Con 2 intervalos:</p>
+<div class="figure align-center">
+<img alt="../../_images/legend_intervals_21.png" src="../../_images/legend_intervals_21.png" />
+</div>
+<p>Con 5 intervalos:</p>
+<div class="figure align-center">
+<img alt="../../_images/legend_intervals_51.png" src="../../_images/legend_intervals_51.png" />
+</div>
+<p>Generando símbolos para capas vectoriales:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+<span class="kn">import</span> <span class="nn">gvsig</span>
+<span class="kn">from</span> <span class="nn">java.awt</span> <span class="k">import</span> <span class="n">Color</span>
+<span class="kn">from</span> <span class="nn">org.gvsig.fmap.mapcontext</span> <span class="k">import</span> <span class="n">MapContextLocator</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Legend: Creating points &quot;&quot;&quot;</span>
+        <span class="c1">#p1 = gvsig.simplePointSymbol()</span>
+        <span class="nb">print</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">COLORS</span>
+
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">simplePointSymbol</span><span class="p">(</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">simplePointSymbol</span><span class="p">(</span><span class="n">gvsig</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="s2">&quot;green&quot;</span><span class="p">])</span>
+        <span class="nb">print</span> <span class="s2">&quot;simplePointSymbol Green: &quot;</span><span class="p">,</span> <span class="n">p2</span>
+
+        <span class="n">sp</span> <span class="o">=</span> <span class="n">MapContextLocator</span><span class="o">.</span><span class="n">getSymbolManager</span><span class="p">()</span><span class="o">.</span><span class="n">getSymbolPreferences</span><span class="p">()</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">getDefaultSymbolFillColor</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;color: &quot;</span><span class="p">,</span> <span class="n">color</span>
+
+        <span class="c1">##</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">MapContextLocator</span><span class="o">.</span><span class="n">getSymbolManager</span><span class="p">()</span><span class="c1">#.isDefaultSymbolFillColorAleatory()</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">MapContextLocator</span><span class="o">.</span><span class="n">getMapContextManager</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;mapcontext: &quot;</span><span class="p">,</span><span class="n">v</span>
+        <span class="nb">print</span> <span class="s2">&quot;defaultSymbolFillColorAleatory: &quot;</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">isDefaultSymbolFillColorAleatory</span><span class="p">()</span>
+
+        <span class="n">xx</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">getDefaultColor</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;getDefaultColor: &quot;</span><span class="p">,</span> <span class="n">xx</span>
+
+        <span class="n">yy</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">simplePointSymbol</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;simplePointSymbol: &quot;</span><span class="p">,</span> <span class="n">yy</span>
+
+        <span class="n">zz</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">simpleLineSymbol</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;simpleLineSymbol: &quot;</span><span class="p">,</span> <span class="n">zz</span>
+
+        <span class="n">uu</span> <span class="o">=</span> <span class="n">gvsig</span><span class="o">.</span><span class="n">simplePolygonSymbol</span><span class="p">()</span>
+        <span class="nb">print</span> <span class="s2">&quot;simplePolygonSymbol: &quot;</span><span class="p">,</span> <span class="n">uu</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="capa-de-graphics-layer">
+<h2>14.2. Capa de Graphics Layer<a class="headerlink" href="#capa-de-graphics-layer" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Ejemplo para crear una capa de graphicslayer, esta capa se sitúa por encima del resto en nuestra Vista:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># encoding: utf-8</span>
+
+
+<span class="kn">from</span> <span class="nn">gvsig</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">gvsig.geom</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">vista</span><span class="o">=</span><span class="n">currentView</span><span class="p">()</span>
+    <span class="n">gp</span> <span class="o">=</span> <span class="n">vista</span><span class="o">.</span><span class="n">getGraphicsLayer</span><span class="p">()</span>
+    <span class="n">gp</span><span class="o">.</span><span class="n">removeGraphics</span><span class="p">(</span><span class="s2">&quot;ejemplo&quot;</span><span class="p">)</span>
+
+    <span class="n">features</span> <span class="o">=</span> <span class="n">currentLayer</span><span class="p">()</span><span class="o">.</span><span class="n">features</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+        <span class="n">pol</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">getColorFromRGB</span><span class="p">(</span><span class="n">r</span><span class="p">(),</span> <span class="n">r</span><span class="p">(),</span> <span class="n">r</span><span class="p">()</span> <span class="p">,</span><span class="n">r</span><span class="p">())</span>
+        <span class="n">polSymbol</span> <span class="o">=</span> <span class="n">simplePolygonSymbol</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">idPolSymbol</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">addSymbol</span><span class="p">(</span><span class="n">polSymbol</span><span class="p">)</span>
+        <span class="n">gp</span><span class="o">.</span><span class="n">addGraphic</span><span class="p">(</span><span class="s2">&quot;ejemplo&quot;</span><span class="p">,</span> <span class="n">pol</span><span class="p">,</span>  <span class="n">idPolSymbol</span><span class="p">,</span> <span class="s2">&quot;Label&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<img alt="../../_images/graphicslayer_11.png" src="../../_images/graphicslayer_11.png" />
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">14. Leyendas</a><ul>
+<li><a class="reference internal" href="#en-capas-vectoriales">14.1. En capas vectoriales</a></li>
+<li><a class="reference internal" href="#capa-de-graphics-layer">14.2. Capa de Graphics Layer</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="interfaces_visuales.html"
+                        title="capítulo anterior">13. Interfaces visuales</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="geoprocesos.html"
+                        title="próximo capítulo">15. Geoprocesos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/scripting_devel_guide/2.4/leyendas.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="geoprocesos.html" title="15. Geoprocesos"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="interfaces_visuales.html" title="13. Interfaces visuales"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Documentación de Scripting en gvSIG 2.4</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,240 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>&lt;no title&gt; &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>En el raíz del proyecto de SVN deberá existir un fichero <em>README.txt</em>
+que oriente a quien se descarga el proyecto sobre cómo debe compilarlo,
+desplegarlo, empaquetarlo y actualizar las traducciones a otros idiomas.
+Existe una <a class="reference external" href="/web/reference_catalog/lookupObject?uuid=de4119b71d8952500c5a1f37ed60831b">plantilla</a> en formato <a class="reference external" href="http://docutils.sourceforge.net/rst.html">ReST</a>  para ser usada a tal efecto.</p>
+<p>Para obtener la <a class="reference external" href="/web/reference_catalog/lookupObject?uuid=de4119b71d8952500c5a1f37ed60831b">plantilla</a> deberá utilizar el <em>código fuente</em> del documento.
+Accederá a este desde el icono que aparece en la parte inferior de la
+<a class="reference external" href="/web/reference_catalog/lookupObject?uuid=de4119b71d8952500c5a1f37ed60831b">plantilla</a> (<a class="reference external" href="/web/reference_catalog/lookupObject?uuid=529fc89cb1d4e7677ed4f3e2a16af644">más información sobre cómo acceder a los fuentes de un
+documento aquí</a>).</p>
+<p>Esta plantilla contendrá las siguientes secciones:</p>
+<ul>
+<li><p class="first"><em>Introducción</em></p>
+<p>Tendrá una lista de puntos con la enumeración
+de los distintos apartados que hayan en este fichero.</p>
+</li>
+<li><p class="first"><em>Información sobre versión</em></p>
+<p>Deberá especificar:</p>
+<ul class="simple">
+<li>Ficheros que se deben tocar cada vez que se requiera cambiar el número
+de versión del proyecto.</li>
+<li>Que operaciones hay que realizar para mantener actualizado el número
+de versión.</li>
+<li>En caso de que no siga el formato de número de versión o la política
+de actualización que usa gvSIG, deberá describir cual es esta.</li>
+</ul>
+<p>Es recomendable que lea el documento
+<a class="reference external" href="/web/reference_catalog/lookupObject?uuid=99467e3828f3fe1a25ef5b6c96d17a13">Interpretación del número de versión en gvSIG</a> .</p>
+</li>
+<li><p class="first"><em>Instrucciones de compilación</em></p>
+<p>Deberá cubrir:</p>
+<ul class="simple">
+<li>Instrucciones para configurar el  workspace de eclipse.</li>
+<li>Instrucciones de compilación del proyecto.</li>
+<li>Instrucciones para que un desarrollador lo pueda desplegar
+sobre andami en caso de que se trate de un plugin de gvSIG.</li>
+</ul>
+<p>Recuerde especificar si debe descargarse y montar un workspace
+con gvSIG o si su extensión debe compilarse contra unos binarios
+de gvSIG.</p>
+</li>
+<li><p class="first"><em>Instrucciones de empaquetado</em></p>
+<p>Aquí deberá indicar qué se debe hacer para empaquetar el
+proyecto, cubriendo tanto el empaquetado como extensión
+independiente, como dando instrucciones a realizar para
+empaquetarlo en una instalación de gvSIG.</p>
+<p>Las instrucciones de empaquetado deberán incluir, tanto
+el proceso de empaquetado en si mismo, como el mantenimiento
+de un <em>número de versión</em> único, y actualización de los ficheros
+que corresponda en el SVN para que quede reflejado donde corresponda
+el incremento del <em>número de versión</em>.</p>
+<p>Así mismo, deberá incluir las instrucciones necesarias para
+generar un <em>tag</em> en el sistema de control de versiones con
+los fuentes que se corresponden con ese <em>número de versión</em>,
+detallando la política de nombres a usar para el nombre del
+<em>tag</em>.</p>
+<p>Además deberá seguir una política bien definida sobre el nombre
+que da al binario con su distribución. Es imprescindible que en
+el nombre del binario quede especificado:</p>
+<ul class="simple">
+<li>Su <em>proyecto</em>.</li>
+<li>La <em>versión</em>.</li>
+<li>La <em>plataforma</em>.</li>
+</ul>
+<p>Si sigue una política para el nombre de los binarios de su distribución
+distinta a la marcada por gvSIG deberá indicarla en esta sección.
+Puede consultar la política de gvSIG al respecto en
+<a class="reference external" href="/web/reference_catalog/lookupObject?uuid=ab2213e3b42ff25300be00b564b05c63">Nombrado de binarios para un plugin de gvSIG</a>,</p>
+</li>
+<li><p class="first"><em>Notas sobre internacionalización</em></p>
+<p>Que contendra los subapartados:</p>
+<ul>
+<li><p class="first">Dónde se encuentran las cadenas de traducción.</p>
+<p>Aquí se especificara donde se encuentran las cadenas de traducción
+que usa el proyecto así como en qué idiomas están disponibles.</p>
+</li>
+<li><p class="first">Qué hay que hacer para incluir un nuevo idioma</p>
+<p>Deberá especificar aquí qué hay que hacer para añadir un
+nuevo idioma a las cadenas que ya existan en el proyecto.</p>
+</li>
+</ul>
+</li>
+</ul>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">Registro de cambios</span><a class="headerlink" href="#id1" title="Enlace permanente a esta tabla">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">versión</th>
+<th class="head">Descripcion</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1.1</td>
+<td>Modificadda la redaccion del parrafo sobre como obtener la plantilla</td>
+</tr>
+<tr class="row-odd"><td>1.1</td>
+<td>Se han extendido las intrucciones de empaquetado para que incluyan
+el mantenimiento del número de build y los <em>tags</em> correspondientes
+en el SVN.</td>
+</tr>
+<tr class="row-even"><td>1.2</td>
+<td>Modificada la redaccion de la seccion <em>Instrucciones de compilación</em>
+para que quede mas claro que debe contener.</td>
+</tr>
+<tr class="row-odd"><td>1.2</td>
+<td>Cambios menores en la redaccion del parrafo que habla sore <em>tags</em>
+en el apartado <em>Instrucciones de empaquetado</em></td>
+</tr>
+<tr class="row-even"><td>1.2</td>
+<td>Reescritura del apartado <em>Informacion sobre versión</em>, añadiendo
+enlace a la documentacion que describe como interpretar el
+número de versión en gvSIG.</td>
+</tr>
+<tr class="row-odd"><td>1.2</td>
+<td>Añadida nota con la necesidad de una política de nombrado de
+binarios.</td>
+</tr>
+</tbody>
+</table>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/gvsig_contributions/Proyectos_oficiales/templates/README.txt.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

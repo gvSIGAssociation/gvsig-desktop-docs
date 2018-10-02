@@ -1,0 +1,352 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Documentación de Scripting en gvSIG 2.4 &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="1. Introducción" href="introduccion.html" />
+    <link rel="prev" title="17. Lenguaje R" href="../2.3/rscript.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="introduccion.html" title="1. Introducción"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="../2.3/rscript.html" title="17. Lenguaje R"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="documentacion-de-scripting-en-gvsig-2-4">
+<h1>Documentación de Scripting en gvSIG 2.4<a class="headerlink" href="#documentacion-de-scripting-en-gvsig-2-4" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="tabla-de-contenidos">
+<h2>Tabla de contenidos<a class="headerlink" href="#tabla-de-contenidos" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduccion.html">1. Introducción</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#que-es-el-modulo-de-scripting">1.1. Qué es el Módulo de Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#que-necesitas">1.2. Qué necesitas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#que-nos-permite">1.3. Qué nos permite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#que-lenguaje-utilizamos">1.4. Qué lenguaje utilizamos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#como-acceder-al-modulo-de-scripting">1.5. Cómo acceder al Módulo de Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#librerias-de-gvsig-para-scripting">1.6. Librerías de gvSIG para Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#organizacion-de-la-libreria-gvsig">1.7. Organización de la librería gvsig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduccion.html#creacion-de-un-script">1.8. Creación de un script</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="editor_de_scripts.html">2. Editor de Scripts: Funcionalidades</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#busqueda">2.1. Búsqueda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#reemplazar">2.2. Reemplazar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#autocompletado">2.3. Autocompletado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#navegador-de-codigo">2.4. Navegador de código</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#buscar-referencias">2.5. Buscar referencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#buscador-de-clases">2.6. Buscador de clases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#selector-de-fuente">2.7. Selector de fuente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#markdown-preview">2.8. Markdown preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#shell-python">2.9. Shell Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#javadocs">2.10. Javadocs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#empaquetador-de-scripts">2.11. Empaquetador de Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#abeille">2.12. Abeille</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#lint">2.13. Lint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#thread-list">2.14. Thread list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#load-layer">2.15. Load layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#fix-imports">2.16. Fix imports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#filesystem-explorer">2.17. Filesystem Explorer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#use-plugin">2.18. Use plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#git">2.19. Git</a></li>
+<li class="toctree-l2"><a class="reference internal" href="editor_de_scripts.html#r">2.20. R</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modelo_de_objetos_simplificado.html">3. Modelo de objetos simplificado</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modelo_de_objetos_simplificado.html#como-interpretar-el-diagrama">3.1. Cómo interpretar el diagrama</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modelo_de_clases_simplificado.html">4. Modelo de clases simplificado</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modelo_de_clases_simplificado.html#plugins-y-acciones">4.1. Plugins y acciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelo_de_clases_simplificado.html#proyecto-y-documentos">4.2. Proyecto y documentos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelo_de_clases_simplificado.html#mapcontrol">4.3. Mapcontrol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelo_de_clases_simplificado.html#mapcontext">4.4. MapContext</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelo_de_clases_simplificado.html#geometrias">4.5. Geometrías</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelo_de_clases_simplificado.html#acceso-a-datos-dal">4.6. Acceso a datos (DAL)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_commonsdialog.html">5. Módulo commonsdialog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modulo_commonsdialog.html#funciones-principales">5.1. Funciones principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_commonsdialog.html#constantes-en-la-libreria">5.2. Constantes en la librería</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_commonsdialog.html#uso">5.3. Uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_commonsdialog.html#tipos-de-dialogos">5.4. Tipos de diálogos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cargando_capas.html">6. Cargando capas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cargando_capas.html#recursos-en-rutas-relativas-getresource">6.1. Recursos en rutas relativas: getResource()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cargando_capas.html#funcion-de-carga-loadlayer">6.2. Función de carga: loadLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cargando_capas.html#capas-vectoriales">6.3. Capas Vectoriales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cargando_capas.html#capas-raster">6.4. Capas Raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cargando_capas.html#ficheros-dbf">6.5. Ficheros DBF</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="otras_fuentes_datos.html">7. Otras fuentes de datos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="otras_fuentes_datos.html#postgresql">7.1. PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otras_fuentes_datos.html#geojson">7.2. Geojson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otras_fuentes_datos.html#fichero-lidar-las">7.3. Fichero LIDAR: Las</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otras_fuentes_datos.html#raster">7.4. Raster</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="acceso_a_objetos.html">8. Acceso a objectos en gvSIG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="acceso_a_objetos.html#funciones-current">8.1. Funciones current</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acceso_a_objetos.html#proyecto">8.2. Proyecto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acceso_a_objetos.html#documento-vista">8.3. Documento Vista</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acceso_a_objetos.html#documento-tabla">8.4. Documento Tabla</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acceso_a_objetos.html#capas">8.5. Capas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acceso_a_objetos.html#grupo-de-entidades-featureset">8.6. Grupo de entidades: FeatureSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acceso_a_objetos.html#entidad">8.7. Entidad</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="consulta_de_entidades.html">9. Consultas de entidades</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="consulta_de_entidades.html#getfeatureset">9.1. getFeatureSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="consulta_de_entidades.html#uso-de-evaluadores">9.2. Uso de evaluadores</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trabajando_con_esquemas.html">10. Trabajando con esquemas: FeatureType</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trabajando_con_esquemas.html#creando-esquemas">10.1. Creando esquemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trabajando_con_esquemas.html#modificando-esquemas">10.2. Modificando esquemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trabajando_con_esquemas.html#esquema-para-capas-vectoriales">10.3. Esquema para capas vectoriales</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trabajando_con_capas.html">11. Trabajando con capas: FLayer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="trabajando_con_capas.html#capas-vectoriales-flyrvect">11.1. Capas vectoriales: FLyrVect</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modulo_geom.html">12. Módulo de geometrías: geom</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modulo_geom.html#punto">12.1. Punto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_geom.html#linea">12.2. Línea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_geom.html#poligono">12.3. Polígono</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_geom.html#multipunto">12.4. Multipunto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_geom.html#multilinea">12.5. Multilínea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_geom.html#multipoligono">12.6. Multipolígono</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_geom.html#envelope">12.7. Envelope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_geom.html#wkt">12.8. WKT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_geom.html#operaciones-espaciales">12.9. Operaciones espaciales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_geom.html#transformacion-entre-proyecciones">12.10. Transformación entre proyecciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modulo_geom.html#issubtype">12.11. isSubtype</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interfaces_visuales.html">13. Interfaces visuales</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interfaces_visuales.html#abeille">13.1. Abeille</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfaces_visuales.html#ejemplo-de-uso">13.2. Ejemplo de uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfaces_visuales.html#uso-de-formpanel">13.3. Uso de FormPanel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfaces_visuales.html#tratar-con-diferentes-componentes">13.4. Tratar con diferentes componentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interfaces_visuales.html#eventos-autoregistrados">13.5. Eventos autoregistrados</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="leyendas.html">14. Leyendas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="leyendas.html#en-capas-vectoriales">14.1. En capas vectoriales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="leyendas.html#capa-de-graphics-layer">14.2. Capa de Graphics Layer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="geoprocesos.html">15. Geoprocesos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geoprocesos.html#libreria-toolbox">15.1. Librería Toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoprocesos.html#insertar-geoproceso-en-la-toolbox">15.2. Insertar geoproceso en la Toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoprocesos.html#lanzador-de-geoprocesos-usando-gvpy">15.3. Lanzador de geoprocesos usando gvpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geoprocesos.html#scripts-en-el-modelizador">15.4. Scripts en el Modelizador</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docs_gvpy.html">16. gvpy: Guía de uso</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs_gvpy.html#contenidos">16.1. Contenidos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_gvpy.html#libreria-gvpy">16.2. Librería gvpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_gvpy.html#algoritmos">16.3. Algoritmos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_gvpy.html#parametros-del-algoritmo">16.4. Parámetros del algoritmo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_gvpy.html#linea-de-codigo">16.5. Línea de código</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_gvpy.html#parametros-de-entrada">16.6. Parámetros de entrada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_gvpy.html#archivos-de-salida">16.7. Archivos de salida</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_gvpy.html#atributos-extra">16.8. Atributos extra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs_gvpy.html#model2script-sextante-model-to-script">16.9. model2script: SEXTANTE model to Script</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="capturando_eventos.html">17. Capturando eventos: Listeners</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="capturando_eventos.html#viewportlistener">17.1. ViewPortListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="capturando_eventos.html#pointlistener">17.2. PointListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="capturando_eventos.html#layerlistener-layercollectionlistener">17.3. LayerListener &amp; LayerCollectionListener</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usando_librerias_externas.html">18. Usando librerías externas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usando_librerias_externas.html#gdal">18.1. GDAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usando_librerias_externas.html#jfreechart">18.2. jfreechart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usando_librerias_externas.html#jopendocument">18.3. jOpenDocument</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rscript.html">19. Lenguaje R</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rscript.html#renjin">19.1. Renjin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="internacionalizacion.html">20. Internacionalización</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="internacionalizacion.html#traducciones">20.1. Traducciones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internacionalizacion.html#ficheros-de-traduccion">20.2. Ficheros de traducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internacionalizacion.html#registro">20.3. Registro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internacionalizacion.html#utilizacion">20.4. Utilización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="internacionalizacion.html#otros-usos">20.5. Otros usos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="explorers.html">21. Explorers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manejando_errores.html">22. Gestión de errores</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manejando_errores.html#try-exception">22.1. Try/Exception</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manejando_errores.html#logger">22.2. Logger</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="informacion_extra.html">23. Recopilación post</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="informacion_extra.html#documentacion">23.1. Documentación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="informacion_extra.html#desarrollo">23.2. Desarrollo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="informacion_extra.html#development">23.3. Development</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="enlaces">
+<h2>Enlaces<a class="headerlink" href="#enlaces" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Enlace a los <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.4.0/docs/javadocs/html/">javadocs de gvSIG</a></li>
+<li><a class="reference external" href="https://blog.gvsig.org/">Blog de gvSIG</a></li>
+<li><a class="reference external" href="http://www.gvsig.com/es/">gvSIG.com</a></li>
+<li><a class="reference external" href="http://www.jython.org/jythonbook/en/1.0/">Jython book</a></li>
+</ul>
+</div>
+<div class="section" id="indices">
+<h2>Índices<a class="headerlink" href="#indices" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../../genindex.html"><span class="std std-ref">Índice</span></a></li>
+<li><a class="reference internal" href="../../search.html"><span class="std std-ref">Página de Búsqueda</span></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="../../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Documentación de Scripting en gvSIG 2.4</a><ul>
+<li><a class="reference internal" href="#tabla-de-contenidos">Tabla de contenidos</a></li>
+<li><a class="reference internal" href="#enlaces">Enlaces</a></li>
+<li><a class="reference internal" href="#indices">Índices</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="../2.3/rscript.html"
+                        title="capítulo anterior">17. Lenguaje R</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="introduccion.html"
+                        title="próximo capítulo">1. Introducción</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/scripting_devel_guide/2.4/index.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="introduccion.html" title="1. Introducción"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="../2.3/rscript.html" title="17. Lenguaje R"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

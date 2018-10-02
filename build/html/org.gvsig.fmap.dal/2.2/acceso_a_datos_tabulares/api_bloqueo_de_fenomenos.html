@@ -1,0 +1,224 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>6. Bloqueo de fenómenos &#8212; documentación de gvSIG Docs - 1.0.0</title>
+    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="../../../_static/gvSIG.ico"/>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="7. Acceso a operaciones específicas del almacén" href="api_acceso_operaciones.html" />
+    <link rel="prev" title="5. La selección dentro de los datos de un almacén" href="api_seleccion.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="api_acceso_operaciones.html" title="7. Acceso a operaciones específicas del almacén"
+             accesskey="N">siguiente</a> |</li>
+        <li class="right" >
+          <a href="api_seleccion.html" title="5. La selección dentro de los datos de un almacén"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >org.gvsig.fmap.dal</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../acceso_a_datos_tabulares.html" >4. Acceso a datos tabulares</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">API de los servicios asociados al consumidor de datos</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="bloqueo-de-fenomenos">
+<h1>6. Bloqueo de fenómenos<a class="headerlink" href="#bloqueo-de-fenomenos" title="Enlazar permanentemente con este título">¶</a></h1>
+<blockquote>
+<div><p>Nota:</p>
+<blockquote>
+<div>En relación a la gestión de bloqueos están definidos los interfaces
+que forman parte del API pero no se ha realizado aun ninguna implementación
+de estos.Es posible que sufra algunas variaciones
+tras su implementación.</div></blockquote>
+</div></blockquote>
+<p>En ocasiones puede ser interesante disponer de funciones de bloqueo de
+fenómenos sobre un almacén para evitar que desde otros puestos modifiquen
+los datos sobre los que vamos a trabajar en un momento dado. Para dar
+servicio a esta necesidad, el <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureStore.html">FeatureStore</a> dispone de dos métodos:</p>
+<ul class="simple">
+<li><em>isLocksSupported</em>, que nos informa de si ese almacén soporta
+gestión de bloqueos.</li>
+<li><em>getLocks</em>, que actúa a modo de conjunto de fenómenos que tengo
+bloqueados en un momento dado en el almacén. En caso de que el
+almacén no soporte bloqueos, este método devolverá <em>null</em>.</li>
+</ul>
+<p>Cuando un almacén soporta la gestión de bloqueos, el método <em>getLocks</em> nos
+devolverá un <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureLocks.html">FeatureLocks</a>. Esta clase se encargara de llevar la cuenta de
+los bloqueos que se establecen así como de su tiempo de vigencia. Los bloqueos
+se establecen en grupos de fenómenos, y a cada grupo de fenómenos que se
+bloquea se le asigna un tiempo de vigencia para ese bloqueo. Para bloquear
+fenómenos tendremos los métodos:</p>
+<ul class="simple">
+<li><em>lock</em> y <em>lockAll</em>, que añade un fenómeno o conjunto de estos al
+grupo de fenómenos a bloquear.</li>
+<li><em>unlock</em> y <em>unlockAll</em>, que elimina un fenómeno o conjunto de estos del
+grupo de fenómenos a bloquear.</li>
+<li><em>setDefaultTimeout</em> y <em>getDefaultTimeout</em>, que permiten fijar el tiempo
+de vigencia de los bloqueos.</li>
+<li><em>apply</em>, que crea un grupo de bloqueos con los bloqueos indicados mediante
+las operaciones <em>lock</em> con el tiempo de vigencia por defecto y aplica los
+bloqueos en el almacén.</li>
+</ul>
+<p>Además dispondremos de operaciones para consultar si un fenómeno esta
+bloqueado, así como para consultar los grupos de bloqueos que se han
+establecido.</p>
+<ul class="simple">
+<li><em>getGroups</em>, que nos devuelve un iterador sobre los grupos
+de bloqueos establecidos. Cada grupo de bloqueos esta
+representado por la clase <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureLocksGroup.html">FeatureLocksGroup</a> .</li>
+<li><em>getGroupsCount</em>, que nos dice cuantos grupos de bloqueos
+hay.</li>
+<li><em>isLocked</em>, que nos informa sobre si un fenómeno esta bloqueado
+independientemente de en que grupo de bloqueo se bloqueo.</li>
+<li><em>getLocksCount</em>, que nos informa de cuantos fenómenos tenemos
+bloqueados.</li>
+<li><em>getLocks</em>, que nos devuelve un iterador sobre todos los
+fenómenos bloqueados.</li>
+</ul>
+<p>También es interesante tener en cuenta que <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureLocks.html">FeatureLocks</a> implementa
+<a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/tools/observer/Observable.html">Observable</a> , de forma que podemos registrarnos a cambios en el. Los
+cambios que podemos observar son:</p>
+<ul class="simple">
+<li>Se ha aplicado un nuevo grupo de bloqueos.</li>
+<li>Un grupo de bloqueos a caducado.</li>
+<li>Un grupo de bloqueos se ha liberado.</li>
+</ul>
+<p>Los principales métodos u operaciones que podemos encontrar en un
+grupo de bloqueos, <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/FeatureLocksGroup.html">FeatureLocksGroup</a>, son:</p>
+<ul class="simple">
+<li><em>getTimeout</em>, tiempo de caducidad asignado al bloqueo.</li>
+<li><em>XXX</em>, que nos devuelve el tiempo en milisegundos que resta
+asta que el bloqueo caduque.</li>
+<li><em>unlock</em>, libera todos los bloqueos del grupo, haciendo
+desaparecer a este.</li>
+<li><em>iterator</em>, que nos devuelve los fenómenos, <a class="reference external" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/dal/feature/Feature.html">Feature</a>, que se
+encuentran bloqueados en ese grupo.</li>
+<li><em>getLocksCount</em>, que nos informa sobre cuantos fenómenos hay
+bloqueados en ese grupo de bloqueos.</li>
+<li><em>isLocked</em>, que nos informa si un fenómeno esta bloqueado
+en este grupo de bloqueos.</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../../index.html">
+              <img class="logo" src="../../../_static/gvsig_asoc.jpg" alt="Logo"/>
+            </a></p>
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="api_seleccion.html"
+                        title="capítulo anterior">5. La selección dentro de los datos de un almacén</a></p>
+  <h4>Próximo tema</h4>
+  <p class="topless"><a href="api_acceso_operaciones.html"
+                        title="próximo capítulo">7. Acceso a operaciones específicas del almacén</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/org.gvsig.fmap.dal/2.2/acceso_a_datos_tabulares/api_bloqueo_de_fenomenos.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="links"><h3>Links</h3><ul><li><ul style="list-style-type:square">
+<li><a href="https://gist.github.com/search?utf8=%E2%9C%93&q=gvsig">Repositorio de Scripts</a></li>
+<li><a href="http://downloads.gvsig.org/download/web/scriptcatalog/build/html/">Catálogo de Plugins</a></li></ul></li></ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <gcse:search></gcse:search>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script>
+  (function() {
+    var cx = '009725233275570792772:egtqc4l6lsi';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="api_acceso_operaciones.html" title="7. Acceso a operaciones específicas del almacén"
+             >siguiente</a> |</li>
+        <li class="right" >
+          <a href="api_seleccion.html" title="5. La selección dentro de los datos de un almacén"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">documentación de gvSIG Docs - 1.0.0</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >org.gvsig.fmap.dal</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../acceso_a_datos_tabulares.html" >4. Acceso a datos tabulares</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="index.html" >API de los servicios asociados al consumidor de datos</a> &#187;</li>
+
+<div align="right">
+<li>
+<a href="http://downloads.gvsig.org/download/web/es/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_ES.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/en/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_EN.png"></a></li>
+<a href="http://downloads.gvsig.org/download/web/pt_br/build/html/index.html"><img src="http://downloads.gvsig.org/download/web/pt_br/build/html/_static/flag_BR.png"></a></li>
+</div>
+
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, gvSIG association.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>
