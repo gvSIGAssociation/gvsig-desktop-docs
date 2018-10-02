@@ -47,28 +47,28 @@ Algunos parámetros básicos pueden ser Texto, Numero (Integer o Double), Boolea
 Se puede añadir un parametro de selección entra un número determinado de opciones que aparecerán en un desplegable::
 
     params.addSelection("Selection", "Selection description", ["OptionA", "OptionB", "OptionC"])
-      
- También es posible añadir un punto que hayamos capturado con el Capturador de coordendaas de la Herramienta de Geoprocesos o poder introducirlo a mano::
+
+También es posible añadir un punto que hayamos capturado con el Capturador de coordendaas de la Herramienta de Geoprocesos o poder introducirlo a mano::
 
     params.addPoint("Point","Point description")
  
- Pueden crearse tablas a rellenar. El último parámetro indica si el número de filas es fijo o se puede ampliar::
- 
+Pueden crearse tablas a rellenar. El último parámetro indica si el número de filas es fijo o se puede ampliar::
+
     params.addFixedTable("FixedTable","Description",["Col1", "Col2", "Col3"],3,True) #number of rows fixed
 
- Diferentes tipos de input de única capa o tabla::
- 
+Diferentes tipos de input de única capa o tabla::
+
     params.addInputVectorLayer("LAYER","_Input_layer", SHAPE_TYPE_POLYGON, True)
     params.addInputTable("inputTable", i18nManager.getTranslation("_Table"), True)
     params.addInputRasterLayer("Raster", "Raster description", True) 
-      
+
 También en un mismo parámetro se podrían seleccionar varias capas. Aparecerá un desplegable con todas las del tipo designado::
 
     from es.unex.sextante.additionalInfo import AdditionalInfoMultipleInput
     
     dataType = AdditionalInfoMultipleInput.DATA_TYPE_VECTOR_ANY
     params.addMultipleInput("Multiple", "Description", dataType, True)
-      
+
 Se puede pedir otro tipo de ficheros externos o ubicaciones de carpetas. En el último parámetro se indica el tipo de extensiones aceptadas en el parámetro::
 
     params.addFilepath("Filepath","Description",True,True,True,[".rst",".csv",".txt"]) 
@@ -94,7 +94,7 @@ También existen otro tipo de salidas  como son las de texto o número::
 
     self.addOutputText("OutputText", "Description")
     self.addOutputNumericalValue("OutputNumerical", "Description")
-      
+
 Y algo más avanzadas como las de imagen o gráfica::
 
     self.addOutputChart("OutputChart", "Description")
@@ -110,29 +110,29 @@ Para empezar, podemos configurar el nombre que tendrá el geoproceso, así como 
     self.setName(i18nManager.getTranslation("_Count_features_with_duplicates_field"))
     self.setGroup(i18nManager.getTranslation("_Analysis"))
     self.setDescription(i18nManager.getTranslation("_Create_a_table_counting_duplicates_in_the_features_by_a_field"))
-        
+
 
 Es posible activar la pestaña de "Región de análisis" en caso de que se vaya a usar durante el geoproceso o no. Por defecto, viene activada::
 
     self.setUserCanDefineAnalysisExtent(False)
-      
+    
 También es posible mostrar información al usuario del progreso que lleva el geoproceso durante su ejecución. Para ello se establece un rango el cual se irá incrementando en función de que el proceso avance según lo tengamos programado. Esto se realizará ya en la función processAlgorithm, función que se ejecuta una vez rellenados los parámetros y ejecuntado le proceso::
 
     self.setRangeOfValues(0, 100)
 
 Se realiza la progresión de valores con la función::
-    
+
     self.next()
     
 Se pueden modificar los textos de la pantalla del geoproceso que aparece durante su ejecución. Lo recomendable sería modificar estos textos a la vez que se van incrementando los valores de la función Existen dos diferentes::
 
     self.getStatus().setTitle("Processing..")
     self.setProgressText("Processing part"))
-      
+
 Podemos configurar en qué puntos comprobar si el usuario ha presionado la cancelación del geoproceso. En ese caso deberemos configurar la forma de cancelar el proceso::
 
     if self.isCanceled() is True:
-        return False
+      return False
 
 Obtener valor de los parámetros
 --------------------------------
