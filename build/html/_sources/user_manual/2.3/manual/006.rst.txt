@@ -1,6 +1,0 @@
-
-Gestor de Proyectos
-===================
-
-.. raw:: html
-    :file: 006.html

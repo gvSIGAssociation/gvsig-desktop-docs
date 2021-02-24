@@ -1,6 +1,0 @@
-
-Bibliotecas de símbolos
-=======================
-
-.. raw:: html
-    :file: 021.html

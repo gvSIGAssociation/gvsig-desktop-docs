@@ -1,6 +1,0 @@
-
-Segmentación Dinámica
-=====================
-
-.. raw:: html
-    :file: 082.html

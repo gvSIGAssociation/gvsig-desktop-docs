@@ -1,6 +1,0 @@
-
-Instalación
-===========
-
-.. raw:: html
-    :file: 083.html

@@ -1,6 +1,0 @@
-
-Edición de Tablas
-=================
-
-.. raw:: html
-    :file: 063.html

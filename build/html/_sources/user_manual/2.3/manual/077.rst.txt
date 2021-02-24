@@ -1,6 +1,0 @@
-
-Sísmica
-=======
-
-.. raw:: html
-    :file: 077.html

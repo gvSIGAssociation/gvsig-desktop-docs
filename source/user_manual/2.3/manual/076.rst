@@ -1,6 +1,0 @@
-
-Oracle Spatial/Locator
-======================
-
-.. raw:: html
-    :file: 076.html

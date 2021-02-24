@@ -1,6 +1,0 @@
-
-Caja de Herramientas
-====================
-
-.. raw:: html
-    :file: 040.html

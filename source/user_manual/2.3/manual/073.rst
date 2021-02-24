@@ -1,6 +1,0 @@
-
-Plantillas de Mapa
-==================
-
-.. raw:: html
-    :file: 073.html

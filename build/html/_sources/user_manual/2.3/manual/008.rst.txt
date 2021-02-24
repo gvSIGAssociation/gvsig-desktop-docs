@@ -1,6 +1,0 @@
-
-Documento Vista
-===============
-
-.. raw:: html
-    :file: 008.html

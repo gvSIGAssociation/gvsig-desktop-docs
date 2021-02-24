@@ -1,6 +1,0 @@
-
-Herramientas de navegación
-==========================
-
-.. raw:: html
-    :file: 023.html

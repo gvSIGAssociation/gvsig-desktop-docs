@@ -1,6 +1,0 @@
-
-Google Street View
-==================
-
-.. raw:: html
-    :file: 053.html

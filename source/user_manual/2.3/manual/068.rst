@@ -1,6 +1,0 @@
-
-Elementos gráficos
-==================
-
-.. raw:: html
-    :file: 068.html

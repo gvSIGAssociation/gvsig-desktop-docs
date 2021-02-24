@@ -1,6 +1,0 @@
-
-Línea de Comandos
-=================
-
-.. raw:: html
-    :file: 049.html

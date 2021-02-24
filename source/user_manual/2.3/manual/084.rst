@@ -1,6 +1,0 @@
-
-Buscador de Catastro (España)
-=============================
-
-.. raw:: html
-    :file: 084.html

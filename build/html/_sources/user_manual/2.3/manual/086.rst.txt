@@ -1,6 +1,0 @@
-
-Catálogo de Favoritos
-=====================
-
-.. raw:: html
-    :file: 086.html

@@ -1,6 +1,0 @@
-
-Etiquetado
-==========
-
-.. raw:: html
-    :file: 018.html

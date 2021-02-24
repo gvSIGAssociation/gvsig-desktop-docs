@@ -1,6 +1,0 @@
-
-Herramientas de edición
-=======================
-
-.. raw:: html
-    :file: 030.html

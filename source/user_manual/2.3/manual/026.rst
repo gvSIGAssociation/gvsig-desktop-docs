@@ -1,6 +1,0 @@
-
-Herramientas de edición gráfica
-===============================
-
-.. raw:: html
-    :file: 026.html

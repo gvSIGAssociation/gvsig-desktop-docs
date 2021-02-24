@@ -1,6 +1,0 @@
-
-Geoprocesamiento
-================
-
-.. raw:: html
-    :file: 039.html

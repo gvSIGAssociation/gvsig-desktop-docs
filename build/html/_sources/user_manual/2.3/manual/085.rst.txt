@@ -1,6 +1,0 @@
-
-Detección de Alturas
-====================
-
-.. raw:: html
-    :file: 085.html

@@ -1,6 +1,0 @@
-
-Introducción a gvSIG
-====================
-
-.. raw:: html
-    :file: 003.html

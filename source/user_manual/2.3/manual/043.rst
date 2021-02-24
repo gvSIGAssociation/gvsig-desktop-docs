@@ -1,6 +1,0 @@
-
-gvSIG Geoprocesos. Ráster Multiespectral
-========================================
-
-.. raw:: html
-    :file: 043.html

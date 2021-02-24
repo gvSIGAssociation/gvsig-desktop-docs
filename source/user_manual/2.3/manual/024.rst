@@ -1,6 +1,0 @@
-
-Herramientas de información
-===========================
-
-.. raw:: html
-    :file: 024.html

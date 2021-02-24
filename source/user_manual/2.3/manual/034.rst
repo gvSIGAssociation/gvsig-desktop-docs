@@ -1,6 +1,0 @@
-
-Capas ráster
-============
-
-.. raw:: html
-    :file: 034.html

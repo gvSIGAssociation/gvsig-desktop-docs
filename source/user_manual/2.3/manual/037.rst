@@ -1,6 +1,0 @@
-
-Transformaciones geográficas
-============================
-
-.. raw:: html
-    :file: 037.html
