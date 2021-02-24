@@ -2,7 +2,7 @@
 
 # VCSGis
 
-{% include_relative vsgis.md %}
+{% include_relative vcsgis.md %}
 
 
  
