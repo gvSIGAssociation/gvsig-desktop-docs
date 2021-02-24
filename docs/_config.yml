@@ -1,3 +1,10 @@
+# Name of website
+title: gvSIG desktop
+
+# Short description of your site
+description: Documentación de usuario de gvSIG desktop
+
+
 theme: jekyll-theme-leap-day
 
 # Exclude these files from production site
