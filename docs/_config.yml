@@ -1,0 +1,18 @@
+#
+#
+# https://github.com/daattali/beautiful-jekyll/blob/master/_config.yml
+#
+#
+# Name of website
+title: Documentacion gvSIG desktop
+
+# Short description of your site
+description: Documentacion de usuario de gvSIG desktop
+
+theme: jekyll-theme-hacker
+
+# Exclude these files from production site
+exclude:
+  - all.md
+
+  
