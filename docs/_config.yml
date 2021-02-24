@@ -5,7 +5,7 @@ title: gvSIG desktop
 description: Documentación de usuario de gvSIG desktop
 
 
-theme: jekyll-theme-leap-day
+theme: jekyll-theme-modernist
 
 # Exclude these files from production site
 exclude:
