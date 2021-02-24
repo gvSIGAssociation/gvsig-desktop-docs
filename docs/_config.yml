@@ -1,1 +1,6 @@
 theme: jekyll-theme-leap-day
+
+# Exclude these files from production site
+exclude:
+  - all.md
+  
