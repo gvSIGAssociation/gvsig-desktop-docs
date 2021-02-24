@@ -1,6 +1,6 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 
-# Documentaciín de usuario de gvSIG desktop
+# Documentación de usuario de gvSIG desktop
 
 * [Herramientas](herramientas/index.md)
 
