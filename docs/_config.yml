@@ -5,7 +5,7 @@ title: gvSIG desktop
 description: Documentación de usuario de gvSIG desktop
 
 
-theme: jekyll-theme-modernist
+theme: jekyll-theme-slate
 
 # Exclude these files from production site
 exclude:
