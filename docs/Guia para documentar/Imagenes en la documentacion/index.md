@@ -1,0 +1,3 @@
+
+# Imágenes en la documentación
+
