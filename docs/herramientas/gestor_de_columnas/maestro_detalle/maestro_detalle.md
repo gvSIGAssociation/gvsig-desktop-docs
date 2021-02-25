@@ -8,7 +8,7 @@ Concretamente en este documento se especifica el proceso de definir relaciones m
 
 {% comment %} Relaciones uno a uno {% endcomment %}
 
-Para establecer la relación entre tablas por un campo común, siendo esta una relación de uno a uno, en primer lugar hay que *abrir las tablas* y el *gestor de columnas* asociado a estas. Para abrir las tablas hay que realizarlo desde el ***Gestor de proyectos*** situado en la pestaña ***Mostrar*** de *gvSIG Desktop*. El proceso de abrirlas es el genérico a abrir cualquier archivo, primero se selecciona ***Tabla*** como tipo de datos a  abrir, se selecciona la opción de ***Nuevo***, lo que habilita un gestor de archivos donde se selecciona el fichero en cuestión. Tras la selección de este la tabla se muestra en una ventana del software. La siguiente ilustración muestra las tablas con las que se va a realizar el proceso. 
+Para establecer la relación entre tablas por un campo común, siendo esta una relación de uno a uno, en primer lugar hay que *abrir las tablas* y el *gestor de columnas* asociado a estas. Para abrir las tablas hay que realizarlo desde el ***Gestor de proyectos*** situado en la pestaña ***Mostrar*** de *gvSIG Desktop*. El proceso de abrirlas es el genérico a abrir cualquier archivo, primero se selecciona ***Tabla*** como tipo de datos a  abrir, se selecciona la opción de ***Nuevo***, lo que habilita una ventana donde se selecciona la ***pestaña Archivo*** y tras pulsar el botón ***Añadir***, se despliega un gestor de archivos donde se selecciona el fichero en cuestión. Tras la selección de este la tabla se muestra en una ventana del software. La siguiente ilustración muestra las tablas con las que se va a realizar el proceso. 
 
 ![Tablas](maestro_detalle_files/1_tablas.png)
 
