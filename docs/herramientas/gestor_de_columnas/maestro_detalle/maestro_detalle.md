@@ -93,7 +93,9 @@ Una vez en el Gestor de columnas de la tabla bracket se inicia el proceso con la
 ![Nuevo_campo_default](12_nuevo_campo_default.png)
 Como resultado de la ejecución y tal y como se muestra en la imagen anterior se crea un campo por defecto llamado Campo1, de tipo String, tamaño 50, tipo de relación igual a ninguno…
 
-Tras la creación de este, se ha puesto la capa en edición de manera automática y se permite cambiar los parámetros que lo definen. De modo que, siguiendo el ejemplo, el nuevo campo tiene que llamarse Señales, ser de tipo lista, presentar un tipo de relación de agregado (1:n) y además ser un campo calculado con la expresión SELECT * FROM vertical_signal WHERE vertical_signal.bracket=id;
+Tras la creación de este, se ha puesto la capa en edición de manera automática y se permite cambiar los parámetros que lo definen. De modo que, siguiendo el ejemplo, el nuevo campo tiene que llamarse Señales, ser de tipo lista, presentar un tipo de relación de agregado (1:n) y además ser un campo calculado con la expresión *SELECT * FROM vertical_signal WHERE vertical_signal.bracket=id;*
+
+ > La expresión ,SELECT * FROM vertical_signal WHERE vertical_signal.bracket=id;, selecciona todos los elementos de la tabla vertical_signal donde el valor de su columna bracket coincida con el valor del campo id de la tabla bracket.
 
 Todos los valores anteriores pueden detallarse en la pestaña Campos básicos. Concretamente el nombre Señales se puede definir en la barra de texto Nombre de campo, el tipo de campo se detalla en el desplegable Tipo de Campo o el icono adyacente a este que ofrece una mayor colección de tipo de datos. El tipo de relación se detalla en el ultimo desplegable de la pestaña llamado Tipo de relación. Por último el que sea un campo calculado se especifica seleccionando la opción Campo virtual situada sobre el desplegable anterior y la formula se introduce en el cuadro adyacente a ese check. La formula puede introducirse de manera manual o mediante el evaluador de expresiones.
 
