@@ -31,6 +31,7 @@ Como se busca definir una relación entre las dos tablas hay que buscar el campo
 Una vez seleccionado se inicia su edición pulsando el botón Modificar situado en la zona derecha de la ventana.
 
 ![GC_vertical_signal_bracket_2](maestro_detalle_files/5_GC_vertical_signal_bracket_2.png)
+
 Tras lo anterior se habilitan una serie de pestañas que permiten modificar todo lo referentes a los datos y su representación del citado campo. Para establecer la relación hay que modificar el contenido de dos pestañas, la pestaña Campos básicos y la pestaña Clave ajena.
 
 ![GC_vertical_signal_bracket_3](maestro_detalle_files/6_GC_vertical_signal_bracket_3.png)
