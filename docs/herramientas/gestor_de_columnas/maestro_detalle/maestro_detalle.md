@@ -10,30 +10,30 @@ RELACIONES UNO A UNO
 
 Para establecer la relación entre tablas por un campo común, siendo esta una relación de uno a uno, en primer lugar hay que abrir las tabla y el gestor de columnas asociado a estas. Para abrir las tablas hay que realizarlo desde el Gestor de proyectos situado en la pestaña Mostrar de gvSIG Desktop. El proceso de abrirlas es el genérico a abrir cualquier archivo, primero se selecciona Tabla como tipo de datos a  abrir, se selecciona la opción de Nuevo, lo que habilita un gestor de archivos donde se selecciona el fichero en cuestión. Tras la selección de este la tabla se muestra en una ventana del software. La siguiente ilustración muestra las tablas con las que se va a realizar el proceso. 
 
-![Tablas](1_tablas.png)
+![Tablas](maestro_detalle_files/1_tablas.png)
 
 La tabla bracket o postes tiene un único registro, mientra que la tabla vertical_signal presenta dos registros de dos señales, las cuales se sabe que están en el poste de la tabla anterior. Como este apartado trata las relaciones uno a uno es necesario abrir el gestor de columnas de la tabla que presenta dicha relación, vertical_signal ya que una señal esta asociada solo a un poste.
 
 Para obtener el gestor de esta hay seleccionar la tabla en cuestión y ejecutar el comando Gestor de columnas situado en la pestaña Tabla de gvSIG Desktop siempre y cuando la tabla este abierta. 
 
-![Gestor_columnas](2_gestor_columnas.png)
+![Gestor_columnas](maestro_detalle_files/2_gestor_columnas.png)
 
 Como resultado se obtiene el siguiente gestor, gestor de columnas de la tabla vertical_signal.
 
-![Gestor_columnas_vertical_signal](3_gestor_columnas_vertical_signal.png)
+![Gestor_columnas_vertical_signal](maestro_detalle_files/3_gestor_columnas_vertical_signal.png)
 
 Esta herramienta permite al usuario definir la estructura de datos de la tabla, así como su representación o visualización. La realización de los cambios se lleva a cabo por columnas y permite modificar estas, crear otras nuevas e incluso eliminarlas si es necesario.
 
 Como se busca definir una relación entre las dos tablas hay que buscar el campo que la establece, en este caso bracket. Para establecer la relación hay que seleccionar en el gestor de columnas de la tabla vertical_signal el campo que establece la relación, campo bracket.
 
-![GC_vertical_signal_bracket_1](4_GC_vertical_signal_bracket_1.png)
+![GC_vertical_signal_bracket_1](maestro_detalle_files/4_GC_vertical_signal_bracket_1.png)
 
 Una vez seleccionado se inicia su edición pulsando el botón Modificar situado en la zona derecha de la ventana.
 
-![GC_vertical_signal_bracket_2](5_GC_vertical_signal_bracket_2.png)
+![GC_vertical_signal_bracket_2](maestro_detalle_files/5_GC_vertical_signal_bracket_2.png)
 Tras lo anterior se habilitan una serie de pestañas que permiten modificar todo lo referentes a los datos y su representación del citado campo. Para establecer la relación hay que modificar el contenido de dos pestañas, la pestaña Campos básicos y la pestaña Clave ajena.
 
-![GC_vertical_signal_bracket_3](6_GC_vertical_signal_bracket_3.png)
+![GC_vertical_signal_bracket_3](maestro_detalle_files/6_GC_vertical_signal_bracket_3.png)
 
 La configuración comienza especificando en la pestaña Campos básicos el tipo de relación que presenta el campo en cuestión. Los tipos de relación presentes en el ultimo desplegable son:
  * Ninguna.
@@ -54,21 +54,21 @@ Según el orden de los parámetros definidos en el párrafo anterior la tabla se
 
 La configuración de las pestañas se puede ver en la siguiente imagen:
 
-![GC_vertical_signal_bracket_4](7_GC_vertical_signal_bracket_4.png)
+![GC_vertical_signal_bracket_4](maestro_detalle_files/7_GC_vertical_signal_bracket_4.png)
 
 Tras lo anterior solo queda terminar la modificación del campo pulsando el botón Aceptar del margen derecho y terminar el proceso en el Gestor de columnas pulsando el botón Aceptar situado en la esquina inferior derecha de dicha ventana.
 
 Para ver si los cambios se han realizado con éxito de manera sencilla se puede consultar el formulario de la tabla modificada. Para obtener el formulario de la tabla hay que ejecutar el comando Show form situado en la pestaña Tabla de gvSIG Desktop siempre y cuando la tabla este abierta. 
  
-![Show_form](8_show_form.png)
+![Show_form](maestro_detalle_files/8_show_form.png)
 
 La siguiente ilustración muestra el formulario de la tabla vertical_signal antes de la relación (derecha) y tras la relación (izquierda).
 
-![Form_dif](9_form_dif.png)
+![Form_dif](maestro_detalle_files/9_form_dif.png)
 
 Se puede aprecias que el campo bracket del formulario ha sufrido cambios. En el formulario inicial era un campo sin más y en el formulario resultado de las modificaciones del gestor de columnas presenta una serie de componentes que indican que esta ligado a otra tabla. 
 
-![Comp_relacion](10_comp_relacion.png) 
+![Comp_relacion](maestro_detalle_files/10_comp_relacion.png) 
 
 Esos componentes son cuatro de izquierda a derecha:
 * Caja de texto con el elemento de la otra tabla seleccionado. En el caso del ejemplo este cumple la expresión indicada anteriormente,  ‘Poste ‘ || id.
@@ -76,7 +76,7 @@ Esos componentes son cuatro de izquierda a derecha:
 * Icono borrar elemento relacionado.  Este está deshabilitado si la tabla no se encuentra en edición.
 * Icono ver elemento relacionado. Nos permite visualizar el elemento relacionado de la tabla ligada en el formulario de esta.
 
-![Comp_relacion_ver](11_comp_relacion_ver.png)
+![Comp_relacion_ver](maestro_detalle_files/11_comp_relacion_ver.png)
 
 Realizado todo lo anterior se completa el proceso de ligar una tabla con otra mediante una relación uno a uno mediante un campo común. 
 
@@ -90,7 +90,7 @@ El proceso de relacionar las tablas es básicamente el mismo a excepción de la 
 
 Una vez en el Gestor de columnas de la tabla bracket se inicia el proceso con la creación de un nuevo campo. Para realizar esto hay que pulsar el botón Nuevo situado en el margen derecho de la ventana.
 
-![Nuevo_campo_default](12_nuevo_campo_default.png)
+![Nuevo_campo_default](maestro_detalle_files/12_nuevo_campo_default.png)
 Como resultado de la ejecución y tal y como se muestra en la imagen anterior se crea un campo por defecto llamado Campo1, de tipo String, tamaño 50, tipo de relación igual a ninguno…
 
 Tras la creación de este, se ha puesto la capa en edición de manera automática y se permite cambiar los parámetros que lo definen. De modo que, siguiendo el ejemplo, el nuevo campo tiene que llamarse Señales, ser de tipo lista, presentar un tipo de relación de agregado (1:n) y además ser un campo calculado con la expresión *SELECT * FROM vertical_signal WHERE vertical_signal.bracket=id;*
@@ -101,17 +101,17 @@ Todos los valores anteriores pueden detallarse en la pestaña Campos básicos. C
 
 Como resultado de la creación y modificación del nuevo campo señales, la ventana del Gestor de columnas presenta este aspecto.
 
-![Nuevo_campo_señales](13_nuevo_campo_señales.png)
+![Nuevo_campo_señales](maestro_detalle_files/13_nuevo_campo_señales.png)
 
 Tras modificar lo anterior aceptamos guardar los cambios sobre el campo señales lo cual hace que este presente los parámetros correctos en la lista de campos del Gestor de columnas.
 
-![Campo_señales](14_campo_señales.png)
+![Campo_señales](maestro_detalle_files/14_campo_señales.png)
 
 Una vez eso solo queda terminar los procesos en el Gestor de columnas pulsando el botón Aceptar situado en la esquina inferior derecha de dicha ventana.
 
 Para ver si la relación se ha llevado a cabo hay que visualizar la tabla bracket o el formulario asociado a ella. En los dos elementos debe aparecer un nuevo campo llamado Señales relleno con una lista de valores que identifican las señales que presenta dicho poste.
 
-![Form_table_bracket_mal](15_form_table_bracket_mal.png)
+![Form_table_bracket_mal](maestro_detalle_files/15_form_table_bracket_mal.png)
 
 De este modo la relación se ha realizado con éxito pero la visualización del grupo de elementos  relacionados no es la deseada. Para mejorar dicha visualización hay que acudir de nuevo al Gestor de columnas de la tabla de postes, bracket, seleccionar la columna Señales e iniciar la edición pulsando Modificar.
 
@@ -119,7 +119,7 @@ En esta ocasión hay que configurar dos pestañas, la pestaña Visualización y 
 
 En la pestaña Visualización se especifica la creación de un grupo al cual llamamos Señales.
 
-![GC_bracket_visualizacion](16_GC_bracket_visualizacion.png)
+![GC_bracket_visualizacion](maestro_detalle_files/16_GC_bracket_visualizacion.png)
 
 La creación de un grupo hace que el contenido de esa columna pase a ser una pestaña nueva en el formulario, es decir se encuentre aislada del resto de la información.
 
@@ -136,14 +136,14 @@ En el caso concreto del ejemplo que se esta realizando los valores de los parám
 * DAL.RelatedFeatures.Columns. → id:model:revisiondate
 * dynform.resizeweight. → 10
 
-![GC_bracket_etiquetas](17_GC_etiquetas.png)
+![GC_bracket_etiquetas](maestro_detalle_files/17_GC_etiquetas.png)
 
 Una vez terminado lo anterior se termina la edición de la columna pulsando el botón Aceptar del margen derecho y terminar el proceso en el Gestor de columnas pulsando el botón Aceptar situado en la esquina inferior derecha de dicha ventana.
 
 Como resultado de lo anterior podemos ver que el formulario de la tabla de postes, bracket ha cambiado con respecto al anterior.  Tras las anteriores modificaciones realizadas en el Gestor de columnas este ahora presenta en su margen superior una pestaña llamada Señales, la cual almacena  las placas de señales que tiene el poste en cuestión mostrando el identificador, modelo y fecha de revisión de cada señal.
 
-![Form_table_bracket_bien](18_form_table_bracket_bien.png)
+![Form_table_bracket_bien](maestro_detalle_files/18_form_table_bracket_bien.png)
 
 Para ver la información de cada señal en su formulario correspondiente solo hay que seleccionarla y pulsar el icono que hay bajo la lista.
 
-![Form_tbracket_vertical_signal_bien ](19_form_bracket_vertical_signal_bien.png)
+![Form_tbracket_vertical_signal_bien ](maestro_detalle_files/19_form_bracket_vertical_signal_bien.png)
