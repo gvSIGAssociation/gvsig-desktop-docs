@@ -121,7 +121,7 @@ De este modo la relación se ha realizado con éxito pero la visualización del 
 
 En esta ocasión hay que configurar dos pestañas, la ***pestaña Visualización*** y la ***pestaña Etiquetas***.
 
-En la ****pestaña Visualización*** se especifica la *creación de un grupo* al cual llamamos *Señales*.
+En la ***pestaña Visualización*** se especifica la *creación de un grupo* al cual llamamos *Señales*.
 
 ![GC_bracket_visualizacion](maestro_detalle_files/16_GC_bracket_visualizacion.png)
 
