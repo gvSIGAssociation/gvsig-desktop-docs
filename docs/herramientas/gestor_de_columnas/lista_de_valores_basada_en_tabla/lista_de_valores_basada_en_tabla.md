@@ -6,85 +6,85 @@ Este documento define el procedimiento de creación de una nueva tabla de valore
 
 Para realizar la explicación se utilizara como ejemplo la creación de la *tabla materiales*. Esta tabla con dos elementos unicamente almacena el tipo de material del que están construidas las placas de las señales presentes en la *tabla vertical_signal*.
 
-El proceso comienza tras iniciar *gvSIG Desktop* ejecutando en la ***pestaña Vista*** el comando ***new layer***.
+El proceso comienza tras iniciar *gvSIG Desktop* ejecutando en el ***menú Vista*** el comando ***new layer***.
 
 ![1_newLayer_128](lista_de_valores_basada_en_tabla_files/1_newLayer_128.png)
 
-Como resultado de lo anterior se obtiene la siguiente ventana que nos permite seleccionar la creación de una ***nueva capa Shape*** o una ***nueva tabla de un base de datos (using JDBC)***. Seleccionando esta última opción de entre los dos.
+Como resultado de lo anterior se obtiene el siguiente cuadro de diálogo que nos permite seleccionar en el panel la creación de una ***nueva capa Shape*** o una ***nueva tabla de un base de datos (using JDBC)***. Seleccionando esta última opción de entre los dos.
 
 ![2_newLayerPanel1_128](lista_de_valores_basada_en_tabla_files/2_newLayerPanel1_128.png)
 
-Se pulsa el botón ***Siguiente*** situado en la zona inferior de la ventana para continuar el proceso. 
+Se pulsa el ***botón Siguiente*** situado en la zona inferior de la ventana para continuar el proceso. 
 
-La siguiente ventana esta destinado a evitar problemas a la hora de definir el nombre de la taba así como los campos que la componen. Con esta ventana se asegura que los nombres de los campos estén en minúsculas, presenten guión bajo (“_”) en vez de espacios y guiones (“-”).
+El siguiente panel esta destinado a evitar problemas a la hora de definir el nombre de la taba así como los campos que la componen. Con esta ventana se asegura que los nombres de los campos estén en minúsculas, presenten guión bajo (“_”) en vez de espacios y guiones (“-”).
 
 ![3_newLayerPanel2_128](lista_de_valores_basada_en_tabla_files/3_newLayerPanel2_128.png)
 
-Se seleccionan las tres opciones y se pulsa el botón ***Siguiente*** situado en la zona inferior de la ventana para continuar el proceso. 
+Se seleccionan las tres opciones y se pulsa el ***botón Siguiente*** situado en la zona inferior de la ventana para continuar el proceso. 
 
-En esta ventana hay que especificar la base de datos donde se va a almacenar la nueva tabla. Hay que decir que la base de datos tiene que estar creada de antemano. El proceso de selección se basa en identificar la base de datos en el primer desplegable o especificar un nombre, tipo de conector y fichero en los desplegables Nombre de conexión, Conector y Fichero respectivamente si la base de datos no se encuentra.
+En este panel hay que especificar la base de datos donde se va a almacenar la nueva tabla. Hay que decir que la base de datos tiene que estar creada de antemano. El proceso de selección se basa en identificar la base de datos en el primer desplegable o especificar un nombre, tipo de conector y fichero en los ***desplegables Nombre de conexión, Conector y Fichero*** respectivamente si la base de datos no se encuentra.
 
 En el caso del ejemplo, se dispone de una base de datos llamada *crearCapa*. 
 
 ![4_newLayerPanel3_128](lista_de_valores_basada_en_tabla_files/4_newLayerPanel3_128.png)
 
-Se pulsa el botón ***Siguiente*** situado en la zona inferior de la ventana para continuar el proceso.
+Se pulsa el ***botón Siguiente*** situado en la zona inferior de la ventana para continuar el proceso.
 
-La siguiente ventana define el esquema de la base de datos donde se quiere almacenar la tabla y el nombre de esta.
+El siguiente panel del cuadro de diálogo define el esquema de la base de datos donde se quiere almacenar la tabla y el nombre de esta.
 
-Se especifica el esquema PUBLIC y como nombre de *tabla materiales*. Tras esto, se pulsa el botón ***Siguiente*** situado en la zona inferior de la ventana para continuar el proceso. 
+Se especifica el esquema PUBLIC y como nombre de *tabla materiales*. Tras esto, se pulsa el ***botón Siguiente*** situado en la zona inferior de la ventana para continuar el proceso. 
 
 ![5_newLayerPanel4_128](lista_de_valores_basada_en_tabla_files/5_newLayerPanel4_128.png)
 
-En la siguiente ventana se detalla los campos o columnas de la tabla. Sin duda es la ventana más importante a la hora de la creación de la tabla ya que define el esquema de datos de esta.
+En el siguiente panel se detalla los campos o columnas de la tabla. Sin duda es el panel más importante a la hora de la creación de la tabla ya que define el esquema de datos de esta.
 
 ![6_newLayerPanel5_128](lista_de_valores_basada_en_tabla_files/6_newLayerPanel5_128.png)
 
-El proceso se inicia con la creación de un nuevo campo. Para realizar esto hay que pulsar el botón ***Nuevo*** situado en el margen derecho de la ventana.
+El proceso se inicia con la creación de un nuevo campo. Para realizar esto hay que pulsar el ***botón Nuevo*** situado en el margen derecho de la ventana.
 
 ![7_newLayerPanel6_128](lista_de_valores_basada_en_tabla_files/7_newLayerPanel6_128.png)
 
-Como resultado de la ejecución y tal y como se muestra en la imagen anterior se crea un campo por defecto llamado *Campo1*, de tipo *String*, *tamaño 50*, *tipo de relación igual a ninguno*….
+Como resultado de la ejecución, y tal y como se muestra en la imagen anterior se crea un campo por defecto llamado *Campo1*, de tipo *String*, *tamaño 50*, *tipo de relación igual a ninguno*….
 
 Tras la creación de este, se ha puesto la capa en edición de manera automática y se permite cambiar los parámetros que lo definen. De modo que, siguiendo el ejemplo, el nuevo campo tiene que llamarse *name*, ser de tipo *String*. Además, es muy importante especificar que este es *clave primaria*.
 
-Todos los valores anteriores pueden detallarse en la ***pestaña Campos básicos***. Concretamente el nombre name se puede definir en la ***barra de texto Nombre de campo***, el tipo de campo se detalla en el **desplegable Tipo de Campo o el icono adyacente*** a este que ofrece una mayor colección de tipo de datos. Un campo se combierte en clave primaria con marcando la opción ***Clave primaria***.
+Todos los valores anteriores pueden detallarse en la ***pestaña Campos básicos***. Concretamente el nombre name se puede definir en el ***cuadro de texto Nombre de campo***, el tipo de campo se detalla en el **desplegable Tipo de Campo o el icono adyacente*** a este que ofrece una mayor colección de tipo de datos. Un campo se combierte en clave primaria con marcando la ***opción Clave primaria***.
 
-Tras modificar lo anterior aceptamos guardar los cambios sobre el campo name pulsando el botón ***Aceptar*** del margen derecho, lo cual hace que este presente los parámetros correctos en la lista de campos del Gestor de columnas.
+Tras modificar lo anterior aceptamos guardar los cambios sobre el campo name pulsando el ***botón Aceptar*** del margen derecho, lo cual hace que este presente los parámetros correctos en la lista de campos del Gestor de columnas.
 
 A parte de ese campo name se crea otro de iguales características llamado *value*, eso si este no será una clave primaria. El resultado final de la ventana es el siguiente.
 
 ![8_newLayerPanel7_128](lista_de_valores_basada_en_tabla_files/8_newLayerPanel7_128.png)
 
-Se pulsa el botón ***Siguiente*** situado en la zona inferior de la ventana para continuar el proceso.
+Se pulsa el ***botón Siguiente*** situado en la zona inferior de la ventana para continuar el proceso.
 
 En esta ventana se especifica si se desea crear un índice espacial que optimice los cálculos en caso de que la tabla presente geometrías. 
 
 ![9_newLayerPanel8_128](lista_de_valores_basada_en_tabla_files/9_newLayerPanel8_128.png)
 
-En el caso del ejemplo, como no se dispone de geometría se pulsa el botón ***Siguiente*** para continuar con el proceso.
+En el caso del ejemplo, como no se dispone de geometría se pulsa el ***botón Siguiente*** para continuar con el proceso.
 
-La siguiente ventana configura los permiso de la tabla.
+El siguiente panel configura los permiso de la tabla.
 
 ![10_newLayerPanel9_128](lista_de_valores_basada_en_tabla_files/10_newLayerPanel9_128.png)
 
-En el caso del ejemplo se pulsa el botón ***Siguiente*** para continuar con el proceso.
+En el caso del ejemplo se pulsa el ***botón Siguiente*** para continuar con el proceso.
 
-En esta ventana se especifican las secuencias a realizar después de la creación de la tabla.
+En este panel se especifican las secuencias a realizar después de la creación de la tabla.
 
 ![11_newLayerPanel10_128](lista_de_valores_basada_en_tabla_files/11_newLayerPanel10_128.png)
 
-En el caso del ejemplo se pulsa el botón ***Siguiente*** para continuar con el proceso ya que no queremos ejecutar sentencia alguna.
+En el caso del ejemplo se pulsa el ***botón Siguiente*** para continuar con el proceso ya que no queremos ejecutar sentencia alguna.
 
 En esta última ventana termina el proceso de creación y se indica si se desea añadir la tabla a la vista.
 
 ![12_newLayerPanel11_128](lista_de_valores_basada_en_tabla_files/12_newLayerPanel11_128.png)
 
-En el caso del ejemplo se desmarca añadirla a la vista puesto que la capa no posee geometrías y se pulsa el botón ***Terminar*** para finalizar con el proceso. En el cao de que la tabla presente geometrías puede optarse por cargar en la vista.
+En el caso del ejemplo se desmarca añadirla a la vista puesto que la capa no posee geometrías y se pulsa el ***botón Terminar*** para finalizar con el proceso. En el cao de que la tabla presente geometrías puede optarse por cargar en la vista.
 
-El siguiente paso lógico es tras la creación de la tabla materiales es rellenar esta con la lista de valores. Para realizar lo anterior, en primer lugar hay que abrirla. Para abrir la tabla hay que realizarlo desde el ***Gestor de proyectos*** situado en la ***pestaña Mostrar*** de *gvSIG Desktop*. 
+El siguiente paso lógico es tras la creación de la tabla materiales es rellenar esta con la lista de valores. Para realizar lo anterior, en primer lugar hay que abrirla. Para abrir la tabla hay que realizarlo desde el ***Gestor de proyectos*** situado en el ***menú Mostrar*** de *gvSIG Desktop*. 
 
-El proceso de abrir una tabla es el genérico a abrir cualquier archivo, primero se selecciona Tabla como tipo de datos a abrir, se selecciona la opción de ***Nuevo***, lo que habilita una ventana donde se tiene que seleccionar la opción ***Base de datos***. Esa pestaña muestra en su zona superior un desplegable donde hay que especificar la base de datos donde se encuentra la tabla. Una vez seleccionada la base de datos, en la lista de tablas de esta hay que marcar la tabla en cuestión y pulsa el botón ***Aceptar***. 
+El proceso de abrir una tabla es el genérico a abrir cualquier archivo, primero se selecciona ***Tabla*** como tipo de datos a abrir, se selecciona la opción de ***Nuevo***, lo que habilita una ventana donde se tiene que seleccionar la pestaña ***Base de datos***. Esa pestaña muestra en su zona superior un desplegable donde hay que especificar la base de datos donde se encuentra la tabla. Una vez seleccionada la base de datos, en la lista de tablas de esta hay que marcar la tabla en cuestión y pulsa el ***botón Aceptar***. 
 
 ![13_abrirTabla_128](lista_de_valores_basada_en_tabla_files/13_abrirTabla_128.png)
 
@@ -92,40 +92,40 @@ Tras la selección de este la tabla se muestra en una ventana del software. La s
 
 ![14_materialesVacia_128](lista_de_valores_basada_en_tabla_files/14_materialesVacia_128.png)
 
-Una vez abierta se pone en edición ejecutando en la ***pestaña Tabla*** de *gvSIG Desktop* el comando ***Iniciar edición***.
+Una vez abierta se pone en edición ejecutando en el ***menú Tabla*** de *gvSIG Desktop* el comando ***Iniciar edición***.
 
 ![15_iniciarEdicion_128](lista_de_valores_basada_en_tabla_files/15_iniciarEdicion_128.png)
 
-El proceso de añadir elementos a la tabla se realiza mediante ejecución del comando ***Añadir fila*** adyacente al anterior, situado en  la ***pestaña Tabla*** de *gvSIG Desktop*.
+El proceso de añadir elementos a la tabla se realiza mediante ejecución del comando ***Añadir fila*** adyacente al anterior, situado en el ***menú Tabla*** de *gvSIG Desktop*.
 
 ![16_añadirFila_128](lista_de_valores_basada_en_tabla_files/16_añadirFila_128.png)
 
-Tras esto en la tabla materiales aparece una fila en blanco donde se introducen los valores del nombre y el valor del material en cuestión para el caso del ejemplo.
+Tras esto en la *tabla materiales* aparece una fila en blanco donde se introducen los valores del nombre y el valor del material en cuestión para el caso del ejemplo.
 
-Los materiales que presentan las placas de las señales verticales de la tabla vertical_signal son los siguientes;
+Los materiales que presentan las placas de las señales verticales de la *tabla vertical_signal* son los siguientes;
 
 * name: *Acero*, value: *STEEL*
 * name: *Aluminio*,  value: *ALUMINUM*
 
-De modo que tras introducirlos la tabla materiales presenta la siguiente forma.
+De modo que tras introducirlos la *tabla materiales* presenta la siguiente forma.
 
 ![17_materiales_128](lista_de_valores_basada_en_tabla_files/17_materiales_128.png)
 
-Solo queda ahora finalizar edición ejecutando el comando ***Detener edición*** situado en la ***pestaña Tabla*** de *gvSIG Desktop* y guardar los cambios de la tabla.
+Solo queda ahora finalizar edición ejecutando el comando ***Detener edición*** situado en el ***menú Tabla*** de *gvSIG Desktop* y guardar los cambios de la tabla.
 
 ![18_detenerEdicion_128](lista_de_valores_basada_en_tabla_files/18_detenerEdicion_128.png)
 
-Una vez creada la tabla en cuestión solo queda establecer la relación entre la tablas que la utilicen lay esta. Para ello hay que realizar el procedimiento especificado en el documento [Como establecer una relacion maestro detalle entre dos tablas.](https://github.com/gvSIGAssociation/gvsig-desktop-docs-es/blob/master/docs/herramientas/gestor_de_columnas/maestro_detalle/maestro_detalle.md)
+Una vez creada la tabla en cuestión solo queda establecer la relación entre la tablas que la utilicen. Para ello hay que realizar el procedimiento especificado en el documento [Como establecer una relacion maestro detalle entre dos tablas.](https://github.com/gvSIGAssociation/gvsig-desktop-docs-es/blob/master/docs/herramientas/gestor_de_columnas/maestro_detalle/maestro_detalle.md)
 
 A modo de ejemplo y siguiendo con el uso de la tabla de materiales vamos a establecer la relación entre la *tabla vertical_signal* y la *tabla o diccionario materiales*. Esta relación es uno a uno ya que una señal solo puede ser de un material. A continuación se muestran las dos tablas obtenidas con el *Gestor de proyectos*.
 
 ![19_tablas_128](lista_de_valores_basada_en_tabla_files/19_tablas_128.png)
 
-Para configurar la relación hay que obtener el gestor de la tabla vertical_signal  por lo que hay seleccionar la tabla en cuestión y ejecutar el comando ***Gestor de columnas*** situado en la pestaña ***Tabla** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
+Para configurar la relación hay que obtener el gestor de la tabla vertical_signal  por lo que hay seleccionar la tabla en cuestión y ejecutar el comando ***Gestor de columnas*** situado en el ***menú Tabla** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
 
 ![20_gc_128](lista_de_valores_basada_en_tabla_files/20_gc_128.png)
 
-Como resultado se obtiene el siguiente gestor, *gestor de columnas* de la *tabla vertical_signal*.
+Como resultado se obtiene el siguiente cuadro de diálogo, *gestor de columnas* de la *tabla vertical_signal*.
 
 ![21_gcMVertical_signalMaterial_128](lista_de_valores_basada_en_tabla_files/21_gcMVertical_signalMaterial_128.png)
 
@@ -135,7 +135,7 @@ Como se busca definir una relación entre las dos tablas hay que buscar el campo
 
 ![22_gcMVertical_signalMaterial_128](lista_de_valores_basada_en_tabla_files/22_gcMVertical_signalMaterial_128.png)
 
-Una vez seleccionado se inicia su edición pulsando el botón ***Modificar*** situado en la zona derecha de la ventana.
+Una vez seleccionado se inicia su edición pulsando el ***botón Modificar*** situado en la zona derecha de la ventana.
 
 ![23_gcMVertical_signalMaterialEditable_128](lista_de_valores_basada_en_tabla_files/23_gcMVertical_signalMaterialEditable_128.png)
 
@@ -147,7 +147,7 @@ Tras lo anterior se habilitan una serie de pestañas que permiten modificar todo
 La configuración comienza especificando en la ***pestaña Campos básicos***.
 En este caso concreto de establecer relación entre tablas uno a uno del ejemplo, se pasa de no tener relación alguna a *Colaboración (1:1)* ya que como se detalla en el ejemplo una señal solo puede estar compuesta de un material
 
- Tras lo anterior se inicia la configuración de la **pestaña Clave ajena**, seleccionando en primer lugar si el campo es *clave ajena*, el cual lo es en el caso del ejemplo, tras esto hay definir si dicho campo es *clave ajena de una lista cerrada o no*. En el caso de ejemplo, la *tabla materiales* es una tabla cerrada por lo que hay que especificarlo.
+Tras lo anterior se inicia la configuración de la **pestaña Clave ajena**, seleccionando en primer lugar si el campo es *clave ajena*, el cual lo es en el caso del ejemplo, tras esto hay definir si dicho campo es *clave ajena de una lista cerrada o no*. En el caso de ejemplo, la *tabla materiales* es una tabla cerrada por lo que hay que especificarlo.
 
  > La única diferencia entre marcar si es una lista cerrada o no es la representación de los valores de esta en el formulario de la tabla de la clave ajena, en este caso en el *formulario de vertical_signal*.
 
@@ -160,4 +160,4 @@ La configuración de las pestañas se puede ver en la siguiente imagen:
 ![25_gcMVertical_signalMaterialCamposBasicos_128](lista_de_valores_basada_en_tabla_files/25_gcMVertical_signalMaterialCamposBasicos_128.png)
 ![25_gcMVertical_signalMaterialClaveAjena_128](lista_de_valores_basada_en_tabla_files/25_gcMVertical_signalMaterialClaveAjena_128.png)
 
-Tras lo anterior solo queda terminar la modificación del campo pulsando el botón *Aceptar* del margen derecho y terminar el proceso en el *Gestor de columnas* pulsando el botón *Aceptar* situado en la esquina inferior derecha de dicha ventana.
+Tras lo anterior solo queda terminar la modificación del campo pulsando el botón *Aceptar* del margen derecho y terminar el proceso en el *Gestor de columnas* pulsando el ***botón Aceptar*** situado en la esquina inferior derecha de dicha ventana.
