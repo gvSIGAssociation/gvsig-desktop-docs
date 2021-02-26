@@ -59,7 +59,7 @@ Una vez seleccionados o no los elementos anteriores hay que definir la tabla de 
 
 Según el orden de los parámetros definidos en el párrafo anterior la *tabla* sería *bracket*, el campo sería *id* y la *formula especificada* es *‘Poste ‘ \|\| id*.
 
- > La expresión, *‘Poste ‘ \|\| id*, concatena la palabra *Poste* con el identificador o campo *id* de poste asociado mediante los símbolos ||. Esta forma de representar el dato es estética, podría indicarse unicamente el campo *id* en la barra de texto y funcionaria sin problemas.
+ > La expresión, *‘Poste ‘ \|\| id*, concatena la palabra *Poste* con el identificador o campo *id* de poste asociado mediante los símbolos \|\|. Esta forma de representar el dato es estética, podría indicarse unicamente el campo *id* en la barra de texto y funcionaria sin problemas.
 
 La configuración de las pestañas se puede ver en la siguientes imagenes:
 
@@ -81,7 +81,7 @@ Se puede aprecias que el campo *bracket* del formulario ha sufrido cambios. En e
 ![10_componentesRelacion_128](maestro_detalle_files/10_componentesRelacion_128.png) 
 
 Esos componentes son cuatro de izquierda a derecha:
-* **Caja de texto con el elemento de la otra tabla seleccionado.** En el caso del ejemplo este cumple la expresión indicada anteriormente,  ‘Poste ‘ || id.
+* **Caja de texto con el elemento de la otra tabla seleccionado.** En el caso del ejemplo este cumple la expresión indicada anteriormente,  ‘Poste ‘ \|\| id.
 * **Icono de selección de elemento.** Este está deshabilitado si la tabla no se encuentra en edición y permite seleccionar elementos de la tabla ligada.
 * **Icono borrar elemento relacionado.**  Este está deshabilitado si la tabla no se encuentra en edición.
 * **Icono ver elemento relacionado.** Nos permite visualizar el elemento relacionado de la tabla ligada en el formulario de esta.
