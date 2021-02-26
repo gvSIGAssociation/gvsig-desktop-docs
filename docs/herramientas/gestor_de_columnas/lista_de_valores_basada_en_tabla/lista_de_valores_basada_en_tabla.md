@@ -1,6 +1,6 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 
-{% comment %} Como establecer lista de valores cerrada basada en los contenidos de una tabla {% endcomment %}
+{% comment %} Como asignar a un campo un lista de valores cerrada basada en los contenidos de otra tabla {% endcomment %}
 
 Este documento define el procedimiento de creación de una nueva tabla de valores, los cuales son las opciones para los campos de otras. En otras palabras, en este documento se detalla la forma de crear diccionarios o tablas de datos desde cero con las diferentes opciones que presentan determinados campos de otras capas.
 
