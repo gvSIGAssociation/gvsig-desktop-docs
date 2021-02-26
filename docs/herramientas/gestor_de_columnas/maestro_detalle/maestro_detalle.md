@@ -8,35 +8,35 @@ Concretamente en este documento se especifica el proceso de definir una relació
 
 {% comment %} Relación desde el punto de vista uno a uno {% endcomment %}
 
-Para establecer la relación mestro detalle entre tablas por un campo común, en primer lugar se definirá debido a su menor grado de complejidad, la relacion existende desde un punto de vista uno a uno. En primer lugar hay que *abrir las tablas* y el *gestor de columnas* asociado a estas. Para abrir las tablas hay que realizarlo desde el ***Gestor de proyectos*** situado en el menú ***Mostrar*** de *gvSIG Desktop*. El proceso de abrirlas es el genérico a abrir cualquier archivo, primero se selecciona ***Tabla*** como tipo de datos a  abrir, se selecciona la opción de ***Nuevo***, lo que habilita una ventana donde se selecciona la ***pestaña Archivo*** y tras pulsar el botón ***Añadir***, se despliega un cuadro de diálogo donde se selecciona el fichero en cuestión. Tras la selección de este la tabla se muestra en una ventana del software. La siguiente ilustración muestra las tablas con las que se va a realizar el proceso. 
+Para establecer la relación mestro detalle entre tablas por un campo común, en primer lugar se definirá debido a su menor grado de complejidad, la relacion existende desde un punto de vista uno a uno. En primer lugar hay que *abrir las tablas* y el *gestor de columnas* asociado a estas. Para abrir las tablas hay que realizarlo desde el ***Gestor de proyectos*** situado en el ***menú Mostrar*** de *gvSIG Desktop*. El proceso de abrirlas es el genérico a abrir cualquier archivo, primero se selecciona ***Tabla*** como tipo de datos a  abrir, se selecciona la opción de ***Nuevo***, lo que habilita una ventana donde se selecciona la ***pestaña Archivo*** y tras pulsar el ***botón Añadir***, se despliega un cuadro de diálogo donde se selecciona el fichero en cuestión. Tras la selección de este la tabla se muestra en una ventana del software. La siguiente ilustración muestra las tablas con las que se va a realizar el proceso. 
 
-![Tablas](maestro_detalle_files/1_tablasInicio_128.png)
+![1_tablasInicio_128](maestro_detalle_files/1_tablasInicio_128.png)
 
 La *tabla bracket o postes* tiene un único registro, mientra que la *tabla vertical_signal* presenta dos registros de dos señales, las cuales se sabe que están en el poste de la tabla anterior. Como este apartado trata la relacion desde un punto de vista uno a uno es necesario abrir el *gestor de columnas* de la tabla que presenta dicha relación, *vertical_signal*, ya que una señal esta asociada solo a un poste.
 
-Para obtener el gestor de esta hay seleccionar la tabla en cuestión y ejecutar el comando ***Gestor de columnas*** situado en el menú ***Tabla** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
+Para obtener el gestor de esta hay seleccionar la tabla en cuestión y ejecutar el comando ***Gestor de columnas*** situado en el ***menú Tabla** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
 
-![Gestor_columnas](maestro_detalle_files/2_gc_128.png)
+![2_gc_128](maestro_detalle_files/2_gc_128.png)
 
 Como resultado se obtiene el siguiente gestor, *gestor de columnas* de la *tabla vertical_signal*.
 
-![Gestor_columnas_vertical_signal](maestro_detalle_files/3_gcVertical_signal_128.png)
+![3_gcVertical_signal_128](maestro_detalle_files/3_gcVertical_signal_128.png)
 
 Esta herramienta permite al usuario definir la estructura de datos de la tabla, así como su representación o visualización. La realización de los cambios se lleva a cabo por columnas y permite modificar estas, crear otras nuevas e incluso eliminarlas si es necesario.
 
 Como se busca definir una relación entre las dos tablas hay que buscar el campo que la establece, en este caso *bracket*. Para establecer la relación hay que seleccionar en la ventana de *gestor de columnas* de la *tabla vertical_signal* el campo que establece la relación, campo *bracket*.
 
-![GC_vertical_signal_bracket_1](maestro_detalle_files/4_gcVertical_signalBracket_128.png)
+![4_gcVertical_signalBracket_128](maestro_detalle_files/4_gcVertical_signalBracket_128.png)
 
-Una vez seleccionado se inicia su edición pulsando el botón ***Modificar*** situado en la zona derecha de la ventana.
+Una vez seleccionado se inicia su edición pulsando el ***botón Modificar*** situado en la zona derecha de la ventana.
 
-![GC_vertical_signal_bracket_2](maestro_detalle_files/5_gcVertical_signalBracketCamposBasicosDef_128.png)
+![5_gcVertical_signalBracketCamposBasicosDef_128](maestro_detalle_files/5_gcVertical_signalBracketCamposBasicosDef_128.png)
 
 Tras lo anterior se habilitan una serie de pestañas en el panel que permiten modificar todo lo referentes a los datos y su representación del citado campo. Para establecer la relación hay que modificar el contenido de dos pestañas, la ***pestaña Campos básicos*** y la ***pestaña Clave ajena***.
 
 La configuración comienza especificando en la ***pestaña Campos básicos*** el tipo de relación que presenta el campo en cuestión.
 
-![GC_vertical_signal_bracket_3](maestro_detalle_files/6_gvVertical_signalBracketCamposBasicosDef_128.png)
+![6_gvVertical_signalBracketCamposBasicosDef_128](maestro_detalle_files/6_gvVertical_signalBracketCamposBasicosDef_128.png)
 
 Los tipos de relación presentes en el ultimo desplegable son:
  * **Ninguna.**
@@ -47,9 +47,9 @@ Los tipos de relación presentes en el ultimo desplegable son:
 
 En este caso concreto de establecer relación entre tablas uno a uno del ejemplo, se pasa de no tener relación alguna a *Colaboración (1:1)* ya que como se detalla en el ejemplo una señal solo esta en un poste. 
 
- Tras o anterior se inicia la configuración de la **pestaña Clave ajena**.
+ Tras o anterior se inicia la configuración de la ***pestaña Clave ajena***.
  
- ![GC_vertical_signal_bracket_3_2](maestro_detalle_files/6_gvVertical_signalBracketClaveAjenaDef_128.png)
+ ![6_gvVertical_signalBracketClaveAjenaDef_128](maestro_detalle_files/6_gvVertical_signalBracketClaveAjenaDef_128.png)
  
 Esta configuración comienza seleccionando en primer lugar si el campo es *clave ajena*, el cual lo es en el caso del ejemplo. Tras esto hay definir si dicho campo es *clave ajena de una lista cerrada o no*. En el caso de ejemplo, la tabla bracket o postes es una tabla en continuo crecimiento por lo que no esta cerrada.
 
@@ -57,28 +57,28 @@ Esta configuración comienza seleccionando en primer lugar si el campo es *clave
 
 Una vez seleccionados o no los elementos anteriores hay que definir la tabla de la cual  el campo es clave ajena, así como el campo que queremos que muestre en el formulario y una formula para la representación o visualización de los datos.
 
-Según el orden de los parámetros definidos en el párrafo anterior la *tabla* sería *bracket*, el campo sería *id* y la *formula especificada* es *‘Poste ‘ || id*.
+Según el orden de los parámetros definidos en el párrafo anterior la *tabla* sería *bracket*, el campo sería *id* y la *formula especificada* es *‘Poste ‘ \|\| id*.
 
- > La expresión, *‘Poste ‘ || id*, concatena la palabra *Poste* con el identificador o campo *id* de poste asociado mediante los símbolos ||. Esta forma de representar el dato es estética, podría indicarse unicamente el campo *id* en la barra de texto y funcionaria sin problemas.
+ > La expresión, *‘Poste ‘ \|\| id*, concatena la palabra *Poste* con el identificador o campo *id* de poste asociado mediante los símbolos ||. Esta forma de representar el dato es estética, podría indicarse unicamente el campo *id* en la barra de texto y funcionaria sin problemas.
 
 La configuración de las pestañas se puede ver en la siguientes imagenes:
 
-![GC_vertical_signal_bracket_4](maestro_detalle_files/7_gcVertical_signalBracketCamposBasicos_128.png)
-![GC_vertical_signal_bracket_4_2](maestro_detalle_files/7_gvVertical_signalBracketClaveAjena_128.png)
+![7_gcVertical_signalBracketCamposBasicos_128](maestro_detalle_files/7_gcVertical_signalBracketCamposBasicos_128.png)
+![7_gvVertical_signalBracketClaveAjena_128](maestro_detalle_files/7_gvVertical_signalBracketClaveAjena_128.png)
 
 Tras lo anterior solo queda terminar la modificación del campo pulsando el botón *Aceptar* del margen derecho y terminar el proceso en el *Gestor de columnas* pulsando el botón *Aceptar* situado en la esquina inferior derecha de dicho cuadro de diálogo.
 
-Para ver si los cambios se han realizado con éxito de manera sencilla se puede consultar el *formulario* de la tabla modificada. Para obtener el formulario de la tabla hay que ejecutar el comando ***Show form*** situado en el menú ***Tabla*** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
+Para ver si los cambios se han realizado con éxito de manera sencilla se puede consultar el *formulario* de la tabla modificada. Para obtener el formulario de la tabla hay que ejecutar el comando ***Show form*** situado en el ***menú Tabla*** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
  
-![Show_form](maestro_detalle_files/8_showForm_128.png)
+![8_showForm_128](maestro_detalle_files/8_showForm_128.png)
 
 La siguiente ilustración muestra el formulario de la tabla vertical_signal antes de la relación (derecha) y tras la relación (izquierda).
 
-![Form_dif](maestro_detalle_files/9_diferenciaFormVertical_signal_128.png)
+![9_diferenciaFormVertical_signal_128](maestro_detalle_files/9_diferenciaFormVertical_signal_128.png)
 
 Se puede aprecias que el campo *bracket* del formulario ha sufrido cambios. En el formulario inicial era un campo sin más y en el formulario resultado de las modificaciones del gestor de columnas presenta una serie de componentes o botones que indican que esta ligado a otra tabla. 
 
-![Comp_relacion](maestro_detalle_files/10_componentesRelacion_128.png) 
+![10_componentesRelacion_128](maestro_detalle_files/10_componentesRelacion_128.png) 
 
 Esos componentes son cuatro de izquierda a derecha:
 * **Caja de texto con el elemento de la otra tabla seleccionado.** En el caso del ejemplo este cumple la expresión indicada anteriormente,  ‘Poste ‘ || id.
@@ -86,7 +86,7 @@ Esos componentes son cuatro de izquierda a derecha:
 * **Icono borrar elemento relacionado.**  Este está deshabilitado si la tabla no se encuentra en edición.
 * **Icono ver elemento relacionado.** Nos permite visualizar el elemento relacionado de la tabla ligada en el formulario de esta.
 
-![Comp_relacion_ver](maestro_detalle_files/11_formVertical_signalBracket_128.png)
+![11_formVertical_signalBracket_128](maestro_detalle_files/11_formVertical_signalBracket_128.png)
 
 Realizado todo lo anterior se completa el proceso de ligar una tabla con otra mediante una relación uno a uno mediante un campo común. 
 
@@ -98,9 +98,9 @@ Existen dos casos bien diferenciados a la hora de definir relaciones entre tabla
 
 El proceso de relacionar las tablas es básicamente el mismo a excepción de la creación de nuevos campos o columnas y se basa en realizar modificaciones sobre el cuadro de diálogo *Gestor de columnas* de la *tabla bracket, postes*.
 
-Una vez en el *Gestor de columnas* de la *tabla bracket* se inicia el proceso con la creación de un nuevo campo. Para realizar esto hay que pulsar el botón ***Nuevo*** situado en el margen derecho de la ventana.
+Una vez en el *Gestor de columnas* de la *tabla bracket* se inicia el proceso con la creación de un nuevo campo. Para realizar esto hay que pulsar el ***botón Nuevo*** situado en el margen derecho de la ventana.
 
-![Nuevo_campo_default](maestro_detalle_files/12_nuevoCampoDefault_128.png)
+![12_nuevoCampoDefault_128](maestro_detalle_files/12_nuevoCampoDefault_128.png)
 
 Como resultado de la ejecución y tal y como se muestra en la imagen anterior se crea un campo por defecto llamado *Campo1*, de tipo *String*, *tamaño 50*, *tipo de relación igual a ninguno*…
 
@@ -112,30 +112,30 @@ Todos los valores anteriores pueden detallarse en la ***pestaña Campos básicos
 
 Como resultado de la creación y modificación del nuevo campo señales, la ventana del Gestor de columnas presenta este aspecto.
 
-![Nuevo_campo_señales](maestro_detalle_files/13_nuevoCampoSeñales1_128.png)
+![13_nuevoCampoSeñales1_128](maestro_detalle_files/13_nuevoCampoSeñales1_128.png)
 
 Tras modificar lo anterior aceptamos guardar los cambios sobre el campo señales lo cual hace que este presente los parámetros correctos en la lista de campos del Gestor de columnas.
 
-![Campo_señales](maestro_detalle_files/14_NuevoCampoSeñales2_128.png)
+![14_NuevoCampoSeñales2_128](maestro_detalle_files/14_NuevoCampoSeñales2_128.png)
 
-Una vez eso solo queda terminar los procesos en el *Gestor de columnas* pulsando el botón ***Aceptar*** situado en la esquina inferior derecha de dicha ventana.
+Una vez eso solo queda terminar los procesos en el *Gestor de columnas* pulsando el ***botón Aceptar*** situado en la esquina inferior derecha de dicha ventana.
 
 Para ver si la relación se ha llevado a cabo hay que visualizar la *tabla bracket* o el *formulario asociado a ella*. En los dos elementos debe aparecer un nuevo campo llamado *Señales* relleno con una lista de valores que identifican las señales que presenta dicho poste.
 
-![Form_table_bracket_mal](maestro_detalle_files/15_formTableBracketMal1_128.png)
-![Form_table_bracket_mal](maestro_detalle_files/15_formTableBracketMal2_128.png)
+![15_formTableBracketMal1_128](maestro_detalle_files/15_formTableBracketMal1_128.png)
+![15_formTableBracketMal2_128](maestro_detalle_files/15_formTableBracketMal2_128.png)
 
-De este modo la relación se ha realizado con éxito pero la visualización del grupo de elementos relacionados no es la deseada. Para mejorar dicha visualización hay que acudir de nuevo al *Gestor de columnas* de la *tabla de postes, bracket*, seleccionar la columna *Señales* e iniciar la edición pulsando el botón ***Modificar***.
+De este modo la relación se ha realizado con éxito pero la visualización del grupo de elementos relacionados no es la deseada. Para mejorar dicha visualización hay que acudir de nuevo al *Gestor de columnas* de la *tabla de postes, bracket*, seleccionar la columna *Señales* e iniciar la edición pulsando el ***botón Modificar***.
 
 En esta ocasión hay que configurar dos pestañas, la ***pestaña Visualización*** y la ***pestaña Etiquetas***.
 
 En la ***pestaña Visualización*** se especifica la *creación de un grupo* al cual llamamos *Señales*.
 
-![GC_bracket_visualizacion](maestro_detalle_files/16_gvBracketVisualizacion_128.png)
+![16_gvBracketVisualizacion_128](maestro_detalle_files/16_gvBracketVisualizacion_128.png)
 
 La creación de un grupo hace que el contenido de esa columna pase a ser una *pestaña nueva en el formulario*, es decir se encuentre aislada del resto de la información.
 
-Con respecto a la configuración de la ***pestaña Etiquetas*** se establece la forma con la que se van a representar los elementos de la columna *Señales*. Para realizar la configuración hay que añadir al panel de dicha pestaña la siguiente serie de parámetros mediante el botón ***Añadir*** y ***Actualizar***. Esos parámetros son:
+Con respecto a la configuración de la ***pestaña Etiquetas*** se establece la forma con la que se van a representar los elementos de la columna *Señales*. Para realizar la configuración hay que añadir al panel de dicha pestaña la siguiente serie de parámetros mediante el ***botón Añadir*** y ***Actualizar***. Esos parámetros son:
  * ***DAL.RelatedFeatures.Table***. Especifica la tabla de donde va obtener los valores a representar para cada elemento de la columna señales.
  * ***DAL.RelatedFeatures.Unique.Field.Name***. Detalla el identificador único de la tabla anterior.
  * ***DAL.RelatedFeatures.Columns***. Columnas de la tabla que guarda información de los elementos de la lista que se van a mostrar para los diferentes elementos de esta que se dan tras la relación. Especificar que el nombre de las columnas tiene que ir separado por dos puntos (‘:’).
@@ -148,14 +148,14 @@ En el caso concreto del ejemplo que se esta realizando los valores de los parám
  * DAL.RelatedFeatures.Columns. → *id:model:revisiondate*
  * dynform.resizeweight. → *10*
 
-![GC_bracket_etiquetas](maestro_detalle_files/17_gcBracketEtiquetas_128.png)
+![17_gcBracketEtiquetas_128](maestro_detalle_files/17_gcBracketEtiquetas_128.png)
 
-Una vez terminado lo anterior se termina la edición de la columna pulsando el botón ***Aceptar*** del margen derecho y terminar el proceso en el *Gestor de columnas* pulsando el botón ***Aceptar*** situado en la esquina inferior derecha de dicha ventana.
+Una vez terminado lo anterior se termina la edición de la columna pulsando el ***botón Aceptar*** del margen derecho y terminar el proceso en el *Gestor de columnas* pulsando el ***botón Aceptar*** situado en la esquina inferior derecha de dicha ventana.
 
 Como resultado de lo anterior podemos ver que el formulario de la *tabla de postes, bracket* ha cambiado con respecto al anterior.  Tras las anteriores modificaciones realizadas en el *Gestor de columnas* este ahora presenta en su margen superior una pestaña llamada *Señales*, la cual almacena las placas de señales que tiene el poste en cuestión mostrando el identificador, modelo y fecha de revisión de cada señal.
 
-![Form_table_bracket_bien](maestro_detalle_files/18_formTablaBracketCorrecto_128.png)
+![18_formTablaBracketCorrecto_128](maestro_detalle_files/18_formTablaBracketCorrecto_128.png)
 
 Para ver la información de cada señal en su formulario correspondiente solo hay que seleccionarla y pulsar el icono que hay bajo la lista.
 
-![Form_tbracket_vertical_signal_bien ](maestro_detalle_files/19_formBracketVertical_signalCorrecto_128.png)
+![19_formBracketVertical_signalCorrecto_128 ](maestro_detalle_files/19_formBracketVertical_signalCorrecto_128.png)
