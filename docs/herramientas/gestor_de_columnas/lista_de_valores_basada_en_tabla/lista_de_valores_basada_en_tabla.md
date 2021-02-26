@@ -46,13 +46,13 @@ El proceso se inicia con la creación de un nuevo campo. Para realizar esto hay 
 
 Como resultado de la ejecución y tal y como se muestra en la imagen anterior se crea un campo por defecto llamado *Campo1*, de tipo *String*, *tamaño 50*, *tipo de relación igual a ninguno*….
 
-Tras la creación de este, se ha puesto la capa en edición de manera automática y se permite cambiar los parámetros que lo definen. De modo que, siguiendo el ejemplo, el nuevo campo tiene que llamarse *name*, ser de tipo *String*.
+Tras la creación de este, se ha puesto la capa en edición de manera automática y se permite cambiar los parámetros que lo definen. De modo que, siguiendo el ejemplo, el nuevo campo tiene que llamarse *name*, ser de tipo *String*. Además, es muy importante especificar que este es *clave primaria*.
 
-Todos los valores anteriores pueden detallarse en la ***pestaña Campos básicos***. Concretamente el nombre name se puede definir en la ***barra de texto Nombre de campo***, el tipo de campo se detalla en el **desplegable Tipo de Campo o el icono adyacente*** a este que ofrece una mayor colección de tipo de datos. 
+Todos los valores anteriores pueden detallarse en la ***pestaña Campos básicos***. Concretamente el nombre name se puede definir en la ***barra de texto Nombre de campo***, el tipo de campo se detalla en el **desplegable Tipo de Campo o el icono adyacente*** a este que ofrece una mayor colección de tipo de datos. Un campo se combierte en clave primaria con marcando la opción ***Clave primaria***.
 
 Tras modificar lo anterior aceptamos guardar los cambios sobre el campo name pulsando el botón ***Aceptar*** del margen derecho, lo cual hace que este presente los parámetros correctos en la lista de campos del Gestor de columnas.
 
-A parte de ese campo name se crea otro de iguales características llamado *value*. El resultado final de la ventana es el siguiente.
+A parte de ese campo name se crea otro de iguales características llamado *value*, eso si este no será una clave primaria. El resultado final de la ventana es el siguiente.
 
 ![New_layer_win_7](lista_de_valores_basada_en_tabla_files/8_new_layer_win_7.png)
 
