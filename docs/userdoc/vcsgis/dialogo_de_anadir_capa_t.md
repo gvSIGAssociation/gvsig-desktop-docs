@@ -4,6 +4,6 @@
 
 ## Añadir capa VCSGis usando el diálogo "Añadir Capa" de gvSIG Desktop
 
-{% include_relative dialogo_de_añadir_capa.md %}
+{% include_relative dialogo_de_anadir_capa.md %}
  
 [Anterior](topologia.md)

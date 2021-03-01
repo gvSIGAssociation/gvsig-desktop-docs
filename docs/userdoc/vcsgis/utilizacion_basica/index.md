@@ -12,9 +12,9 @@
 
 * [Creación de una copia de trabajo](creacion_de_copia_de_trabajo_t.md)
 
-* [Añadir una capa al repositorio](añadir_capa_al_repositorio_t.md)
+* [Añadir una capa al repositorio](anadir_capa_al_repositorio_t.md)
 
-* [Añadir una capa del repositorio](añadir_una_capa_del_repositorio_t.md)
+* [Añadir una capa del repositorio](anadir_una_capa_del_repositorio_t.md)
 
 * [Ciclo de trabajo básico](ciclo_de_trabajo_basico/index_t.md)
 

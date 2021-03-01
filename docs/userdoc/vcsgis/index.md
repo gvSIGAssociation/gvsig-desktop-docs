@@ -64,7 +64,7 @@
 
 * [Topología en VCSGis](topologia_t.md)
 
-* [Añadir capa VCSGis usando el diálogo "Añadir Capa" de gvSIG Desktop](dialogo_de_añadir_capa_t.md)
+* [Añadir capa VCSGis usando el diálogo "Añadir Capa" de gvSIG Desktop](dialogo_de_anadir_capa_t.md)
 
 [Nivel superior](../index.md)
 

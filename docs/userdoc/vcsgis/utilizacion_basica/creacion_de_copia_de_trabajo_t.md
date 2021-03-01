@@ -8,4 +8,4 @@
 
 {% include_relative creacion_de_copia_de_trabajo_t.md %}
  
-[Anterior](iniciar_servidor_t.md) | [Siguiente](añadir_capa_al_repositorio_t.md)
+[Anterior](iniciar_servidor_t.md) | [Siguiente](anadir_capa_al_repositorio_t.md)
