@@ -4,6 +4,6 @@
 
 ## Notificaciones del repositorio
 
-{% include_relative notificaciones_de_repositorio.md %}
+{% include_relative notificaciones_del_repositorio.md %}
  
 [Anterior](copias_de_trabajo/conexion_con_el_repositorio.md) | [Indice](index.md) | [Siguiente](utilizacion_basica/index.md)
