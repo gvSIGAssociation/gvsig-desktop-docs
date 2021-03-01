@@ -8,4 +8,4 @@
 
 {% include_relative introduccion.md %}
  
-[Anterior](index.md) | [Siguiente](../modelos_de_versionado_t.md)
+[Anterior](index.md) | [Siguiente](modelos_de_versionado_t.md)
