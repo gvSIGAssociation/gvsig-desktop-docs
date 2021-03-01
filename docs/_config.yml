@@ -14,7 +14,7 @@ exclude:
 #  - userdoc/topologia
 #  - userdoc/vcsgis/
   - userdoc/vcsgis/copias_de_trabajo
-  - userdoc/vcsgis/empezando
+#  - userdoc/vcsgis/empezando
   - userdoc/vcsgis/repositorio
   - userdoc/vcsgis/utilizacion_basica   
   
