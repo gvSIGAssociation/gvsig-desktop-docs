@@ -6,4 +6,4 @@
 
 * [Como asignar a un campo un lista de valores cerrada basada en los contenidos de otra tabla](lista_de_valores_basada_en_tabla)
 
-* [Como asignar a un campo un lista de valores cerrada basada en los contenidos de un fichero CSV](lista_de_valores_basada_en_json)
+* [Como asignar a un campo un lista de valores cerrada basada en los contenidos de un fichero CSV](lista_de_valores_basada_en_csv)
