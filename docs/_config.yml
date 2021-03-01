@@ -11,7 +11,7 @@ description: Documentación de gvSIG desktop
 exclude:
   - develdoc
   - userdoc/manual_de_usuario
-  - userdoc/topologia
+#  - userdoc/topologia
   - userdoc/vcsgis
   
   
