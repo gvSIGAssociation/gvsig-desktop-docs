@@ -161,3 +161,7 @@ La configuración de las pestañas se puede ver en la siguiente imagen:
 ![25_gcMVertical_signalMaterialClaveAjena_128](lista_de_valores_basada_en_tabla_files/25_gcMVertical_signalMaterialClaveAjena_128.png)
 
 Tras lo anterior solo queda terminar la modificación del campo pulsando el botón *Aceptar* del margen derecho y terminar el proceso en el *Gestor de columnas* pulsando el ***botón Aceptar*** situado en la esquina inferior derecha de dicha ventana.
+
+Para visualizar si la relación entre tablas se ha establecido, solo hay que ejecutar el comando ***Show form*** situado en el ***menú Tabla*** de de *gvSIG Desktop* estando la tabla *vertical_signal* abierta y seleccionada. En la siguiente ilustración se muestra el formulario de la tabla y el desplegable de materiales con los elementosd e la *tabla materiales*.
+
+![26_formVertical_signalCorrecto_128](lista_de_valores_basada_en_tabla_files/26_formVertical_signalCorrecto_128.png)
