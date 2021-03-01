@@ -1,4 +1,0 @@
-
-
-# Guía para documentar
-
