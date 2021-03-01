@@ -6,4 +6,4 @@
 
 {% include_relative dialogo_de_anadir_capa.md %}
  
-[Anterior](topologia.md)
+[Anterior](topologia_t.md)
