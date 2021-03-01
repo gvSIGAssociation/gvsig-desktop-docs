@@ -10,8 +10,8 @@ description: Documentación de gvSIG desktop
 # Exclude these files from production site
 exclude:
   - develdoc
-  - userdoc/manual_de_usuario
+#  - userdoc/manual_de_usuario
 #  - userdoc/topologia
-#  - userdoc/vcsgis
+  - userdoc/vcsgis
   
   
