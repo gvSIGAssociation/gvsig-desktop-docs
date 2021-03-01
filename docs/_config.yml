@@ -10,4 +10,5 @@ description: Documentación de gvSIG desktop
 # Exclude these files from production site
 exclude:
   - develdoc
+  - userdoc
   
