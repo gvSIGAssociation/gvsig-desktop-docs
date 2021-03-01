@@ -16,7 +16,7 @@ exclude:
 #  - userdoc/vcsgis/copias_de_trabajo
 #  - userdoc/vcsgis/empezando
 #  - userdoc/vcsgis/repositorio
-  - userdoc/vcsgis/utilizacion_basica   
-  - userdoc/vcsgis/utilizacion_basica/ciclo_de_trabajo_basico
+#  - userdoc/vcsgis/utilizacion_basica   
+#  - userdoc/vcsgis/utilizacion_basica/ciclo_de_trabajo_basico
   
   
