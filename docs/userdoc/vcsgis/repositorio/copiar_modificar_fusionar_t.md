@@ -8,4 +8,4 @@
 
 {% include_relative copiar_modificar_fusionar.md %}
  
-[Anterior](bloquear_modificar_bloquear_t.md) | [Siguiente](../copias_de_trabajo/index.md)
+[Anterior](bloquear_modificar_bloquear_t.md) | [Siguiente](copias_de_trabajo/index.md)
