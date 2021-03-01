@@ -6,4 +6,4 @@
 
 {% include_relative instalacion.md %}
  
-[Anterior](index.md) | [Siguiente](../conceptos_basicos.md)
+[Anterior](index.md) | [Siguiente](conceptos_basicos_t.md)
