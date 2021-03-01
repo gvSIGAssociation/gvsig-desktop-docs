@@ -8,4 +8,4 @@
 
 {% include_relative gestion_de_las_revisiones.md %}
  
-[Anterior](ciclo_de_trabajo_basico/revisando_cambios_t.md) | [Siguiente](exportar_datos_desde_el_repositorio_t.md)
+[Anterior](ciclo_de_trabajo_basico/revisando_cambios_realizados_t.md) | [Siguiente](exportar_datos_desde_el_repositorio_t.md)
