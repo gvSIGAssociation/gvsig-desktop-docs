@@ -1,0 +1,13 @@
+# Name of website
+title: gvSIG desktop
+
+# Short description of your site
+description: Documentación de gvSIG desktop
+
+
+theme: jekyll-theme-slate
+
+# Exclude these files from production site
+exclude:
+  - all.md
+  
