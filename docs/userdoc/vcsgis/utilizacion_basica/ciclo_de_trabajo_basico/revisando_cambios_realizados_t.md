@@ -8,6 +8,6 @@
 
 #### Revisando y enviando los cambios realizados
 
-{% include_relative revisando_cambios.md %}
+{% include_relative revisando_cambios_realizados.md %}
  
 [Anterior](actualizar_copia_de_trabajo_t.md) | [Siguiente](../gestion_de_las_revisiones_t.md)
