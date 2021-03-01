@@ -8,4 +8,4 @@
 
 {% include_relative bloquear_modificar_bloquear.md %}
  
-[Anterior](modelos_de_versionado_t.md) | [Siguiente](../copiar_modificar_fusionar_t.md)
+[Anterior](modelos_de_versionado_t.md) | [Siguiente](copiar_modificar_fusionar_t.md)
