@@ -5,7 +5,7 @@ title: gvSIG desktop
 description: Documentación de gvSIG desktop
 
 
-theme: jekyll-theme-slate
+#theme: jekyll-theme-slate
 
 # Exclude these files from production site
 exclude:
@@ -13,7 +13,7 @@ exclude:
 #  - userdoc/manual_de_usuario
 #  - userdoc/topologia
 #  - userdoc/vcsgis/
-  - userdoc/vcsgis/copias_de_trabajo
+#  - userdoc/vcsgis/copias_de_trabajo
 #  - userdoc/vcsgis/empezando
 #  - userdoc/vcsgis/repositorio
   - userdoc/vcsgis/utilizacion_basica   
