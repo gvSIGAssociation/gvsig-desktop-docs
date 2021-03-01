@@ -34,7 +34,7 @@
 
 * [Notificaciones del repositorio](notificaciones_del_repositorio_t.md)
 
-* [Utilización básica](utilizacion_basica/index_t.md)
+* [Utilización básica](utilizacion_basica/index.md)
 
   * [Introduccion](utilizacion_basica/introduccion_t.md)
 
