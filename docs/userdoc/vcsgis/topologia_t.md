@@ -6,4 +6,4 @@
 
 {% include_relative topologia.md %}
  
-[Anterior](importacion_de_historial_de_datos.md) | [Siguiente](dialogo_de_añadir_capa.md)
+[Anterior](importacion_de_historial_de_datos.md) | [Siguiente](dialogo_de_anadir_capa.md)
