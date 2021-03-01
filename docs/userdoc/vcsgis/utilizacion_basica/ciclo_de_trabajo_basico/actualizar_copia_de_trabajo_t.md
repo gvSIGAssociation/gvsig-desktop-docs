@@ -10,4 +10,4 @@
 
 {% include_relative actualizar_copia_de_trabajo.md %}
  
-[Anterior](introduccion_t.md) | [Siguiente](revisando_cambios_t.md)
+[Anterior](introduccion_t.md) | [Siguiente](revisando_cambios_realizados_t.md)
