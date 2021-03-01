@@ -12,6 +12,6 @@ exclude:
   - develdoc
   - userdoc/manual_de_usuario
 #  - userdoc/topologia
-  - userdoc/vcsgis
+#  - userdoc/vcsgis
   
   
