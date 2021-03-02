@@ -14,7 +14,7 @@ Para establecer la relación maestro detalle entre tablas por un campo común, e
 
 La *tabla bracket o postes* tiene un único registro, mientra que la *tabla vertical_signal* presenta dos registros de dos señales, las cuales se sabe que están en el poste de la tabla anterior. Como este apartado trata la relacion desde un punto de vista uno a uno es necesario abrir el *gestor de columnas* de la tabla que presenta dicha relación, *vertical_signal*, ya que una señal esta asociada solo a un poste.
 
-Para obtener el gestor de esta hay seleccionar la tabla en cuestión y ejecutar el comando ***Gestor de columnas*** situado en el ***menú Tabla** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
+Para obtener el gestor de esta hay seleccionar la tabla en cuestión y ejecutar el comando ***Gestor de columnas*** situado en el ***menú Tabla*** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
 
 ![2_gc_128](maestro_detalle_files/2_gc_128.png)
 
