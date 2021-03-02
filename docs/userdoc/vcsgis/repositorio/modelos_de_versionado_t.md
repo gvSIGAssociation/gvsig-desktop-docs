@@ -10,9 +10,10 @@
  
 [Anterior](introduccion_t.md)|[Siguiente](bloquear_modificar_bloquear_t.md)
 
-<table>
+<table with="100%">
  <tr>
   <td><a href="introduccion_t.html">Anterior</a></td>
+  <td with="100%"></td>
   <td><a href="bloquear_modificar_bloquear_t.html">Siguiente</a></td>
  </tr>
 </table>
