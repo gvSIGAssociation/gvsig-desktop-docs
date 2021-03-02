@@ -8,4 +8,4 @@
 
 {% include_relative modelos_de_versionado.md %}
  
-[Anterior](introduccion_t.md) |<span width="100%">aaa</span>|[Siguiente](bloquear_modificar_bloquear_t.md)
+[Anterior](introduccion_t.md) |<div width="100%">aaa</div>|[Siguiente](bloquear_modificar_bloquear_t.md)
