@@ -8,16 +8,16 @@ Una vez en la ventana de añadir capa existen 2 maneras de proceder para cargar 
 
 A continuación, se muestra el aspecto de dicha ventana al seleccionar la pestaña *VCSGis* y cargar una capa la cual ya estaba en local pero que fue eliminada de la vista.
 
-![añadirCapaVCSGis1](img/55_load_capa_prexistente_copia_tra.png)
+![añadirCapaVCSGis1](dialogo_de_anadir_capa_files/55_load_capa_prexistente_copia_tra.png)
 
 Como se puede apreciar hay que identificar la copia de trabajo y tras eso seleccionar ( marcar el check) en el área de elección de tablas la tabla/capa en cuestión. A parte de lo anterior, es importante cumplimentar la información de campos de información presentes.
 
 En el caso de que la copia de trabajo nunca halla presentado la capa que se pretende cargar, la ventana muestra un comportamiento diferentes. Ver siguiente ilustración.
 
-![añadirCapaVCSGis2](img/56_load_capa_no_prexistente_copia_tra.png)
+![añadirCapaVCSGis2](dialogo_de_anadir_capa_files/56_load_capa_no_prexistente_copia_tra.png)
 
 Se puede ver que la capa aparece deshabilitada, para poder cargarla hay que seleccionarla, lo cual habilita el icono que obtiene la copia local (checkout). Tras ejecutar dicho proceso al pulsar dicho icono la ventana presenta el mismo aspecto que si la copia local hubiera tenido en algún momento dicha tabla/capa. Solo queda pulsar *Aceptar* para terminar el proceso.
 
-![añadirCapaVCSGis3](img/57_load_capa_no_prexistente_copia_tra_comb.png)
+![añadirCapaVCSGis3](dialogo_de_anadir_capa_files/57_load_capa_no_prexistente_copia_tra_comb.png)
 
 

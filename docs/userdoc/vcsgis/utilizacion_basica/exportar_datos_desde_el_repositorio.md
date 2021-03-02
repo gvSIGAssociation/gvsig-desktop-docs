@@ -5,11 +5,11 @@ La herramienta de control de versiones VCSGis dispone de la posibilidad de expor
 
 Para realizar el proceso anterior se tiene que ejecutar el comando *Exportar* situado en la opción *Herramientas* del menú de gvSIG Desktop, pestaña *VCSGgis*.
 
-![exportar](img/40_exportar.png)
+![exportar](exportar_datos_desde_el_repositorio_files/40_exportar.png)
 
 Tras la ejecución de comando se presenta la siguiente ventana.
 
-![exportarVentana](img/41_exportar_win.png)
+![exportarVentana](exportar_datos_desde_el_repositorio_files/41_exportar_win.png)
 
 El funcionamiento de esta es simple, en primer lugar hay que seleccionar la *Copia de Trabajo* de la cual obtener la capa que se busca exportar. Tras esto aparecerán en la ventana de capas la lista de capas de la copia en cuestión, debiendo seleccionar la deseada. 
 

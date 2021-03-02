@@ -32,4 +32,4 @@ ver en los menus y herramientas de *gvSIG desktop*. Esto se debe a que *VCSGis*
 es una complemento de *gvSIG desktop*, así que primero inicie el *gvSIG dektop*. 
 Hága click en el menu *"Herramientas"* y debería ver una entrada nueva **VCSGis**:
 
-  ![Menu Herramienta->VCSGis](img/0_VCSGis.png)
+  ![Menu Herramienta->VCSGis](conceptos_basicos_files/0_VCSGis.png)

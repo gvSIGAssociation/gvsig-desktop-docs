@@ -5,7 +5,7 @@ Tras la definición de los sistemas de control de versiones y más concretamente
 
 Para entender mejor lo anterior consideramos el siguiente escenario. Suponga que tiene dos compañeros de trabajo, Pedro y Sara. Cada uno decide editar la misma tabla del repositorio a la vez. Si Pedro guarda sus cambios en el repositorio primero, es posible que, unos momentos después, Sara pueda accidentalmente sobreescribirlos con su propia versión. Mientras que la versión de la tabla de Pedro no se ha perdido para siempre, porque el sistema recuerda cada cambio, cualquier cambio que Pedro hizo no estará en la versión nueva de la tabla de Sara, porque ella nunca vio los cambios de Pedro. De lo anterior podemos decir que el trabajo de Pedro está efectivamente perdido, o al menos falta en la última versión de la tabla. 
 
-![esquemaRepositorio](img/1_flujo_no_vcs.png)
+![esquemaRepositorio](modelos_de_versionado_files/1_flujo_no_vcs.png)
 
 Para solucionar ese problema existen dos modelos;
  * Bloquear-Modificar-Desbloquear

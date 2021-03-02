@@ -6,11 +6,11 @@ El procedimiento de añadir una capa del repositorio a la copia de trabajo puede
 
 La primera forma, muy similar a *Añadir capa al repositorio*, se realiza ejecutando el comando *Obtener copia local* (checkout) situado en la opción Herramientas  del menú de *gvSIG Desktop*, pestaña *VCSGgis*.
 
-![mostrarCapaRepositorio1](img/28_checkout.png)
+![mostrarCapaRepositorio1](anadir_una_capa_del_repositorio_files/28_checkout.png)
 
 Como resultado de la ejecución anterior se obtiene la siguiente ventana:
 
-![mostrarCapaRepositorio2](img/29_checkout_win.png)
+![mostrarCapaRepositorio2](anadir_una_capa_del_repositorio_files/29_checkout_win.png)
 
 En la ventana hay que indicar la copia de trabajo a la que se quiere añadir la capa procedente del repositorio y la capa en cuestión, seleccionando esta de la lista presente. Además de lo anterior, la ventana presenta varias opciones en función si la tabla/capa ya se encuentra en la *Copia de Trabajo*.
 

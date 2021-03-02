@@ -32,33 +32,33 @@ Para registrar una nueva notificación, deberemos tener acceso a la base de dato
 
 La carga de la capa se realiza seleccionando la opción *Tabla* y posteriormente el boton *Nuevo*.Tras eso se selecciona la opción *Base de datos* en las pestañas de selección de fuente de datos situados en la zona superior de la ventana. Una vez allí, se selecciona la conexión con el repositorio y se carga la tabla **VCSGISREPO_HOOKS**.
 
-![abrirTabla](img/6_load_hooks_table.png)
+![abrirTabla](notificaciones_del_repositorio_files/6_load_hooks_table.png)
 
 Como resultado se muestra la tabla **VCSGISREPO_HOOKS**, la cual no presenta ningún registro.
 
-![VCSGISREPO_HOOKS1](img/7_hooks_table_vacia.png)
+![VCSGISREPO_HOOKS1](notificaciones_del_repositorio_files/7_hooks_table_vacia.png)
 
 Una vez visualizada la tabla se procede a mostrar el formulado asociado a esta. Una de las múltiples formas de obtener esta herramienta se realiza al ejecutar el comando *Show Form* situado en la pestaña *Tabla* de gvSIG Desktop.
 
-![VCSGISREPO_HOOKS2](img/8_show_form.png)
+![VCSGISREPO_HOOKS2](notificaciones_del_repositorio_files/8_show_form.png)
 
 Una vez diponemos del formulario de la tabla hay que poner poner en edición esta para agregar un nuevo registro. Este proceso se puede realizar desde el mismo desplegable que se mencionó anteriormente para obtener el formulario, o desde el mismo formulario utilizando el botón *Comenzar edición*.
 
-![VCSGISREPO_HOOKS3](img/9_comenzar_edicion_tabla.png)
+![VCSGISREPO_HOOKS3](notificaciones_del_repositorio_files/9_comenzar_edicion_tabla.png)
 
 Una vez visualizado el formulario y con la tabla en edición, ver siguiente ilustración, se procede a crear un nuevo registro pulsando el icono *Nuevo* situado en la zona inferior del formulario e indicado en la imagen siguiente.
 
-![VCSGISREPO_HOOKS4](img/10_nuevo_reg_tabla.png)
+![VCSGISREPO_HOOKS4](notificaciones_del_repositorio_files/10_nuevo_reg_tabla.png)
 
 Tras lo anterior se rellena los campos del formulario. El primer campo, *Código*, se rellena de manera automática con un identificador único. El segundo campo, *Command Type* dispone de las opciones *URL* y *Shell*, seleccionando la primera. El tercer campo, *Comando*, permite almacenar el objeto en concreto especificado en el campo anterior, en nuestro caso la URL del ejemplo. Tras terminar de completar e formulario solo queda guardar los cambios con el icono *Guardar* presente en la zona inferior de la ventana y especificado en la próxima imagen.
 
-![VCSGISREPO_HOOKS5](img/11_save_reg_tabla.png)
+![VCSGISREPO_HOOKS5](notificaciones_del_repositorio_files/11_save_reg_tabla.png)
 
 Una vez realizado lo anterior solo queda terminar la edición de la tabla. Para ello hay que ir a la pestaña *Tabla* de *gvSIG Desktop* y ejecutar el comando *Terminar edición* o terminar la edición desde el mismo formulario.
 
-![VCSGISREPO_HOOKS6](img/12_terminar_edicion_tabla.png)
+![VCSGISREPO_HOOKS6](notificaciones_del_repositorio_files/12_terminar_edicion_tabla.png)
 
 Realizado lo anterior ya podemos ver que la tabla **VCSGISREPO_HOOKS** presenta un registro de notificación.
 
-![VCSGISREPO_HOOKS7](img/13_hooks_table.png)
+![VCSGISREPO_HOOKS7](notificaciones_del_repositorio_files/13_hooks_table.png)
 

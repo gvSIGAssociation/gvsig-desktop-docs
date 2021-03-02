@@ -6,7 +6,7 @@ Volviendo al proceso de publicar o *confirmar* los datos en el servidor, hacer *
 
 Para ilustrar lo anterior se presenta el siguiente esquema del funcionamiento de las revisiones;
 
-![esquemaRevision](img/4_revisiones.png)
+![esquemaRevision](revisiones_files/4_revisiones.png)
 
 En la primera revisión, revisión 0, se han creado las lineas base de la calzada, en la siguiente revisión, revisión 1, se añaden las separaciones entre carriles y medaneras, en la revisión 2 se añaden las feclas indicadores del sentido y señales de stop, y por ultimo, en la revisión número 3 se han añadido las señales del carril bici.
 
