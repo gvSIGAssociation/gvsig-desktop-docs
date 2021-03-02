@@ -17,3 +17,6 @@
   <td><a href="https://github.com/gvSIGAssociation/gvsig-desktop-docs-es/blob/master/docs/userdoc/vcsgis/repositorio/modelos_de_versionado.md">Fuente</a></td>
  </tr>
 </table>
+
+{% include navigate.md %}
+
