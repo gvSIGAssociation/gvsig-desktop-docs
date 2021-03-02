@@ -8,8 +8,6 @@
 
 {% include_relative modelos_de_versionado.md %}
  
-[Anterior](introduccion_t.md)|[Siguiente](bloquear_modificar_bloquear_t.md)
-
 <table style="width:100%;">
  <tr>
   <td><a href="introduccion_t.html">Anterior</a></td>
