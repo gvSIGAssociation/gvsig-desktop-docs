@@ -112,11 +112,11 @@ Todos los valores anteriores pueden detallarse en la ***pestaña Campos básicos
 
 Como resultado de la creación y modificación del nuevo campo señales, la ventana del Gestor de columnas presenta este aspecto.
 
-![13_nuevoCampoSeñales1_128](maestro_detalle_files/13_nuevoCampoSeñales1_128.png)
+![13_nuevoCampoSeñales1_128](maestro_detalle_files/13_nuevoCampoSenales1_128.png)
 
 Tras modificar lo anterior aceptamos guardar los cambios sobre el campo señales lo cual hace que este presente los parámetros correctos en la lista de campos del Gestor de columnas.
 
-![14_NuevoCampoSeñales2_128](maestro_detalle_files/14_NuevoCampoSeñales2_128.png)
+![14_NuevoCampoSeñales2_128](maestro_detalle_files/14_NuevoCampoSenales2_128.png)
 
 Una vez eso solo queda terminar los procesos en el *Gestor de columnas* pulsando el ***botón Aceptar*** situado en la esquina inferior derecha de dicha ventana.
 

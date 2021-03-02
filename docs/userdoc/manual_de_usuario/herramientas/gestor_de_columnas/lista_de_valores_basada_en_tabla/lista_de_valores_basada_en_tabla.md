@@ -48,11 +48,11 @@ Como resultado de la ejecución, y tal y como se muestra en la imagen anterior s
 
 Tras la creación de este, se ha puesto la capa en edición de manera automática y se permite cambiar los parámetros que lo definen. De modo que, siguiendo el ejemplo, el nuevo campo tiene que llamarse *name*, ser de tipo *String*. Además, es muy importante especificar que este es *clave primaria*.
 
-Todos los valores anteriores pueden detallarse en la ***pestaña Campos básicos***. Concretamente el nombre name se puede definir en el ***cuadro de texto Nombre de campo***, el tipo de campo se detalla en el **desplegable Tipo de Campo o el icono adyacente*** a este que ofrece una mayor colección de tipo de datos. Un campo se combierte en clave primaria con marcando la ***opción Clave primaria***.
+Todos los valores anteriores pueden detallarse en la ***pestaña Campos básicos***. Concretamente el nombre name se puede definir en el ***cuadro de texto Nombre de campo***, el tipo de campo se detalla en el ***desplegable Tipo de Campo o el icono adyacente*** a este que ofrece una mayor colección de tipo de datos. Un campo se combierte en clave primaria con marcando la ***opción Clave primaria***.
 
 Tras modificar lo anterior aceptamos guardar los cambios sobre el campo name pulsando el ***botón Aceptar*** del margen derecho, lo cual hace que este presente los parámetros correctos en la lista de campos del Gestor de columnas.
 
-A parte de ese campo name se crea otro de iguales características llamado *value*, eso si este no será una clave primaria. El resultado final de la ventana es el siguiente.
+A parte de ese *campo name* se crea otro de iguales características llamado *value*, eso si este no será una clave primaria. El resultado final de la ventana es el siguiente.
 
 ![8_newLayerPanel7_128](lista_de_valores_basada_en_tabla_files/8_newLayerPanel7_128.png)
 
@@ -98,7 +98,7 @@ Una vez abierta se pone en edición ejecutando en el ***menú Tabla*** de *gvSIG
 
 El proceso de añadir elementos a la tabla se realiza mediante ejecución del comando ***Añadir fila*** adyacente al anterior, situado en el ***menú Tabla*** de *gvSIG Desktop*.
 
-![16_añadirFila_128](lista_de_valores_basada_en_tabla_files/16_añadirFila_128.png)
+![16_añadirFila_128](lista_de_valores_basada_en_tabla_files/16_anadirFila_128.png)
 
 Tras esto en la *tabla materiales* aparece una fila en blanco donde se introducen los valores del nombre y el valor del material en cuestión para el caso del ejemplo.
 
@@ -161,3 +161,7 @@ La configuración de las pestañas se puede ver en la siguiente imagen:
 ![25_gcMVertical_signalMaterialClaveAjena_128](lista_de_valores_basada_en_tabla_files/25_gcMVertical_signalMaterialClaveAjena_128.png)
 
 Tras lo anterior solo queda terminar la modificación del campo pulsando el botón *Aceptar* del margen derecho y terminar el proceso en el *Gestor de columnas* pulsando el ***botón Aceptar*** situado en la esquina inferior derecha de dicha ventana.
+
+Para visualizar si la relación entre tablas se ha establecido, solo hay que ejecutar el comando ***Show form*** situado en el ***menú Tabla*** de de *gvSIG Desktop* estando la tabla *vertical_signal* abierta y seleccionada. En la siguiente ilustración se muestra el formulario de la tabla y el desplegable de materiales con los elementosd e la *tabla materiales*.
+
+![26_formVertical_signalCorrecto_128](lista_de_valores_basada_en_tabla_files/26_formVertical_signalCorrecto_128.png)
