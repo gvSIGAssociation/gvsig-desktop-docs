@@ -66,7 +66,7 @@ En el caso del ejemplo la ventana anterior presenta la configuración que se mue
 
 A continuación se muestra las dos tablas en cuestión.
 
-![10_tables_128](lista_de_valores_basada_en_csv_files10_tables_128.png)
+![10_tables_128](lista_de_valores_basada_en_csv_files/10_tables_128.png)
 
 El proceso de establecer la relación de las tablas es maestro – detalle y queda detallado en el documento [Como establecer una relacion maestro detalle entre dos tablas.](https://github.com/gvSIGAssociation/gvsig-desktop-docs-es/blob/master/docs/herramientas/gestor_de_columnas/maestro_detalle/maestro_detalle.md)
 
