@@ -28,7 +28,7 @@ Y... **¿ como registramos en el servidor VCSGis que queremos que nos notifique 
 
 Para registrar una nueva notificación, deberemos tener acceso a la base de datos en la que se encuentra el repositorio. Si estamos usando *gvSIG Desktop*, crearemos una conexión a esa base de datos en caso de no tenerla y cargaremos la tabla **VCSGISREPO_HOOKS** como una tabla del proyecto gracias al gestor de proyectos.
 
-![gestorDeproyectos](img/5_gestor_de_proyeccto.png)
+![gestorDeproyectos](notificaciones_del_repositorio_files/5_gestor_de_proyeccto.png)
 
 La carga de la capa se realiza seleccionando la opción *Tabla* y posteriormente el boton *Nuevo*.Tras eso se selecciona la opción *Base de datos* en las pestañas de selección de fuente de datos situados en la zona superior de la ventana. Una vez allí, se selecciona la conexión con el repositorio y se carga la tabla **VCSGISREPO_HOOKS**.
 
