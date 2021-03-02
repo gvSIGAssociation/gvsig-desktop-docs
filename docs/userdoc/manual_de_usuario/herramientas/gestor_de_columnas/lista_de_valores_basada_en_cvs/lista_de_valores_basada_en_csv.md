@@ -8,7 +8,7 @@ Como ejemplo en este documento se va a abrir un archivo con extensión *csv* con
 
 En primer lugar hay que abrir las tablas. Lo anterior se realiza desde el ***Gestor de proyectos*** situado en el ***menú Mostrar*** de *gvSIG Desktop*. El proceso de abrirlas es el genérico a abrir cualquier archivo, primero se selecciona ***Tabla*** como tipo de datos a  abrir, se selecciona la opción de ***Nuevo***. La ejecución de lo anterior  habilita una ventana donde en pestañas se enumeran las diferentes formas de introducir tablas en el software. 
 
-![1_newTable_128](lista_de_valores_basada_en_cvs_files/1_newTable_128.png)
+![1_newTable_128](lista_de_valores_basada_en_csv_files/1_newTable_128.png)
 
 Para empezar se selecciona la ***pestaña Archivo*** y tras pulsar el ***botón Añadir***, se despliega un cuadro de diálogo donde se selecciona el fichero *csv* en cuestión, ***bracket.csv***. Una vez seleccionada se pulsa el *botón Aceptar* cerrando la ventana anterior y rellenando el panel de la pestaña archivo del ***cuadro de diálogo Nueva capa***.
 
