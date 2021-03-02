@@ -18,7 +18,7 @@ de una de las dos siguientes formas:
 
   Normalmente las imágenes que se capturan se dejan en una carpeta 
   llamada como el documento que tiene la descripción de la funcionalidad 
-  añadiendo el sufijo "img". Dentro de esta carpeta imágenes, se crea 
+  añadiendo el sufijo "_files". Dentro de esta carpeta imágenes, se crea 
   una carpeta por cada idioma del que se dispongan imágenes, añadiendo 
   el sufijo indicado para el idioma de que se trate según lo especificado 
   en la [iso639][iso639].
@@ -28,7 +28,7 @@ de una de las dos siguientes formas:
   ~~~
       (D) introduccion a gvSIG
           (F) introduccion a gvSIG
-          (D) introduccion a gvSIG.img
+          (D) introduccion a gvSIG_files
               (D) es
                   (F) img1-24-es.png 
                   (F) img1-es.png 
