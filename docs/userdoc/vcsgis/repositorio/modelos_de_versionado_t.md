@@ -11,5 +11,8 @@
 [Anterior](introduccion_t.md)|[Siguiente](bloquear_modificar_bloquear_t.md)
 
 <table>
- <tr><td>[Anterior](introduccion_t.md)</td><td>[Siguiente](bloquear_modificar_bloquear_t.md)</td></tr>
+ <tr>
+  <td><a href="introduccion_t.html">Anterior</a></td>
+  <td><a href="bloquear_modificar_bloquear_t.html">Siguiente</a></td>
+ </tr>
 </table>
