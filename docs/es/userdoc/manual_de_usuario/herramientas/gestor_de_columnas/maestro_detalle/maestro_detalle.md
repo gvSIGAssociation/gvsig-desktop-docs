@@ -2,28 +2,36 @@
 
 {% comment %} Como establecer una relacion maestro detalle entre dos tablas {% endcomment %}
 
-En este documento se describe el proceso para definir una relación *maestro-detalle* entre dos 
+En este documento se describe el proceso para definir una relación **maestro-detalle** entre dos 
 tablas. Este tipo de relación puede verse desde dos puntos de vista, 
-desde la tabla *maestra*, la veremos como una relación *uno a muchos*, o desde la tabla 
-de *detalle*, y la veremos como una relación *uno a uno*. Para realizar la explicación se utilizaran 
-las tablas *placas* y *postes* que tienen una relación *maestro-detalle*, 
-una señal solo puede tener un poste, la veremos como una relación *uno a uno*, y un poste puede 
-tener varias *placas*, la veremos como relación uno a muchos. La realización de este tipo de
-relaciones normalmente implica que en la tabla *detalle* exista un campo que referencie
-de forma única a la tabla *maestro*. Este campo se le denomina *clave ajena*.
+desde la tabla *maestra*, viendola como una relación *uno a muchos*, o desde la tabla 
+de *detalle*, y la veremos como una relación *uno a uno*. En la descripcion se utilizaran 
+las tablas **bracket** y **vertical_signal** para ilustras como definir la relacion. 
+La primera, *bracket* representa a la entidad de los soportes o postes de una señal, 
+y la segunda *vertical_signal*, representa a la entidad de las placas de una señal. 
+Entre ambas entidades existe una relacion de tipo **maestro-detalle**. 
+En un poste pueden haber varias placas, *uno a muchos*, y una placa esta en un solo poste, *uno a uno*.
+De ahora en adelante nos referiremos a estas dos entidades, como **bracket** y **vertical_signal**, que
+son los nombres que tienen nuestras tablas.
 
-{% comment %} Relación desde el punto de vista uno a uno {% endcomment %}
+A la hora de materializar en un modelo fisico este tipo de relacion entre entidades, nuestras tablas,
+normalmente implicara que en la tabla de *detalle* exista un campo que referencie de
+forma única a la tabla *maestro*. Este campo se le denomina *clave ajena*. En nuestro ejemplo, en la
+tabla **vertical_signal**, tendremos un campo **bracket** que contendra el valor del campo **id** de la 
+tabla **bracket**.
 
 Para establecer la relación *maestro-detalle* entre tablas mediante una *clave ajena*, en primer 
-lugar definiremos, debido a su menor grado de complejidad, la relación existente desde 
-un punto de vista de la tabla de *detalle*, uno a uno. En primer lugar hay que *abrir las tablas* y el 
+vamos a definir, la relación existente desde el punto de vista de la tabla de *detalle*, 
+que la veremos como una relacion *uno a uno*. 
+
+En primer lugar hay que *abrir las tablas* y el 
 *gestor de columnas* asociado a estas. Para abrir las tablas hay que realizarlo desde 
 el ***Gestor de proyectos*** situado en el menú ***Mostrar*** de *gvSIG Desktop*. 
 El proceso de abrirlas es el genérico a abrir cualquier archivo, primero se selecciona 
 ***Tabla*** como tipo de datos a  abrir, se selecciona la opción de ***Nuevo***, lo 
 que habilita una ventana donde se selecciona la pestaña ***Archivo*** y tras pulsar el 
 botón ***Añadir***, se despliega un cuadro de diálogo donde se selecciona el fichero en 
-cuestión. Tras la selección de este la tabla se muestra en una ventana del software. La 
+cuestión. Tras la selección de este la tabla se muestra en una ventana. La 
 siguiente ilustración muestra las tablas con las que se va a realizar el proceso. 
 
 ![1_tablasInicio_128](maestro_detalle_files/1_tablasInicio_128.png)
@@ -117,8 +125,6 @@ Esos componentes son cuatro de izquierda a derecha:
 ![11_formVertical_signalBracket_128](maestro_detalle_files/11_formVertical_signalBracket_128.png)
 
 Realizado todo lo anterior se completa el proceso de ligar una tabla con otra mediante una relación uno a uno a traves de una clave ajena. 
-
-{% comment %} Relación desde el punto de vista uno a varios {% endcomment %} 
 
 Tras completar el apartado anterior y siguiendo el ejemplo, pasaremos a definir la relación
 desde el punto de vista de la tabla *maestra*, es decir la tabla postes, relación de un elemento 
