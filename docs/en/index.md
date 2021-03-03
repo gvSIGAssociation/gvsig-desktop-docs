@@ -1,5 +1,7 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 
+***page under construction***
+
 # GvSIG desktop documentation
 
 * [User documentation](userdoc/index.md)
