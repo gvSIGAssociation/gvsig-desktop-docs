@@ -2,12 +2,12 @@
 
 # GvSIG desktop documentation
 
-* [User documentation] (userdoc/index.md)
+* [User documentation](userdoc/index.md)
 
-* [Scripting documentation] (scriptingdoc/index.md)
+* [Scripting documentation](scriptingdoc/index.md)
 
-* [Developer documentation] (develdoc/index.md)
+* [Developer documentation](develdoc/index.md)
 
-* [Documentation for Documentators] (docdoc/index.md) 
+* [Documentation for Documentators](docdoc/index.md) 
 
 [Spanish](../es/index.md)
