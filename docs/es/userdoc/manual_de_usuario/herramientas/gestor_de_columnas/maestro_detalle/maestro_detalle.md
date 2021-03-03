@@ -61,7 +61,7 @@ La configuración comienza especificando en la pestaña ***Campos básicos*** el
 
 ![6_gvVertical_signalBracketCamposBasicosDef_128](maestro_detalle_files/6_gvVertical_signalBracketCamposBasicosDef_128.png)
 
-Los tipos de relación presentes en el desplegable **Relacion** son:
+Los tipos de relación presentes en el desplegable **Tipo de relación** son:
  * **Ninguna.**
  * **Identidad (1:1).** Se utiliza para relacionar tablas que hacen referencia a un mismo objeto. Este, sea por el motivo que sea tiene distribuida la información en diferentes tablas.
  * **Colaboración (1:1).** Se utiliza para relacionar tablas por un campo o columna común. Las tablas representa información de entes diferentes que tiene relación entre si. 
@@ -125,23 +125,19 @@ desde el punto de vista de la tabla *maestra*, es decir la tabla postes, relaci�
 a varios de otra tabla. De esta forma tendríamos definida la relación entre las dos tablas 
 en un sentido y otro.
 
-ESTE PARRAFO QUITARLO: Existen dos casos bien diferenciados a la hora de definir relaciones entre tablas. El primero de estos dos casos se basa en la existencia de campo comunes que las relacionan. Un ejemplo de este es el realizado en el apartado anterior. El segundo caso se da cuando una de las tabla no presenta un campo como tal que indique los elementos de la otra tabla, pero esa otra tabla si lo presenta. Un ejemplo de esto se da en la *tabla bracket*, la cual no presenta un campo con las señales que dispone, pero la *tabla vertical_signal* si dispone un campo bracket. Para establecer la relación de señales que presenta un poste por lo tanto se tendrán que crear *campos nuevos* en la *tabla bracket*.
-
-El proceso de relacionar las tablas es básicamente el mismo a excepción de la creación de nuevos 
-campos o columnas y se basa en realizar modificaciones sobre el cuadro de diálogo 
-*Gestor de columnas* de la *tabla bracket, postes*.
-
-Una vez en el *Gestor de columnas* de la *tabla bracket* se inicia el proceso con la creación de un nuevo campo. Para realizar esto hay que pulsar el ***botón Nuevo*** situado en el margen derecho de la ventana.
+Una vez en el *Gestor de columnas* de la *tabla bracket* se inicia el proceso con la creación de un nuevo campo. Para realizar esto hay que pulsar el botón ***Nuevo*** situado en el margen derecho de la ventana.
 
 ![12_nuevoCampoDefault_128](maestro_detalle_files/12_nuevoCampoDefault_128.png)
 
-Como resultado de la ejecución y tal y como se muestra en la imagen anterior se crea un campo por defecto llamado *Campo1*, de tipo *String*, *tamaño 50*, *tipo de relación igual a ninguno*…
+Como resultado de la ejecución y tal y como se muestra en la imagen anterior se crea un campo por defecto llamado *Campo1*, de tipo *String*, *tamaño 50*, *tipo de relación igual a ninguno*. El campo creado sera un campo virtual. Pasaremos ahora a modificar la definicion del campo para crear la relacion. Modificaremos la definicion del campo:
+* El nombre del campo pasara a ser *Señales*.
+* El tipo *lista*.
+* En el tipo de relacion pondremos *agregado (1:n)*.
+* Y en *campo virtual* pondremos la expresión ```SELECT * FROM vertical_signal WHERE vertical_signal.bracket=id;```
 
-Tras la creación de este, se ha puesto la capa en edición de manera automática y se permite cambiar los parámetros que lo definen. De modo que, siguiendo el ejemplo, el nuevo campo tiene que llamarse *Señales*, ser de tipo *lista*, presentar un *tipo de relación de agregado (1:n)* y además ser un *campo calculado* con la expresión *SELECT * FROM vertical_signal WHERE vertical_signal.bracket=id;*
+ > La expresión ,```SELECT * FROM vertical_signal WHERE vertical_signal.bracket=id;```, devolvera todos los elementos de la tabla *vertical_signal* donde el valor de su columna *bracket* coincida con el valor del campo *id* de la tabla *bracket*.
 
- > La expresión ,SELECT * FROM vertical_signal WHERE vertical_signal.bracket=id;, selecciona todos los elementos de la tabla vertical_signal donde el valor de su columna bracket coincida con el valor del campo id de la tabla bracket.
-
-Todos los valores anteriores pueden detallarse en la ***pestaña Campos básicos***. Concretamente el nombre *Señales* se puede definir en el ***cuadro de texto Nombre de campo***, el tipo de campo se detalla en el ***desplegable Tipo de Campo o el icono adyacente a este*** que ofrece una mayor colección de tipo de datos. El tipo de relación se detalla en el ultimo ***desplegable de la pestaña llamado Tipo de relación***. Por último el que sea un campo calculado se especifica seleccionando la ***opción Campo virtual*** situada sobre el desplegable anterior y la formula se introduce en el cuadro adyacente a ese check. La fórmula puede introducirse de manera manual o mediante el evaluador de expresiones.
+Todos los valores anteriores pueden detallarse en la pestaña ***Campos básicos***. Concretamente el nombre *Señales* se puede definir en el cuadro de texto ***Nombre de campo***, el tipo de campo se detalla en el desplegable ***Tipo de Campo o el icono adyacente a este*** que ofrece una mayor colección de tipo de datos. El tipo de relación se detalla en el ultimo desplegable de la pestaña llamado ***Tipo de relación***. Por último el que sea un campo calculado se especifica seleccionando el check ***Campo virtual*** situada sobre el desplegable anterior y la formula se introduce en el cuadro adyacente a ese check. Si la tabla no se encuentra en edicion, solo se podran crear campos virtuales, estando el check marcado por defecto y no pudiendo desmarcarse. La fórmula puede introducirse de manera manual o mediante el evaluador de expresiones.
 
 Como resultado de la creación y modificación del nuevo campo señales, la ventana del Gestor de columnas presenta este aspecto.
 
@@ -151,39 +147,39 @@ Tras modificar lo anterior aceptamos guardar los cambios sobre el campo señales
 
 ![14_NuevoCampoSeñales2_128](maestro_detalle_files/14_NuevoCampoSenales2_128.png)
 
-Una vez eso solo queda terminar los procesos en el *Gestor de columnas* pulsando el ***botón Aceptar*** situado en la esquina inferior derecha de dicha ventana.
+Una vez eso solo queda terminar los procesos en el *Gestor de columnas* pulsando el botón ***Aceptar*** situado en la esquina inferior derecha de dicha ventana.
 
-Para ver si la relación se ha llevado a cabo hay que visualizar la *tabla bracket* o el *formulario asociado a ella*. En los dos elementos debe aparecer un nuevo campo llamado *Señales* relleno con una lista de valores que identifican las señales que presenta dicho poste.
+Para el resultado de lo que acabamos de hacer podemos visualizar la tabla *bracket* o el *formulario asociado a ella*. En los dos elementos debe aparecer un nuevo campo llamado *Señales* relleno con una lista de valores que identifican las señales que presenta dicho poste.
 
 ![15_formTableBracketMal1_128](maestro_detalle_files/15_formTableBracketMal1_128.png)
 ![15_formTableBracketMal2_128](maestro_detalle_files/15_formTableBracketMal2_128.png)
 
-De este modo la relación se ha realizado con éxito pero la visualización del grupo de elementos relacionados no es la deseada. Para mejorar dicha visualización hay que acudir de nuevo al *Gestor de columnas* de la *tabla de postes, bracket*, seleccionar la columna *Señales* e iniciar la edición pulsando el ***botón Modificar***.
+De este modo la relación se ha definido con éxito pero la visualización del grupo de elementos relacionados no es la deseada. Para mejorar dicha visualización hay que acudir de nuevo al *Gestor de columnas* de la *tabla de postes, bracket*, seleccionar la columna *Señales* e iniciar la edición pulsando el botón ***Modificar***.
 
-En esta ocasión hay que configurar dos pestañas, la ***pestaña Visualización*** y la ***pestaña Etiquetas***.
+En esta ocasión hay que configurar dos pestañas, la pestaña ***Visualización*** y la pestaña ***Etiquetas***.
 
-En la ***pestaña Visualización*** se especifica la *creación de un grupo* al cual llamamos *Señales*.
+En la pestaña ***Visualización*** se especifica la *creación de un grupo* al cual llamamos *Señales*.
 
 ![16_gvBracketVisualizacion_128](maestro_detalle_files/16_gvBracketVisualizacion_128.png)
 
-La creación de un grupo hace que el contenido de esa columna pase a ser una *pestaña nueva en el formulario*, es decir se encuentre aislada del resto de la información.
+La creación de un grupo hace que el contenido de esa columna pase a visualizarse en una *pestaña nueva en el formulario*.
 
-Con respecto a la configuración de la ***pestaña Etiquetas*** se establece la forma con la que se van a representar los elementos de la columna *Señales*. Para realizar la configuración hay que añadir al panel de dicha pestaña la siguiente serie de parámetros mediante el ***botón Añadir*** y ***Actualizar***. Esos parámetros son:
+En la pestaá ***Etiquetas*** se establece la forma con la que se van a representar los elementos de la columna *Señales*. Para realizar la configuración hay que añadir al panel de dicha pestaña la siguiente serie de parámetros mediante el botón ***Añadir*** y ***Actualizar***. Esos parámetros son:
  * ***DAL.RelatedFeatures.Table***. Especifica la tabla de donde va obtener los valores a representar para cada elemento de la columna señales.
  * ***DAL.RelatedFeatures.Unique.Field.Name***. Detalla el identificador único de la tabla anterior.
  * ***DAL.RelatedFeatures.Columns***. Columnas de la tabla que guarda información de los elementos de la lista que se van a mostrar para los diferentes elementos de esta que se dan tras la relación. Especificar que el nombre de las columnas tiene que ir separado por dos puntos (‘:’).
- * ***dynform.resizeweight***. Permite ajustar el tamaño de la zona donde se muestran el grupo d e elementos.
+ * ***dynform.resizeweight***. Permite ajustar el tamaño de la zona donde se muestran el grupo de elementos.
 
 En el caso concreto del ejemplo que se esta realizando los valores de los parámetros anteriores son;
 
- * DAL.RelatedFeatures.Table → *vertical_signal*
- * DAL.RelatedFeatures.Unique.Field.Name. → *id*
- * DAL.RelatedFeatures.Columns. → *id:model:revisiondate*
- * dynform.resizeweight. → *10*
+ * **DAL.RelatedFeatures.Table**  ```vertical_signal```
+ * **DAL.RelatedFeatures.Unique.Field.Name** ```id```
+ * **DAL.RelatedFeatures.Columns**  ```id:model:revisiondate```
+ * **dynform.resizeweight** ```10```
 
 ![17_gcBracketEtiquetas_128](maestro_detalle_files/17_gcBracketEtiquetas_128.png)
 
-Una vez terminado lo anterior se termina la edición de la columna pulsando el ***botón Aceptar*** del margen derecho y terminar el proceso en el *Gestor de columnas* pulsando el ***botón Aceptar*** situado en la esquina inferior derecha de dicha ventana.
+Una vez terminado lo anterior se termina la edición de la columna pulsando el botón ***Aceptar*** del margen derecho y terminar el proceso en el *Gestor de columnas* pulsando el botón ***Aceptar*** situado en la esquina inferior derecha de dicha ventana.
 
 Como resultado de lo anterior podemos ver que el formulario de la *tabla de postes, bracket* ha cambiado con respecto al anterior.  Tras las anteriores modificaciones realizadas en el *Gestor de columnas* este ahora presenta en su margen superior una pestaña llamada *Señales*, la cual almacena las placas de señales que tiene el poste en cuestión mostrando el identificador, modelo y fecha de revisión de cada señal.
 
