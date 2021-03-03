@@ -2,19 +2,39 @@
 
 {% comment %} Como establecer una relacion maestro detalle entre dos tablas {% endcomment %}
 
-Este es el primero de una serie de documentos que permiten definir todo lo referente a las tablas de una base de datos en cuanto a relaciones entre ellas y visualización de su contenido en su correspondientes formularios.
-
-Concretamente en este documento se especifica el proceso de definir una relación maestro detalle entre dos tablas mediante campos comunes. Esta relación puede verse desde dos puntos de vista, uno a uno o de uno a muchos. Para realizar la explicación se utilizaran las *tablas de placas* y *postes* que presentan una relación maestro detalle con las dos variantes, ya que una señal solo puede tener un poste, punto de vista de relación uno a uno, y un poste puede tener varias señales o placas, punto de vista relación uno a muchos.
+En este documento se describe el proceso para definir una relación *maestro-detalle* entre dos 
+tablas. Este tipo de relación puede verse desde dos puntos de vista, 
+desde la tabla *maestra*, la veremos como una relación *uno a muchos*, o desde la tabla 
+de *detalle*, y la veremos como una relación *uno a uno*. Para realizar la explicación se utilizaran 
+las tablas *placas* y *postes* que tienen una relación *maestro-detalle*, 
+una señal solo puede tener un poste, la veremos como una relación *uno a uno*, y un poste puede 
+tener varias *placas*, la veremos como relación uno a muchos. La realización de este tipo de
+relaciones normalmente implica que en la tabla *detalle* exista un campo que referencie
+de forma única a la tabla *maestro*. Este campo se le denomina *clave ajena*.
 
 {% comment %} Relación desde el punto de vista uno a uno {% endcomment %}
 
-Para establecer la relación maestro detalle entre tablas por un campo común, en primer lugar se definirá debido a su menor grado de complejidad, la relación existente desde un punto de vista uno a uno. En primer lugar hay que *abrir las tablas* y el *gestor de columnas* asociado a estas. Para abrir las tablas hay que realizarlo desde el ***Gestor de proyectos*** situado en el ***menú Mostrar*** de *gvSIG Desktop*. El proceso de abrirlas es el genérico a abrir cualquier archivo, primero se selecciona ***Tabla*** como tipo de datos a  abrir, se selecciona la opción de ***Nuevo***, lo que habilita una ventana donde se selecciona la ***pestaña Archivo*** y tras pulsar el ***botón Añadir***, se despliega un cuadro de diálogo donde se selecciona el fichero en cuestión. Tras la selección de este la tabla se muestra en una ventana del software. La siguiente ilustración muestra las tablas con las que se va a realizar el proceso. 
+Para establecer la relación *maestro-detalle* entre tablas mediante una *clave ajena*, en primer 
+lugar definiremos, debido a su menor grado de complejidad, la relación existente desde 
+un punto de vista de la tabla de *detalle*, uno a uno. En primer lugar hay que *abrir las tablas* y el 
+*gestor de columnas* asociado a estas. Para abrir las tablas hay que realizarlo desde 
+el ***Gestor de proyectos*** situado en el menú ***Mostrar*** de *gvSIG Desktop*. 
+El proceso de abrirlas es el genérico a abrir cualquier archivo, primero se selecciona 
+***Tabla*** como tipo de datos a  abrir, se selecciona la opción de ***Nuevo***, lo 
+que habilita una ventana donde se selecciona la pestaña ***Archivo*** y tras pulsar el 
+botón ***Añadir***, se despliega un cuadro de diálogo donde se selecciona el fichero en 
+cuestión. Tras la selección de este la tabla se muestra en una ventana del software. La 
+siguiente ilustración muestra las tablas con las que se va a realizar el proceso. 
 
 ![1_tablasInicio_128](maestro_detalle_files/1_tablasInicio_128.png)
 
-La *tabla bracket o postes* tiene un único registro, mientra que la *tabla vertical_signal* presenta dos registros de dos señales, las cuales se sabe que están en el poste de la tabla anterior. Como este apartado trata la relacion desde un punto de vista uno a uno es necesario abrir el *gestor de columnas* de la tabla que presenta dicha relación, *vertical_signal*, ya que una señal esta asociada solo a un poste.
+La *tabla bracket o postes* tiene un único registro, mientra que la *tabla vertical_signal* 
+presenta dos registros de dos señales, las cuales se sabe que están en el poste de la tabla 
+anterior. Como en este momento vamos a definir la relacion desde un punto de vista de la 
+tabla *detalle*, *uno a uno*, abriremos el *gestor de columnas* de la tabla que presenta papel
+en la relación, *vertical_signal*, ya que una señal esta asociada solo a un poste.
 
-Para obtener el gestor de esta hay seleccionar la tabla en cuestión y ejecutar el comando ***Gestor de columnas*** situado en el ***menú Tabla*** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
+Para obtener el gestor de esta hay seleccionar la tabla en cuestión y ejecutar el comando ***Gestor de columnas*** situado en el menú ***Tabla*** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
 
 ![2_gc_128](maestro_detalle_files/2_gc_128.png)
 
@@ -24,42 +44,50 @@ Como resultado se obtiene el siguiente gestor, *gestor de columnas* de la *tabla
 
 Esta herramienta permite al usuario definir la estructura de datos de la tabla, así como su representación o visualización. La realización de los cambios se lleva a cabo por columnas y permite modificar estas, crear otras nuevas e incluso eliminarlas si es necesario.
 
-Como se busca definir una relación entre las dos tablas hay que buscar el campo que la establece, en este caso *bracket*. Para establecer la relación hay que seleccionar en la ventana de *gestor de columnas* de la *tabla vertical_signal* el campo que establece la relación, campo *bracket*.
+Como se busca definir una relación entre las dos tablas hay que buscar el campo que referencia a la 
+tabla de *postes* dentro de la tabla *vertical_signal*, la *clave ajena*. En este caso se trata del 
+campo *bracket*. Para establecer la relación hay que seleccionar en la ventana de 
+*gestor de columnas* de la *tabla vertical_signal* este campo, *bracket*.
 
 ![4_gcVertical_signalBracket_128](maestro_detalle_files/4_gcVertical_signalBracket_128.png)
 
-Una vez seleccionado se inicia su edición pulsando el ***botón Modificar*** situado en la zona derecha de la ventana.
+Una vez seleccionado se inicia su modificación pulsando el botón ***Modificar*** situado en la zona derecha de la ventana.
 
 ![5_gcVertical_signalBracketCamposBasicosDef_128](maestro_detalle_files/5_gcVertical_signalBracketCamposBasicosDef_128.png)
 
-Tras lo anterior se habilitan una serie de pestañas en el panel que permiten modificar todo lo referentes a los datos y su representación del citado campo. Para establecer la relación hay que modificar el contenido de dos pestañas, la ***pestaña Campos básicos*** y la ***pestaña Clave ajena***.
+Tras lo anterior se habilitan una serie de pestañas en el panel inferior que permiten modificar todo lo referentes a los datos y la representación del campo. Para establecer la relación hay que modificar el contenido de dos pestañas, la pestaña ***Campos básicos*** y la pestaña ***Clave ajena***.
 
-La configuración comienza especificando en la ***pestaña Campos básicos*** el tipo de relación que presenta el campo en cuestión.
+La configuración comienza especificando en la pestaña ***Campos básicos*** el tipo de relación que presenta el campo en cuestión.
 
 ![6_gvVertical_signalBracketCamposBasicosDef_128](maestro_detalle_files/6_gvVertical_signalBracketCamposBasicosDef_128.png)
 
-Los tipos de relación presentes en el ultimo desplegable son:
+Los tipos de relación presentes en el desplegable **Relacion** son:
  * **Ninguna.**
  * **Identidad (1:1).** Se utiliza para relacionar tablas que hacen referencia a un mismo objeto. Este, sea por el motivo que sea tiene distribuida la información en diferentes tablas.
  * **Colaboración (1:1).** Se utiliza para relacionar tablas por un campo o columna común. Las tablas representa información de entes diferentes que tiene relación entre si. 
  * **Composición (1:n).** Se utiliza para establecer relación entre un objeto o elemento de una tabla y varios objetos o elementos de otra, con la salvedad de que el grupo de elementos depende del objeto único. Un ejemplo fácil seria un ticket de la compra, el listado de artículos no tiene sentido si no esta asociado a un ticket.
  * **Agregado (1:n).** Se utiliza para establecer relación entre un objeto o elemento de una tabla y varios objetos o elementos de otra. Se diferencia del anterior en que el grupo de elementos puede subsistir sin necesidad del elemento único. 
 
-En este caso concreto de establecer relación entre tablas uno a uno del ejemplo, se pasa de no tener relación alguna a *Colaboración (1:1)* ya que como se detalla en el ejemplo una señal solo esta en un poste. 
+En este caso concreto estableceremos un relación entre tablas uno a uno, se pasa de no tener relación alguna a *Colaboración (1:1)* ya que como se detalla en el ejemplo una señal solo esta en un poste. 
 
- Tras o anterior se inicia la configuración de la ***pestaña Clave ajena***.
+ Tras o anterior se inicia la configuración de la pestaña ***Clave ajena***.
  
  ![6_gvVertical_signalBracketClaveAjenaDef_128](maestro_detalle_files/6_gvVertical_signalBracketClaveAjenaDef_128.png)
  
-Esta configuración comienza seleccionando en primer lugar si el campo es *clave ajena*, el cual lo es en el caso del ejemplo. Tras esto hay definir si dicho campo es *clave ajena de una lista cerrada o no*. En el caso de ejemplo, la tabla bracket o postes es una tabla en continuo crecimiento por lo que no esta cerrada.
+Esta configuración comienza seleccionando en primer lugar si el campo es *clave ajena*.
+Tras esto hay definir si dicho campo es *clave ajena de una lista cerrada o no*. 
+En nuestro caso, la tabla bracket o postes es una tabla no representa una lista de valores cerrados.
 
- > La única diferencia entre marcar si es una lista cerrada o no es la representación de los valores de esta en el formulario de la tabla de la clave ajena, en este caso en el *formulario de vertical_signal*.
+ > La única diferencia entre marcar si es una lista cerrada o no es la representación de los valores de esta en el formulario de la tabla de la clave ajena, en este caso en el formulario de *vertical_signal*.
 
-Una vez seleccionados o no los elementos anteriores hay que definir la tabla de la cual  el campo es clave ajena, así como el campo que queremos que muestre en el formulario y una formula para la representación o visualización de los datos.
+Una vez seleccionados o no los elementos anteriores hay que definir la tabla de la cual  el campo es clave ajena, así como el campo que queremos que muestre en el formulario a traves de una formula para su representación o visualización.
 
-Según el orden de los parámetros definidos en el párrafo anterior la *tabla* sería *bracket*, el campo sería *id* y la *formula especificada* es *‘Poste ‘ \|\| id*.
+Asignaremos los siguientes valores:
+- la *tabla* sería ```bracket```
+- el *campo* sería ```id```
+- y la *formula especificada* sería ```'Poste ' || id```.
 
- > La expresión, *‘Poste ‘ \|\| id*, concatena la palabra *Poste* con el identificador o campo *id* de poste asociado mediante los símbolos \|\|. Esta forma de representar el dato es estética, podría indicarse unicamente el campo *id* en la barra de texto y funcionaria sin problemas.
+ > La expresión, ```'Poste ' || id```, concatena la palabra *Poste* con el identificador o campo *id* de poste asociado mediante los símbolos ```||```. Esta forma de representar el dato es estética, podría indicarse unicamente el campo *id* en la barra de texto y funcionaria sin problemas.
 
 La configuración de las pestañas se puede ver en la siguientes imagenes:
 
@@ -68,7 +96,7 @@ La configuración de las pestañas se puede ver en la siguientes imagenes:
 
 Tras lo anterior solo queda terminar la modificación del campo pulsando el botón *Aceptar* del margen derecho y terminar el proceso en el *Gestor de columnas* pulsando el botón *Aceptar* situado en la esquina inferior derecha de dicho cuadro de diálogo.
 
-Para ver si los cambios se han realizado con éxito de manera sencilla se puede consultar el *formulario* de la tabla modificada. Para obtener el formulario de la tabla hay que ejecutar el comando ***Show form*** situado en el ***menú Tabla*** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
+Para ver si los cambios se han realizado con éxito de manera sencilla se puede consultar el *formulario* de la tabla que acabamos de modificar. Para obtener el formulario de la tabla seleccionaremos la opcion ***Show form*** situada en el menú ***Tabla*** de *gvSIG Desktop* siempre y cuando la tabla este abierta. 
  
 ![8_showForm_128](maestro_detalle_files/8_showForm_128.png)
 
@@ -81,22 +109,27 @@ Se puede aprecias que el campo *bracket* del formulario ha sufrido cambios. En e
 ![10_componentesRelacion_128](maestro_detalle_files/10_componentesRelacion_128.png) 
 
 Esos componentes son cuatro de izquierda a derecha:
-* **Caja de texto con el elemento de la otra tabla seleccionado.** En el caso del ejemplo este cumple la expresión indicada anteriormente,  ‘Poste ‘ \|\| id.
+* **Caja de texto con el elemento de la otra tabla seleccionado.** En el caso del ejemplo este cumple la expresión indicada anteriormente,  ```'Poste ' || id```.
 * **Icono de selección de elemento.** Este está deshabilitado si la tabla no se encuentra en edición y permite seleccionar elementos de la tabla ligada.
 * **Icono borrar elemento relacionado.**  Este está deshabilitado si la tabla no se encuentra en edición.
 * **Icono ver elemento relacionado.** Nos permite visualizar el elemento relacionado de la tabla ligada en el formulario de esta.
 
 ![11_formVertical_signalBracket_128](maestro_detalle_files/11_formVertical_signalBracket_128.png)
 
-Realizado todo lo anterior se completa el proceso de ligar una tabla con otra mediante una relación uno a uno mediante un campo común. 
+Realizado todo lo anterior se completa el proceso de ligar una tabla con otra mediante una relación uno a uno a traves de una clave ajena. 
 
 {% comment %} Relación desde el punto de vista uno a varios {% endcomment %} 
 
-Tras completar el apartado anterior y siguiendo el ejemplo, se deduce que es necesario establecer la otra mitad de la relación, es decir la existente desde el punto de vistade los postes, relación de un elemento a varios de otra tabla. De esta forma tendríamos completamente definida la relación entre las dos tablas en un sentido y otro.
+Tras completar el apartado anterior y siguiendo el ejemplo, pasaremos a definir la relación
+desde el punto de vista de la tabla *maestra*, es decir la tabla postes, relación de un elemento 
+a varios de otra tabla. De esta forma tendríamos definida la relación entre las dos tablas 
+en un sentido y otro.
 
-Existen dos casos bien diferenciados a la hora de definir relaciones entre tablas. El primero de estos dos casos se basa en la existencia de campo comunes que las relacionan. Un ejemplo de este es el realizado en el apartado anterior. El segundo caso se da cuando una de las tabla no presenta un campo como tal que indique los elementos de la otra tabla, pero esa otra tabla si lo presenta. Un ejemplo de esto se da en la *tabla bracket*, la cual no presenta un campo con las señales que dispone, pero la *tabla vertical_signal* si dispone un campo bracket. Para establecer la relación de señales que presenta un poste por lo tanto se tendrán que crear *campos nuevos* en la *tabla bracket*.
+ESTE PARRAFO QUITARLO: Existen dos casos bien diferenciados a la hora de definir relaciones entre tablas. El primero de estos dos casos se basa en la existencia de campo comunes que las relacionan. Un ejemplo de este es el realizado en el apartado anterior. El segundo caso se da cuando una de las tabla no presenta un campo como tal que indique los elementos de la otra tabla, pero esa otra tabla si lo presenta. Un ejemplo de esto se da en la *tabla bracket*, la cual no presenta un campo con las señales que dispone, pero la *tabla vertical_signal* si dispone un campo bracket. Para establecer la relación de señales que presenta un poste por lo tanto se tendrán que crear *campos nuevos* en la *tabla bracket*.
 
-El proceso de relacionar las tablas es básicamente el mismo a excepción de la creación de nuevos campos o columnas y se basa en realizar modificaciones sobre el cuadro de diálogo *Gestor de columnas* de la *tabla bracket, postes*.
+El proceso de relacionar las tablas es básicamente el mismo a excepción de la creación de nuevos 
+campos o columnas y se basa en realizar modificaciones sobre el cuadro de diálogo 
+*Gestor de columnas* de la *tabla bracket, postes*.
 
 Una vez en el *Gestor de columnas* de la *tabla bracket* se inicia el proceso con la creación de un nuevo campo. Para realizar esto hay que pulsar el ***botón Nuevo*** situado en el margen derecho de la ventana.
 
