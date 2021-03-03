@@ -9,7 +9,7 @@
 {% include_relative instalacion.md %}
 
 {% include es/navigate.md 
-   prev="index.html" 
+   prev="../empezando/index.html" 
    next="conceptos_basicos_t.html" 
    index="index.html" 
    source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/empezando/instalacion.md" 
