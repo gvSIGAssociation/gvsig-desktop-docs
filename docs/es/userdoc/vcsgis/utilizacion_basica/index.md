@@ -1,5 +1,7 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 
+{% include es/header.md %}
+
 # Version Control System for Gis (VCSGis)
 
 ## Utilización básica
@@ -28,8 +30,11 @@
 
 * [Exportar datos desde el repositorio](exportar_datos_desde_el_repositorio_t.md)
 
+{% include es/navigate.md 
+   prev="../notificaciones_del_repositorio_t.html" 
+   next="introduccion_t.html" 
+   index="../index.html" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/utilizacion_basica/index.md" 
+%}
 
-[Anterior](notificaciones_del_repositorio_t.md) | [Siguiente](introduccion_t.md)
-
-
- 
+{% include es/footer.md %}
