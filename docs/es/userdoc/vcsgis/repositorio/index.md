@@ -1,5 +1,7 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 
+{% include es/header.md %}
+
 # Version Control System for Gis (VCSGis)
 
 ## Repositorio
@@ -12,6 +14,11 @@
 
 * [Copiar-Modificar-Fusionar](copiar_modificar_fusionar_t.md)
 
+{% include es/navigate.md 
+   prev="../empezando/conceptos_basicos_t.html" 
+   next="introduccion_t.html" 
+   index="../index.html" 
+   source="https://gvsigassociation.github.io/gvsig-desktop-docs/es/userdoc/vcsgis/repositorio/" 
+%}
 
-[Anterior](../empezando/index.md) | [Siguiente](introduccion_t.md)
-
+{% include es/footer.md %}
