@@ -14,7 +14,7 @@
    prev="bloquear_modificar_bloquear_t.html" 
    next="../copias_de_trabajo/index.html" 
    index="index.html" 
-   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/repositorio/copiar_modificar_fusionar.md.md" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/repositorio/copiar_modificar_fusionar.md" 
 %}
 
 {% include es/footer.md %}
