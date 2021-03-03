@@ -4,7 +4,7 @@
     <td><a href="{{ include.prev }}">Anterior</a></td>
   {% endif %}
   {% if include.index == ".." %}
-    <td><a href="{{ include.index }}">Subir un nivel</a></td>
+    <td><a href="{{ include.index }}">Subir&nbsp;un&nbsp;nivel</a></td>
   {% endif %}
   {% if include.index and include.index != ".." %}
     <td><a href="{{ include.index }}">Indice</a></td>
