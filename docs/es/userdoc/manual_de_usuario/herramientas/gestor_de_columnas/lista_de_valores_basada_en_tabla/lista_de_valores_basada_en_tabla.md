@@ -16,7 +16,7 @@ valores del campo **verticalsignalmaterial**, y luego estableceremos una relacio
 esta tabla de **materiales** y la tabla de **vertical_signal**.
 
 
-!!! missing Para borrar
+    **Para borrar**
 
     Este documento define el procedimiento de creación de una nueva tabla de valores, 
     los cuales son las opciones para algunos de los campos de otras. En otras palabras, 
