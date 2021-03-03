@@ -1,9 +1,17 @@
 <table style="width:100%;">
  <tr>
-  <td><a href="{{ include.prev }}">Previous</a></td>
-  <td><a href="{{ include.index }}">Index</a></td>
-  <td><a href="{{ include.next }}">Next</a></td>
+  {% if include.prev %}
+    <td><a href="{{ include.prev }}">Previous</a></td>
+  {% endif %}
+  {% if include.index %}
+    <td><a href="{{ include.index }}">Index</a></td>
+  {% endif %}
+  {% if include.next %}
+    <td><a href="{{ include.next }}">Next</a></td>
+  {% endif %}
   <td style="width:100%;"></td>
-  <td><a href="{{ include.source }}">Source</a></td>
+  {% if include.source %}
+    <td><a href="{{ include.source }}">Source</a></td>
+  {% endif %}
  </tr>
 </table>
