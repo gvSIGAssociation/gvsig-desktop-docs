@@ -13,7 +13,7 @@
 {% include es/navigate.md 
    prev="../introduccion_t.html" 
    next="instalacion_t.html" 
-   index="index.html" 
+   index="../index.html" 
    source="https://gvsigassociation.github.io/gvsig-desktop-docs/es/userdoc/vcsgis/empezando/index.html" 
 %}
 
