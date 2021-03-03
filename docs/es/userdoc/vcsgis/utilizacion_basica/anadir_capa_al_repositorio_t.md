@@ -16,6 +16,5 @@
    index="index.html" 
    source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/utilizacion_basica/anadir_capa_al_repositorio.md" 
 %}
-[Anterior](creacion_de_copia_de_trabajo_t.md) | [Siguiente](anadir_una_capa_del_repositorio_t.md)
 
 {% include es/footer.md %}
