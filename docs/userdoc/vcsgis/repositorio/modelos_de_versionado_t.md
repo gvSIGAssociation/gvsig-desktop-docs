@@ -1,5 +1,7 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 
+{% include header_es.md %}
+
 # Version Control System for Gis (VCSGis)
 
 ## Repositorio
@@ -16,4 +18,5 @@
    source="https://github.com/gvSIGAssociation/gvsig-desktop-docs-es/blob/master/docs/userdoc/vcsgis/repositorio/modelos_de_versionado.md" 
 %}
 
+{% include footer_es.md %}
 
