@@ -12,7 +12,7 @@
 {% include navigate_es.md 
    prev="introduccion_t.html" 
    next="bloquear_modificar_bloquear_t.html" 
-   index="index.html" 
+   index=".." 
    source="https://github.com/gvSIGAssociation/gvsig-desktop-docs-es/blob/master/docs/userdoc/vcsgis/repositorio/modelos_de_versionado.md" 
 %}
 
