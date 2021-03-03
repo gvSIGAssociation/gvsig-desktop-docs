@@ -18,7 +18,7 @@
 
 * [Añadir una capa del repositorio](anadir_una_capa_del_repositorio_t.md)
 
-* [Ciclo de trabajo básico](ciclo_de_trabajo_basico/index_t.md)
+* [Ciclo de trabajo básico](ciclo_de_trabajo_basico/index.md)
 
   * [Introduccion](ciclo_de_trabajo_basico/introduccion_t.md)
 
