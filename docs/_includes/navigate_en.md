@@ -3,10 +3,10 @@
   {% if include.prev %}
     <td><a href="{{ include.prev }}">Previous</a></td>
   {% endif %}
-  {% if include.index == '..' %}
+  {% if include.index == ".." %}
     <td><a href="{{ include.index }}">Subir un nivel</a></td>
   {% endif %}
-  {% if include.index and include.index != '..' %}
+  {% if include.index and include.index != ".." %}
     <td><a href="{{ include.index }}">Index</a></td>
   {% endif %}
   {% if include.next %}
