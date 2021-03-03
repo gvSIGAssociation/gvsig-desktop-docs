@@ -18,7 +18,7 @@
    prev="../empezando/conceptos_basicos_t.html" 
    next="introduccion_t.html" 
    index="../index.html" 
-   source="https://gvsigassociation.github.io/gvsig-desktop-docs/es/userdoc/vcsgis/repositorio/" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/repositorio/index.md" 
 %}
 
 {% include es/footer.md %}
