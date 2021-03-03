@@ -1,13 +1,13 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 
-# Documentación de gvSIG desktop
+# GvSIG desktop documentation
 
-* [Documentacion de usuario](userdoc/index.md)
+* [User documentation] (en/userdoc/index.md)
 
-* [Documentacion de scripting](scriptingdoc/index.md)
+* [Scripting documentation] (en/scriptingdoc/index.md)
 
-* [Documentacion para desarrolladores](develdoc/index.md)
+* [Developer documentation] (en/develdoc/index.md)
 
-* [Documentacion para documentadores](docdoc/index.md)
+* [Documentation for Documentators] (en/docdoc/index.md) 
 
-
+[Spanish](es/index.md)
