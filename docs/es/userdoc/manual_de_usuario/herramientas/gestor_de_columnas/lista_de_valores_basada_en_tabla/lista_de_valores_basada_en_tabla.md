@@ -3,15 +3,29 @@
 {% comment %} Como asignar a un campo un lista de valores cerrada basada en los 
 contenidos de otra tabla {% endcomment %}
 
-Este documento define el procedimiento de creación de una nueva tabla de valores, 
-los cuales son las opciones para algunos de los campos de otras. En otras palabras, 
-en este documento se detalla la forma de crear diccionarios o tablas de datos desde
-cero con las diferentes opciones que presentan determinados campos de otras capas.
+En este documento vamos a ver como asignar a un campo de una tabla una lista de 
+posibles valores, de forma que cuando se muestre el formulario de la tabla nos
+presente un desplegable para elegir de él los valores que podamos asignar al campo.
 
-Para realizar la explicación se utilizara como ejemplo la creación de la *tabla 
-materiales*. Esta tabla con dos elementos unicamente almacena el tipo de material
-del que están construidas las placas de las señales presentes en la *tabla
-vertical_signal*.
+Para explicar esto, vamos a utilizar la tabla **vertical_signal**. Esta tabla representa 
+a la entidad de una placa de una señal de trafico. Esta entidad tiene un atributo o campo
+**verticalsignalmaterial**, que solo tiene dos valores posibles, *acero*, y *aluminio*.
+
+Lo que hremos sera crear una tabla **materiales** en la que almacenaremos los posibles
+valores del campo **verticalsignalmaterial**, y luego estableceremos una relacion entre
+esta tabla de **materiales** y la tabla de **vertical_signal**.
+
+
+!!! missing Para borrar
+    Este documento define el procedimiento de creación de una nueva tabla de valores, 
+    los cuales son las opciones para algunos de los campos de otras. En otras palabras, 
+    en este documento se detalla la forma de crear diccionarios o tablas de datos desde
+    cero con las diferentes opciones que presentan determinados campos de otras capas.
+
+    Para realizar la explicación se utilizara como ejemplo la creación de la *tabla 
+    materiales*. Esta tabla con dos elementos unicamente almacena el tipo de material
+    del que están construidas las placas de las señales presentes en la *tabla
+    vertical_signal*.
 
 El proceso comienza tras iniciar *gvSIG Desktop* ejecutando en el ***menú Vista***
 la opción ***new layer***.
