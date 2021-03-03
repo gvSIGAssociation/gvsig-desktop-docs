@@ -1,9 +1,17 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 
+{% include es/header.md %}
+
 # Version Control System for Gis (VCSGis)
 
 ## Introduccion
 
 {% include_relative introduccion.md %}
- 
-[Anterior](index.md) | [Siguiente](empezando/index.md)
+
+{% include es/navigate.md 
+   next="empezando/index.md" 
+   index="index.html" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/introduccion.md" 
+%}
+
+{% include es/footer.md %}
