@@ -15,7 +15,7 @@
 * [Revisando y enviando los cambios realizados](revisando_cambios_realizados_t.md)
 
 {% include es/navigate.md 
-   prev="../añadir_una_capa_del_repositorio_t.html" 
+   prev="../anadir_una_capa_del_repositorio_t.html" 
    next="introduccion_t.html" 
    index="../index.html" 
    source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/utilizacion_basica/ciclo_de_trabajo_basico/index.md" 
