@@ -5,20 +5,20 @@
 En este documento se describe el proceso para definir una relación **maestro-detalle** entre dos 
 tablas. Este tipo de relación puede verse desde dos puntos de vista, 
 desde la tabla *maestra*, viendola como una relación *uno a muchos*, o desde la tabla 
-de *detalle*, y la veremos como una relación *uno a uno*. En la descripcion se utilizaran 
-las tablas **bracket** y **vertical_signal** para ilustras como definir la relacion. 
-La primera, *bracket* representa a la entidad de los soportes o postes de una señal, 
-y la segunda *vertical_signal*, representa a la entidad de las placas de una señal. 
+de *detalle*, y la veremos como una relación *uno a uno*. En la descripcion utilizaremos
+las tablas **bracket** y **vertical_signal** para ilustrar como definir la relación. 
+La primera, *bracket* representa a la entidad de los soportes o postes de una señal de trafico, 
+y la segunda *vertical_signal*, representa a la entidad de las placas de una señal de trafico. 
 Entre ambas entidades existe una relacion de tipo **maestro-detalle**. 
 En un poste pueden haber varias placas, *uno a muchos*, y una placa esta en un solo poste, *uno a uno*.
 De ahora en adelante nos referiremos a estas dos entidades, como **bracket** y **vertical_signal**, que
 son los nombres que tienen nuestras tablas.
 
-A la hora de materializar en un modelo fisico este tipo de relacion entre entidades, nuestras tablas,
+A la hora de materializar en un modelo fisico este tipo de relacion entre entidades, es decir al crear nuestras tablas,
 normalmente implicara que en la tabla de *detalle* exista un campo que referencie de
-forma única a la tabla *maestro*. Este campo se le denomina *clave ajena*. En nuestro ejemplo, en la
+forma única a la tabla *maestro*. A este campo se le denomina **clave ajena**. En nuestro ejemplo, en la
 tabla **vertical_signal**, tendremos un campo **bracket** que contendra el valor del campo **id** de la 
-tabla **bracket**.
+tabla **bracket**, siendo este campo el que establece la relacion entre las dos tablas.
 
 Para establecer la relación *maestro-detalle* entre tablas mediante una *clave ajena*, en primer 
 vamos a definir, la relación existente desde el punto de vista de la tabla de *detalle*, 
