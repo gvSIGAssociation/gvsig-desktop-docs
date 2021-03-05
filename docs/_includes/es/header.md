@@ -1,4 +1,4 @@
-{% assign root_site = "https://gvsigassociation.github.io/gvsig-desktop-docs/" %}
+{% assign root_site = "https://gvsigassociation.github.io/gvsig-desktop-docs" %}
 <table style="width:100%;">
  <tr>
   <td style="width:100%;border: none;"></td>
