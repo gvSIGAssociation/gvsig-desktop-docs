@@ -11,7 +11,7 @@
   * [Permisos en las entidades](permisos_en_las_entidades_t.md)
 
 {% include es/navigate.md 
-   source="https://gvsigassociation.github.io/gvsig-desktop-docs/es/userdoc/vcsgis/empezando/index.html" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/tree/master/docs/es/userdoc/vcsgis/usuarios_y_permisos/index.md" 
 %}
 
 {% include es/footer.md %}
