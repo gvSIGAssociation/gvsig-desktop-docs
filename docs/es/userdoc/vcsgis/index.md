@@ -68,6 +68,10 @@
 
 * [Añadir capa VCSGis usando el diálogo "Añadir Capa" de gvSIG Desktop](dialogo_de_anadir_capa_t.md)
 
+* [Usuarios y permisos](usuarios_y_permisos/index.md) (**en contruccion**)
+
+* [Asignación de recursos a una entidad](asignar_recursos/index.md) (**en contruccion**)
+
 [Nivel superior](../index.md)
 
 
