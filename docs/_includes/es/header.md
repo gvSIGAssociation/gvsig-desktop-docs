@@ -1,4 +1,5 @@
 {% assign root_site = "https://gvsigassociation.github.io/gvsig-desktop-docs" %}
+<!--
 <table style="width:100%;">
  <tr>
   <td style="width:100%;border: none;"></td>
@@ -8,3 +9,4 @@
   <td><a href="http://www.gvsig.com/"><img src="{{root_site}}/images/logo-asociacion-en.jpg"></a></td>
  </tr>
 </table>
+-->
