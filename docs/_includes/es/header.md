@@ -1,5 +1,5 @@
 {% assign root_site = "https://gvsigassociation.github.io/gvsig-desktop-docs/" %}
-{% assign root_images = "https://raw.githubusercontent.com/gvSIGAssociation/gvsig-desktop-docs/master/docs/_includes/" %}
+{% assign root_images = "https://raw.githubusercontent.com/gvSIGAssociation/gvsig-desktop-docs/master/docs/_includes" %}
 
 <table style="width:100%;">
  <tr>
