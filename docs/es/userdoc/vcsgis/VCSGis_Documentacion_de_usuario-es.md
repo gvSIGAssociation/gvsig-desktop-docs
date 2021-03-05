@@ -145,6 +145,15 @@ Borrador preliminar
 
 {% include_relative dialogo_de_anadir_capa.md %}
 
+# Usuarios y permisos 
+
+(en contruccion)
+
+# Asignación de recursos a una entidad 
+
+(en contruccion)
+
+
 
 
 
