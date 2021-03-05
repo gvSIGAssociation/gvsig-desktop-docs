@@ -20,3 +20,5 @@ exclude:
 #  - userdoc/vcsgis/utilizacion_basica/ciclo_de_trabajo_basico
   
   
+
+theme: jekyll-theme-leap-day
