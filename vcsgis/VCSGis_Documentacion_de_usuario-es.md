@@ -1,5 +1,5 @@
 ---
-title: gvSIG desktop, Version Control System for Gis (VCSGis) (v1.0.2)
+title: gvSIG desktop, Version Control System for Gis (VCSGis) (v1.0.3)
 ---
 <br> 
 <br> 
@@ -19,7 +19,7 @@ Borrador preliminar
 <br> 
 <br> 
 <p style="text-align: center;font-size:16px">
-(v1.0.2)
+(v1.0.3)
 </p>
 
 {{pagebreak /}}
@@ -160,6 +160,17 @@ Borrador preliminar
 
 {% include ../docs/es/userdoc/vcsgis/dialogo_de_anadir_capa.md %}
 
+# Usuarios y permisos
+
+(En construccion)
+
+# Asignación de recursos a una entidad
+
+(En construccion)
+
+# Consideraciones
+
+{% include ../docs/es/userdoc/vcsgis/consideraciones.md %}
 
 
 
