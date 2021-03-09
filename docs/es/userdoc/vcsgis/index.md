@@ -72,6 +72,8 @@
 
 * [Asignación de recursos a una entidad](asignar_recursos/index.md) (**en contruccion**)
 
+* [Modelos de datos](modelo_de_datos_t.md) (**en contruccion**)
+
 * [Consideraciones](consideraciones_t.md) (**en contruccion**)
 
 [Nivel superior](../index.md)
