@@ -2,5 +2,6 @@
 {% comment %} Consideraciones {% endcomment %} 
 
 (**en contruccion**)
-
-Aqui notas sobre el uso de la calculadora de campos
+>
+> Aqui notas sobre el uso de la calculadora de campos
+> 
