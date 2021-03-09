@@ -4,7 +4,7 @@
 
 # Version Control System for Gis (VCSGis)
 
-## Gestion de usuario y permisos
+## Usuarios, permisos y roles
 
 ### Introduccion
 
