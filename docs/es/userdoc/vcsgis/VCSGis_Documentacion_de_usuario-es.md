@@ -153,6 +153,10 @@ Borrador preliminar
 
 (en contruccion)
 
+# Consideraciones
+
+{% include_relative consideraciones.md %}
+
 
 
 
