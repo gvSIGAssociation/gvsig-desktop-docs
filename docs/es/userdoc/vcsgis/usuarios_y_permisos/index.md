@@ -8,9 +8,13 @@
 
 ## Usuarios, permisos y roles
 
-  * [Gestion de usuario](gestion_de_usuarios_t.md)
+  * [Introduccion](introduccion_t.md)
 
-  * [Permisos en las entidades](permisos_en_las_entidades_t.md)
+  * [Autenticacion](autenticacion_t.md)
+
+  * [Autorizacion basica](autorizacion_basica_t.md)
+  
+  * [Autorizacion avanzada](autorizacion_avanzada_t.md)
 
 {% include es/navigate.md 
    source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/tree/master/docs/es/userdoc/vcsgis/usuarios_y_permisos/index.md" 
