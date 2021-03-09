@@ -13,7 +13,7 @@
 {% include es/navigate.md 
    next="empezando/index.html" 
    index="index.html" 
-   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/introduccion.md" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/usuarios_y_permisos/introduccion_t.md" 
 %}
 
 {% include es/footer.md %}
