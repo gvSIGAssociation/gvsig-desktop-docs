@@ -10,7 +10,7 @@
 >   * Asignar a la entidad una tabla de recursos (admin).
 >   * Asignacion de una leyenda por defecto a la capa.
 >   * Creacion de la leyenda y guardar en disco.
->   * Creacion de la tabla de recursos
+>   * Creacion de la tabla de recursos y cargar la leyenda asociandola a la capa.
 >   * Meter la tabla de recursos en el vcs
 >   * Hacer checkout de la capa y ver que aplica a la entidad.
 
