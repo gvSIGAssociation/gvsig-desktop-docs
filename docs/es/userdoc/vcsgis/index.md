@@ -76,7 +76,7 @@
 
   * [Tabla de recursos](asignar_recursos/tabla_recursos_t.md)
 
-  * [Ejemplo asignacion recursos](asignar_recursos/ejemplo_asignacion_recursos_t.md)
+  * [Ejemplo asignación recursos](asignar_recursos/ejemplo_asignacion_recursos_t.md)
 
 * [Modelos de datos](modelo_de_datos_t.md) (**en contruccion**)
 

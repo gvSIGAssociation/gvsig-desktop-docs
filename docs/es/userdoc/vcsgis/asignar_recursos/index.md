@@ -10,7 +10,7 @@
 
 * [Tabla de recursos](tabla_recursos_t.md)
 
-* [Ejemplo asignacion recursos](ejemplo_asignacion_recursos_t.md)
+* [Ejemplo asignación recursos](ejemplo_asignacion_recursos_t.md)
 
 {% include es/navigate.md 
    prev="../usuarios_y_permisos/autorizacion_avanzada_t.html" 
