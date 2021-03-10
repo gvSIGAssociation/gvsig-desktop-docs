@@ -6,12 +6,16 @@
 
 ## Asignación de recursos a una entidad
 
-{% include_relative asignar_recursos.md %}
+* [Introduccion](introduccion_t.md)
+
+* [Tabla de recursos](tabla_recursos_t.md)
+
+* [Ejemplo asignacion recursos](ejemplo_asignacion_recursos_t.md)
 
 {% include es/navigate.md 
-   prev="importacion_de_historial_de_datos_t.html" 
-   next="dialogo_de_anadir_capa_t.html" 
-   index="index.html" 
+   prev="../usuarios_y_permisos/autorizacion_avanzada_t.html" 
+   next="introduccion_t.html" 
+   index="../index.html" 
    source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/topologia.md" 
 %}
 
