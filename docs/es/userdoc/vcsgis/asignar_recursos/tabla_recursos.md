@@ -7,4 +7,4 @@ cual esta asociada, mientras que el campo *value* de tipo ```byteArray``` almace
 es decir el archivo que lo almacena. Para realizar la asignación de esta, previa a su creación y 
 actualización con los diferentes recursos, hay que realizar modificaciones en la entidades del 
 repositorio de la tabla **PUBLIC.VCSGISREPO_ENTITIES** asignándole a cada una de ellas su recurso, si
-sta dispone de el. 
+esta dispone de el. 

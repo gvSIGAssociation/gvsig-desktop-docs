@@ -37,8 +37,149 @@ en un repositorio.
 
 > * Ejemplo:
 >   * Descripcion del escenario (un repo, un wc, un capa subida).
+La capa utilizada para la realización del ejemplo llamada *EDIFICIOS* es un archivo ```shape```
+que almacena la geometría de los edificios de la ciudad de Alicante. Esta capa presenta las 
+siguientes características;
+ * Repositorio: *aytoALC*
+ * Copia de trabajo: *usuario1*
+ * Categoría: *BASE*
+La siguiente ilustración muestra la capa cargada en *gvSIG Desktop*.
+
+![1_EDIFICIOS_128](ejemplo_asignacion_recursos_files/1_EDIFICIOS_128.png)
+
+Tal y como se puede ver, la simbología presenta una leyenda por defecto que no se corresponde 
+con la utilizada para esta capa. Para cambiarla y registrarla en el repositorio de modo que siempre
+que se utilice dicha capa se presente con la leyenda correcta hay que registrar dicha leyenda 
+como recurso.
 
 >   * Asignar a la entidad una tabla de recursos (admin).
+En primer lugar hay que crear la tabla de recursos. Dicho proceso  se realiza ejecutando la opción 
+**Crear tabla de recursos** situada en el menú **Herramientas**, submenú **VCSGis**, submenú 
+**Administración**.
+
+![2_crearTablaRecursos_128](ejemplo_asignacion_recursos_files/2_crearTablaRecursos_128.png)
+
+Realizar lo anterior muestra el siguiente cuadro de diálogo.
+
+![3_crearTablaRecursosWin_128](ejemplo_asignacion_recursos_files/3_crearTablaRecursosWin_128.png)
+
+En la ventana hay que seleccionar en el primer desplegable llamado **Copia de trabajo** la copia 
+de trabajo donde esta la capa, *usuario1*.
+
+En el segundo componente hay que detallar el nombre de la tabla de recursos. Se nombra la nueva 
+tabla de recursos como *BASE_RECURSOS* ya que se pretende que todos los recursos de la categoría
+*BASE* se encuentren en dicha tabla.
+
+ > Hay que especificar que se pueden crear tantas tablas de recursos como se deseen. De modo que
+ se puede crear una única tabla de recursos que almacene todos ellos o varias de estas que 
+ almacenen los recursos de determinadas categorías de datos por ejemplo.
+
+El proceso de creación finaliza pulsando el botón *Aceptar* en la esquina inferior derecha de 
+la ventana.
+
+Una vez creada la tabla hay que subir esta al repositorio. Para hacer lo anterior hay que realizar
+un *commit* tras ejecutar la opción *Mostrar cambios** situada en el menú *Herramientas*, submenú 
+*VCSGis*.
+
+Tras la correcta definición de la tabla recursos hay que asignar a la capa *EDIFICIOS* del 
+repositorio dicha tabla, para ello hay que abrir la tabla *PUBLIC.VCSGISREPO_ENTITIES* situada 
+en el repositorio *aytoALC*. Para abrir la tabla hay que realizarlo desde el *Gestor de proyectos*
+situado en el menú *Mostrar* de *gvSIG Desktop*. El proceso de abrir una tabla es el genérico 
+a abrir cualquier archivo, primero se selecciona *Tabla* como tipo de datos a abrir, se selecciona 
+la opción de *Nuevo*, lo que habilita una ventana donde se tiene que seleccionar la pestaña 
+*Base de datos*. Esa pestaña muestra en su zona superior un desplegable donde hay que especificar 
+la base de datos donde se encuentra la tabla, *aytoALC*. Una vez seleccionada la base de datos, en
+la lista de tablas de esta hay que marcar la tabla en cuestión y pulsa el botón *Aceptar*.
+
+![4_abrirPUBLICVCSGISREPO_ENTITIES_128](ejemplo_asignacion_recursos_files/4_abrirPUBLICVCSGISREPO_ENTITIES_128.png)
+
+La siguiente imagen muestra la tabla *PUBLIC.VCSGISREPO_ENTITIES* donde solo hay dos 
+entidades, la capa/tabla *EDIFICIOS* y la tabla *BASE_RESOURCES*.
+
+El proceso de asignación de los recursos se realiza modificando la entidad donde se desea asignar,
+en este caso la capa *EDIFICIOS*. Para ello es necesario obtener el formulario asociado la capa
+*PUBLIC.VCSGISREPO_ENTITIES*. Para obtener el formulario de la tabla seleccionaremos la opción
+*Show form* situada en el menú *Tabla* de *gvSIG Desktop* siempre y cuando la tabla este 
+abierta y seleccionada.
+
+![5_showForm_128](ejemplo_asignacion_recursos_files/5_showForm_128.png)
+
+El formulario de la tabla es el siguiente.
+
+![6_formPUBLICVCSGISREPO_ENTITIES_128](ejemplo_asignacion_recursos_files/6_formPUBLICVCSGISREPO_ENTITIES_128.png)
+
+Una vez en el formulario se identifica el elemento que hace referencia a la tabla/capa *EDIFICIOS*
+y se inicia la edición de la tabla para la modificación de este. Este proceso se puede realizar desde
+el mismo desplegable que se mencionó anteriormente para obtener el formulario, o desde el mismo 
+formulario utilizando el botón *Comenzar edición*.
+
+![7_editarFormPUBLICVCSGISREPO_ENTITIES_128](ejemplo_asignacion_recursos_files/7_editarFormPUBLICVCSGISREPO_ENTITIES_128.png)
+
+De los diferentes campos del formulario hay que identificar el refrente a los recursos, llamado,
+*Resources*. En este hay que especificar el nombre de nuestra tabla de recursos, *BASE_RESOURCES*, 
+ya que la tabla/capa edificios pertenece a la categoría *BASE*.
+
+![8_resourcesFormPUBLICVCSGISREPO_ENTITIES_128](ejemplo_asignacion_recursos_files/8_resourcesFormPUBLICVCSGISREPO_ENTITIES_128.png)
+
+Solo queda guardar los cambios en la entidad.
+
+![9_guardarCambiosFormPUBLICVCSGISREPO_ENTITIES_128](ejemplo_asignacion_recursos_files/9_guardarCambiosFormPUBLICVCSGISREPO_ENTITIES_128.png)
+
+Y terminar la edición de la tabla.
+
+![10_tEditarFormPUBLICVCSGISREPO_ENTITIES_128](ejemplo_asignacion_recursos_files/10_tEditarFormPUBLICVCSGISREPO_ENTITIES_128.png)
+
+Tras lo anterior la asignación de los recursos mediante la tabla de recursos a la capa *EDIFICIOS* .
+ha concluido. Pero solo ha terminado la asignación de la tabla de recursos, la cual se encuentra 
+sin ningún recurso almacenado en su interior.
+
+El siguiente paso por la tanto es almacenar un recurso en la tabla ya ligada. Para ello es necesario
+disponer de él o crearlo desde cero. En el caso del ejemplo se procede a crear de cero la leyenda
+para la capa *EDIFICIOS*.
+
+Para crear una leyenda hay que ir al árbol de capas situado en el *Toc* de *gvSIG Desktop* y tras
+selección de la capa en cuestión pulsar botón derecho del mouse y seleccionar la opción *Propiedades*.
+
+![11_propiedadesEDIFICIOS_128](ejemplo_asignacion_recursos_files/11_propiedadesEDIFICIOS_128.png)
+
+La opción anterior despliega la siguiente ventana.
+
+![12_propiedadesEDIFICIOSWin_128](ejemplo_asignacion_recursos_files/12_propiedadesEDIFICIOSWin_128.png)
+
+Se selecciona la pestaña *Simbología* pues en esta se especifica todo lo referente a la 
+representación gráfica de la capa. EL panel de de la pestaña anterior es el siguiente.
+
+![13_simbologiaPropiedadesEDIFICIOS_128](ejemplo_asignacion_recursos_files/13_simbologiaPropiedadesEDIFICIOS_128.png)
+
+Una vez allí y continuando con el caso del ejemplo, se selecciona la opción *Símbolo único* de
+dentro de *Objetos* del cuadro de opciones de simbología situado en la parte izquierda del panel.
+
+Dicha selección habilita el siguiente panel en la ventana.
+
+![14_SUSimbologiaEDIFICIOS_128](ejemplo_asignacion_recursos_files/14_SUSimbologiaEDIFICIOS_128.png)
+
+En el panel se inicia el proceso de definición de nuestra leyenda pulsando el botón
+*Selección símbolo* el cual despliega el cuadro de dialogo *Selector de simbología*.
+
+![15_SSSimbologiaEDIFICIOS_128](ejemplo_asignacion_recursos_files/15_SSSimbologiaEDIFICIOS_128.png)
+
+En esta nueva ventana hay que definir las características gráficas de los elementos de la capa,
+en este caso polígonos. Por lo tanto hay que definir como se van a representar sus bordes e interior.
+Los parámetros para los bordes e interior de los polígonos de la capa edificios se detallanan
+a continuación.
+
+|**Componente**|**Color(RGB)**|**Opacidad**|**Ancho (píxel)**
+|--:           |--:           |:--         |:--      
+|Borde         |248  190  132 |100%        |1        
+|Interior      |231  120  58  |100%        |         
+
+
+
+
+
+
+
+de opciones
 >   * Asignacion de una leyenda por defecto a la capa.
 >   * Creacion de la leyenda y guardar en disco.
 >   * Creacion de la tabla de recursos y cargar la leyenda asociandola a la capa.
