@@ -11,7 +11,7 @@
 {% include_relative introduccion.md %}
 
 {% include es/navigate.md 
-   next="empezando/index.html" 
+   next="index.html" 
    index="index.html" 
    source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/introduccion.md" 
 %}
