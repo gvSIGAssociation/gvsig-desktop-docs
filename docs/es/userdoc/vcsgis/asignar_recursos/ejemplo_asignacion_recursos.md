@@ -169,7 +169,7 @@ Con el recurso ya creado hay que introducir este en la tabla de recursos, *BASE_
 realizar esto hay que repetir el proceso de edición de una tabla especificado para la edición de la 
 tabla PUNLIC.VCSGISREPO_ENTITIES.
 
-En primer lugar hay que abrir la tabla *BASE_RESOURCES*.Para abrir la tabla hay que realizarlo 
+En primer lugar hay que abrir la tabla *BASE_RESOURCES*. Para abrir la tabla hay que realizarlo 
 desde el *Gestor de proyectos* situado en el menú *Mostrar* de *gvSIG Desktop*. El proceso de 
 abrir una tabla es el genérico a abrir cualquier archivo, primero se selecciona *Tabla* como 
 tipo de datos a abrir, se selecciona la opción de *Nuevo*, lo que habilita una ventana donde se 
