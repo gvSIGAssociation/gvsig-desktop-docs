@@ -159,7 +159,7 @@ Dicha selección habilita el siguiente panel en la ventana.
 ![14_SUSimbologiaEDIFICIOS_128](ejemplo_asignacion_recursos_files/14_SUSimbologiaEDIFICIOS_128.png)
 
 En el panel se inicia el proceso de definición de nuestra leyenda pulsando el botón
-*Selección símbolo* el cual despliega el cuadro de dialogo *Selector de simbología*.
+*Selección símbolo* el cual despliega el cuadro de diálogo *Selector de simbología*.
 
 ![15_SSSimbologiaEDIFICIOS_128](ejemplo_asignacion_recursos_files/15_SSSimbologiaEDIFICIOS_128.png)
 
@@ -173,10 +173,85 @@ a continuación.
 |Borde         |248  190  132 |100%        |1        
 |Interior      |231  120  58  |100%        |         
 
+Una vez especificados se aceptan los cambios pulsando el botón *Aceptar* y se cierra el cuadro 
+de diálogo anterior.
 
+Tras lo anterior ya de nuevo en el panel de la pestaña *Simbología* de la ventana *Propiedades*
+de la capa *EDIFICIOS* se puede ver que el símbolo único ha cambiado según la definición 
+especificada anteriormente. 
 
+![16_NSUSimbologiaEDIFICIOS_128](ejemplo_asignacion_recursos_files/16_NSUSimbologiaEDIFICIOS_128.png)
 
+Solo queda ahora almacenar esa simbología pulsando el botón *Más opciones* situado en la 
+zona superior derecha de la ventana y seleccionar a continuación la opción *Guardar leyenda*.
 
+![17_MOSimbologiaEDIFICIOS_128](ejemplo_asignacion_recursos_files/17_MOSimbologiaEDIFICIOS_128.png)
+
+La opción anterior habilita un cuadro de diálogo que nos permite indicar la ruta donde almacenar la
+leyenda y el nombre del fichero que almacenará esta. En el caso del ejemplo se se almacena en 
+una carpeta destinada a almacenar leyendas y el nombre del archivo es el mismo que la capa con la 
+extension ```.gvsleg```, es decir *EDIFICIOS.gvsleg*. Hay que destacar que el archivo con el 
+recurso siempre tiene que llamarse de la misma manera que la capa de la que es recurso.
+
+Una vez guardada la leyenda, pulsamos los botones *Aplicar*  y *Aceptar* para terminar el proceso de
+definicion de la simbología de la capa.
+
+Con el recurso ya creado hay que introducir este en la tabla de recursos, *BASE_RESOURCES*. Para 
+realizar esto hay que repetir el proceso de edición de una tabla especificado para la edición de la 
+tabla PUNLIC.VCSGISREPO_ENTITIES.
+
+En primer lugar hay que abrir la tabla *BASE_RESOURCES*.Para abrir la tabla hay que realizarlo 
+desde el *Gestor de proyectos* situado en el menú *Mostrar* de *gvSIG Desktop*. El proceso de 
+abrir una tabla es el genérico a abrir cualquier archivo, primero se selecciona *Tabla* como 
+tipo de datos a abrir, se selecciona la opción de *Nuevo*, lo que habilita una ventana donde se 
+tiene que seleccionar la pestaña *Base de datos*. Esa pestaña muestra en su zona superior un 
+desplegable donde hay que especificar la base de datos donde se encuentra la tabla, *aytoALC*. 
+Una vez seleccionada la base de datos, en la lista de tablas de esta hay que marcar la tabla 
+en cuestión y pulsa el botón *Aceptar*.
+
+![18_abrirBASE_RESOURCES_128](ejemplo_asignacion_recursos_files/18_abrirBASE_RESOURCES_128.png)
+
+Como resultado se obtiene la tabla vacía. Para rellenarla hay que obtener su formulario,
+seleccionando la opción *Show form* situada en el menú *Tabla* de *gvSIG Desktop* siempre 
+y cuando la tabla este abierta y seleccionada.
+
+El formulario de la tabla *BASE_RESOURCES* es el siguiente.
+
+![19_formBASE_RESOURCES_128](ejemplo_asignacion_recursos_files/19_formBASE_RESOURCES_128.png)
+
+Para introducir un valor en la tabla hay que poner esta en edición ya sea desde
+el mismo desplegable que se mencionó anteriormente para obtener el formulario, o desde el mismo 
+formulario utilizando el botón *Comenzar edición*.
+
+![20_editarFormBASE_RESOURCES_128](ejemplo_asignacion_recursos_files/20_editarFormBASE_RESOURCES_128.png)
+
+Una vez en edición hay que crear un nuevo elemento mediante el botón *Nuevo* situado en la zona 
+inferior del formulario e indicado en la imagen siguiente.
+
+![21_nuevoElementoFormBASE_RESOURCES_128](ejemplo_asignacion_recursos_files/21_nuevoElementoFormBASE_RESOURCES_128.png)
+
+Especificamos en el campo *nombre* el nombre completo del archivo más la extensión del 
+recurso que se desea almacenar y en el campo *value* gracias al botón izquierdo se puede subir a 
+la tabla dicho fichero.
+
+En el caso del ejemplo la configuración del formulario es la siguiente.
+
+![22_nuevoElemento2FormBASE_RESOURCES_128](ejemplo_asignacion_recursos_files/22_nuevoElemento2FormBASE_RESOURCES_128.png)
+
+Una vez creado el nuevo elemento de la tabla solo queda guardar.
+
+![23_guardarFormBASE_RESOURCES_128](ejemplo_asignacion_recursos_files/23_guardarFormBASE_RESOURCES_128.png)
+
+Y posteriormente finalizar la edición de la tabla.
+
+![24_tEditarFormBASE_RESOURCES_128](ejemplo_asignacion_recursos_files/24_tEditarFormBASE_RESOURCES_128.png)
+
+Para finalizar el proceso de asignación de un recurso de la tabla de recursos a una capa solo hay 
+que hacer checkout de esta tabla en cuestión, tal y como se indica en el apartado [*Añadir una capa
+del repositorio*](https://gvsigassociation.github.io/gvsig-desktop-docs/es/userdoc/vcsgis/utilizacion_basica/anadir_una_capa_del_repositorio_t.html).
+
+Tras todo lo realizado anteriormente cualquier usuario que realice una descarga del repositorio de la 
+capa EDIFICIOS presetará la misma leyenda asociada.
 
 
 de opciones
