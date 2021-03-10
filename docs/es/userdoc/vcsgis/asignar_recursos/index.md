@@ -16,7 +16,7 @@
    prev="../usuarios_y_permisos/autorizacion_avanzada_t.html" 
    next="introduccion_t.html" 
    index="../index.html" 
-   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/topologia.md" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/asignar_recursos/index.md" 
 %}
 
 {% include es/footer.md %}

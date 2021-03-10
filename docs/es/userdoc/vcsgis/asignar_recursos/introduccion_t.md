@@ -11,9 +11,10 @@
 {% include_relative introduccion.md %}
 
 {% include es/navigate.md 
-   next="index.html" 
+   prev="index.html"
+   next="tabla_recursos_t.html" 
    index="index.html" 
-   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/introduccion.md" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/asignar_recursos/introduccion.md" 
 %}
 
 {% include es/footer.md %}
