@@ -82,8 +82,8 @@ a continuación.
 
 |**Componente**|**Color(RGB)**  |**Opacidad**|**Ancho (píxel)**
 |--:           |--:             |:--         |:--      
-|Borde         |248   190   132 |100%        |1        
-|Interior      |231   120   58  |100%        |         
+|Borde         |231   120   58  |100%        |1        
+|Interior      |248   190   132 |100%        |-        
 
 Una vez especificados se aceptan los cambios pulsando el botón *Aceptar* y se cierra el cuadro 
 de diálogo 
