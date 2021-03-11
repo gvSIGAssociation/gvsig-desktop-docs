@@ -59,7 +59,7 @@ La opción anterior despliega la siguiente ventana.
 ![5_propiedadesEDIFICIOSWin_128](ejemplo_asignacion_recursos_files/5_propiedadesEDIFICIOSWin_128.png)
 
 Se selecciona la pestaña *Simbología* pues en esta se especifica todo lo referente a la 
-representación gráfica de la capa. EL panel de de la pestaña anterior es el siguiente.
+representación gráfica de la capa. El panel de de la pestaña anterior es el siguiente.
 
 ![6_simbologiaPropiedadesEDIFICIOS_128](ejemplo_asignacion_recursos_files/6_simbologiaPropiedadesEDIFICIOS_128.png)
 
@@ -115,7 +115,7 @@ desde el *Gestor de proyectos* situado en el menú *Mostrar* de *gvSIG Desktop*.
 abrir una tabla es el genérico a abrir cualquier archivo, primero se selecciona *Tabla* como 
 tipo de datos a abrir, se selecciona la opción de *Nuevo*, lo que habilita una ventana donde se 
 tiene que seleccionar la pestaña *Base de datos*. Esa pestaña muestra en su zona superior un 
-desplegable donde hay que especificar la base de datos donde se encuentra la tabla, *aytoALC*. 
+desplegable donde hay que especificar la base de datos donde se encuentra la tabla, *usuario1*. 
 Una vez seleccionada la base de datos, en la lista de tablas de esta hay que marcar la tabla 
 en cuestión y pulsa el botón *Aceptar*.
 
@@ -209,7 +209,7 @@ Y terminar la edición de la tabla.
 
 ![24_tEditarFormPUBLICVCSGISREPO_ENTITIES_128](ejemplo_asignacion_recursos_files/24_tEditarFormPUBLICVCSGISREPO_ENTITIES_128.png)
 
-Tras lo anterior la asignación de los recursos mediante la tabla de recursos* BASE_RESOURCES* a la 
+Tras lo anterior la asignación de los recursos mediante la tabla de recursos *BASE_RESOURCES* a la 
 capa *EDIFICIOS* ha concluido. 
 
 Para confirmar el proceso de asignación de un recurso de la tabla de recursos a una capa solo hay 
