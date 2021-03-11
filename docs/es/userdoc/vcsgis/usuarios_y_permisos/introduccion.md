@@ -8,7 +8,7 @@ un determinado usuario.
 Este sistema de control se basa en tres niveles en relación a la gestión de usuarios y permisos de estos:
  * Autentificación
  * Autorización básica o por operación
- * Autorización avanzada o por entidad. 
+ * Autorización avanzada o por entidad
 
  
 
