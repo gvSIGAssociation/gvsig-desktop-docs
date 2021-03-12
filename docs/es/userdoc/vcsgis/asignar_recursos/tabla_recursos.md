@@ -1,6 +1,9 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Tabla de recursos {% endcomment %} 
 
+
+(**En construccion**)
+
 La tabla de recursos es un archivo de tipo tabla constituida por dos campos, *nombre* y *value*.
 El campo *nombre* de tipo ```String```, identifica de manera única el recurso y la capa/tabla a la 
 cual esta asociada, mientras que el campo *value* de tipo ```byteArray``` almacena el recuso en sí,
