@@ -6,14 +6,15 @@
 
 ## Usuarios, permisos y roles
 
-### Introduccion
+### Introducción
 
 {% include_relative introduccion.md %}
 
 {% include es/navigate.md 
-   next="empezando/index.html" 
+   prev="index.html" 
+   next="autenticacion_t.html" 
    index="index.html" 
-   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/usuarios_y_permisos/introduccion_t.md" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/usuarios_y_permisos/introduccion.md" 
 %}
 
 {% include es/footer.md %}
