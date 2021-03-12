@@ -8,8 +8,6 @@
 
 ### Introduccion
 
-(**En construccion**)
-
 {% include_relative introduccion.md %}
 
 {% include es/navigate.md 
