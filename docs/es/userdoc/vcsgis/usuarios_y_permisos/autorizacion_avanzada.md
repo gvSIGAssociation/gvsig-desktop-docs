@@ -79,10 +79,48 @@ Si tras realizar cambios sobre una capa/tabla del repositorio sujeta al control 
 intenta subir dichos cambios locales al repositorio el sistema no lo permitirá mostrando elsiguiente cuadro de
 diálogo.
 
-![11_userNoAutorizado_128](autorizacion_basica_files/11_userNoAutorizado_128.png)
+![11_userNoAutorizado_128](autorizacion_avanzada_files/11_userNoAutorizado_128.png)
+
+Además de lo anteriormente aplicado a la configuración de la autorización avanzada en *VCSGis*, la herramienta dispone
+de la posibilidad de aplicar un sistema de roles en la gestión de usuarios. Un usuario puede presentar además de 
+su identificador propio tantos roles como se deseen. Los roles se definen en la tabla *PUBLIC.VCSGISREPO_USERS* en 
+cada usuario en su creación o modificandolos posteriormente.
+
+Paraañadir los roles hay que abrir la tabla y posteriormente el formulario asociado.
+
+![9_formPUBLICVCSGISREPO_USERS_128](autorizacion_avanzada_files/9_formPUBLICVCSGISREPO_USERS_128.png)
+
+Una vez en el formulario se procede a crear un nuevo usuario o modificarlo siguiendo el siguiente flujo de trabajo;
+
+ * Comenzar edición.
+ * Nuevo elemento más rellenar campos del formulario o modificar campos del formulario.
+ * Guardar cambios.
+ * Terminar edición.
+
+El campo en cuestión sobre el cual hay que asignar el rol o roles del usuario es el campo *roles*.
+
+La siguiente ilustración muestra el ejemplo de un usuario editado con roles.
+
+![10_userFormPUBLICVCSGISREPO_USERS_128](autorizacion_avanzada_files/10_userFormPUBLICVCSGISREPO_USERS_128.png)
+
+El *usuario1* presenta ahora el rol de administrador, *admin*.
+
+Con esta nueva posibilidad la configuración del nivel de seguridad autorización avanzada ofrece una nueva posibilidad.
+Esta nueva posibilidad no es otra que permitir en la definicion de la acciones y usuarios perimitidos para cada dato 
+permitir no solo usuarios concretos, sino grupos de usuarios o roles.
+
+Para hacer lo anterior solo hay que realizar la modificación de la entidad de igual manera que al inicio del apartado,
+y en el panel de la pestaña *Authorization* del formulario de la tabla *PUBLIC.VCSGISREPO_ENTITIES* en las diferentes
+acciones especificar también la palabra que identifique el rol con un símbolo ```$``` previo. La siguiente ilustración 
+muestra dicho cuadro de diálogo para la entidad seleccionada incluyendo que todo miembro del rol *admin* 
+pueda realizar la acción *commit*.
+
+![11_userForm2PUBLICVCSGISREPO_USERS_128](autorizacion_avanzada_files/11_userForm2PUBLICVCSGISREPO_USERS_128.png)
+
+Tras lo anterior solo hay que guardar cambios en la entidad y terminar edición en la tabla. A partir de ese momento 
+los usuarios con el rol *admim* pueden realizar *commits* en dicha entidad.
 
 
-> * Roles asigandos al usuario.
-> * Uso de roles en las autorizaciones de una entidad.
-> 
+
+
 
