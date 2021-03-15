@@ -11,9 +11,10 @@
 {% include_relative autorizacion_avanzada.md %}
 
 {% include es/navigate.md 
-   next="empezando/index.html" 
+   prev="autorizacion_basica_t.html"
+   next="../asignar_recursos/index.html" 
    index="index.html" 
-   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/usuarios_y_permisos/introduccion_t.md" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/usuarios_y_permisos/autorizacion_avanzada.md" 
 %}
 
 {% include es/footer.md %}
