@@ -1,6 +1,8 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Autenticacion {% endcomment %} 
 
+**(en construccion)**
+
 Este nivel se basa en autorizar el acceso a determinada información mediante credenciales, usuario y contraseña 
 concretamente. Si se activa  la autenticacion, se garantiza que solo los usuario que puedan certificar su 
 identidad tienen acceso al sistema. Ahora bien, solo con este mecanismo, una vez accedan al repositorio, no 
