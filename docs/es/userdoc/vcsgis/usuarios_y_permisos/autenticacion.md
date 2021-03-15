@@ -47,11 +47,11 @@ Una vez en el formulario se inicia la edición de la tabla para creación de un 
 Este proceso se puede realizar desde el mismo desplegable que se mencionó anteriormente para obtener 
 el formulario, o desde el mismo formulario utilizando el botón *Comenzar edición*.
 
-![5_editarFormPUBLICVCSGISREPO_CONFIG_128](ejemplo_asignacion_recursos_files/5_editarFormPUBLICVCSGISREPO_CONFIG_128.png)
+![5_editarFormPUBLICVCSGISREPO_CONFIG_128](autenticacion_files/5_editarFormPUBLICVCSGISREPO_CONFIG_128.png)
 
 Una vez comenzada la edición se procede a crear un nuevo elemento en la tabla.
 
-![5_2_editarFormPUBLICVCSGISREPO_CONFIG_128](ejemplo_asignacion_recursos_files/5_2_editarFormPUBLICVCSGISREPO_CONFIG_128.png)
+![5_2_editarFormPUBLICVCSGISREPO_CONFIG_128](autenticacion_files/5_2_editarFormPUBLICVCSGISREPO_CONFIG_128.png)
 
 De los diferentes campos del formulario hay que identificar los campos *nombre* y *valor*. En el primero hay que 
 especificar **AUTHENTICATION** y en el segundo **true**.
