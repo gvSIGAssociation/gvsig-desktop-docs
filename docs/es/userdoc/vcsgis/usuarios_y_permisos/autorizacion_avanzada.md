@@ -78,7 +78,8 @@ podrá hacer *commit* sobre la entidad.
 Si tras realizar cambios sobre una capa/tabla del repositorio sujeta al control de versiones este usuario
 intenta subir dichos cambios locales al repositorio el sistema le mostrará la ventana para introducir credenciales.
 Al identificarse como *usuario1* no lo permitirá mostrando la ventana del login hasta que se introduzca un usuario
-y contraseña válido o se pulse el botón *Cancelar*, el cual muestra el siguiente cuadro de diálogo.
+y contraseña válido o se pulse el botón *Cancelar*, el cual muestra una ventana que indica que hay un error en la 
+autorización.
 
 ![11_userNoAutorizado_128](autorizacion_avanzada_files/11_userNoAutorizado_128.png)
 
