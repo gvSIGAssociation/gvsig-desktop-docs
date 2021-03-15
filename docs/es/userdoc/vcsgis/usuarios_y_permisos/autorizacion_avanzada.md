@@ -27,7 +27,7 @@ La tabla anterior se muestra en la siguiente imagen.
 
 ![2_PUBLICVCSGISREPO_ENTITIES_128](autorizacion_avanzada_files/2_PUBLICVCSGISREPO_ENTITIES_128.png)
 
-El proceso de definición de acciones y usuarios por dato se realiza modificacndo elementos a esta tabla.
+El proceso de definición de acciones y usuarios por dato se realiza modificando elementos a esta tabla.
 Para ello es necesario obtener el formulario asociado la capa *PUBLIC.VCSGISREPO_ENTITIES*. 
 Para obtener el formulario de la tabla seleccionaremos la opción *Show form* situada en el menú 
 *Tabla* de *gvSIG Desktop* siempre y cuando la tabla este abierta y seleccionada.
@@ -64,19 +64,19 @@ Y terminar la edición de la tabla.
 
 ![9_tEditarFormPUBLICVCSGISREPO_CONFIG_128](autorizacion_avanzada_files/9_tEditarFormPUBLICVCSGISREPO_ENTITIES_128.png)
 
-Tras lo anterior la entidad ha quedado configurada con la definicion de acciones permitidas por usuario, pero 
+Tras lo anterior la entidad ha quedado configurada con la definición de acciones permitidas por usuario, pero 
 es importante destacar que la definición propia de cada usuario se mantiene activa. De la frase anterior se deduce,
-que el *usuario2* aún teniendo permitido el commit en la entidad configurada, no podrá realizarlo pues 
+que el *usuario2* aún teniendo permitido el *commit* en la entidad configurada, no podrá realizarlo pues 
 de base este no tiene permitida esa acción.
 
-De igual manera pero en sentido contrario, si tras realizar todo lo antrior se configura que el *usuario1* no pueda
-realizar *commit* sobre la entida, por mucho que este presente la acción habilitada en su configuración de usuario no
+De igual manera pero en sentido contrario, si tras realizar todo lo anterior se configura que el *usuario1* no pueda
+realizar *commit* sobre la entidad, por mucho que este presente la acción habilitada en su configuración de usuario no
 podrá hacer *commit* sobre la entidad.
 
 ![10_authentication3FormPUBLICVCSGISREPO_ENTITIES_128](autorizacion_avanzada_files/10_authentication3FormPUBLICVCSGISREPO_ENTITIES_128.png)
 
 Si tras realizar cambios sobre una capa/tabla del repositorio sujeta al control de versiones este usuario
-intenta subir dichos cambios locales al repositorio el sistema no lo permitirá mostrando elsiguiente cuadro de
+intenta subir dichos cambios locales al repositorio el sistema no lo permitirá mostrando el siguiente cuadro de
 diálogo.
 
 ![11_userNoAutorizado_128](autorizacion_avanzada_files/11_userNoAutorizado_128.png)
@@ -84,11 +84,11 @@ diálogo.
 Además de lo anteriormente aplicado a la configuración de la autorización avanzada en *VCSGis*, la herramienta dispone
 de la posibilidad de aplicar un sistema de roles en la gestión de usuarios. Un usuario puede presentar además de 
 su identificador propio tantos roles como se deseen. Los roles se definen en la tabla *PUBLIC.VCSGISREPO_USERS* en 
-cada usuario en su creación o modificandolos posteriormente.
+cada usuario en su creación o modificándolos posteriormente.
 
-Paraañadir los roles hay que abrir la tabla y posteriormente el formulario asociado.
+Para añadir los roles hay que abrir la tabla y posteriormente el formulario asociado.
 
-![9_formPUBLICVCSGISREPO_USERS_128](autorizacion_avanzada_files/9_formPUBLICVCSGISREPO_USERS_128.png)
+![12_formPUBLICVCSGISREPO_USERS_128](autorizacion_avanzada_files/12_formPUBLICVCSGISREPO_USERS_128.png)
 
 Una vez en el formulario se procede a crear un nuevo usuario o modificarlo siguiendo el siguiente flujo de trabajo;
 
@@ -101,12 +101,12 @@ El campo en cuestión sobre el cual hay que asignar el rol o roles del usuario e
 
 La siguiente ilustración muestra el ejemplo de un usuario editado con roles.
 
-![10_userFormPUBLICVCSGISREPO_USERS_128](autorizacion_avanzada_files/10_userFormPUBLICVCSGISREPO_USERS_128.png)
+![13_userFormPUBLICVCSGISREPO_USERS_128](autorizacion_avanzada_files/13_userFormPUBLICVCSGISREPO_USERS_128.png)
 
 El *usuario1* presenta ahora el rol de administrador, *admin*.
 
 Con esta nueva posibilidad la configuración del nivel de seguridad autorización avanzada ofrece una nueva posibilidad.
-Esta nueva posibilidad no es otra que permitir en la definicion de la acciones y usuarios perimitidos para cada dato 
+Esta nueva posibilidad no es otra que permitir en la definición de la acciones y usuarios permitidos para cada dato 
 permitir no solo usuarios concretos, sino grupos de usuarios o roles.
 
 Para hacer lo anterior solo hay que realizar la modificación de la entidad de igual manera que al inicio del apartado,
@@ -115,7 +115,7 @@ acciones especificar también la palabra que identifique el rol con un símbolo 
 muestra dicho cuadro de diálogo para la entidad seleccionada incluyendo que todo miembro del rol *admin* 
 pueda realizar la acción *commit*.
 
-![11_userForm2PUBLICVCSGISREPO_USERS_128](autorizacion_avanzada_files/11_userForm2PUBLICVCSGISREPO_USERS_128.png)
+![14_userForm2PUBLICVCSGISREPO_USERS_128](autorizacion_avanzada_files/14_userForm2PUBLICVCSGISREPO_USERS_128.png)
 
 Tras lo anterior solo hay que guardar cambios en la entidad y terminar edición en la tabla. A partir de ese momento 
 los usuarios con el rol *admim* pueden realizar *commits* en dicha entidad.

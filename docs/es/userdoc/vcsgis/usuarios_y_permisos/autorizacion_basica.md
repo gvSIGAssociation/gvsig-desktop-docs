@@ -3,7 +3,7 @@
 
 **(en construccion)**
 
-Antes de empezar con la autorización básica, hay que decir que que no existe un nivel de auterización básica 
+Antes de empezar con la autorización, hay que decir que que no existe un nivel de autorización básica 
 o avanzada como tal sino que solo existe el nivel de autorización. Esta forma de dividir en dos apartados 
 la autorización se debe a que se puede aplicar la autorización de dos maneras diferentes siendo una más 
 restrictiva que la otra. La autorización básica controla las acciones que pueden realizar los diferentes usuarios,
@@ -11,7 +11,7 @@ mientras que la avanzada define en los propios datos quien y como puede trabajar
 avanzada es más restrictiva que la básica.
 
 En este apartado se detalla el proceso de configuración para dotar de nivel de seguridad de autorización básica a un 
-repositorio. Para ello y siguiedo el hilo de la documentación de VCSGis se utilizan un ejemplo práctico.
+repositorio. Para ello y siguiendo el hilo de la documentación de *VCSGis* se utilizan un ejemplo práctico.
 
 Activar el proceso de autorización se realiza de igual manera que al activar el proceso de autenticación, es decir,
 realizando modificaciones sobre la tabla *PUBLIC.VCSGISREPO_CONFIG*.
@@ -62,13 +62,13 @@ Y terminar la edición de la tabla.
 
 ![8_tEditarFormPUBLICVCSGISREPO_CONFIG_128](autorizacion_basica_files/8_tEditarFormPUBLICVCSGISREPO_CONFIG_128.png)
 
-Con lo anterior ya se disponde del nivel de seguridad autorización aplicado en el repositorio. 
+Con lo anterior ya se dispone del nivel de seguridad autorización aplicado en el repositorio. 
 
 Solo queda ahora configurar las acciones que pueden realizar los diferentes usuarios autenticados previamente sobre el 
 repositorio ejemplo. Para hacer lo anterior hay que editar dichos usuarios en la tabla *PUBLIC.VCSGISREPO_USERS*.
 
 Para realizar dicha edición de tabla hay que abrir la tabla y sacar el formulario asociado. La tabla se obtiene
-de igual manera que la anterior al igua que su formulario. El formulario de la tabla *PUBLIC.VCSGISREPO_USERS* se 
+de igual manera que la anterior al igual que su formulario. El formulario de la tabla *PUBLIC.VCSGISREPO_USERS* se 
 muestra acontinuación.
 
 ![9_formPUBLICVCSGISREPO_USERS_128](autorizacion_basica_files/9_formPUBLICVCSGISREPO_USERS_128.png)
@@ -94,7 +94,7 @@ Las acciones disponibles sobre el repositorio se listan a continuación:
  * *topologyplan*. Descargar la tabla con los planes de topología.
  * *user*. Descargar la tabla de usuarios.
 
- > Un usuario sin acceso a las acciones *entities*, *topologyplan* y *user* no solo no podra descargar dicha 
+ > Un usuario sin acceso a las acciones *entities*, *topologyplan* y *user* no solo no podrá descargar dicha 
  información sino que tampoco tendrá autorización para cualquier otra acción relacionada con los elementos 
  que habilitan las acciones anteriores.
 
@@ -106,12 +106,12 @@ El usuario se llama *usuario1*, su contraseña es *usuario1* y presenta permisos
 posibles sobre el repositorio ejemplo.
 
 Existe como es lógico, la posibilidad de que un usuario no presente autorización e algunas de las acciones. El
-siguiente usuario ejemplo, *usuario2*, presenta todas las accionnes menos la acción *commit*.
+siguiente usuario ejemplo, *usuario2*, presenta todas las acciones menos la acción *commit*.
 
 ![11_user2FormPUBLICVCSGISREPO_USERS_128](autorizacion_basica_files/11_user2FormPUBLICVCSGISREPO_USERS_128.png)
 
 Si tras realizar cambios sobre una capa/tabla del repositorio sujeta al control de versiones este usuario
-intenta subir dichos cambios locales al repositorio el sistema no lo permitirá mostrando elsiguiente cuadro de
+intenta subir dichos cambios locales al repositorio el sistema no lo permitirá mostrando el siguiente cuadro de
 diálogo.
 
 ![12_userNoAutorizado_128](autorizacion_basica_files/12_userNoAutorizado_128.png)
