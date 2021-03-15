@@ -50,7 +50,7 @@ el formulario, o desde el mismo formulario utilizando el bot√≥n *Comenzar edici√
 ![5_editarFormPUBLICVCSGISREPO_CONFIG_128](autorizacion_basica_files/5_editarFormPUBLICVCSGISREPO_CONFIG_128.png)
 
 De los diferentes campos del formulario hay que identificar los campos *nombre* y *valor*. En el primero hay que 
-especificar **AUTHENTICATION** y en el segundo **true**.
+especificar **AUTHORIZATION** y en el segundo **true**.
 
 ![6_authorizationFormPUBLICVCSGISREPO_CONFIG_128](autorizacion_basica_files/6_authorizationFormPUBLICVCSGISREPO_CONFIG_128.png)
 
