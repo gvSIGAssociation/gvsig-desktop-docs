@@ -86,13 +86,13 @@ Como se detalla anteriormente hay campos de estos elementos que son propios para
 pero las acciones son un parámetro generales y como su propio nombre indica son las acciones 
 que ese usuario puede realizar en el repositorio.
 Las acciones disponibles sobre el repositorio se listan a continuación:
- * add. Añadir una nueva tabla al repositorio.
- * entities. Listar las entidades existentes en el repositorio.
- * commit. Subir cambios a las capas del repositorio.
- * update. Descargar los cambios de las capas del repositorio.
- * checkout. Descargar una capa del repositorio.
- * topologyplan. Descargar la tabla con los planes de topología.
- * user. Descargar la tabla de usuarios.
+ * *add*. Añadir una nueva tabla al repositorio.
+ * *entities*. Listar las entidades existentes en el repositorio.
+ * *commit*. Subir cambios a las capas del repositorio.
+ * *update*. Descargar los cambios de las capas del repositorio.
+ * *checkout*. Descargar una capa del repositorio.
+ * *topologyplan*. Descargar la tabla con los planes de topología.
+ * *user*. Descargar la tabla de usuarios.
 
  > Un usuario sin acceso a las acciones *entities*, *topologyplan* y *user* no solo no podra descargar dicha 
  información sino que tampoco tendrá autorización para cualquier otra acción relacionada con los elementos 
