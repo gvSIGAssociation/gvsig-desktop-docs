@@ -116,8 +116,9 @@ siguiente usuario ejemplo, *usuario2*, presenta todas las acciones menos la acci
 ![11_user2FormPUBLICVCSGISREPO_USERS_128](autorizacion_basica_files/11_user2FormPUBLICVCSGISREPO_USERS_128.png)
 
 Si tras realizar cambios sobre una capa/tabla del repositorio sujeta al control de versiones este usuario
-intenta subir dichos cambios locales al repositorio el sistema no lo permitirá mostrando el siguiente cuadro de
-diálogo.
+intenta subir dichos cambios locales al repositorio, el sistema le mostrará la ventana para introducir credenciales.
+Al identificarse como *usuario2* no lo permitirá mostrando la ventana del login hasta que se introduzca un usuario
+y contraseña válido o se pulse el botón *Cancelar*, el cual muestra el siguiente cuadro de diálogo.
 
 ![12_userNoAutorizado_128](autorizacion_basica_files/12_userNoAutorizado_128.png)
 
