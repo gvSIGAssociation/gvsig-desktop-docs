@@ -49,6 +49,10 @@ el formulario, o desde el mismo formulario utilizando el botón *Comenzar edici�
 
 ![5_editarFormPUBLICVCSGISREPO_CONFIG_128](autorizacion_basica_files/5_editarFormPUBLICVCSGISREPO_CONFIG_128.png)
 
+Una vez comenzada la edición se procede a crear un nuevo elemento en la tabla.
+
+![5_2_editarFormPUBLICVCSGISREPO_CONFIG_128](autenticacion_files/5_2_editarFormPUBLICVCSGISREPO_CONFIG_128.png)
+
 De los diferentes campos del formulario hay que identificar los campos *nombre* y *valor*. En el primero hay que 
 especificar **AUTHORIZATION** y en el segundo **true**.
 
