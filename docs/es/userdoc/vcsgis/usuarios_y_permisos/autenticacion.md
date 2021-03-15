@@ -49,18 +49,22 @@ el formulario, o desde el mismo formulario utilizando el botón *Comenzar edici�
 
 ![5_editarFormPUBLICVCSGISREPO_CONFIG_128](ejemplo_asignacion_recursos_files/5_editarFormPUBLICVCSGISREPO_CONFIG_128.png)
 
+Una vez comenzada la edición se procede a crear un nuevo elemento en la tabla.
+
+![5_2_editarFormPUBLICVCSGISREPO_CONFIG_128](ejemplo_asignacion_recursos_files/5_2_editarFormPUBLICVCSGISREPO_CONFIG_128.png)
+
 De los diferentes campos del formulario hay que identificar los campos *nombre* y *valor*. En el primero hay que 
 especificar **AUTHENTICATION** y en el segundo **true**.
 
-![6_authenticationFormPUBLICVCSGISREPO_CONFIG_128](ejemplo_asignacion_recursos_files/6_authenticationFormPUBLICVCSGISREPO_CONFIG_128.png)
+![6_authenticationFormPUBLICVCSGISREPO_CONFIG_128](autenticacion_files/6_authenticationFormPUBLICVCSGISREPO_CONFIG_128.png)
 
 Solo queda guardar los cambios en la entidad.
 
-![7_guardarCambiosFormPUBLICVCSGISREPO_CONFIG_128](ejemplo_asignacion_recursos_files/7_guardarCambiosFormPUBLICVCSGISREPO_CONFIG_128.png)
+![7_guardarCambiosFormPUBLICVCSGISREPO_CONFIG_128](autenticacion_files/7_guardarCambiosFormPUBLICVCSGISREPO_CONFIG_128.png)
 
 Y terminar la edición de la tabla.
 
-![8_tEditarFormPUBLICVCSGISREPO_CONFIG_128](ejemplo_asignacion_recursos_files/8_tEditarFormPUBLICVCSGISREPO_CONFIG_128.png)
+![8_tEditarFormPUBLICVCSGISREPO_CONFIG_128](autenticacion_files/8_tEditarFormPUBLICVCSGISREPO_CONFIG_128.png)
 
 Tras dotar al repositorio del nivel de seguridad basado en autenticación hay que crear los usuarios para poder 
 acceder a este. Para ello se repite el proceso de abrir tabla y posteriormente formulario esta vez de la tabla
@@ -76,7 +80,7 @@ nuevos elementos explicado en la tabla anterior. Este flujo es el siguiente;
  * Guardar cambios.
  * Terminar edición.
 
-Los campos a rellenar para crear un nuevo usuario son el campo *Nombre* y el campo *Contraseña*, dependiendo 
+Los campos a rellenar para crear un nuevo usuario son el campo *Identificador* y el campo *Contraseña*, dependiendo 
 el nombre de usuario y contraseña del usuario en cuestión.
 
 La siguiente ilustración muestra el ejemplo de un usuario creado.
@@ -90,6 +94,9 @@ ya dispone de un usuario. El siguiente paso lógico sería la creación de una c
 usuario y comenzar el trabajo de manera normal. Cuando el usuario se disponga a realizar una de las acciones
 referidas a la información del repositorio se habilitará una ventana para su identificación mediante nombre
 de usuario y contraseña.
+
+Un ejemplo de lo anterior se ve en la siguinte ilustración. En la imagen se muestra la ventana que pide los
+credenciales tras intentar subir una nueva capa a la copa de trabajo.
 
 ![11_usuarioContrasenaWin_128](autenticacion_files/11_usuarioContrasenaWin_128.png)
 
