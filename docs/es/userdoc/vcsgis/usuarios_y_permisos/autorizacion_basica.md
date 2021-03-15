@@ -91,6 +91,7 @@ Las acciones disponibles sobre el repositorio se listan a continuación:
  * *commit*. Subir cambios a las capas del repositorio.
  * *update*. Descargar los cambios de las capas del repositorio.
  * *checkout*. Descargar una capa del repositorio.
+ * *history*. Consulta el historial de registros.
  * *topologyplan*. Descargar la tabla con los planes de topología.
  * *user*. Descargar la tabla de usuarios.
 
