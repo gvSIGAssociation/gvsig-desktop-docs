@@ -66,7 +66,7 @@ acceder a este. Para ello se repite el proceso de abrir tabla y posteriormente f
 
 ![9_formPUBLICVCSGISREPO_USERS_128](autenticacion_files/9_formPUBLICVCSGISREPO_USERS_128.png)
 
-Una vez en el formulario se pretende crear un nuevo usuario siguiendo el flujo de trabajo para la creación de
+Una vez en el formulario se procede a crear un nuevo usuario siguiendo el flujo de trabajo para la creación de
 nuevos elementos explicado en la tabla anterior. Este flujo es el siguiente;
  * Comenzar edición.
  * Nuevo elemento.
@@ -79,10 +79,10 @@ Los campos a rellenar para crear un nuevo usuario son los siguientes:
  * Contraseña.
  * Acciones.
  
-El nombre de usuario y contraseña depende de usuario en cuestión pero las acciones son generales a todo usuario y 
-como su propio nombre indica son las acciones que ese usuario puede realizar en el repositorio.
+El nombre de usuario y contraseña depende de usuario en cuestión pero las acciones son un parámetro generales
+a todo usuario y como su propio nombre indica son las acciones que ese usuario puede realizar en el repositorio.
 Las acciones disponibles sobre el repositorio se listan a continuación:
- * add. Añadir una nueva tablla al repositorio.
+ * add. Añadir una nueva tabla al repositorio.
  * entities. Listar las entidades existentes en el repositorio.
  * commit. Subir cambios a las capas del repositorio.
  * update. Descargar los cambios de las capas del repositorio.
@@ -90,12 +90,12 @@ Las acciones disponibles sobre el repositorio se listan a continuación:
  * topologyplan. Descargar la tabla con los planes de topología.
  * user. Descargar la tabla de usuarios.
 
- > Un ususario sin acceso a las acciones entities, topologyplan y user no solo no podra descargar dicha información
- sino que tampoco tendrá autorización para cualquier otra acción relacionada con los elementos que habilitan 
- las accciones anteriores.
+ > Un usuario sin acceso a las acciones *entities*, *topologyplan* y *user* no solo no podra descargar dicha 
+ información sino que tampoco tendrá autorización para cualquier otra acción relacionada con los elementos 
+ que habilitan las acciones anteriores.
 
 Las acciones aun siendo configuradas aquí se consideran parte del siguiente apartado, 
-autorización básica, ya que como se destaco anteriormente ese apartado habla de como configurar las operaciones 
+*autorización básica*, ya que como se destacó anteriormente ese apartado habla de como configurar las operaciones 
 que puede realizar un determinado usuario en el repositorio.
 
 ![10_userFormPUBLICVCSGISREPO_USERS_128](autenticacion_files/10_userFormPUBLICVCSGISREPO_USERS_128.png)
