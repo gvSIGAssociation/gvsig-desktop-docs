@@ -70,6 +70,14 @@
 
 * [Usuarios y permisos](usuarios_y_permisos/index.md) (**en contruccion**)
 
+  * [Introducción](usuarios_y_permisos/introduccion_t.md)
+
+  * [Autenticación](usuarios_y_permisos/autenticacion_t.md)
+
+  * [Autorización básica](usuarios_y_permisos/autorizacion_basica_t.md)
+  
+  * [Autorización avanzada](usuarios_y_permisos/autorizacion_avanzada_t.md)
+
 * [Asignación de recursos a una entidad](asignar_recursos/index.md) (**en contruccion**)
 
   * [Introduccion](asignar_recursos/introduccion_t.md)
