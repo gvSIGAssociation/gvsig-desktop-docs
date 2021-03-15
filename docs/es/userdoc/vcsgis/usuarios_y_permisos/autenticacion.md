@@ -76,29 +76,10 @@ nuevos elementos explicado en la tabla anterior. Este flujo es el siguiente;
  * Guardar cambios.
  * Terminar edición.
 
-Los campos a rellenar para crear un nuevo usuario son los siguientes:
- * Nombre.
- * Contraseña.
- * Acciones.
- 
-El nombre de usuario y contraseña depende de usuario en cuestión pero las acciones son un parámetro generales
-a todo usuario y como su propio nombre indica son las acciones que ese usuario puede realizar en el repositorio.
-Las acciones disponibles sobre el repositorio se listan a continuación:
- * add. Añadir una nueva tabla al repositorio.
- * entities. Listar las entidades existentes en el repositorio.
- * commit. Subir cambios a las capas del repositorio.
- * update. Descargar los cambios de las capas del repositorio.
- * checkout. Descargar una capa del repositorio.
- * topologyplan. Descargar la tabla con los planes de topología.
- * user. Descargar la tabla de usuarios.
+Los campos a rellenar para crear un nuevo usuario son el campo *Nombre* y el campo *Contraseña*, dependiendo 
+el nombre de usuario y contraseña del usuario en cuestión.
 
- > Un usuario sin acceso a las acciones *entities*, *topologyplan* y *user* no solo no podra descargar dicha 
- información sino que tampoco tendrá autorización para cualquier otra acción relacionada con los elementos 
- que habilitan las acciones anteriores.
-
-Las acciones aun siendo configuradas aquí se consideran parte del siguiente apartado, 
-*autorización básica*, ya que como se destacó anteriormente ese apartado habla de como configurar las operaciones 
-que puede realizar un determinado usuario en el repositorio.
+La siguiente ilustración muestra el ejemplo de un usuario creado.
 
 ![10_userFormPUBLICVCSGISREPO_USERS_128](autenticacion_files/10_userFormPUBLICVCSGISREPO_USERS_128.png)
 
