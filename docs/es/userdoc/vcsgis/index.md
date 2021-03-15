@@ -56,7 +56,7 @@
 
     * [Actualizar la copia de trabajo](utilizacion_basica/ciclo_de_trabajo_basico/actualizar_copia_de_trabajo_t.md)
 
-    * [Revisando y enviando los cambios realizados](utilizacion_basica/ciclo_de_trabajo_basico/revisando_cambios_t.md)
+    * [Revisando y enviando los cambios realizados](utilizacion_basica/ciclo_de_trabajo_basico/revisando_cambios_realizados_t.md)
 
   * [Gestión de las Revisiones](utilizacion_basica/gestion_de_las_revisiones_t.md)
   
