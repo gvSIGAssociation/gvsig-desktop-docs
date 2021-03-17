@@ -6,21 +6,21 @@
 
 # Version Control System for Gis (VCSGis)
 
-## Usuarios, permisos y roles
+## Modelos de datos
 
   * [Introducción](introduccion_t.md)
 
-  * [Autenticación](autenticacion_t.md)
+  * [Configuración del modelo de datos en VCSGis](configuracion_modelo_t.md)
 
-  * [Autorización básica](autorizacion_basica_t.md)
+  * [Conectarnos a un modelo de datos](conexion_modelo_t.md)
   
-  * [Autorización avanzada](autorizacion_avanzada_t.md)
+  * [Consideraciones especiales sobre los modelos de datos](consideraciones_modelo_t.md)
 
 {% include es/navigate.md 
-   prev="../dialogo_de_anadir_capa_t.html" 
+   prev="../asignar_recursos/ejemplo_asignacion_recursos.html" 
    next="introduccion_t.html" 
    index="../index.html" 
-   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/usuarios_y_permisos/index.md" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/modelo_de_datos/index.md" 
 %}
 
 {% include es/footer.md %}

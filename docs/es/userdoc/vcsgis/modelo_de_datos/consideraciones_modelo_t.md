@@ -6,12 +6,15 @@
 
 ## Modelos de datos
 
-{% include_relative modelo_de_datos.md %}
+### Consideraciones especiales sobre los modelos de datos
+
+{% include_relative consideraciones_modelo.md %}
 
 {% include es/navigate.md 
-   next="empezando/index.html" 
+   prev="conexion_modelo_t.html"
+   next="../consideraciones_t.html" 
    index="index.html" 
-   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/consideraciones.md" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/modelo_de_datos/consideraciones_modelo.md" 
 %}
 
 {% include es/footer.md %}

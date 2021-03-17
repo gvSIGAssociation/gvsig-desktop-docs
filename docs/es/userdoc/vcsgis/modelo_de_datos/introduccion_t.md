@@ -6,12 +6,15 @@
 
 ## Modelos de datos
 
-{% include_relative modelo_de_datos.md %}
+### Introducción
+
+{% include_relative introduccion.md %}
 
 {% include es/navigate.md 
-   next="empezando/index.html" 
+   prev="index.html"
+   next="configuracion_modelo_t.html" 
    index="index.html" 
-   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/consideraciones.md" 
+   source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/modelo_de_datos/introduccion.md" 
 %}
 
 {% include es/footer.md %}
