@@ -17,7 +17,7 @@
   * [Consideraciones especiales sobre los modelos de datos](consideraciones_modelo_t.md)
 
 {% include es/navigate.md 
-   prev="../asignar_recursos/ejemplo_asignacion_recursos.html" 
+   prev="../asignar_recursos/ejemplo_asignacion_recursos_t.html" 
    next="introduccion_t.html" 
    index="../index.html" 
    source="https://github.com/gvSIGAssociation/gvsig-desktop-docs/blob/master/docs/es/userdoc/vcsgis/modelo_de_datos/index.md" 
