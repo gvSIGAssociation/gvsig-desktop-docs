@@ -86,7 +86,15 @@
 
   * [Ejemplo asignación recursos](asignar_recursos/ejemplo_asignacion_recursos_t.md)
 
-* [Modelos de datos](modelo_de_datos_t.md) (**en contruccion**)
+* [Modelos de datos](modelo_de_datos/index.md) (**en contruccion**)
+
+  * [Introducción](modelo_de_datos/introduccion_t.md)
+
+  * [Configuración del modelo de datos en VCSGis](modelo_de_datos/configuracion_modelo_t.md)
+
+  * [Conectarnos a un modelo de datos](modelo_de_datos/conexion_modelo_t.md)
+  
+  * [Consideraciones especiales sobre los modelos de datos](modelo_de_datos/consideraciones_modelo_t.md)
 
 * [Consideraciones](consideraciones_t.md) (**en contruccion**)
 
