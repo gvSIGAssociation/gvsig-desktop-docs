@@ -58,9 +58,8 @@ establecidas entre capas se detrallan en la siguiente tabla:
  común. Las tablas representa información de entes diferentes que tiene relación entre si. 
 
  > **Agregado (1:n).** Se utiliza para establecer relación entre un objeto 
- o elemento de una tabla y varios objetos o elementos de otra. Se diferencia 
- del anterior en que el grupo de elementos puede subsistir sin necesidad del 
- elemento único. 
+ o elemento de una tabla y varios objetos o elementos de otra. El grupo de elementos puede
+ subsistir sin necesidad del elemento único. 
 
 **Configuracion del modelo de datos en VCSGis**
 
