@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns="http://www.daa.com.au/~james/dia-shape-ns" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <name>modelos - 1_grafoModeloDatos_128</name>
+  <icon>1_grafoModeloDatos_128.png</icon>
+  <connections>
+    <point x="3.85" y="10"/>
+    <point x="7.195" y="10"/>
+    <point x="10.54" y="10"/>
+    <point x="10.54" y="10.45"/>
+    <point x="10.54" y="10.9"/>
+    <point x="7.195" y="10.9"/>
+    <point x="3.85" y="10.9"/>
+    <point x="3.85" y="10.45"/>
+    <point x="7.195" y="10.45"/>
+    <point x="10.54" y="15.4"/>
+    <point x="10.54" y="19.9"/>
+    <point x="7.195" y="19.9"/>
+    <point x="3.85" y="19.9"/>
+    <point x="3.85" y="15.4"/>
+    <point x="7.195" y="15.4"/>
+    <point x="4" y="11.4"/>
+    <point x="4.1" y="11.55"/>
+    <point x="4.2" y="11.4"/>
+    <point x="4.1" y="11.25"/>
+    <point x="4.05" y="11.475"/>
+    <point x="4.15" y="11.475"/>
+    <point x="4.15" y="11.325"/>
+    <point x="4.3" y="11.78"/>
+    <point x="10.19" y="11.78"/>
+    <point x="7.245" y="11.78"/>
+    <point x="4.1" y="3"/>
+    <point x="7.2525" y="3"/>
+    <point x="10.405" y="3"/>
+    <point x="10.405" y="3.45"/>
+    <point x="10.405" y="3.9"/>
+    <point x="7.2525" y="3.9"/>
+    <point x="4.1" y="3.9"/>
+    <point x="4.1" y="3.45"/>
+    <point x="7.2525" y="3.45"/>
+    <point x="10.405" y="5.2"/>
+    <point x="10.405" y="6.5"/>
+    <point x="7.2525" y="6.5"/>
+    <point x="4.1" y="6.5"/>
+    <point x="4.1" y="5.2"/>
+    <point x="7.2525" y="5.2"/>
+    <point x="4.25" y="4.4"/>
+    <point x="4.35" y="4.55"/>
+    <point x="4.45" y="4.4"/>
+    <point x="4.35" y="4.25"/>
+    <point x="4.3" y="4.475"/>
+    <point x="4.4" y="4.475"/>
+    <point x="4.4" y="4.325"/>
+    <point x="4.55" y="4.78"/>
+    <point x="10.055" y="4.78"/>
+    <point x="7.3025" y="4.78"/>
+    <point x="7.22375" y="8.25"/>
+    <point x="7.49425" y="7.00404"/>
+    <point x="6.99432" y="6.99583"/>
+    <point x="7.24429" y="6.99993"/>
+    <point x="7.20321" y="9.50007"/>
+    <point x="6.94503" y="9.99589"/>
+    <point x="7.07412" y="9.74798"/>
+    <point x="7.44497" y="10.0041"/>
+    <point x="7.32409" y="9.75209"/>
+    <point x="16.05" y="10.8"/>
+    <point x="18.8175" y="10.8"/>
+    <point x="21.585" y="10.8"/>
+    <point x="21.585" y="11.25"/>
+    <point x="21.585" y="11.7"/>
+    <point x="18.8175" y="11.7"/>
+    <point x="16.05" y="11.7"/>
+    <point x="16.05" y="11.25"/>
+    <point x="18.8175" y="11.25"/>
+    <point x="21.585" y="12.6"/>
+    <point x="21.585" y="13.5"/>
+    <point x="18.8175" y="13.5"/>
+    <point x="16.05" y="13.5"/>
+    <point x="16.05" y="12.6"/>
+    <point x="18.8175" y="12.6"/>
+    <point x="16.2" y="12.2"/>
+    <point x="16.3" y="12.35"/>
+    <point x="16.4" y="12.2"/>
+    <point x="16.3" y="12.05"/>
+    <point x="16.25" y="12.275"/>
+    <point x="16.35" y="12.275"/>
+    <point x="16.35" y="12.125"/>
+    <point x="16.5" y="12.58"/>
+    <point x="21.235" y="12.58"/>
+    <point x="18.8675" y="12.58"/>
+    <point x="16.05" y="16.15"/>
+    <point x="18.625" y="16.15"/>
+    <point x="21.2" y="16.15"/>
+    <point x="21.2" y="16.6"/>
+    <point x="21.2" y="17.05"/>
+    <point x="18.625" y="17.05"/>
+    <point x="16.05" y="17.05"/>
+    <point x="16.05" y="16.6"/>
+    <point x="18.625" y="16.6"/>
+    <point x="21.2" y="17.95"/>
+    <point x="21.2" y="18.85"/>
+    <point x="18.625" y="18.85"/>
+    <point x="16.05" y="18.85"/>
+    <point x="16.05" y="17.95"/>
+    <point x="18.625" y="17.95"/>
+    <point x="16.2" y="17.55"/>
+    <point x="16.3" y="17.7"/>
+    <point x="16.4" y="17.55"/>
+    <point x="16.3" y="17.4"/>
+    <point x="16.25" y="17.625"/>
+    <point x="16.35" y="17.625"/>
+    <point x="16.35" y="17.475"/>
+    <point x="16.5" y="17.93"/>
+    <point x="20.85" y="17.93"/>
+    <point x="18.675" y="17.93"/>
+    <point x="10.54" y="12.2"/>
+    <point x="16.05" y="12.2"/>
+    <point x="13.295" y="12.2"/>
+    <point x="10.6" y="17.5"/>
+    <point x="16.05" y="17.55"/>
+    <point x="13.325" y="17.525"/>
+  </connections>
+  <aspectratio type="fixed"/>
+  <svg:svg>
+    <svg:rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x="3.85" y="10" width="6.69" height="0.9"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:middlefont-family: sans; font-style: normal; font-weight: 700" x="7.195" y="10.7" font-size="0.7" textLength="5.305">MD1_COUNTRIES</svg:text>
+    <svg:rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x="3.85" y="10.9" width="6.69" height="9"/>
+    <svg:polygon style="fill: #000000; fill-opacity: 1; stroke: none" points="4,11.4 4.1,11.55 4.2,11.4 4.1,11.25 "/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.3" y="11.7" font-size="0.8" textLength="2.31">COD_ID</svg:text>
+    <svg:line style="fill: none; stroke-opacity: 1; stroke-width: 0.05; stroke: #000000" x1="4.3" y1="11.78" x2="10.19" y2="11.78"/>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.1" cy="12.2" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.3" y="12.5" font-size="0.8" textLength="4.235">COD_ECONOMY</svg:text>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.1" cy="13" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.3" y="13.3" font-size="0.8" textLength="5.005">COD_CONTINENT</svg:text>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.1" cy="13.8" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.3" y="14.1" font-size="0.8" textLength="3.85">COD_REGION</svg:text>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.1" cy="14.6" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.3" y="14.9" font-size="0.8" textLength="5.005">COU_NAME_LONG</svg:text>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.1" cy="15.4" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.3" y="15.7" font-size="0.8" textLength="5.39">COU_LASTCENSUS</svg:text>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.1" cy="16.2" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.3" y="16.5" font-size="0.8" textLength="4.235">COU_FIPS_10</svg:text>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.1" cy="17" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.3" y="17.3" font-size="0.8" textLength="3.85">COU_ISO_A2</svg:text>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.1" cy="17.8" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.3" y="18.1" font-size="0.8" textLength="3.85">COU_ISO_A3</svg:text>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.1" cy="18.6" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.3" y="18.9" font-size="0.8" textLength="3.85">COU_ISO_N3</svg:text>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.1" cy="19.4" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.3" y="19.7" font-size="0.8" textLength="3.08">GEOMETRY</svg:text>
+    <svg:rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x="4.1" y="3" width="6.305" height="0.9"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:middlefont-family: sans; font-style: normal; font-weight: 700" x="7.2525" y="3.7" font-size="0.7" textLength="5.7375">MD1_CONTINENTS</svg:text>
+    <svg:rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x="4.1" y="3.9" width="6.305" height="2.6"/>
+    <svg:polygon style="fill: #000000; fill-opacity: 1; stroke: none" points="4.25,4.4 4.35,4.55 4.45,4.4 4.35,4.25 "/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.55" y="4.7" font-size="0.8" textLength="5.005">COD_CONTINENT</svg:text>
+    <svg:line style="fill: none; stroke-opacity: 1; stroke-width: 0.05; stroke: #000000" x1="4.55" y1="4.78" x2="10.055" y2="4.78"/>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.35" cy="5.2" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.55" y="5.5" font-size="0.8" textLength="2.31">CON_ID</svg:text>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="4.35" cy="6" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="4.55" y="6.3" font-size="0.8" textLength="3.08">GEOMETRY</svg:text>
+    <svg:line style="fill: none; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x1="7.2525" y1="6.5" x2="7.195" y2="10"/>
+    <svg:line style="fill: none; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x1="7.49425" y1="7.00404" x2="6.99432" y2="6.99583"/>
+    <svg:line style="fill: none; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x1="7.20321" y1="9.50007" x2="6.94503" y2="9.99589"/>
+    <svg:line style="fill: none; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x1="7.20321" y1="9.50007" x2="7.44497" y2="10.0041"/>
+    <svg:rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x="16.05" y="10.8" width="5.535" height="0.9"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:middlefont-family: sans; font-style: normal; font-weight: 700" x="18.8175" y="11.5" font-size="0.7" textLength="4.8725">MD1_ECONOMY</svg:text>
+    <svg:rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x="16.05" y="11.7" width="5.535" height="1.8"/>
+    <svg:polygon style="fill: #000000; fill-opacity: 1; stroke: none" points="16.2,12.2 16.3,12.35 16.4,12.2 16.3,12.05 "/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="16.5" y="12.5" font-size="0.8" textLength="4.235">COD_ECONOMY</svg:text>
+    <svg:line style="fill: none; stroke-opacity: 1; stroke-width: 0.05; stroke: #000000" x1="16.5" y1="12.58" x2="21.235" y2="12.58"/>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="16.3" cy="13" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="16.5" y="13.3" font-size="0.8" textLength="2.31">ECO_ID</svg:text>
+    <svg:rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x="16.05" y="16.15" width="5.15" height="0.9"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:middlefont-family: sans; font-style: normal; font-weight: 700" x="18.625" y="16.85" font-size="0.7" textLength="4.115">MD1_REGION</svg:text>
+    <svg:rect style="fill: #ffffff; fill-opacity: 1; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x="16.05" y="17.05" width="5.15" height="1.8"/>
+    <svg:polygon style="fill: #000000; fill-opacity: 1; stroke: none" points="16.2,17.55 16.3,17.7 16.4,17.55 16.3,17.4 "/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="16.5" y="17.85" font-size="0.8" textLength="3.85">COD_REGION</svg:text>
+    <svg:line style="fill: none; stroke-opacity: 1; stroke-width: 0.05; stroke: #000000" x1="16.5" y1="17.93" x2="20.85" y2="17.93"/>
+    <svg:ellipse style="fill: #000000; fill-opacity: 1; stroke: none" cx="16.3" cy="18.35" rx="0.1" ry="0.1"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: monospace; font-style: normal; font-weight: normal" x="16.5" y="18.65" font-size="0.8" textLength="2.31">REG_ID</svg:text>
+    <svg:line style="fill: none; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x1="10.54" y1="12.2" x2="16.05" y2="12.2"/>
+    <svg:line style="fill: none; stroke-opacity: 1; stroke-width: 0.1; stroke: #000000" x1="10.6" y1="17.5" x2="16.05" y2="17.55"/>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: sans; font-style: normal; font-weight: normal" x="7.9" y="9.05" font-size="0.8" textLength="1.1025">1:N</svg:text>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: sans; font-style: normal; font-weight: normal" x="14.15" y="11.75" font-size="0.8" textLength="1.03">1:1</svg:text>
+    <svg:text style="fill: #000000; fill-opacity: 1; stroke: none; text-anchor:startfont-family: sans; font-style: normal; font-weight: normal" x="14.15" y="17.2" font-size="0.8" textLength="1.03">1:1</svg:text>
+  </svg:svg>
+</shape>
