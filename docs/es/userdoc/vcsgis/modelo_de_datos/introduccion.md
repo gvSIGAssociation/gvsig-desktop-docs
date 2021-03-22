@@ -40,18 +40,8 @@ vamos a trabajar un modelo sencillo, con solo unas pocas tablas.
 
 Las tablas seleccionadas para realizar el ejemplo son *countrie*, *continent*, *region* y *economy*. Estas tablas
 representan paises, continentes, subregión y el tipo de región segun su economía respectivamente. Las relaciones
-establecidas entre capas se detrallan en la siguiente tabla:
+establecidas entre capas se detrallan en la siguiente ilustración:
 
-|**Tablas**     |**countrie**                       |**continent**                     |**region**                         |**economy**
-|:--            |:--                                |:--                               |:--                                |:--                               
-|**countrie**   |**-**                              |Colaboración (1:1) por *CONTINENT*|Colaboración (1:1) por *REGION_WB* |Colaboración (1:1) por *ECONOMY*
-|**continent**  |Agregado (1:n) por *CONTINENT*     |**-**                             |**-**                              |**-**                              
-|**region**     |Agregado (1:n) por *REGION_WB*     |**-**                             |**-**                              |**-**                              
-|**economy**    |Agregado (1:n) por *ECONOMY*       |**-**                             |**-**                              |**-**                              
+![1_grafoModeloDatos_128](introduccion_files/1_grafoModeloDatos_128.png)
 
- > **Colaboración (1:1).** Se utiliza para relacionar tablas por un campo o columna 
- común. Las tablas representa información de entes diferentes que tiene relación entre si. 
 
- > **Agregado (1:n).** Se utiliza para establecer relación entre un objeto 
- o elemento de una tabla y varios objetos o elementos de otra. El grupo de elementos puede
- subsistir sin necesidad del elemento único. 

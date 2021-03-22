@@ -12,8 +12,17 @@ tablas que componen dicho modelo de datos, y si tras conectarse a el, se descarg
 del modelo y las registrará para que *gvSIG Desktop* pueda acceder a ellas aunque no esten cargadas 
 como tablas o capas del proyecto actual.
 
->
-> Aqui ejemplo
-> 
-> Continuar con el ejemplo de paises y continentes
->  
+Dicha herramienta se encuentra en el menú *Herramientas*, *submenú VCSGis*, opción *Conectar a modelo 
+de datos*.
+
+![1_obtenerModeloDatos_128](conexion_modelo_files/1_obtenerModeloDatos_128.png)
+
+Esa opción despliega el siguiente cuadro de diálogo en cual tras seleccionar una copia de trabajo y el modelo
+de datos, nos descarga en esta las capas que conforman dicho modelo.
+
+La siguiente ilustración muestra la ventana que tras pulsar el botón *Conectar a modelo de datos* cargará
+en la nueva copia de trabajo *copiaTrabajo2* las capas que conforman el modelo de datos *MD1*. La lista 
+de capas puede verse en dicha ventana.
+
+![2_obtenerModeloDatosWin_128](conexion_modelo_files/2_obtenerModeloDatosWin_128.png)
+
