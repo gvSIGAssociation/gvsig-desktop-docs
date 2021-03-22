@@ -1,8 +1,6 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Introduccion {% endcomment %} 
 
-(**en contruccion**)
-
 Trabajar con problemas complejos muchas veces precisa realizar un análisis adecuado, y definir un modelo de
 datos para representarlos de manera correcta. Normalmente el modelo de datos se materializa en un conjunto 
 de tablas, registros, relaciones y restricciones de una base de datos relacional. 

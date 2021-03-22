@@ -1,8 +1,6 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Conexion modelo {% endcomment %} 
 
-(**en contruccion**)
-
 Una vez definido y cargado en el repositorio un modelo de datos, se sigue el flujo de trabajo 
 habitual con *VCSGis*. Crear una copia de trabajo y dercargar en ellas las tablas con las 
 que se busca trabajar. Ahora bien, se dispondrá de una herramienta que permite "conectar" 

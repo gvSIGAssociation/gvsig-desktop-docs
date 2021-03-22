@@ -1,8 +1,6 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Configuracion modelo {% endcomment %}
 
-(**en contruccion**)
- 
 Configurar un modelo de datos en *VCSGis* requiere cierto análisis y organización. No esta pensado 
 para crearse sin una planificación previa. Antes de añadir las tablas que forman el modelo se deben tener 
 bien claras y declaradas las relaciones entre ellas, así como las restricciones que se buscan aplicar a 

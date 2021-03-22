@@ -68,7 +68,7 @@
 
 * [Añadir capa VCSGis usando el diálogo "Añadir Capa" de gvSIG Desktop](dialogo_de_anadir_capa_t.md)
 
-* [Usuarios y permisos](usuarios_y_permisos/index.md) (**en contruccion**)
+* [Usuarios y permisos](usuarios_y_permisos/index.md) 
 
   * [Introducción](usuarios_y_permisos/introduccion_t.md)
 
@@ -78,7 +78,7 @@
   
   * [Autorización avanzada](usuarios_y_permisos/autorizacion_avanzada_t.md)
 
-* [Asignación de recursos a una entidad](asignar_recursos/index.md) (**en contruccion**)
+* [Asignación de recursos a una entidad](asignar_recursos/index.md) 
 
   * [Introduccion](asignar_recursos/introduccion_t.md)
 
@@ -86,7 +86,7 @@
 
   * [Ejemplo asignación recursos](asignar_recursos/ejemplo_asignacion_recursos_t.md)
 
-* [Modelos de datos](modelo_de_datos/index.md) (**en contruccion**)
+* [Modelos de datos](modelo_de_datos/index.md) 
 
   * [Introducción](modelo_de_datos/introduccion_t.md)
 
