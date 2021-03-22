@@ -1,8 +1,6 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Introduccion {% endcomment %} 
 
-**(en construccion)**
-
 La autorización avanzada representa el mayor grado de seguridad ofrecido por la herramienta *VCSGis* de *gvSIG
 Desktop*. Como se detalla anteriormente se basa en definir en el propio dato los usuarios y acciones autorizados a 
 trabajar con este.

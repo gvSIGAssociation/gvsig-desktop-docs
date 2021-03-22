@@ -2,8 +2,6 @@
 
 {% include es/header.md %}
 
-***En construcción***
-
 # Version Control System for Gis (VCSGis)
 
 ## Usuarios, permisos y roles

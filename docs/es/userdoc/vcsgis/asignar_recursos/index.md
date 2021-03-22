@@ -6,8 +6,6 @@
 
 ## Asignación de recursos a una entidad
 
-(**En construccion**)
-
 * [Introduccion](introduccion_t.md)
 
 * [Tabla de recursos](tabla_recursos_t.md)

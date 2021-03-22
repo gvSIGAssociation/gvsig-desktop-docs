@@ -1,8 +1,6 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Introduccion {% endcomment %} 
 
-**(en construccion)**
-
 Antes de empezar con la autorización, hay que decir que que no existe un nivel de autorización básica 
 o avanzada como tal sino que solo existe el nivel de autorización. Esta forma de dividir en dos apartados 
 la autorización se debe a que se puede aplicar la autorización de dos maneras diferentes siendo una más 

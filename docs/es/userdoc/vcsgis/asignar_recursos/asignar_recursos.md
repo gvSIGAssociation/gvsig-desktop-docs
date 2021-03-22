@@ -1,7 +1,6 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Consideraciones {% endcomment %} 
 
-(**en contruccion**)
 > * Que son recursos asociados a una entidad (leyenda, etiquetado, formularios...)
 Los recursos son todos aquellos archivos destinados a mejorar la representación gráfica de las
 diferentes capas almacenadas en le repositorio. De lo anterior, se deduce que no son solo de un tipo,
