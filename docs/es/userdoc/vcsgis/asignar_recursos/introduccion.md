@@ -9,7 +9,7 @@ por defecto cuando lo carguemos, un fichero  ".gvslab o ".sld" para que tenga as
 por defecto, ".frm" en el que especifiquemos que aspecto debe tener el formulario asociado a
 la tabla, incluso podriamos asociar informes personalidados, ".report". Todos estos tipos de 
 ficheros con informacion complementaria a los datos de la tabla se consideran recursos asociados a ella.
-Y estos recursos citados son solo una muestra de los que podriamos asociar a una tabla.
+Siendo los recursos citados solo una muestra de los que podriamos asociar a una tabla.
 
 Ahora bien, cuando estamos trabajando con VCSGis, las tablas se encuentran almacenadas en un 
 repositorio remoto, y se descargan a una base de datos local para trabajar con ellas, entonces...
@@ -21,5 +21,5 @@ de versiones de forma que estos se descarguen automaticamente a la copia local c
 descargan las tablas. Para hacer esto, es preciso la intervencion del administrador del 
 repositorio de versiones, y una vez configurado como gestionar los recursos de cada tabla, los usuarios
 ya podran acceder a ellos de forma trasparente. Con esto se garantiza que todos los usuarios ya no solo 
-dispongan de los datos de una misma tabla actualizada, sino también del modo de representar esta asi como
+dispongan de los datos de una misma tabla, sino también del modo de representar esta asi como
 de los ficheros de recursos que esten asociados a ella.
