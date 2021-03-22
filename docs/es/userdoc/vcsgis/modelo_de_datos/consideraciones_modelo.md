@@ -1,8 +1,6 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Consideraciones modelo {% endcomment %} 
 
-(**en contruccion**)
-
 El sistema de "repositorio de datos" que tiene *gvSIG Desktop* para declarar donde esta cada tabla,
 así como la forma en que se definen las relaciones entre estas, usa un modelo "plano" de 
 espacio de nombres. Es decir, no tiene esquemas o subespacios de nombres. Todas las tablas que
