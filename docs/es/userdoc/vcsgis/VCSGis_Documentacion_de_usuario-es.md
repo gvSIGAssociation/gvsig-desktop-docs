@@ -1,5 +1,5 @@
 ---
-title: gvSIG desktop, Version Control System for Gis (VCSGis) (v1.0.3)
+title: gvSIG desktop, Version Control System for Gis (VCSGis) (v1.0.4)
 ---
 <br> 
 <br> 
@@ -19,7 +19,7 @@ Borrador preliminar
 <br> 
 <br> 
 <p style="text-align: center;font-size:16px">
-(v1.0.3)
+(v1.0.4)
 </p>
 
 # Sumario
@@ -33,6 +33,7 @@ Borrador preliminar
 |1.0.1      |21/01/2021|Jose Olivas      |Asociación gvSIG|                  |
 |1.0.2      |17/02/2021|Jose Olivas      |Asociación gvSIG|                  |
 |1.0.3      |23/02/2021|Jose Olivas      |Asociación gvSIG|                  |
+|1.0.4      |23/03/2021|Jose Olivas      |Asociación gvSIG|                  |
 
 
 # Introducción
@@ -147,11 +148,47 @@ Borrador preliminar
 
 # Usuarios y permisos 
 
-(en contruccion)
+{% include_relative usuarios_y_permisos/introduccion.md %}
+
+## Autenticación
+
+{% include_relative usuarios_y_permisos/autenticacion.md %}
+
+## Autorización básica
+
+{% include_relative usuarios_y_permisos/autorizacion_basica.md %}
+
+## Autorización avanzada
+
+{% include_relative usuarios_y_permisos/autorizacion_avanzada.md %}
 
 # Asignación de recursos a una entidad 
 
-(en contruccion)
+{% include_relative asignar_recursos/introduccion.md %}
+
+## Tabla de recursos
+
+{% include_relative asignar_recursos/tabla_recursos.md %}
+
+## Ejemplo asignación recursos
+
+{% include_relative asignar_recursos/ejemplo_asignacion_recursos.md %}
+
+# Modelo de datos
+
+{% include_relative modelo_de_datos/introduccion.md %}
+
+## Configuración del modelo de datos en VCSGis
+
+{% include_relative modelo_de_datos/configuracion_modelo.md %}
+
+## Conectarnos a un modelo de datos
+
+{% include_relative modelo_de_datos/conexion_modelo.md %}
+
+## Consideraciones especiales sobre los modelos de datos
+
+{% include_relative modelo_de_datos/consideraciones_modelo.md %}
 
 # Consideraciones
 
