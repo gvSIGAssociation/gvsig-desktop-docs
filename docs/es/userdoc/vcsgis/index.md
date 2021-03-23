@@ -2,7 +2,7 @@
 
 # Version Control System for Gis (VCSGis)
 
-([Ver todo en una sola pagina](VCSGis_Documentacion_de_usuario-es.md), [Descargar PDF](https://raw.githubusercontent.com/gvSIGAssociation/gvsig-desktop-docs/master/vcsgis/pdfs/gvSIG%20desktop%2C%20Version%20Control%20System%20for%20Gis%20(VCSGis)%20(v1.0.3-es).pdf))
+([Ver todo en una sola pagina](VCSGis_Documentacion_de_usuario-es.md), [Descargar PDF](https://raw.githubusercontent.com/gvSIGAssociation/gvsig-desktop-docs/master/vcsgis/pdfs/gvSIG%20desktop%2C%20Version%20Control%20System%20for%20Gis%20(VCSGis)%20(v1.0.4-es).pdf))
 
 * [Introducción](introduccion_t.md)
 

@@ -1,5 +1,5 @@
 ---
-title: gvSIG desktop, Version Control System for Gis (VCSGis) (v1.0.3)
+title: gvSIG desktop, Version Control System for Gis (VCSGis) (v1.0.4)
 ---
 <br> 
 <br> 
@@ -19,13 +19,15 @@ Borrador preliminar
 <br> 
 <br> 
 <p style="text-align: center;font-size:16px">
-(v1.0.3)
+(v1.0.4)
 </p>
 
 {{pagebreak /}}
 
 # Sumario
 [TOC markdown numbered hierarchy levels=1-4]
+
+{{pagebreak /}}
 
 # Control de cambios
 
@@ -35,6 +37,7 @@ Borrador preliminar
 |1.0.1      |21/01/2021|Jose Olivas      |Asociación gvSIG|                  |
 |1.0.2      |17/02/2021|Jose Olivas      |Asociación gvSIG|                  |
 |1.0.3      |23/02/2021|Jose Olivas      |Asociación gvSIG|                  |
+|1.0.4      |23/03/2021|Jose Olivas      |Asociación gvSIG|                  |
 
 
 {{pagebreak /}}
@@ -160,13 +163,49 @@ Borrador preliminar
 
 {% include ../docs/es/userdoc/vcsgis/dialogo_de_anadir_capa.md %}
 
-# Usuarios y permisos
+# Usuarios y permisos 
 
-(En construccion)
+{% include ../docs/es/userdoc/vcsgis/usuarios_y_permisos/introduccion.md %}
 
-# Asignación de recursos a una entidad
+## Autenticación
 
-(En construccion)
+{% include ../docs/es/userdoc/vcsgis/usuarios_y_permisos/autenticacion.md %}
+
+## Autorización básica
+
+{% include ../docs/es/userdoc/vcsgis/usuarios_y_permisos/autorizacion_basica.md %}
+
+## Autorización avanzada
+
+{% include ../docs/es/userdoc/vcsgis/usuarios_y_permisos/autorizacion_avanzada.md %}
+
+# Asignación de recursos a una entidad 
+
+{% include ../docs/es/userdoc/vcsgis/asignar_recursos/introduccion.md %}
+
+## Tabla de recursos
+
+{% include ../docs/es/userdoc/vcsgis/asignar_recursos/tabla_recursos.md %}
+
+## Ejemplo asignación recursos
+
+{% include ../docs/es/userdoc/vcsgis/asignar_recursos/ejemplo_asignacion_recursos.md %}
+
+# Modelo de datos
+
+{% include ../docs/es/userdoc/vcsgis/modelo_de_datos/introduccion.md %}
+
+## Configuración del modelo de datos en VCSGis
+
+{% include ../docs/es/userdoc/vcsgis/modelo_de_datos/configuracion_modelo.md %}
+
+## Conectarnos a un modelo de datos
+
+{% include ../docs/es/userdoc/vcsgis/modelo_de_datos/conexion_modelo.md %}
+
+## Consideraciones especiales sobre los modelos de datos
+
+{% include ../docs/es/userdoc/vcsgis/modelo_de_datos/consideraciones_modelo.md %}
 
 # Consideraciones
 
