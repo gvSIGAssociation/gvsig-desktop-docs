@@ -1,0 +1,551 @@
+#
+# https://editor.swagger.io/
+#
+openapi: 3.0.1
+info:
+  title: VCSGis Simple API
+  description: >-
+    Simple API to access VCSGis services
+  version: 1.0.0
+tags:
+  - name: Application API
+    description: >
+      They provide the commands necessary to implement a 
+      desktop client of a VCS.
+  - name: Developers API
+    description: >
+      It exposes services to facilitate integration with 
+      third-party applications.
+paths:
+  /rowcreate:
+    post:
+      tags:
+        - Develeloppers API
+      summary: >
+          Create a new record in a table/entity
+      operationId: RowCreate
+      requestBody:
+        description: >
+          Data for creating the new record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RowCreateRequest'
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RowCreateResponse'
+  /rowupdate:
+    post:
+      tags:
+        - Develeloppers API
+      summary: >
+          Update a record in a table/entity
+      operationId: RowUpdate
+      requestBody:
+        description: >
+          Data for updating a record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RowUpdateRequest'
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RowUpdateResponse'
+  /rowdelete:
+    post:
+      tags:
+        - Develeloppers API
+      summary: >
+        Delete a record in a table/entity
+      operationId: RowDelete
+      requestBody:
+        description: >
+          Data for deletion of a record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RowDeleteRequest'
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RowDeleteResponse'
+  /update:
+    post:
+      tags:
+        - Application API
+      summary: >
+         Brings changes from the repository to your working copy.
+      operationId: Update
+      requestBody:
+        description: >
+          It contains the information to determine what data should be sent to the client.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRequest'
+            example: {
+                "Parameters":{
+                    "EntityName":"test",
+                    "LocalRevisionCode":"00000000000016abcdef0123456789"
+                }
+            } 
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateResponse'
+              example: {
+                "Parameters":{
+                    "StatusCode":0,
+                    "StatusMessage":"_No_errors",
+                    "Entity":{
+                        "DataTableName":"VCSGIS_DATA",
+                        "Description":null,
+                        "EntityCode":"00000000000004abcdef0123456789",
+                        "EntityName":"test",
+                        "FeatureIdFieldName":"VCSGISCODE",
+                        "FeatureTypeAsJson":"\n{\n    \"__classname__\":\"org.gvsig.fmap.dal.feature.impl.DefaultFeatureType\",\n    \"id\":\"testSource2\",\n    \"internalID\":\"7c54a6bc\",\n    \"label\":null,\n    \"description\":null,\n    \"allowAtomaticValues\":false,\n    \"hasOID\":false,\n    \"defaultGeometryAttributeName\":null,\n    \"defaultTimeAttributeName\":null,\n    \"tags\":{\n        \"__classname__\":\"org.gvsig.tools.dynobject.impl.DefaultTags\"\n    },\n    \"extraColumns\":{\n        \"__classname__\":\"org.gvsig.fmap.dal.feature.impl.DefaultFeatureExtraColumns\",\n        \"extraColumns\":[\n        ]\n    },\n    \"descriptors\":[\n        {\n            \"__classname__\":\"org.gvsig.fmap.dal.feature.impl.DefaultFeatureAttributeDescriptor\",\n            \"name\":\"id\",\n            \"description\":null,\n            \"label\":null,\n            \"shortLabel\":null,\n            \"order\":0,\n            \"groupName\":null,\n            \"dataType\":{\n                \"__classname__\":\"org.gvsig.tools.dataTypes.impl.DefaultDataType\",\n                \"name\":\"Integer\",\n                \"type\":4,\n                \"subtype\":null\n            },\n            \"size\":0,\n            \"precision\":10,\n            \"scale\":0,\n            \"roundMode\":4,\n            \"allowNull\":false,\n            \"primaryKey\":false,\n            \"readOnly\":false,\n            \"isAutomatic\":false,\n            \"isTime\":false,\n            \"indexed\":true,\n            \"isIndexAscending\":true,\n            \"allowIndexDuplicateds\":false,\n            \"hidden\":false,\n            \"avoidCachingAvailableValues\":false,\n            \"geometryType\":null,\n            \"srs\":null,\n            \"relationType\":0,\n            \"displaySize\":0,\n            \"locale\":{\n                \"__classname__\":\"java.util.Locale\",\n                \"languageTag\":\"en\"\n            },\n            \"expression\":null,\n            \"availableValuesExpression\":null,\n            \"defaultValue\":\"\",\n            \"dataProfile\":null,\n            \"tags\":{\n                \"__classname__\":\"org.gvsig.tools.dynobject.impl.DefaultTags\"\n            },\n            \"availableValues\":null,\n            \"additionalInfo\":null\n        },\n        {\n            \"__classname__\":\"org.gvsig.fmap.dal.feature.impl.DefaultFeatureAttributeDescriptor\",\n            \"name\":\"text\",\n            \"description\":null,\n            \"label\":null,\n            \"shortLabel\":null,\n            \"order\":10,\n            \"groupName\":null,\n            \"dataType\":{\n                \"__classname__\":\"org.gvsig.tools.dataTypes.impl.DefaultDataType\",\n                \"name\":\"String\",\n                \"type\":8,\n                \"subtype\":null\n            },\n            \"size\":100,\n            \"precision\":-1,\n            \"scale\":-1,\n            \"roundMode\":4,\n            \"allowNull\":true,\n            \"primaryKey\":false,\n            \"readOnly\":false,\n            \"isAutomatic\":false,\n            \"isTime\":false,\n            \"indexed\":false,\n            \"isIndexAscending\":true,\n            \"allowIndexDuplicateds\":true,\n            \"hidden\":false,\n            \"avoidCachingAvailableValues\":false,\n            \"geometryType\":null,\n            \"srs\":null,\n            \"relationType\":0,\n            \"displaySize\":0,\n            \"locale\":{\n                \"__classname__\":\"java.util.Locale\",\n                \"languageTag\":\"en\"\n            },\n            \"expression\":null,\n            \"availableValuesExpression\":null,\n            \"defaultValue\":\"\",\n            \"dataProfile\":null,\n            \"tags\":{\n                \"__classname__\":\"org.gvsig.tools.dynobject.impl.DefaultTags\"\n            },\n            \"availableValues\":null,\n            \"additionalInfo\":null\n        },\n        {\n            \"__classname__\":\"org.gvsig.fmap.dal.feature.impl.DefaultFeatureAttributeDescriptor\",\n            \"name\":\"VCSGISCODE\",\n            \"description\":null,\n            \"label\":\"VCSGIS Code\",\n            \"shortLabel\":null,\n            \"order\":20,\n            \"groupName\":null,\n            \"dataType\":{\n                \"__classname__\":\"org.gvsig.tools.dataTypes.impl.DefaultDataType\",\n                \"name\":\"String\",\n                \"type\":8,\n                \"subtype\":null\n            },\n            \"size\":40,\n            \"precision\":-1,\n            \"scale\":-1,\n            \"roundMode\":4,\n            \"allowNull\":true,\n            \"primaryKey\":true,\n            \"readOnly\":false,\n            \"isAutomatic\":false,\n            \"isTime\":false,\n            \"indexed\":true,\n            \"isIndexAscending\":true,\n            \"allowIndexDuplicateds\":false,\n            \"hidden\":false,\n            \"avoidCachingAvailableValues\":false,\n            \"geometryType\":null,\n            \"srs\":null,\n            \"relationType\":0,\n            \"displaySize\":0,\n            \"locale\":{\n                \"__classname__\":\"java.util.Locale\",\n                \"languageTag\":\"es-ES\"\n            },\n            \"expression\":null,\n            \"availableValuesExpression\":null,\n            \"defaultValue\":\"\",\n            \"dataProfile\":null,\n            \"tags\":{\n                \"__classname__\":\"org.gvsig.tools.dynobject.impl.DefaultTags\"\n            },\n            \"availableValues\":null,\n            \"additionalInfo\":null\n        }\n    ]\n}",
+                        "FieldForLabel":"text",
+                        "GeometryFieldName":null,
+                        "RevisionCode":"00000000000032abcdef0123456789",
+                        "TopologyPlanCode":null,
+                        "UserCode":null,
+                        "Category":null,
+                        "Label":"test",
+                        "Authorizations":"{\n  \"add\": [ \"*\" ],\n  \"checkout\": [ \"*\" ],\n  \"commit\": [ \"*\" ],\n  \"entities\": [ \"*\" ],\n  \"history\": [ \"*\" ],\n  \"topologyplans\": [ \"*\" ],\n  \"update\": [ \"*\" ],\n  \"users\": [ \"*\" ]\n}",
+                        "TopologyPlanMode":0,
+                        "Resources":null,
+                        "DataModels":null
+                    }
+                },
+                "Data":[
+                    {
+                        "DataCode":"00000000000036abcdef0123456789",
+                        "EntityCode":"00000000000004abcdef0123456789",
+                        "RevisionCode":"00000000000032abcdef0123456789",
+                        "RevisionNumber":1,
+                        "EfectiveDate":"2020-02-17 10:11:12.123",
+                        "Operation":2,
+                        "FeatureRelatedCode":"00000000000026abcdef0123456789",
+                        "Data":"\n{\n    \"id\":4,\n    \"text\":\"DDD\",\n    \"VCSGISCODE\":\"00000000000026abcdef0123456789\"\n}"
+                    },
+                    {
+                        "DataCode":"00000000000034abcdef0123456789",
+                        "EntityCode":"00000000000004abcdef0123456789",
+                        "RevisionCode":"00000000000032abcdef0123456789",
+                        "RevisionNumber":1,
+                        "EfectiveDate":"2020-02-17 10:11:12.123",
+                        "Operation":1,
+                        "FeatureRelatedCode":"00000000000008abcdef0123456789",
+                        "Data":"\n{\n    \"id\":2,\n    \"text\":\"BB2\",\n    \"VCSGISCODE\":\"00000000000008abcdef0123456789\"\n}"
+                    }
+                ]
+            }        
+      
+components:
+
+  schemas:
+    RowCreateRequest:
+      required:
+      - EntityName
+      - LocalRevisionCode
+      - Data
+      type: object
+      description: >
+        This object represents a request to create a new record in a
+        table.
+
+        When the record is created, a unique code will be assigned with
+        the VCS, overwriting the value of the VCSGISCODE attribute with the new
+        value.
+
+      properties:
+        EntityName:
+          type: string
+          description: >
+            Name of the table in which to create the new record
+        LocalRevisionCode:
+          type: string
+          format: string40
+          description: >
+            Code of the revision in which the client data is found
+        EfectiveDate:
+          type: string
+          format: timestamp
+          description: >
+            Efective date of the operation, in the format yyyy-mm-dd
+            hh: MM: ss.LLL. In case of being null, the current date will be assigned.
+        Comment:
+          type: string
+          description: >
+            Comment associated with the operation to be performed. It can be null.
+        Data:
+          type: string
+          description: >
+            The feature data to create in the table coded as a
+            string json. If the feature has the VCSGISCODE field it will be
+            overwritten, assigning a new code to it.
+            
+    RowCreateResponse:
+      type: object
+      description: >
+        This object represents the response to a request to create a new
+        record in a table.
+        You will inform us of the status of the request, as well as:
+          - The code of the new record created.
+          - The code of the revision in which the
+            table on the server.
+
+      properties:
+        StatusCode:
+          type: integer
+          description: >
+            Status code of the operation. Zero when the operation has been
+            done correctly.
+        StatusMessage:
+          type: string
+          description: >
+            In case the operation did not go well, a message describing
+            the problem.
+        RelatedFeatureCode:
+          type: string
+          format: string40
+          description: >
+            Code assigned to the VCSGISCODE field of the new record, which
+            represents the identifier of this in the VCS.
+        EntityName:
+          type: string
+          description: >
+            Name of the table in which the new one was requested to be created
+            registry
+        EntityCode:
+          type: string
+          format: string40
+          description: >
+            Internal code associated with the table to identify it in a way
+            Unique.
+        RevisionCode:
+          type: string
+          format: string40
+          description: >
+            Code of the revision in which the data is found in the
+            server after the operation is performed.
+
+
+    RowUpdateRequest:
+      required:
+      - EntityName
+      - LocalRevisionCode
+      - Data
+      type: object
+      description: >
+        This object represents a request to update a record in a
+        table.
+
+        It is essential that the value of the VCSGISCODE attribute of the 
+        data of the record that we want to update has the correct code, 
+        since it is used to identify the record we want to update.
+
+      properties:
+        EntityName:
+          type: string
+          description: >
+            Name of the table in which the record is requested to be updated
+        LocalRevisionCode:
+          type: string
+          format: string40
+          description: >
+            Code of the revision in which the client data is located
+        EfectiveDate:
+          type: string
+          format: timestamp
+          description: >
+            Efective date of the operation, in the format yyyy-mm-dd
+            hh:MM:ss.LLL. In case of being null, the current date will be assigned.
+        Comment:
+          type: string
+          description: >
+            Comment associated with the operation to be performed. It can be null.
+        Data:
+          type: string
+          description: >
+            The feature data to create in the table coded as a
+            string json. The VCSGISCODE attribute must have a valid code and
+            It will identify the record that is being updated.
+            
+    RowUpdateResponse:
+      type: object
+      description: >
+        This object represents the response to a request to update a
+        record in a table.
+
+      properties:
+        StatusCode:
+          type: integer
+          description: >
+            Operation status code. Zero when the operation has
+            done correctly.
+        StatusMessage:
+          type: string
+          description: >
+            In case the operation did not go well, a message describing
+            the problem.
+        EntityName:
+          type: string
+          description: >
+            Name of the table in which the requested was create the new record
+        EntityCode:
+          type: string
+          format: string40
+          description: >
+            Internal code associated with the table to identify.
+        RevisionCode:
+          type: string
+          format: string40
+          description: >
+            Code of the revision in which the data is found in the
+            server after the operation is performed.
+
+    RowDeleteRequest:
+      required:
+      - EntityName
+      - LocalRevisionCode
+      - RelatedFeatureCode
+      type: object
+      description: >
+        This object represents a request to delete a record in a
+        table.
+
+
+        The record to be deleted will be identified by the value of the
+        *RelatedFeatureCode* attribute.
+        
+      properties:
+        EntityName:
+          type: string
+          description: >
+            Name of the table in which to delete the record
+        LocalRevisionCode:
+          type: string
+          format: string40
+          description: >
+            Code of the revision in which the client data is located
+        EfectiveDate:
+          type: string
+          format: timestamp
+          description: >
+            Efective date of the operation, in the format yyyy-mm-dd
+            hh:MM:ss.LLL. In case of being null, the current date will be assigned.
+        Comment:
+          type: string
+          description: >
+            Comment associated with the operation to be performed. It can be null.
+        RelatedFeatureCode:
+          type: string
+          format: string40
+          description: >
+            Code of the record to be deleted. Delete the record that
+            have the value of the VCSGISCODE attribute as the value of this field.
+    
+    RowDeleteResponse:
+      type: object
+      description: >
+        This object represents the response to a request to delete a
+        record in a table.
+
+      example:
+        StatusCode: 0
+        StatusMessage: ""
+        EntityName: "test"
+        EntityCode: "00000000000002abcdef0123456789"
+        RevisionCode: "00000000000034abcdef0123456789"
+      properties:
+        StatusCode:
+          type: integer
+          description: >
+            Operation status code. Zero when the operation has
+            done correctly.
+        StatusMessage:
+          type: string
+          description: >
+            In case the operation did not go well, a message describing
+            the problem.
+        EntityName:
+          type: string
+          description: >
+            Name of the table in which the new one was requested to be created
+            registry
+        EntityCode:
+          type: string
+          format: string40
+          description: >
+            Internal code associated with the table to identify.
+        RevisionCode:
+          type: string
+          format: string40
+          description: >
+            Code of the revision in which the data is found in the
+            server after the operation is performed.
+
+    Entity:
+      type: object
+      description: >
+        This object represents an entity or table on the server. 
+        It contains the metadata of this, such as its name, code, code of 
+        the last revision, user who created it ...
+
+      properties:
+        EntityCode:
+          type: string
+          format: string40
+          description: >
+            Code of this entity
+        EntityName:
+          type: string
+          description: >
+            Name of this entity
+        DatatableName:
+          type: string
+          description: >
+            Name of the table in which the entity's data is stored
+        Description:
+          type: string
+        FeatureIdFieldName:
+          type: string
+        FeatureTypeAsJson:
+          type: string
+        FieldForLabel:
+          type: string
+        GeometryFieldName:
+          type: string
+        RevisionCode:
+          type: string
+        TopologyPlanCode:
+          type: string
+        UserCode:
+          type: string
+
+    UpdateRequestParameters:
+      required:
+      - EntityName
+      - LocalRevisionCode
+      properties:
+        EntityName:
+          type: string
+          description: >
+            Name of the table we want to update
+        LocalRevisionCode:
+          type: string
+          format: string40
+          description: >
+            Code of the revision in which the client data is located
+    
+    UpdateRequest:
+      required:
+      - EntityName
+      - LocalRevisionCode
+      type: object
+      description: >
+        This object contains the information necessary to determine what 
+        data should be sent to the client so that the data of a table is 
+        updated with the last revision of this one.
+      properties:
+        Parameters:
+          $ref: "#/components/schemas/UpdateRequestParameters"
+
+    UpdateResponse:
+      type: object
+      description: >
+        It contains the necessary data to update the local table and to go 
+        from being in the revision in which it is to the last revision 
+        that the server contains.
+      properties:
+        Parameters:
+          $ref: "#/components/schemas/UpdateResponseParameters"
+        Data:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/UpdateResponseData"
+
+    UpdateResponseParameters:
+      properties:
+        StatusCode:
+          type: integer
+          description: >
+            Operation status code. Zero when the operation has
+            done correctly.
+        StatusMessage:
+          type: string
+          description: >
+            In case the operation did not go well, a message describing
+            the problem.
+        Entity:
+          $ref: "#/components/schemas/Entity"
+    
+    UpdateResponseData:
+      type: object
+      description: >
+        This object defines the data associated with a record that has 
+        changed in a table. It tells us if we should delete our record 
+        from the working copy, update it or insert a new one, as well 
+        as the data associated with the records.
+      properties:
+        DataCode:
+          type: string
+          description: >
+            Unique identifier asociated to this entry.
+        EntityCode:
+          type: string
+          description: >
+            The entity code, table, asociated to this entry.
+        RevisionCode:
+          type: string
+          description: >
+            The revision code asociated to this entry.
+        Operation:
+          type: integer
+          description: >
+            The operation asociated to this entry:
+              - 0 for delete
+              - 1 for update
+              - 2 for insert
+          enum:
+            - 0 # Delete
+            - 1 # Update
+            - 2 # Insert
+        RevisionNumber:
+          type: string
+          description: >
+            The revision number asociated to this entry
+        EfectiveDate:
+          type: string
+          format: timestamp
+          description: >
+            The efective date asociated to this entry
+        FeatureRelatedCode:
+          type: string
+          description: >
+            The code that identify the feature in the VCS.
+        Data:
+          type: string
+          description: >
+            The feature data coded as a json string.
+
+
