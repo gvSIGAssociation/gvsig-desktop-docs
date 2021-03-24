@@ -22,11 +22,11 @@ paths:
       tags:
         - Developers API
       summary: >
-          Create a new record in a table/entity
+          Create a new record in a table/entity. 
       operationId: RowCreate
       requestBody:
         description: >
-          Data for creating the new record
+          Data for creating the new record. A RowCreateRequest object.
         content:
           application/json:
             schema:
@@ -42,7 +42,7 @@ paths:
         
       responses:
         '200':
-          description: successful operation
+          description: successful operation. A RowCreateResponse object.
           content:
             application/json:
               schema:
@@ -65,7 +65,7 @@ paths:
       operationId: RowUpdate
       requestBody:
         description: >
-          Data for updating a record
+          Data for updating a record. A RowUpdateRequest object.
         content:
           application/json:
             schema:
@@ -80,7 +80,7 @@ paths:
         required: true
       responses:
         '200':
-          description: successful operation
+          description: successful operation. A RowUpdateResponse object.
           content:
             application/json:
               schema:
@@ -101,7 +101,7 @@ paths:
       operationId: RowDelete
       requestBody:
         description: >
-          Data for deletion of a record
+          Data for deletion of a record. A RowDeleteRequest object.
         content:
           application/json:
             schema:
@@ -116,7 +116,7 @@ paths:
         required: true
       responses:
         '200':
-          description: successful operation
+          description: successful operation. A RowDeleteResponse object.
           content:
             application/json:
               schema:
