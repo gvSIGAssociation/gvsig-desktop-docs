@@ -20,7 +20,7 @@ paths:
   /rowcreate:
     post:
       tags:
-        - Develeloppers API
+        - Developers API
       summary: >
           Create a new record in a table/entity
       operationId: RowCreate
@@ -31,7 +31,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RowCreateRequest'
+            example: {
+              "EntityName":"test",
+              "LocalRevisionCode":"00000000000016abcdef0123456789",
+              "EfectiveDate":"2020-02-18 10:11:12.123",
+              "Comment":"test row create (4,ddd)",
+              "Data":"\n{\n    \"id\":4,\n    \"text\":\"DDD\",\n    \"VCSGISCODE\":\"\"\n}"
+            }
         required: true
+        
       responses:
         '200':
           description: successful operation
@@ -39,10 +47,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RowCreateResponse'
+              example: {
+                "StatusCode":0,
+                "StatusMessage":null,
+                "RelatedFeatureCode":"00000000000024abcdef0123456789",
+                "EntityName":"test",
+                "EntityCode":"00000000000004abcdef0123456789",
+                "RevisionCode":"00000000000026abcdef0123456789"
+              }
+                          
   /rowupdate:
     post:
       tags:
-        - Develeloppers API
+        - Developers API
       summary: >
           Update a record in a table/entity
       operationId: RowUpdate
@@ -53,6 +70,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RowUpdateRequest'
+            example: {
+              "EntityName":"test",
+              "LocalRevisionCode":"00000000000026abcdef0123456789",
+              "EfectiveDate":null,
+              "Comment":"test row update (4,dd2)",
+              "Data":"\n{\n    \"id\":4,\n    \"text\":\"DD2\",\n    \"VCSGISCODE\":\"00000000000024abcdef0123456789\"\n}"
+            }
         required: true
       responses:
         '200':
@@ -61,10 +85,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RowUpdateResponse'
+              example: {
+                "StatusCode":0,
+                "StatusMessage":null,
+                "EntityName":"test",
+                "EntityCode":"00000000000004abcdef0123456789",
+                "RevisionCode":"00000000000031abcdef0123456789"
+              }
   /rowdelete:
     post:
       tags:
-        - Develeloppers API
+        - Developers API
       summary: >
         Delete a record in a table/entity
       operationId: RowDelete
@@ -75,6 +106,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RowDeleteRequest'
+            example: {
+              "EntityName":"test",
+              "LocalRevisionCode":"00000000000031abcdef0123456789",
+              "RelatedFeatureCode":"00000000000024abcdef0123456789",
+              "EfectiveDate":"2020-02-19 10:11:12.123",
+              "Comment":"test row delete (4,dd2)"
+            }
         required: true
       responses:
         '200':
@@ -83,6 +121,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RowDeleteResponse'
+              example: {
+                "StatusCode":0,
+                "StatusMessage":null,
+                "EntityName":"test",
+                "EntityCode":"00000000000004abcdef0123456789",
+                "RevisionCode":"00000000000036abcdef0123456789"
+              }
   /update:
     post:
       tags:
@@ -162,6 +207,162 @@ paths:
 components:
 
   schemas:
+    Entity:
+      type: object
+      description: >
+        This object represents an entity or table on the repository. 
+        It contains the metadata of this, such as its name, code, code of 
+        the last revision, user who created it ...
+
+      properties:
+        EntityCode:
+          type: string
+          format: string40
+          description: >
+            Code of this entity
+        EntityName:
+          type: string
+          description: >
+            Name of this entity
+        DatatableName:
+          type: string
+          description: >
+            Name of the table in which the entity's data is stored
+        Description:
+          type: string
+        FeatureIdFieldName:
+          type: string
+        FeatureTypeAsJson:
+          type: string
+        FieldForLabel:
+          type: string
+        GeometryFieldName:
+          type: string
+        RevisionCode:
+          type: string
+        TopologyPlanCode:
+          type: string
+        UserCode:
+          type: string
+
+    UpdateRequest:
+      required:
+      - EntityName
+      - LocalRevisionCode
+      type: object
+      description: >
+        This object is used in the body of a update request.
+
+
+        This object contains the information necessary to determine what 
+        data should be sent to the client so that the data of a table is 
+        updated with the last revision of this one.
+
+      properties:
+        Parameters:
+          $ref: "#/components/schemas/UpdateRequestParameters"
+
+    UpdateRequestParameters:
+      description: >
+        This object is part of the UpdateRequest object.
+      required:
+      - EntityName
+      - LocalRevisionCode
+      properties:
+        EntityName:
+          type: string
+          description: >
+            Name of the table we want to update
+        LocalRevisionCode:
+          type: string
+          format: string40
+          description: >
+            Code of the revision in which the client data is located
+    
+    UpdateResponse:
+      type: object
+      description: >
+        This object is used in the response to a update request.
+
+
+        It contains the necessary data to update the local table and to go 
+        from being in the revision in which it is to the last revision 
+        that the server contains.
+      properties:
+        Parameters:
+          $ref: "#/components/schemas/UpdateResponseParameters"
+        Data:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/UpdateResponseData"
+
+    UpdateResponseParameters:
+      description: >
+        This object is part in the response of a update request.
+
+      properties:
+        StatusCode:
+          type: integer
+          description: >
+            Operation status code. Zero when the operation has
+            done correctly.
+        StatusMessage:
+          type: string
+          description: >
+            In case the operation did not go well, a message describing
+            the problem.
+        Entity:
+          $ref: "#/components/schemas/Entity"
+    
+    UpdateResponseData:
+      type: object
+      description: >
+        This object defines the data associated with a record that has 
+        changed in a table. It tells us if we should delete our record 
+        from the working copy, update it or insert a new one, as well 
+        as the data associated with the records.
+      properties:
+        DataCode:
+          type: string
+          description: >
+            Unique identifier asociated to this entry.
+        EntityCode:
+          type: string
+          description: >
+            The entity code, table, asociated to this entry.
+        RevisionCode:
+          type: string
+          description: >
+            The revision code asociated to this entry.
+        Operation:
+          type: integer
+          description: >
+            The operation asociated to this entry:
+              - 0 for delete
+              - 1 for update
+              - 2 for insert
+          enum:
+            - 0 # Delete
+            - 1 # Update
+            - 2 # Insert
+        RevisionNumber:
+          type: string
+          description: >
+            The revision number asociated to this entry
+        EfectiveDate:
+          type: string
+          format: timestamp
+          description: >
+            The efective date asociated to this entry
+        FeatureRelatedCode:
+          type: string
+          description: >
+            The code that identify the feature in the VCS.
+        Data:
+          type: string
+          description: >
+            The feature data coded as a json string.
+  
     RowCreateRequest:
       required:
       - EntityName
@@ -370,12 +571,6 @@ components:
         This object represents the response to a request to delete a
         record in a table.
 
-      example:
-        StatusCode: 0
-        StatusMessage: ""
-        EntityName: "test"
-        EntityCode: "00000000000002abcdef0123456789"
-        RevisionCode: "00000000000034abcdef0123456789"
       properties:
         StatusCode:
           type: integer
@@ -404,148 +599,5 @@ components:
             Code of the revision in which the data is found in the
             server after the operation is performed.
 
-    Entity:
-      type: object
-      description: >
-        This object represents an entity or table on the server. 
-        It contains the metadata of this, such as its name, code, code of 
-        the last revision, user who created it ...
-
-      properties:
-        EntityCode:
-          type: string
-          format: string40
-          description: >
-            Code of this entity
-        EntityName:
-          type: string
-          description: >
-            Name of this entity
-        DatatableName:
-          type: string
-          description: >
-            Name of the table in which the entity's data is stored
-        Description:
-          type: string
-        FeatureIdFieldName:
-          type: string
-        FeatureTypeAsJson:
-          type: string
-        FieldForLabel:
-          type: string
-        GeometryFieldName:
-          type: string
-        RevisionCode:
-          type: string
-        TopologyPlanCode:
-          type: string
-        UserCode:
-          type: string
-
-    UpdateRequestParameters:
-      required:
-      - EntityName
-      - LocalRevisionCode
-      properties:
-        EntityName:
-          type: string
-          description: >
-            Name of the table we want to update
-        LocalRevisionCode:
-          type: string
-          format: string40
-          description: >
-            Code of the revision in which the client data is located
-    
-    UpdateRequest:
-      required:
-      - EntityName
-      - LocalRevisionCode
-      type: object
-      description: >
-        This object contains the information necessary to determine what 
-        data should be sent to the client so that the data of a table is 
-        updated with the last revision of this one.
-      properties:
-        Parameters:
-          $ref: "#/components/schemas/UpdateRequestParameters"
-
-    UpdateResponse:
-      type: object
-      description: >
-        It contains the necessary data to update the local table and to go 
-        from being in the revision in which it is to the last revision 
-        that the server contains.
-      properties:
-        Parameters:
-          $ref: "#/components/schemas/UpdateResponseParameters"
-        Data:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/UpdateResponseData"
-
-    UpdateResponseParameters:
-      properties:
-        StatusCode:
-          type: integer
-          description: >
-            Operation status code. Zero when the operation has
-            done correctly.
-        StatusMessage:
-          type: string
-          description: >
-            In case the operation did not go well, a message describing
-            the problem.
-        Entity:
-          $ref: "#/components/schemas/Entity"
-    
-    UpdateResponseData:
-      type: object
-      description: >
-        This object defines the data associated with a record that has 
-        changed in a table. It tells us if we should delete our record 
-        from the working copy, update it or insert a new one, as well 
-        as the data associated with the records.
-      properties:
-        DataCode:
-          type: string
-          description: >
-            Unique identifier asociated to this entry.
-        EntityCode:
-          type: string
-          description: >
-            The entity code, table, asociated to this entry.
-        RevisionCode:
-          type: string
-          description: >
-            The revision code asociated to this entry.
-        Operation:
-          type: integer
-          description: >
-            The operation asociated to this entry:
-              - 0 for delete
-              - 1 for update
-              - 2 for insert
-          enum:
-            - 0 # Delete
-            - 1 # Update
-            - 2 # Insert
-        RevisionNumber:
-          type: string
-          description: >
-            The revision number asociated to this entry
-        EfectiveDate:
-          type: string
-          format: timestamp
-          description: >
-            The efective date asociated to this entry
-        FeatureRelatedCode:
-          type: string
-          description: >
-            The code that identify the feature in the VCS.
-        Data:
-          type: string
-          description: >
-            The feature data coded as a json string.
 
 
