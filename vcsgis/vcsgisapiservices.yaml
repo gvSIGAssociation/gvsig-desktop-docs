@@ -92,6 +92,7 @@ paths:
                 "EntityCode":"00000000000004abcdef0123456789",
                 "RevisionCode":"00000000000031abcdef0123456789"
               }
+              
   /rowdelete:
     post:
       tags:
@@ -128,6 +129,7 @@ paths:
                 "EntityCode":"00000000000004abcdef0123456789",
                 "RevisionCode":"00000000000036abcdef0123456789"
               }
+  
   /update:
     post:
       tags:
@@ -203,7 +205,184 @@ paths:
                     }
                 ]
             }        
-      
+  
+  /authenticated:
+    post:
+      tags:
+        - Application API
+      summary: >
+         xxx.
+      operationId: Authenticate
+      requestBody:
+        description: >
+          XXX.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticateRequest'
+            example: {
+                  "Parameters":{
+                      "UserId":"test",
+                      "Password":"password"
+                  }
+              } 
+        required: true
+      responses:
+        '200':
+          description: successful operation. A AuthenticateResponse Object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticateResponse'
+              example: {
+                    "Parameters":{
+                        "StatusCode":0,
+                        "StatusMessage":"_No_errors",
+                        "UserCode":"00000000000002abcdef0123456789",
+                        "AuthenticationToken":"*"
+                    }
+                }
+                  
+  /entities:
+    get:
+      tags:
+        - Application API
+      summary: >
+         xxx.
+      operationId: Entities
+
+      responses:
+        '200':
+          description: successful operation. A EntitiesResponse Object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntitiesResponse'
+              example: {
+                    "Parameters":{
+                        "StatusCode":0,
+                        "StatusMessage":null,
+                        "Entities":null # FIXME
+                    }
+                }
+
+  /commit:
+    post:
+      tags:
+        - Application API
+      summary: >
+         xxx.
+      operationId: Commit
+      requestBody:
+        description: >
+          XXX.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommitRequest'
+            example: {
+                "Parameters":{
+                    "EfectiveDate":null,
+                    "RevisionDate":null,
+                    "Comment":null,
+                    "Entities":[
+                        {
+                            "DataTableName":"VCSGIS_DATA",
+                            "Description":null,
+                            "EntityCode":"00000000000004abcdef0123456789",
+                            "EntityName":"test",
+                            "FeatureIdFieldName":"VCSGISCODE",
+                            "FeatureTypeAsJson":"\n{\n    \"__classname__\":\"org.gvsig.fmap.dal.feature.impl.DefaultFeatureType\",\n    \"id\":\"testSource2\",\n    \"internalID\":\"7c54a6bc\",\n    \"label\":null,\n    \"description\":null,\n    \"allowAtomaticValues\":false,\n    \"hasOID\":false,\n    \"defaultGeometryAttributeName\":null,\n    \"defaultTimeAttributeName\":null,\n    \"tags\":{\n        \"__classname__\":\"org.gvsig.tools.dynobject.impl.DefaultTags\"\n    },\n    \"extraColumns\":{\n        \"__classname__\":\"org.gvsig.fmap.dal.feature.impl.DefaultFeatureExtraColumns\",\n        \"extraColumns\":[\n        ]\n    },\n    \"descriptors\":[\n        {\n            \"__classname__\":\"org.gvsig.fmap.dal.feature.impl.DefaultFeatureAttributeDescriptor\",\n            \"name\":\"id\",\n            \"description\":null,\n            \"label\":null,\n            \"shortLabel\":null,\n            \"order\":0,\n            \"groupName\":null,\n            \"dataType\":{\n                \"__classname__\":\"org.gvsig.tools.dataTypes.impl.DefaultDataType\",\n                \"name\":\"Integer\",\n                \"type\":4,\n                \"subtype\":null\n            },\n            \"size\":0,\n            \"precision\":10,\n            \"scale\":0,\n            \"roundMode\":4,\n            \"allowNull\":false,\n            \"primaryKey\":false,\n            \"readOnly\":false,\n            \"isAutomatic\":false,\n            \"isTime\":false,\n            \"indexed\":true,\n            \"isIndexAscending\":true,\n            \"allowIndexDuplicateds\":false,\n            \"hidden\":false,\n            \"avoidCachingAvailableValues\":false,\n            \"geometryType\":null,\n            \"srs\":null,\n            \"relationType\":0,\n            \"displaySize\":0,\n            \"locale\":{\n                \"__classname__\":\"java.util.Locale\",\n                \"languageTag\":\"en\"\n            },\n            \"expression\":null,\n            \"availableValuesExpression\":null,\n            \"defaultValue\":\"\",\n            \"dataProfile\":null,\n            \"tags\":{\n                \"__classname__\":\"org.gvsig.tools.dynobject.impl.DefaultTags\"\n            },\n            \"availableValues\":null,\n            \"additionalInfo\":null\n        },\n        {\n            \"__classname__\":\"org.gvsig.fmap.dal.feature.impl.DefaultFeatureAttributeDescriptor\",\n            \"name\":\"text\",\n            \"description\":null,\n            \"label\":null,\n            \"shortLabel\":null,\n            \"order\":10,\n            \"groupName\":null,\n            \"dataType\":{\n                \"__classname__\":\"org.gvsig.tools.dataTypes.impl.DefaultDataType\",\n                \"name\":\"String\",\n                \"type\":8,\n                \"subtype\":null\n            },\n            \"size\":100,\n            \"precision\":-1,\n            \"scale\":-1,\n            \"roundMode\":4,\n            \"allowNull\":true,\n            \"primaryKey\":false,\n            \"readOnly\":false,\n            \"isAutomatic\":false,\n            \"isTime\":false,\n            \"indexed\":false,\n            \"isIndexAscending\":true,\n            \"allowIndexDuplicateds\":true,\n            \"hidden\":false,\n            \"avoidCachingAvailableValues\":false,\n            \"geometryType\":null,\n            \"srs\":null,\n            \"relationType\":0,\n            \"displaySize\":0,\n            \"locale\":{\n                \"__classname__\":\"java.util.Locale\",\n                \"languageTag\":\"en\"\n            },\n            \"expression\":null,\n            \"availableValuesExpression\":null,\n            \"defaultValue\":\"\",\n            \"dataProfile\":null,\n            \"tags\":{\n                \"__classname__\":\"org.gvsig.tools.dynobject.impl.DefaultTags\"\n            },\n            \"availableValues\":null,\n            \"additionalInfo\":null\n        },\n        {\n            \"__classname__\":\"org.gvsig.fmap.dal.feature.impl.DefaultFeatureAttributeDescriptor\",\n            \"name\":\"VCSGISCODE\",\n            \"description\":null,\n            \"label\":\"VCSGIS Code\",\n            \"shortLabel\":null,\n            \"order\":20,\n            \"groupName\":null,\n            \"dataType\":{\n                \"__classname__\":\"org.gvsig.tools.dataTypes.impl.DefaultDataType\",\n                \"name\":\"String\",\n                \"type\":8,\n                \"subtype\":null\n            },\n            \"size\":40,\n            \"precision\":-1,\n            \"scale\":-1,\n            \"roundMode\":4,\n            \"allowNull\":true,\n            \"primaryKey\":true,\n            \"readOnly\":false,\n            \"isAutomatic\":false,\n            \"isTime\":false,\n            \"indexed\":true,\n            \"isIndexAscending\":true,\n            \"allowIndexDuplicateds\":false,\n            \"hidden\":false,\n            \"avoidCachingAvailableValues\":false,\n            \"geometryType\":null,\n            \"srs\":null,\n            \"relationType\":0,\n            \"displaySize\":0,\n            \"locale\":{\n                \"__classname__\":\"java.util.Locale\",\n                \"languageTag\":\"es-ES\"\n            },\n            \"expression\":null,\n            \"availableValuesExpression\":null,\n            \"defaultValue\":\"\",\n            \"dataProfile\":null,\n            \"tags\":{\n                \"__classname__\":\"org.gvsig.tools.dynobject.impl.DefaultTags\"\n            },\n            \"availableValues\":null,\n            \"additionalInfo\":null\n        }\n    ]\n}",
+                            "FieldForLabel":"text",
+                            "GeometryFieldName":null,
+                            "RevisionCode":null,
+                            "TopologyPlanCode":null,
+                            "UserCode":null,
+                            "Category":null,
+                            "Label":"test",
+                            "Authorizations":null,
+                            "TopologyPlanMode":0,
+                            "Resources":null,
+                            "DataModels":null,
+                            "LocalRevisionCode":null
+                        }
+                    ],
+                    "NewEntityCodes":[
+                        "00000000000004abcdef0123456789"
+                    ]
+                },
+                "Data":[
+                    {
+                        "Code":"00000000000007abcdef0123456789",
+                        "EntityCode":"00000000000004abcdef0123456789",
+                        "Operation":2,
+                        "RelatedFeatureCode":"00000000000006abcdef0123456789",
+                        "Data":"\n{\n    \"id\":1,\n    \"text\":\"AAA\",\n    \"VCSGISCODE\":\"00000000000006abcdef0123456789\"\n}"
+                    },
+                    {
+                        "Code":"00000000000009abcdef0123456789",
+                        "EntityCode":"00000000000004abcdef0123456789",
+                        "Operation":2,
+                        "RelatedFeatureCode":"00000000000008abcdef0123456789",
+                        "Data":"\n{\n    \"id\":2,\n    \"text\":\"BBB\",\n    \"VCSGISCODE\":\"00000000000008abcdef0123456789\"\n}"
+                    },
+                    {
+                        "Code":"00000000000011abcdef0123456789",
+                        "EntityCode":"00000000000004abcdef0123456789",
+                        "Operation":2,
+                        "RelatedFeatureCode":"00000000000010abcdef0123456789",
+                        "Data":"\n{\n    \"id\":3,\n    \"text\":\"CCC\",\n    \"VCSGISCODE\":\"00000000000010abcdef0123456789\"\n}"
+                    }
+                ]
+            }
+
+        required: true
+        
+      responses:
+        '200':
+          description: successful operation. A CommitResponse Object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitResponse'
+              example: {
+                  "Parameters":{
+                      "StatusCode":0,
+                      "StatusMessage":null,
+                      "Entities":[
+                          {
+                              "DataTableName":"VCSGIS_DATA",
+                              "Description":null,
+                              "EntityCode":"00000000000004abcdef0123456789",
+                              "EntityName":"test",
+                              "FeatureIdFieldName":"VCSGISCODE",
+                              "FieldForLabel":"text",
+                              "GeometryFieldName":null,
+                              "RevisionCode":"00000000000016abcdef0123456789",
+                              "TopologyPlanCode":null,
+                              "UserCode":null,
+                              "Category":null,
+                              "Label":"test",
+                              "Authorizations":null,
+                              "TopologyPlanMode":0,
+                              "Resources":null,
+                              "DataModels":null,
+                              "LocalRevisionCode":null
+                          }
+                      ]
+                  }
+              }
+
+                  
+  
+  /checkout:
+  
+  /history:
+  
+  /users:
+  
+  /topologyplans:
+  
 components:
 
   schemas:
@@ -244,6 +423,10 @@ components:
           type: string
         UserCode:
           type: string
+
+# ======================================
+# Update schema
+#
 
     UpdateRequest:
       required:
@@ -303,14 +486,10 @@ components:
       properties:
         StatusCode:
           type: integer
-          description: >
-            Operation status code. Zero when the operation has
-            done correctly.
+          description: "Operation status code. Zero when the operation has done correctly."
         StatusMessage:
           type: string
-          description: >
-            In case the operation did not go well, a message describing
-            the problem.
+          description: "In case the operation did not go well, a message describing the problem.""
         Entity:
           $ref: "#/components/schemas/Entity"
     
@@ -360,9 +539,95 @@ components:
             The code that identify the feature in the VCS.
         Data:
           type: string
-          description: >
-            The feature data coded as a json string.
+          description: "The feature data coded as a json string."
+
+
+# ======================================
+# Authenticate schema
+#
   
+    AuthenticateRequest:
+      required:
+      - EntityName
+      - LocalRevisionCode
+      type: object
+      description: >
+        XXXXX.
+
+      properties:
+        Parameters:
+          $ref: "#/components/schemas/AuthenticateRequestParameters"
+
+    AuthenticateRequestParameters:
+      description: >
+        XXX.
+      required:
+      - EntityName
+      - LocalRevisionCode
+      properties:
+        EntityName:
+          type: string
+          description: >
+            Name of the table we want to update
+        LocalRevisionCode:
+          type: string
+          format: string40
+          description: >
+            Code of the revision in which the client data is located
+    
+    AuthenticateResponse:
+      type: object
+      description: >
+        XXX.
+      properties:
+        Parameters:
+          $ref: "#/components/schemas/AuthenticateResponseParameters"
+
+    AuthenticateResponseParameters:
+      description: >
+        XXXX.
+
+      properties:
+        StatusCode:
+          type: integer
+          description: "Operation status code. Zero when the operation has done correctly."
+        StatusMessage:
+          type: string
+          description: "In case the operation did not go well, a message describing the problem.""
+
+
+# ======================================
+# Entities schema
+#
+  
+    EntitiesResponse:
+      type: object
+      description: >
+        XXX.
+      properties:
+        Parameters:
+          $ref: "#/components/schemas/EntitiesResponseParameters"
+
+    EntitiesResponseParameters:
+      description: >
+        XXXX.
+
+      properties:
+        StatusCode:
+          type: integer
+          description: "Operation status code. Zero when the operation has done correctly."
+        StatusMessage:
+          type: string
+          description: "In case the operation did not go well, a message describing the problem.""
+
+
+
+
+
+
+
+
+
     RowCreateRequest:
       required:
       - EntityName
