@@ -169,6 +169,23 @@ paths:
         - Application API
       summary: >
          xxx.
+      operationId: Entities-get
+
+      responses:
+        '200':
+          description: successful operation. A EntitiesResponse Object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntitiesResponse'
+              examples:
+                response1:
+                  $ref: '#/components/examples/EntitiesResponse1'
+    post:
+      tags:
+        - Application API
+      summary: >
+         xxx.
       operationId: Entities
 
       responses:
@@ -273,6 +290,22 @@ paths:
 
   
   /users:
+    get:
+      tags:
+        - Application API
+      summary: >
+         xxx.
+      operationId: Users_get
+      responses:
+        '200':
+          description: successful operation. A UsersResponse Object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersResponse'
+              examples:
+                response1:
+                  $ref: '#/components/examples/UsersResponse1'
     post:
       tags:
         - Application API
@@ -292,6 +325,23 @@ paths:
 
   
   /topologyplans:
+    get:
+      tags:
+        - Application API
+      summary: >
+         xxx.
+      operationId: Topologyplans_get
+      responses:
+        '200':
+          description: successful operation. A CommitResponse Object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopologyplansResponse'
+              examples:
+                response1:
+                  $ref: '#/components/examples/TopologyplansResponse1'
+
     post:
       tags:
         - Application API
@@ -308,7 +358,6 @@ paths:
               examples:
                 response1:
                   $ref: '#/components/examples/TopologyplansResponse1'
-
   
 components:
 
