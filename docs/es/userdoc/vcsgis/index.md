@@ -98,6 +98,10 @@
 
 * [Consideraciones](consideraciones_t.md) (**en contruccion**)
 
+* Documentacion para integradores
+
+  * [API de los servicios web](vcsgisapiservices.html) (**en contruccion**)
+
 [Nivel superior](../index.md)
 
 
