@@ -279,18 +279,6 @@ paths:
       summary: >
          xxx.
       operationId: Users
-      requestBody:
-        description: >
-          XXX.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UsersRequest'
-            examples:
-              request1:
-                $ref: '#/components/examples/UsersRequest1'
-        required: true
-        
       responses:
         '200':
           description: successful operation. A UsersResponse Object.
@@ -310,18 +298,6 @@ paths:
       summary: >
          xxx.
       operationId: Topologyplans
-      requestBody:
-        description: >
-          XXX.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TopologyplansRequest'
-            examples:
-              request1:
-                $ref: '#/components/examples/TopologyplansRequest1'
-        required: true
-        
       responses:
         '200':
           description: successful operation. A CommitResponse Object.
@@ -783,6 +759,197 @@ components:
           type: string
           description: "In case the operation did not go well, a message describing the problem."
 
+    HistoryRequest:
+      required:
+      - EntityName
+      - LocalRevisionCode
+      type: object
+      description: >
+        XXX.
+
+      properties:
+        Parameters:
+          $ref: "#/components/schemas/HistoryRequestParameters"
+
+    HistoryRequestParameters:
+      description: >
+        XXX.
+      required:
+      - EntityName
+      properties:
+        EntityName:
+          type: string
+          description: "Name of the table we want to update"
+        MaxDate:
+          type: string
+          format: timestamp
+          description: "XXX."
+        MinDate:
+          type: string
+          format: timestamp
+          description: "XXX."
+        MaxRevisionNumber:
+          type: integer
+          description: "XXX."
+        MinRevisionNumber:
+          type: integer
+          description: "XXX."
+        MaxNumberOfRevisions:
+          type: integer
+          description: "XXX."
+
+    HistoryResponse:
+      type: object
+      description: >
+        XXX.
+      properties:
+        Parameters:
+          $ref: "#/components/schemas/HistoryResponseParameters"
+        Data:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/HistoryResponseData"
+
+    HistoryResponseParameters:
+      description: >
+        XXX.
+
+      properties:
+        StatusCode:
+          type: integer
+          description: "Operation status code. Zero when the operation has done correctly."
+        StatusMessage:
+          type: string
+          description: "In case the operation did not go well, a message describing the problem."
+
+    HistoryResponseData:
+      type: object
+      description: >
+        XXX.
+      properties:
+        EntityCode:
+          type: string
+          format: string60
+          description: "The entity code asociated to this revision."
+        RevisionCode:
+          type: string
+          format: string60
+          description: "The code of this revision"
+        EfectiveDate:
+          type: string
+          format: timestamp
+          description: "The efective date of this revision"
+        RevisionDate:
+          type: string
+          format: timestamp
+          description: "The date of this revision"
+        UserCode:
+          type: string
+          format: string60
+          description: ""
+        Number:
+          type: integer
+          description: "The revision number"
+        Comment:
+          type: string
+          description: ""
+        Tags:
+          type: string
+          description: ""
+        TopologyPlan:
+          type: integer
+          description: "Status of the topology plan asociated to this revision."
+
+    UsersResponse:
+      type: object
+      description: >
+        XXX.
+      properties:
+        Parameters:
+          $ref: "#/components/schemas/UsersResponseParameters"
+        Data:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/UsersResponseData"
+
+    UsersResponseParameters:
+      description: >
+        XXX.
+
+      properties:
+        StatusCode:
+          type: integer
+          description: "Operation status code. Zero when the operation has done correctly."
+        StatusMessage:
+          type: string
+          description: "In case the operation did not go well, a message describing the problem."
+
+    UsersResponseData:
+      type: object
+      description: >
+        XXX.
+      properties:
+        UserCode:
+          type: string
+          format: string60
+          description: "The entity code asociated to this revision."
+        Identifier:
+          type: string
+          description: "The code of this revision"
+        AllowedOperations:
+          type: string
+          description: "XXX"
+        Roles:
+          type: string
+          description: "XXX"
+        Description:
+          type: string
+          description: ""
+
+    TopologyplansResponse:
+      type: object
+      description: >
+        XXX.
+      properties:
+        Parameters:
+          $ref: "#/components/schemas/TopologyplansResponseParameters"
+        Data:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/TopologyplansResponseData"
+
+    TopologyplansResponseParameters:
+      description: >
+        XXX.
+
+      properties:
+        StatusCode:
+          type: integer
+          description: "Operation status code. Zero when the operation has done correctly."
+        StatusMessage:
+          type: string
+          description: "In case the operation did not go well, a message describing the problem."
+
+    TopologyplansResponseData:
+      type: object
+      description: >
+        XXX.
+      properties:
+        TopologyPlanCode:
+          type: string
+          format: string60
+          description: "The entity code asociated to this revision."
+        Name:
+          type: string
+          description: "The name of this topology plan"
+        Description:
+          type: string
+          description: ""
+        Data:
+          type: string
+          description: ""
+
+
     RowCreateRequest:
       required:
       - EntityName
@@ -1230,11 +1397,7 @@ components:
       value: {
         }
   
-    UserRequest1:
-      value: {
-        }
-    
-    UserResponse1:
+    UsersResponse1:
       value: {
         }
   
