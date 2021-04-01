@@ -489,7 +489,7 @@ components:
           description: "Operation status code. Zero when the operation has done correctly."
         StatusMessage:
           type: string
-          description: "In case the operation did not go well, a message describing the problem.""
+          description: "In case the operation did not go well, a message describing the problem."
         Entity:
           $ref: "#/components/schemas/Entity"
     
@@ -593,7 +593,7 @@ components:
           description: "Operation status code. Zero when the operation has done correctly."
         StatusMessage:
           type: string
-          description: "In case the operation did not go well, a message describing the problem.""
+          description: "In case the operation did not go well, a message describing the problem."
 
 
 # ======================================
@@ -618,7 +618,7 @@ components:
           description: "Operation status code. Zero when the operation has done correctly."
         StatusMessage:
           type: string
-          description: "In case the operation did not go well, a message describing the problem.""
+          description: "In case the operation did not go well, a message describing the problem."
 
 
 
