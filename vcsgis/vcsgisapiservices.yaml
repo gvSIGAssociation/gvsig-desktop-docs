@@ -4,8 +4,16 @@
 openapi: 3.0.0
 info:
   title: VCSGis Simple API
-  description: >-
+  description: >
     Simple API to access VCSGis services
+    
+    
+    Los ejemplos que aparecen en este documento trabajan sobre una tabla de nombre **test**
+    que tiene dos unicas columnas:
+    <ul>
+    <li>*id*, de tipo entero, que es la clave unica de la tabla</li>
+    <li>*text* a string with text.</li>
+    </ul>
   version: 1.0.0
 tags:
   - name: Application API
@@ -32,12 +40,12 @@ paths:
           
           
           Provides the name of the table on which the operation will be performed,
-          the revision code of the table in the local copy, **LocalRevisionCode**, 
+          the revision code of the table in the working copy, **LocalRevisionCode**, 
           and the data with which the registry must be updated, **Data**,
           and insert the record in the data table creating a new revision.
           
           
-          Fail if the revision code of the local copy is outdated
+          Fail if the revision code of the working copy is outdated
           or if the table or revision code is wrong.
 
           
@@ -84,12 +92,12 @@ paths:
           Data for updating a record.
           
           Provides the name of the table on which the operation will be performed,
-          the revision code of the table in the local copy, **LocalRevisionCode**, 
+          the revision code of the table in the working copy, **LocalRevisionCode**, 
           and the data with which the registry must be updated, **Data**,
           and update the record in the data table creating a new revision.
           
           
-          Fail if the revision code of the local copy is outdated,
+          Fail if the revision code of the working copy is outdated,
           if the table or revision code is wrong
           or if the **Data** don't contains a valid VCSGISCODE field.
           
@@ -137,12 +145,12 @@ paths:
           
           
           Provides the name of the table on which the operation will be performed,
-          the revision code of the entity/table in the local copy, **LocalRevisionCode**, 
+          the revision code of the entity/table in the working copy, **LocalRevisionCode**, 
           and the code of the record to delete, **RelatedFeatureCode**,
           and delete the record in the table creating a new revision.
           
           
-          Fail if the revision code of the local copy is outdated,
+          Fail if the revision code of the working copy is outdated,
           if the table or revision code is wrong
           or if the code of the record to delete is wrong.
 
@@ -178,12 +186,17 @@ paths:
     post:
       tags:
         - Application API
-      summary: >
-         Brings changes from the repository to your working copy.
+      summary: "Brings changes from the repository to your working copy."
       operationId: Update
       requestBody:
         description: >
-          It contains the information to determine what data should be sent to the client. A UpdateRequest object.
+          It contains the information to determine what data should be sent to the client
+          to mantain it up to date.
+          
+
+          Provides the name of the table on which the operation will be performed,
+          the revision code of the table in the working copy, **LocalRevisionCode**.
+          
         content:
           application/json:
             schema:
@@ -194,7 +207,14 @@ paths:
         required: true
       responses:
         '200':
-          description: successful operation. A UpdateResponse Object.
+          description: >
+            The response of the update request. 
+            
+            
+            if the operacion can be performed ok, the **StatusCode** is zero, 
+            and returns the metadata of the table and the list of changes required 
+            to keep it up to date.
+
           content:
             application/json:
               schema:
