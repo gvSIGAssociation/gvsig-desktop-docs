@@ -23,10 +23,26 @@ paths:
         - Developers API
       summary: >
           Create a new record in a table/entity. 
+          This operacion is a shortcut to use a commit request.
+          
       operationId: RowCreate
       requestBody:
         description: >
-          Data for creating the new record. A RowCreateRequest object.
+          Data for creating the new record. 
+          
+          
+          Provides the name of the table on which the operation will be performed,
+          the revision code of the table in the local copy, **LocalRevisionCode**, 
+          and the data with which the registry must be updated, **Data**,
+          and insert the record in the data table creating a new revision.
+          
+          
+          Fail if the revision code of the local copy is outdated
+          or if the table or revision code is wrong.
+
+          
+          Optionally can provide a efective date and a comment for the new revision created.
+                    
         content:
           application/json:
             schema:
@@ -38,7 +54,14 @@ paths:
         
       responses:
         '200':
-          description: successful operation. A RowCreateResponse object.
+          description: >
+            The response to the creation of a new record. 
+            
+            
+            If the record is updated, the **StatusCode** returned is zero, 
+            the code of the new revision created is returned is in **RevisionCode**
+            and the new code asigned to the record is returned in **RelatedFeatureCode**.
+            
           content:
             application/json:
               schema:
@@ -52,11 +75,27 @@ paths:
       tags:
         - Developers API
       summary: >
-          Update a record in a table/entity
+          Update a record in a table/entity. 
+          This operacion is a shortcut to use a commit request.
+          
       operationId: RowUpdate
       requestBody:
         description: >
-          Data for updating a record. A RowUpdateRequest object.
+          Data for updating a record.
+          
+          Provides the name of the table on which the operation will be performed,
+          the revision code of the table in the local copy, **LocalRevisionCode**, 
+          and the data with which the registry must be updated, **Data**,
+          and update the record in the data table creating a new revision.
+          
+          
+          Fail if the revision code of the local copy is outdated,
+          if the table or revision code is wrong
+          or if the **Data** don't contains a valid VCSGISCODE field.
+          
+          
+          Optionally can provide a efective date and a comment for the new revision created.
+                    
         content:
           application/json:
             schema:
@@ -67,7 +106,14 @@ paths:
         required: true
       responses:
         '200':
-          description: successful operation. A RowUpdateResponse object.
+          description: >
+            The response to the creation of a new record. 
+            
+            
+            If the record is updated, the **StatusCode** returned is zero, 
+            and the code of the new revision created is returned is in **RevisionCode**. 
+            
+
           content:
             application/json:
               schema:
@@ -81,11 +127,29 @@ paths:
       tags:
         - Developers API
       summary: >
-        Delete a record in a table/entity
+        Delete a record in a table/entity.
+        This operacion is a shortcut to use a commit request.
+        
       operationId: RowDelete
       requestBody:
         description: >
-          Data for deletion of a record. A RowDeleteRequest object.
+          Data for deletion of a record.
+          
+          
+          Provides the name of the table on which the operation will be performed,
+          the revision code of the entity/table in the local copy, **LocalRevisionCode**, 
+          and the code of the record to delete, **RelatedFeatureCode**,
+          and delete the record in the table creating a new revision.
+          
+          
+          Fail if the revision code of the local copy is outdated,
+          if the table or revision code is wrong
+          or if the code of the record to delete is wrong.
+
+          
+          Optionally can provide a efective date and a comment for the new revision created.
+                    
+          
         content:
           application/json:
             schema:
@@ -96,7 +160,12 @@ paths:
         required: true
       responses:
         '200':
-          description: successful operation. A RowDeleteResponse object.
+          description: >
+            The response of the deletion of a record. 
+            
+            
+            If the record is deleted, the **StatusCode** returned is zero, 
+            and the code of the new revision created is returned is in **RevisionCode**. 
           content:
             application/json:
               schema:
