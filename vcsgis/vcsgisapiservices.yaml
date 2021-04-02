@@ -3,7 +3,7 @@
 #
 openapi: 3.0.0
 info:
-  title: VCSGis Simple API
+  title: VCSGis API
   description: >
     Simple API to access VCSGis services
     
@@ -14,7 +14,7 @@ info:
     <li>*id*, de tipo entero, que es la clave unica de la tabla</li>
     <li>*text* a string with text.</li>
     </ul>
-  version: 1.0.0
+  version: 1.0.1
 tags:
   - name: Application API
     description: >
