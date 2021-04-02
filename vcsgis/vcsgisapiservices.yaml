@@ -8,12 +8,12 @@ info:
     API to access VCSGis services
     
     
-    Los ejemplos que aparecen en este documento trabajan sobre una tabla de nombre **test**
-    que tiene dos unicas columnas:
+    The examples that appear in this document work on a table named **test**
+    which has two unique columns:
     <ul>
-    <li>*id*, de tipo entero, que es la clave unica de la tabla</li>
-    <li>*text* a string with text.</li>
-    </ul>
+    <li>*id*, of type integer, which is the unique key of the table </li>
+    <li>*text* a string with text. </li>
+    </ul> 
   version: 1.0.1
 tags:
   - name: Application API
