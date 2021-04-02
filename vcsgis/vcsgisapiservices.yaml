@@ -194,8 +194,8 @@ paths:
           to mantain it up to date.
           
 
-          Provides the name of the table on which the operation will be performed,
-          the revision code of the table in the working copy, **LocalRevisionCode**.
+          Provides the name of the table on which the operation will be performed
+          and the revision code of the table in the working copy, **LocalRevisionCode**.
           
         content:
           application/json:
@@ -228,11 +228,11 @@ paths:
       tags:
         - Application API
       summary: >
-         xxx.
+         Authenticate a user in the repository.
       operationId: Authenticate
       requestBody:
         description: >
-          XXX.
+          The request contains the user identifier and the password.
         content:
           application/json:
             schema:
@@ -243,7 +243,14 @@ paths:
         required: true
       responses:
         '200':
-          description: successful operation. A AuthenticateResponse Object.
+          description: >
+            The response of the authentication request. 
+            
+            
+            if the operacion can be performed ok, the **StatusCode** is zero, 
+            and returns the user code and an authentication token. The token 
+            and user code can be sent in the other request as GET parameters.
+            
           content:
             application/json:
               schema:
@@ -253,33 +260,26 @@ paths:
                   $ref: '#/components/examples/AuthenticateResponse1'
                   
   /entities:
-    get:
-      tags:
-        - Application API
-      summary: >
-         xxx.
-      operationId: Entities-get
-
-      responses:
-        '200':
-          description: successful operation. A EntitiesResponse Object.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EntitiesResponse'
-              examples:
-                response1:
-                  $ref: '#/components/examples/EntitiesResponse1'
     post:
       tags:
         - Application API
       summary: >
-         xxx.
+         List entity entries in the repository.
       operationId: Entities
 
       responses:
         '200':
-          description: successful operation. A EntitiesResponse Object.
+          description: >
+            The response of the entities request. 
+            
+            
+            if the operacion can be performed ok, the **StatusCode** is zero, 
+            and returns a list of "entities" in the repository.
+            
+            
+            Not all the entity's data is sent. Some are set to null, 
+            such as the table structure. **FeatureTypeAsJson** or the 
+            authorizations. 
           content:
             application/json:
               schema:
@@ -293,11 +293,45 @@ paths:
       tags:
         - Application API
       summary: >
-         xxx.
+         Send changes from your working copy to the repository.
+         
       operationId: Commit
       requestBody:
         description: >
-          XXX.
+          This request is used both to send new tables to the repository and to 
+          send the changes made in the working copy to existing tables in the repository.
+
+
+          When new tables are sent, a complete entity must be supplied, also 
+          indicating the structure of the new table, along with all the 
+          data in the table.
+
+
+          If only changes are going to be sent, instead of sending a complete entity it will
+          only be necessary to send the codes of the entity to be updated. And the data 
+          of the table to be sent could be of three types	&#59;
+          <ul>
+          <li>insertion, when new records are created.</li>
+          <li>update, when you want to update a record.</li>
+          <li>deleted, when you want to remove an existing record from the repository.</li>
+          </ul>
+
+          Furthermore, in a commit, only a single operation can be performed on a 
+          record. This is&#59;
+          <ul>
+          <li>there cannot be an insert and an update of the same record. If this is 
+          the case, only one insert change should be sent with the insert and update 
+          data consolidated.</li>
+          <li>there cannot be an insert or update together with a deletion of the same 
+          record. Only the delete operation will be sent.</li>
+          <li>There cannot be more than one update of the same record. If this is the 
+          case, only one update change should be sent with the data of the two 
+          consolidated updates.</li>
+          </ul>
+          
+          
+          The codes for the new records, changes and new entities can be generateds on the 
+          client.
         content:
           application/json:
             schema:
@@ -309,7 +343,16 @@ paths:
         
       responses:
         '200':
-          description: successful operation. A CommitResponse Object.
+          description: >
+            The response of the commit request. 
+            
+            
+            if the operacion can be performed ok, the **StatusCode** is zero, 
+            and returns a list of "entities" updateds in the repository.
+            Not all the entity's data is sent. Some are set to null, 
+            such as the table structure. **FeatureTypeAsJson** or the 
+            authorizations. 
+            
           content:
             application/json:
               schema:
@@ -322,7 +365,9 @@ paths:
     post:
       tags:
         - Application API
-      summary: xxx.
+      summary: >
+        Check out a working copy from a repository.
+        
       operationId: Checkout
       requestBody:
         description: XXX.
