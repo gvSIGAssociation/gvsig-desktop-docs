@@ -5,7 +5,7 @@ openapi: 3.0.0
 info:
   title: VCSGis API
   description: >
-    Simple API to access VCSGis services
+    API to access VCSGis services
     
     
     Los ejemplos que aparecen en este documento trabajan sobre una tabla de nombre **test**
