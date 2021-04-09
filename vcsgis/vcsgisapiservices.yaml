@@ -327,7 +327,7 @@ paths:
 
           If only changes are going to be sent, instead of sending a complete entity it will
           only be necessary to send the codes of the entity to be updated. And the data 
-          of the table to be sent could be of three types	&#59;
+          of the table to be sent could be of three types	&#58;
           <ul>
           <li>insertion, when new records are created.</li>
           <li>update, when you want to update a record.</li>
@@ -335,7 +335,7 @@ paths:
           </ul>
 
           Furthermore, in a commit, only a single operation can be performed on a 
-          record. This is&#59;
+          record. This is&#58;
           <ul>
           <li>there cannot be an insert and an update of the same record. If this is 
           the case, only one insert change should be sent with the insert and update 
@@ -529,29 +529,28 @@ components:
         EntityName:
           type: string
           description: >
-            Name of this entity
-            
+            Name of this entity.
+            It can not be null.            
         DatatableName:
           type: string
           description: >
             Name of the table in which the entity's data is stored.
             
             
+            It can be null.          
             The default value must be VCSGIS_DATA.
-            
         Description:
           type: string
           description: >
             This is description for this entity. Can be null.
-            
         FeatureIdFieldName:
           type: string
           description: >
             Name of the feature attrubute that store the unique key that identify it.
             
             
+            It can be null.          
             The default value must be VCSGISCODE.
-            
         FeatureTypeAsJson:
           type: string
           description: >
@@ -561,48 +560,92 @@ components:
             a *FeatureType* object.
 
 
-
-            Its value will be null except in the response to the "chechout" 
-            request and in the "commit" when a new entity is created.
+            It will be null except in the response to the "chechout" 
+            request and in the request "commit" when a new entity is created.
         FieldForLabel:
           type: string
           description: >
             Contains the name of the attribute of the feature of this entity 
             to be used as a label when a value of this entity must be presented 
             to the user (in lists, tables, forms...).          
+
             
+            It can be null.          
         GeometryFieldName:
           type: string
           description: >
             Name of the attribute of the feature that stores the geometry. 
-            In case the feature does not contain a geometry attribute, 
-            it will be null.          
+            In case the feature does not contain a geometry attribute.
+            
+            
+            It can be null.          
         RevisionCode:
           type: string
           description: >
-            Code of the last revision of this entity in the repository.          
+            Code of the last revision of this entity in the repository.    
+            
+            
+            It can not be null.            
         TopologyPlanCode:
           type: string
           description: >
             Code of the topology plan associated with this entity. 
             The client should have passed this topological plan before 
             committing this entity.            
+
+            It can be null.          
         TopologyPlanMode:
-          type: string
-        
+          type: integer
+          description: >
+            Indicates whether it is mandatory or recommended that the topology 
+            plan be passed before committing. Possible values are&#58; 
+              - 0 for recomended
+              - 1 for mandatory
+
+
+            If "TopologyPlanCode" is null, this value is ignored.
+          enum:
+            - 0 # Recomended
+            - 1 # Mandatory
         UserCode:
           type: string
+          description: >
+            User code that registered the / table entity in the repository.
         Category:
           type: string
+          description: >
+            A comma separated list of category names or labels to assign to the entity.
+            
+            Normally it will be used to group entities by them when they are going 
+            to be shown to the user.          
+
+
+            it can be null.          
         Label:
           type: string
+          description: >
+            An alternative name or label to use when displaying the entity to the user.
+
+
+            it can be null.          
         Authorizations:
           type: string
+          description: >
+            It will always be null.
         Resources:
           type: string
+          description: >
+            Name of the table in which the resources associated with this 
+            entity are stored.
+
+
+            it can be null.          
         DataModels:
           type: string
-        
+          description: >
+            Comma-separated list of data model names to which this entity belongs.        
+      #example:
+      #  $ref: '#/components/examples/Entity'
         
     UpdateRequest:
       required:
@@ -616,12 +659,9 @@ components:
         This object contains the information necessary to determine what 
         data should be sent to the client so that the data of a table is 
         updated with the last revision of this one.
-
       properties:
         Parameters:
           type: object
-          description: >
-            This object is part of the UpdateRequest object.
           required:
           - EntityName
           - LocalRevisionCode
@@ -635,6 +675,8 @@ components:
               format: string40
               description: >
                 Code of the revision in which the client data is located
+      #example:
+      #  $ref: '#/components/examples/UpdateRequest1'
 
     UpdateResponse:
       type: object
@@ -645,12 +687,14 @@ components:
         It contains the necessary data to update the local table and to go 
         from being in the revision in which it is to the last revision 
         that the server contains.
+        
+
+        In **Data** a list will be returned with the data of the records 
+        that must be updated, inserted or deleted in the local table so
+        that it remains synchronized with the repository.        
       properties:
         Parameters:
           type: object 
-          description: >
-            This object is part in the response of a update request.
-    
           properties:
             StatusCode:
               type: integer
@@ -660,16 +704,10 @@ components:
               description: "In case the operation did not go well, a message describing the problem."
             Entity:
               $ref: "#/components/schemas/Entity"
-                  
         Data:
           type: array
           items:
             type: object
-            description: >
-              This object defines the data associated with a record that has 
-              changed in a table. It tells us if we should delete our record 
-              from the working copy, update it or insert a new one, as well 
-              as the data associated with the records.
             properties:
               DataCode:
                 type: string
@@ -710,6 +748,8 @@ components:
               Data:
                 type: string
                 description: "The feature data coded as a json string."
+      #example:
+      #  $ref: '#/components/examples/UpdateResponse1'
 
 
     AuthenticateRequest:
@@ -718,35 +758,41 @@ components:
       - LocalRevisionCode
       type: object
       description: >
-        XXXXX.
+        This request authenticates a user against the repository.
+        
+        
+        If the user is authenticated correctly, it will return the user's code 
+        and an authentication token that must be passed as parameters in 
+        subsequent requests against this repository.
 
+        
+        The supplied token has a temporary validity past which the user must 
+        re-authenticate to obtain a new token.
       properties:
         Parameters:
-          description: >
-            XXX.
           required:
-          - EntityName
-          - LocalRevisionCode
+          - UserId
+          - Password
           properties:
-            EntityName:
+            UserId:
               type: string
               description: >
-                Name of the table we want to update
-            LocalRevisionCode:
+                Identifier of the user to be authenticated.
+            Password:
               type: string
-              format: string40
               description: >
-                Code of the revision in which the client data is located
+                Password of the user to be authenticated.
     
     AuthenticateResponse:
       type: object
       description: >
-        XXX.
+        This object is the response to an authentication request.
+        
+        
+        In case the authentication has been successful, in *AuthenticationToken* 
+        we will have the authentication token and in *UserCode* the user's code.
       properties:
         Parameters:
-          description: >
-            XXXX.
-    
           properties:
             StatusCode:
               type: integer
@@ -754,7 +800,17 @@ components:
             StatusMessage:
               type: string
               description: "In case the operation did not go well, a message describing the problem."
-
+            UserCode:              
+              type: string
+              description: >
+                User code associated with the authenticated user.
+            AuthenticationToken:              
+              type: string
+              description: >
+                Authentication token returned by the repository access service. 
+                This token must be passed every time a request is made to 
+                the repository.                
+                
     CommitRequest:
       required:
       - EntityName
