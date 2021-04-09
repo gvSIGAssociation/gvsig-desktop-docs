@@ -32,7 +32,10 @@ paths:
       summary: >
           Create a new record in a table/entity. 
           This operacion is a shortcut to use a commit request.
-          
+      parameters:
+        - $ref: '#/components/parameters/user'
+        - $ref: '#/components/parameters/auth'
+        
       operationId: RowCreate
       requestBody:
         description: >
@@ -86,6 +89,9 @@ paths:
           Update a record in a table/entity. 
           This operacion is a shortcut to use a commit request.
           
+      parameters:
+        - $ref: '#/components/parameters/user'
+        - $ref: '#/components/parameters/auth'
       operationId: RowUpdate
       requestBody:
         description: >
@@ -138,6 +144,9 @@ paths:
         Delete a record in a table/entity.
         This operacion is a shortcut to use a commit request.
         
+      parameters:
+        - $ref: '#/components/parameters/user'
+        - $ref: '#/components/parameters/auth'
       operationId: RowDelete
       requestBody:
         description: >
@@ -187,6 +196,9 @@ paths:
       tags:
         - Application API
       summary: "Brings changes from the repository to your working copy."
+      parameters:
+        - $ref: '#/components/parameters/user'
+        - $ref: '#/components/parameters/auth'
       operationId: Update
       requestBody:
         description: >
@@ -265,6 +277,9 @@ paths:
         - Application API
       summary: >
          List entity entries in the repository.
+      parameters:
+        - $ref: '#/components/parameters/user'
+        - $ref: '#/components/parameters/auth'
       operationId: Entities
 
       responses:
@@ -295,6 +310,9 @@ paths:
       summary: >
          Send changes from your working copy to the repository.
          
+      parameters:
+        - $ref: '#/components/parameters/user'
+        - $ref: '#/components/parameters/auth'
       operationId: Commit
       requestBody:
         description: >
@@ -368,6 +386,9 @@ paths:
       summary: >
         Check out a working copy from a repository.
         
+      parameters:
+        - $ref: '#/components/parameters/user'
+        - $ref: '#/components/parameters/auth'
       operationId: Checkout
       requestBody:
         description: XXX.
@@ -398,6 +419,9 @@ paths:
         - Application API
       summary: >
          xxx.
+      parameters:
+        - $ref: '#/components/parameters/user'
+        - $ref: '#/components/parameters/auth'
       operationId: History
       requestBody:
         description: >
@@ -424,22 +448,6 @@ paths:
 
   
   /users:
-    get:
-      tags:
-        - Application API
-      summary: >
-         xxx.
-      operationId: Users_get
-      responses:
-        '200':
-          description: successful operation. A UsersResponse Object.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UsersResponse'
-              examples:
-                response1:
-                  $ref: '#/components/examples/UsersResponse1'
     post:
       tags:
         - Application API
@@ -459,28 +467,14 @@ paths:
 
   
   /topologyplans:
-    get:
-      tags:
-        - Application API
-      summary: >
-         xxx.
-      operationId: Topologyplans_get
-      responses:
-        '200':
-          description: successful operation. A CommitResponse Object.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TopologyplansResponse'
-              examples:
-                response1:
-                  $ref: '#/components/examples/TopologyplansResponse1'
-
     post:
       tags:
         - Application API
       summary: >
          xxx.
+      parameters:
+        - $ref: '#/components/parameters/user'
+        - $ref: '#/components/parameters/auth'
       operationId: Topologyplans
       responses:
         '200':
@@ -495,44 +489,121 @@ paths:
   
 components:
 
+  parameters:
+    user:
+      name: user
+      in: query
+      description: User code 
+      required: false
+      schema:
+        type: string      
+        format: string80
+    auth:
+      name: auth
+      in: query
+      description: Authentication token
+      required: false
+      schema:
+        type: string      
+
   schemas:
     Entity:
       type: object
       description: >
         This object represents an entity or table on the repository. 
+        
         It contains the metadata of this, such as its name, code, code of 
         the last revision, user who created it ...
+        
+        
 
       properties:
         EntityCode:
           type: string
-          format: string40
-          description: >
-            Code of this entity
+          format: string60
+          description: > 
+            Code of this entity.
+            
+            
+            When the client add a new table/entity must create a valid entity code.
         EntityName:
           type: string
           description: >
             Name of this entity
+            
         DatatableName:
           type: string
-          description: "Name of the table in which the entity's data is stored"
+          description: >
+            Name of the table in which the entity's data is stored.
+            
+            
+            The default value must be VCSGIS_DATA.
+            
         Description:
           type: string
+          description: >
+            This is description for this entity. Can be null.
+            
         FeatureIdFieldName:
           type: string
+          description: >
+            Name of the feature attrubute that store the unique key that identify it.
+            
+            
+            The default value must be VCSGISCODE.
+            
         FeatureTypeAsJson:
           type: string
+          description: >
+            It is a json string that describes the structure of the features 
+            associated with this entity. The structure of this json is specific 
+            to *gvSIG desktop*, following the serialization format of 
+            a *FeatureType* object.
+
+
+
+            Its value will be null except in the response to the "chechout" 
+            request and in the "commit" when a new entity is created.
         FieldForLabel:
           type: string
+          description: >
+            Contains the name of the attribute of the feature of this entity 
+            to be used as a label when a value of this entity must be presented 
+            to the user (in lists, tables, forms...).          
+            
         GeometryFieldName:
           type: string
+          description: >
+            Name of the attribute of the feature that stores the geometry. 
+            In case the feature does not contain a geometry attribute, 
+            it will be null.          
         RevisionCode:
           type: string
+          description: >
+            Code of the last revision of this entity in the repository.          
         TopologyPlanCode:
           type: string
+          description: >
+            Code of the topology plan associated with this entity. 
+            The client should have passed this topological plan before 
+            committing this entity.            
+        TopologyPlanMode:
+          type: string
+        
         UserCode:
           type: string
-
+        Category:
+          type: string
+        Label:
+          type: string
+        Authorizations:
+          type: string
+        Resources:
+          type: string
+        DataModels:
+          type: string
+        
+        
     UpdateRequest:
       required:
       - EntityName
@@ -548,25 +619,23 @@ components:
 
       properties:
         Parameters:
-          $ref: "#/components/schemas/UpdateRequestParameters"
+          type: object
+          description: >
+            This object is part of the UpdateRequest object.
+          required:
+          - EntityName
+          - LocalRevisionCode
+          properties:
+            EntityName:
+              type: string
+              description: >
+                Name of the table we want to update
+            LocalRevisionCode:
+              type: string
+              format: string40
+              description: >
+                Code of the revision in which the client data is located
 
-    UpdateRequestParameters:
-      description: >
-        This object is part of the UpdateRequest object.
-      required:
-      - EntityName
-      - LocalRevisionCode
-      properties:
-        EntityName:
-          type: string
-          description: >
-            Name of the table we want to update
-        LocalRevisionCode:
-          type: string
-          format: string40
-          description: >
-            Code of the revision in which the client data is located
-    
     UpdateResponse:
       type: object
       description: >
@@ -578,73 +647,69 @@ components:
         that the server contains.
       properties:
         Parameters:
-          $ref: "#/components/schemas/UpdateResponseParameters"
-        Data:
-          type: "array"
-          items:
-            $ref: "#/components/schemas/UpdateResponseData"
-
-    UpdateResponseParameters:
-      description: >
-        This object is part in the response of a update request.
-
-      properties:
-        StatusCode:
-          type: integer
-          description: "Operation status code. Zero when the operation has done correctly."
-        StatusMessage:
-          type: string
-          description: "In case the operation did not go well, a message describing the problem."
-        Entity:
-          $ref: "#/components/schemas/Entity"
+          type: object 
+          description: >
+            This object is part in the response of a update request.
     
-    UpdateResponseData:
-      type: object
-      description: >
-        This object defines the data associated with a record that has 
-        changed in a table. It tells us if we should delete our record 
-        from the working copy, update it or insert a new one, as well 
-        as the data associated with the records.
-      properties:
-        DataCode:
-          type: string
-          description: >
-            Unique identifier asociated to this entry.
-        EntityCode:
-          type: string
-          description: >
-            The entity code, table, asociated to this entry.
-        RevisionCode:
-          type: string
-          description: >
-            The revision code asociated to this entry.
-        Operation:
-          type: integer
-          description: >
-            The operation asociated to this entry:
-              - 0 for delete
-              - 1 for update
-              - 2 for insert
-          enum:
-            - 0 # Delete
-            - 1 # Update
-            - 2 # Insert
-        RevisionNumber:
-          type: string
-          description: >
-            The revision number asociated to this entry
-        EfectiveDate:
-          type: string
-          format: timestamp
-          description: >
-            The efective date asociated to this entry
-        FeatureRelatedCode:
-          type: string
-          description: >
-            The code that identify the feature in the VCS.
+          properties:
+            StatusCode:
+              type: integer
+              description: "Operation status code. Zero when the operation has done correctly."
+            StatusMessage:
+              type: string
+              description: "In case the operation did not go well, a message describing the problem."
+            Entity:
+              $ref: "#/components/schemas/Entity"
+                  
         Data:
-          type: string
-          description: "The feature data coded as a json string."
+          type: array
+          items:
+            type: object
+            description: >
+              This object defines the data associated with a record that has 
+              changed in a table. It tells us if we should delete our record 
+              from the working copy, update it or insert a new one, as well 
+              as the data associated with the records.
+            properties:
+              DataCode:
+                type: string
+                description: >
+                  Unique identifier asociated to this entry.
+              EntityCode:
+                type: string
+                description: >
+                  The entity code, table, asociated to this entry.
+              RevisionCode:
+                type: string
+                description: >
+                  The revision code asociated to this entry.
+              Operation:
+                type: integer
+                description: >
+                  The operation asociated to this entry:
+                    - 0 for delete
+                    - 1 for update
+                    - 2 for insert
+                enum:
+                  - 0 # Delete
+                  - 1 # Update
+                  - 2 # Insert
+              RevisionNumber:
+                type: string
+                description: >
+                  The revision number asociated to this entry
+              EfectiveDate:
+                type: string
+                format: timestamp
+                description: >
+                  The efective date asociated to this entry
+              FeatureRelatedCode:
+                type: string
+                description: >
+                  The code that identify the feature in the VCS.
+              Data:
+                type: string
+                description: "The feature data coded as a json string."
 
 
     AuthenticateRequest:
@@ -657,24 +722,21 @@ components:
 
       properties:
         Parameters:
-          $ref: "#/components/schemas/AuthenticateRequestParameters"
-
-    AuthenticateRequestParameters:
-      description: >
-        XXX.
-      required:
-      - EntityName
-      - LocalRevisionCode
-      properties:
-        EntityName:
-          type: string
           description: >
-            Name of the table we want to update
-        LocalRevisionCode:
-          type: string
-          format: string40
-          description: >
-            Code of the revision in which the client data is located
+            XXX.
+          required:
+          - EntityName
+          - LocalRevisionCode
+          properties:
+            EntityName:
+              type: string
+              description: >
+                Name of the table we want to update
+            LocalRevisionCode:
+              type: string
+              format: string40
+              description: >
+                Code of the revision in which the client data is located
     
     AuthenticateResponse:
       type: object
@@ -682,19 +744,16 @@ components:
         XXX.
       properties:
         Parameters:
-          $ref: "#/components/schemas/AuthenticateResponseParameters"
-
-    AuthenticateResponseParameters:
-      description: >
-        XXXX.
-
-      properties:
-        StatusCode:
-          type: integer
-          description: "Operation status code. Zero when the operation has done correctly."
-        StatusMessage:
-          type: string
-          description: "In case the operation did not go well, a message describing the problem."
+          description: >
+            XXXX.
+    
+          properties:
+            StatusCode:
+              type: integer
+              description: "Operation status code. Zero when the operation has done correctly."
+            StatusMessage:
+              type: string
+              description: "In case the operation did not go well, a message describing the problem."
 
     CommitRequest:
       required:
@@ -711,24 +770,21 @@ components:
 
       properties:
         Parameters:
-          $ref: "#/components/schemas/CommitRequestParameters"
-
-    CommitRequestParameters:
-      description: >
-        This object is part of the UpdateRequest object.
-      required:
-      - EntityName
-      - LocalRevisionCode
-      properties:
-        EntityName:
-          type: string
           description: >
-            Name of the table we want to update
-        LocalRevisionCode:
-          type: string
-          format: string40
-          description: >
-            Code of the revision in which the client data is located
+            This object is part of the UpdateRequest object.
+          required:
+          - EntityName
+          - LocalRevisionCode
+          properties:
+            EntityName:
+              type: string
+              description: >
+                Name of the table we want to update
+            LocalRevisionCode:
+              type: string
+              format: string40
+              description: >
+                Code of the revision in which the client data is located
     
     CommitResponse:
       type: object
@@ -741,73 +797,67 @@ components:
         that the server contains.
       properties:
         Parameters:
-          $ref: "#/components/schemas/CommitResponseParameters"
+          description: >
+            This object is part in the response of a update request.
+    
+          properties:
+            StatusCode:
+              type: integer
+              description: "Operation status code. Zero when the operation has done correctly."
+            StatusMessage:
+              type: string
+              description: "In case the operation did not go well, a message describing the problem."
+            Entity:
+              $ref: "#/components/schemas/Entity"
         Data:
           type: "array"
           items:
-            $ref: "#/components/schemas/CommitResponseData"
-
-    CommitResponseParameters:
-      description: >
-        This object is part in the response of a update request.
-
-      properties:
-        StatusCode:
-          type: integer
-          description: "Operation status code. Zero when the operation has done correctly."
-        StatusMessage:
-          type: string
-          description: "In case the operation did not go well, a message describing the problem."
-        Entity:
-          $ref: "#/components/schemas/Entity"
-    
-    CommitResponseData:
-      type: object
-      description: >
-        This object defines the data associated with a record that has 
-        changed in a table. It tells us if we should delete our record 
-        from the working copy, update it or insert a new one, as well 
-        as the data associated with the records.
-      properties:
-        DataCode:
-          type: string
-          description: >
-            Unique identifier asociated to this entry.
-        EntityCode:
-          type: string
-          description: >
-            The entity code, table, asociated to this entry.
-        RevisionCode:
-          type: string
-          description: >
-            The revision code asociated to this entry.
-        Operation:
-          type: integer
-          description: >
-            The operation asociated to this entry:
-              - 0 for delete
-              - 1 for update
-              - 2 for insert
-          enum:
-            - 0 # Delete
-            - 1 # Update
-            - 2 # Insert
-        RevisionNumber:
-          type: string
-          description: >
-            The revision number asociated to this entry
-        EfectiveDate:
-          type: string
-          format: timestamp
-          description: >
-            The efective date asociated to this entry
-        FeatureRelatedCode:
-          type: string
-          description: >
-            The code that identify the feature in the VCS.
-        Data:
-          type: string
-          description: "The feature data coded as a json string."
+            type: object
+            description: >
+              This object defines the data associated with a record that has 
+              changed in a table. It tells us if we should delete our record 
+              from the working copy, update it or insert a new one, as well 
+              as the data associated with the records.
+            properties:
+              DataCode:
+                type: string
+                description: >
+                  Unique identifier asociated to this entry.
+              EntityCode:
+                type: string
+                description: >
+                  The entity code, table, asociated to this entry.
+              RevisionCode:
+                type: string
+                description: >
+                  The revision code asociated to this entry.
+              Operation:
+                type: integer
+                description: >
+                  The operation asociated to this entry:
+                    - 0 for delete
+                    - 1 for update
+                    - 2 for insert
+                enum:
+                  - 0 # Delete
+                  - 1 # Update
+                  - 2 # Insert
+              RevisionNumber:
+                type: string
+                description: >
+                  The revision number asociated to this entry
+              EfectiveDate:
+                type: string
+                format: timestamp
+                description: >
+                  The efective date asociated to this entry
+              FeatureRelatedCode:
+                type: string
+                description: >
+                  The code that identify the feature in the VCS.
+              Data:
+                type: string
+                description: "The feature data coded as a json string."
 
     CheckoutRequest:
       required:
@@ -824,24 +874,21 @@ components:
 
       properties:
         Parameters:
-          $ref: "#/components/schemas/CheckoutRequestParameters"
-
-    CheckoutRequestParameters:
-      description: >
-        This object is part of the UpdateRequest object.
-      required:
-      - EntityName
-      - LocalRevisionCode
-      properties:
-        EntityName:
-          type: string
           description: >
-            Name of the table we want to update
-        LocalRevisionCode:
-          type: string
-          format: string40
-          description: >
-            Code of the revision in which the client data is located
+            This object is part of the UpdateRequest object.
+          required:
+          - EntityName
+          - LocalRevisionCode
+          properties:
+            EntityName:
+              type: string
+              description: >
+                Name of the table we want to update
+            LocalRevisionCode:
+              type: string
+              format: string40
+              description: >
+                Code of the revision in which the client data is located
     
     CheckoutResponse:
       type: object
@@ -854,73 +901,67 @@ components:
         that the server contains.
       properties:
         Parameters:
-          $ref: "#/components/schemas/CheckoutResponseParameters"
+          description: >
+            This object is part in the response of a update request.
+    
+          properties:
+            StatusCode:
+              type: integer
+              description: "Operation status code. Zero when the operation has done correctly."
+            StatusMessage:
+              type: string
+              description: "In case the operation did not go well, a message describing the problem."
+            Entity:
+              $ref: "#/components/schemas/Entity"
         Data:
           type: "array"
           items:
-            $ref: "#/components/schemas/CheckoutResponseData"
-
-    CheckoutResponseParameters:
-      description: >
-        This object is part in the response of a update request.
-
-      properties:
-        StatusCode:
-          type: integer
-          description: "Operation status code. Zero when the operation has done correctly."
-        StatusMessage:
-          type: string
-          description: "In case the operation did not go well, a message describing the problem."
-        Entity:
-          $ref: "#/components/schemas/Entity"
-    
-    CheckoutResponseData:
-      type: object
-      description: >
-        This object defines the data associated with a record that has 
-        changed in a table. It tells us if we should delete our record 
-        from the working copy, update it or insert a new one, as well 
-        as the data associated with the records.
-      properties:
-        DataCode:
-          type: string
-          description: >
-            Unique identifier asociated to this entry.
-        EntityCode:
-          type: string
-          description: >
-            The entity code, table, asociated to this entry.
-        RevisionCode:
-          type: string
-          description: >
-            The revision code asociated to this entry.
-        Operation:
-          type: integer
-          description: >
-            The operation asociated to this entry:
-              - 0 for delete
-              - 1 for update
-              - 2 for insert
-          enum:
-            - 0 # Delete
-            - 1 # Update
-            - 2 # Insert
-        RevisionNumber:
-          type: string
-          description: >
-            The revision number asociated to this entry
-        EfectiveDate:
-          type: string
-          format: timestamp
-          description: >
-            The efective date asociated to this entry
-        FeatureRelatedCode:
-          type: string
-          description: >
-            The code that identify the feature in the VCS.
-        Data:
-          type: string
-          description: "The feature data coded as a json string."
+            type: object
+            description: >
+              This object defines the data associated with a record that has 
+              changed in a table. It tells us if we should delete our record 
+              from the working copy, update it or insert a new one, as well 
+              as the data associated with the records.
+            properties:
+              DataCode:
+                type: string
+                description: >
+                  Unique identifier asociated to this entry.
+              EntityCode:
+                type: string
+                description: >
+                  The entity code, table, asociated to this entry.
+              RevisionCode:
+                type: string
+                description: >
+                  The revision code asociated to this entry.
+              Operation:
+                type: integer
+                description: >
+                  The operation asociated to this entry:
+                    - 0 for delete
+                    - 1 for update
+                    - 2 for insert
+                enum:
+                  - 0 # Delete
+                  - 1 # Update
+                  - 2 # Insert
+              RevisionNumber:
+                type: string
+                description: >
+                  The revision number asociated to this entry
+              EfectiveDate:
+                type: string
+                format: timestamp
+                description: >
+                  The efective date asociated to this entry
+              FeatureRelatedCode:
+                type: string
+                description: >
+                  The code that identify the feature in the VCS.
+              Data:
+                type: string
+                description: "The feature data coded as a json string."
 
     EntitiesResponse:
       type: object
@@ -928,19 +969,16 @@ components:
         XXX.
       properties:
         Parameters:
-          $ref: "#/components/schemas/EntitiesResponseParameters"
-
-    EntitiesResponseParameters:
-      description: >
-        XXXX.
-
-      properties:
-        StatusCode:
-          type: integer
-          description: "Operation status code. Zero when the operation has done correctly."
-        StatusMessage:
-          type: string
-          description: "In case the operation did not go well, a message describing the problem."
+          description: >
+            XXXX.
+    
+          properties:
+            StatusCode:
+              type: integer
+              description: "Operation status code. Zero when the operation has done correctly."
+            StatusMessage:
+              type: string
+              description: "In case the operation did not go well, a message describing the problem."
 
     HistoryRequest:
       required:
@@ -952,34 +990,31 @@ components:
 
       properties:
         Parameters:
-          $ref: "#/components/schemas/HistoryRequestParameters"
-
-    HistoryRequestParameters:
-      description: >
-        XXX.
-      required:
-      - EntityName
-      properties:
-        EntityName:
-          type: string
-          description: "Name of the table we want to update"
-        MaxDate:
-          type: string
-          format: timestamp
-          description: "XXX."
-        MinDate:
-          type: string
-          format: timestamp
-          description: "XXX."
-        MaxRevisionNumber:
-          type: integer
-          description: "XXX."
-        MinRevisionNumber:
-          type: integer
-          description: "XXX."
-        MaxNumberOfRevisions:
-          type: integer
-          description: "XXX."
+          description: >
+            XXX.
+          required:
+          - EntityName
+          properties:
+            EntityName:
+              type: string
+              description: "Name of the table we want to update"
+            MaxDate:
+              type: string
+              format: timestamp
+              description: "XXX."
+            MinDate:
+              type: string
+              format: timestamp
+              description: "XXX."
+            MaxRevisionNumber:
+              type: integer
+              description: "XXX."
+            MinRevisionNumber:
+              type: integer
+              description: "XXX."
+            MaxNumberOfRevisions:
+              type: integer
+              description: "XXX."
 
     HistoryResponse:
       type: object
@@ -987,61 +1022,55 @@ components:
         XXX.
       properties:
         Parameters:
-          $ref: "#/components/schemas/HistoryResponseParameters"
+          description: >
+            XXX.
+    
+          properties:
+            StatusCode:
+              type: integer
+              description: "Operation status code. Zero when the operation has done correctly."
+            StatusMessage:
+              type: string
+              description: "In case the operation did not go well, a message describing the problem."
         Data:
           type: "array"
           items:
-            $ref: "#/components/schemas/HistoryResponseData"
-
-    HistoryResponseParameters:
-      description: >
-        XXX.
-
-      properties:
-        StatusCode:
-          type: integer
-          description: "Operation status code. Zero when the operation has done correctly."
-        StatusMessage:
-          type: string
-          description: "In case the operation did not go well, a message describing the problem."
-
-    HistoryResponseData:
-      type: object
-      description: >
-        XXX.
-      properties:
-        EntityCode:
-          type: string
-          format: string60
-          description: "The entity code asociated to this revision."
-        RevisionCode:
-          type: string
-          format: string60
-          description: "The code of this revision"
-        EfectiveDate:
-          type: string
-          format: timestamp
-          description: "The efective date of this revision"
-        RevisionDate:
-          type: string
-          format: timestamp
-          description: "The date of this revision"
-        UserCode:
-          type: string
-          format: string60
-          description: ""
-        Number:
-          type: integer
-          description: "The revision number"
-        Comment:
-          type: string
-          description: ""
-        Tags:
-          type: string
-          description: ""
-        TopologyPlan:
-          type: integer
-          description: "Status of the topology plan asociated to this revision."
+            type: object
+            description: >
+              XXX.
+            properties:
+              EntityCode:
+                type: string
+                format: string60
+                description: "The entity code asociated to this revision."
+              RevisionCode:
+                type: string
+                format: string60
+                description: "The code of this revision"
+              EfectiveDate:
+                type: string
+                format: timestamp
+                description: "The efective date of this revision"
+              RevisionDate:
+                type: string
+                format: timestamp
+                description: "The date of this revision"
+              UserCode:
+                type: string
+                format: string60
+                description: ""
+              Number:
+                type: integer
+                description: "The revision number"
+              Comment:
+                type: string
+                description: ""
+              Tags:
+                type: string
+                description: ""
+              TopologyPlan:
+                type: integer
+                description: "Status of the topology plan asociated to this revision."
 
     UsersResponse:
       type: object
@@ -1049,45 +1078,39 @@ components:
         XXX.
       properties:
         Parameters:
-          $ref: "#/components/schemas/UsersResponseParameters"
+          description: >
+            XXX.
+    
+          properties:
+            StatusCode:
+              type: integer
+              description: "Operation status code. Zero when the operation has done correctly."
+            StatusMessage:
+              type: string
+              description: "In case the operation did not go well, a message describing the problem."
         Data:
           type: "array"
           items:
-            $ref: "#/components/schemas/UsersResponseData"
-
-    UsersResponseParameters:
-      description: >
-        XXX.
-
-      properties:
-        StatusCode:
-          type: integer
-          description: "Operation status code. Zero when the operation has done correctly."
-        StatusMessage:
-          type: string
-          description: "In case the operation did not go well, a message describing the problem."
-
-    UsersResponseData:
-      type: object
-      description: >
-        XXX.
-      properties:
-        UserCode:
-          type: string
-          format: string60
-          description: "The entity code asociated to this revision."
-        Identifier:
-          type: string
-          description: "The code of this revision"
-        AllowedOperations:
-          type: string
-          description: "XXX"
-        Roles:
-          type: string
-          description: "XXX"
-        Description:
-          type: string
-          description: ""
+            type: object
+            description: >
+              XXX.
+            properties:
+              UserCode:
+                type: string
+                format: string60
+                description: "The entity code asociated to this revision."
+              Identifier:
+                type: string
+                description: "The code of this revision"
+              AllowedOperations:
+                type: string
+                description: "XXX"
+              Roles:
+                type: string
+                description: "XXX"
+              Description:
+                type: string
+                description: ""
 
     TopologyplansResponse:
       type: object
@@ -1095,42 +1118,36 @@ components:
         XXX.
       properties:
         Parameters:
-          $ref: "#/components/schemas/TopologyplansResponseParameters"
+          description: >
+            XXX.
+    
+          properties:
+            StatusCode:
+              type: integer
+              description: "Operation status code. Zero when the operation has done correctly."
+            StatusMessage:
+              type: string
+              description: "In case the operation did not go well, a message describing the problem."
         Data:
           type: "array"
           items:
-            $ref: "#/components/schemas/TopologyplansResponseData"
-
-    TopologyplansResponseParameters:
-      description: >
-        XXX.
-
-      properties:
-        StatusCode:
-          type: integer
-          description: "Operation status code. Zero when the operation has done correctly."
-        StatusMessage:
-          type: string
-          description: "In case the operation did not go well, a message describing the problem."
-
-    TopologyplansResponseData:
-      type: object
-      description: >
-        XXX.
-      properties:
-        TopologyPlanCode:
-          type: string
-          format: string60
-          description: "The entity code asociated to this revision."
-        Name:
-          type: string
-          description: "The name of this topology plan"
-        Description:
-          type: string
-          description: ""
-        Data:
-          type: string
-          description: ""
+            type: object
+            description: >
+              XXX.
+            properties:
+              TopologyPlanCode:
+                type: string
+                format: string60
+                description: "The entity code asociated to this revision."
+              Name:
+                type: string
+                description: "The name of this topology plan"
+              Description:
+                type: string
+                description: ""
+              Data:
+                type: string
+                description: ""
 
 
     RowCreateRequest:
@@ -1371,6 +1388,28 @@ components:
 
 
   examples:
+    Entity:
+      value: {
+            "DataTableName":"VCSGIS_DATA",
+            "Description":null,
+            "EntityCode":"00000000000004abcdef0123456789",
+            "EntityName":"test",
+            "FeatureIdFieldName":"VCSGISCODE",
+            "FeatureTypeAsJson":null,
+            "FieldForLabel":"text",
+            "GeometryFieldName":null,
+            "RevisionCode":"00000000000032abcdef0123456789",
+            "TopologyPlanCode":null,
+            "UserCode":null,
+            "Category":null,
+            "Label":"test",
+            "Authorizations":null,
+            "TopologyPlanMode":0,
+            "Resources":null,
+            "DataModels":null
+        }
+
+      
     RowCreateRequest1:
       value: {
           "EntityName":"test",
