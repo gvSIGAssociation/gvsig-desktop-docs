@@ -27,6 +27,7 @@ tags:
 paths:
   /rowcreate:
     post:
+      operationId: RowCreate
       tags:
         - Developers API
       summary: >
@@ -36,7 +37,6 @@ paths:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
         
-      operationId: RowCreate
       requestBody:
         description: >
           Data for creating the new record. 
@@ -83,16 +83,15 @@ paths:
                           
   /rowupdate:
     post:
+      operationId: RowUpdate
       tags:
         - Developers API
       summary: >
           Update a record in a table/entity. 
-          This operacion is a shortcut to use a commit request.
-          
+          This operacion is a shortcut to use a commit request.          
       parameters:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
-      operationId: RowUpdate
       requestBody:
         description: >
           Data for updating a record.
@@ -108,8 +107,7 @@ paths:
           or if the **Data** don't contains a valid VCSGISCODE field.
           
           
-          Optionally can provide a efective date and a comment for the new revision created.
-                    
+          Optionally can provide a efective date and a comment for the new revision created.                    
         content:
           application/json:
             schema:
@@ -126,8 +124,6 @@ paths:
             
             If the record is updated, the **StatusCode** returned is zero, 
             and the code of the new revision created is returned is in **RevisionCode**. 
-            
-
           content:
             application/json:
               schema:
@@ -138,6 +134,7 @@ paths:
               
   /rowdelete:
     post:
+      operationId: RowDelete
       tags:
         - Developers API
       summary: >
@@ -147,7 +144,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
-      operationId: RowDelete
       requestBody:
         description: >
           Data for deletion of a record.
@@ -165,8 +161,6 @@ paths:
 
           
           Optionally can provide a efective date and a comment for the new revision created.
-                    
-          
         content:
           application/json:
             schema:
@@ -193,13 +187,14 @@ paths:
   
   /update:
     post:
+      operationId: Update
       tags:
         - Application API
-      summary: "Brings changes from the repository to your working copy."
+      summary: >
+        Brings changes from the repository to your working copy.
       parameters:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
-      operationId: Update
       requestBody:
         description: >
           It contains the information to determine what data should be sent to the client
@@ -208,7 +203,6 @@ paths:
 
           Provides the name of the table on which the operation will be performed
           and the revision code of the table in the working copy, **LocalRevisionCode**.
-          
         content:
           application/json:
             schema:
@@ -226,7 +220,6 @@ paths:
             if the operacion can be performed ok, the **StatusCode** is zero, 
             and returns the metadata of the table and the list of changes required 
             to keep it up to date.
-
           content:
             application/json:
               schema:
@@ -235,13 +228,13 @@ paths:
                 response1:
                   $ref: '#/components/examples/UpdateResponse1'
   
-  /authenticated:
+  /authenticate:
     post:
+      operationId: Authenticate
       tags:
         - Application API
       summary: >
          Authenticate a user in the repository.
-      operationId: Authenticate
       requestBody:
         description: >
           The request contains the user identifier and the password.
@@ -262,7 +255,6 @@ paths:
             if the operacion can be performed ok, the **StatusCode** is zero, 
             and returns the user code and an authentication token. The token 
             and user code can be sent in the other request as GET parameters.
-            
           content:
             application/json:
               schema:
@@ -273,6 +265,7 @@ paths:
                   
   /entities:
     post:
+      operationId: Entities
       tags:
         - Application API
       summary: >
@@ -280,8 +273,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
-      operationId: Entities
-
       responses:
         '200':
           description: >
@@ -305,15 +296,14 @@ paths:
 
   /commit:
     post:
+      operationId: Commit
       tags:
         - Application API
       summary: >
          Send changes from your working copy to the repository.
-         
       parameters:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
-      operationId: Commit
       requestBody:
         description: >
           This request is used both to send new tables to the repository and to 
@@ -370,7 +360,6 @@ paths:
             Not all the entity's data is sent. Some are set to null, 
             such as the table structure. **FeatureTypeAsJson** or the 
             authorizations. 
-            
           content:
             application/json:
               schema:
@@ -381,15 +370,14 @@ paths:
 
   /checkout:
     post:
+      operationId: Checkout
       tags:
         - Application API
       summary: >
         Check out a working copy from a repository.
-        
       parameters:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
-      operationId: Checkout
       requestBody:
         description: XXX.
         content:
@@ -415,6 +403,7 @@ paths:
   
   /history:
     post:
+      operationId: History
       tags:
         - Application API
       summary: >
@@ -422,7 +411,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
-      operationId: History
       requestBody:
         description: >
           XXX.
@@ -449,11 +437,11 @@ paths:
   
   /users:
     post:
+      operationId: Users
       tags:
         - Application API
       summary: >
          xxx.
-      operationId: Users
       responses:
         '200':
           description: successful operation. A UsersResponse Object.
@@ -468,6 +456,7 @@ paths:
   
   /topologyplans:
     post:
+      operationId: Topologyplans
       tags:
         - Application API
       summary: >
@@ -475,7 +464,6 @@ paths:
       parameters:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
-      operationId: Topologyplans
       responses:
         '200':
           description: successful operation. A CommitResponse Object.
@@ -514,9 +502,6 @@ components:
         
         It contains the metadata of this, such as its name, code, code of 
         the last revision, user who created it ...
-        
-        
-
       properties:
         EntityCode:
           type: string
@@ -823,7 +808,6 @@ components:
         This object contains the information necessary to determine what 
         data should be sent to the client so that the data of a table is 
         updated with the last revision of this one.
-
       properties:
         Parameters:
           description: >
