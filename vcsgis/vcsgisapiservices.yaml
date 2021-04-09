@@ -27,7 +27,7 @@ tags:
 paths:
   /rowcreate:
     post:
-      operationId: RowCreate
+      operationId: rowcreate
       tags:
         - Developers API
       summary: >
@@ -83,7 +83,7 @@ paths:
                           
   /rowupdate:
     post:
-      operationId: RowUpdate
+      operationId: rowupdate
       tags:
         - Developers API
       summary: >
@@ -134,7 +134,7 @@ paths:
               
   /rowdelete:
     post:
-      operationId: RowDelete
+      operationId: rowdelete
       tags:
         - Developers API
       summary: >
@@ -187,7 +187,7 @@ paths:
   
   /update:
     post:
-      operationId: Update
+      operationId: update
       tags:
         - Application API
       summary: >
@@ -230,7 +230,7 @@ paths:
   
   /authenticate:
     post:
-      operationId: Authenticate
+      operationId: authenticate
       tags:
         - Application API
       summary: >
@@ -262,10 +262,95 @@ paths:
               examples:
                 response1:
                   $ref: '#/components/examples/AuthenticateResponse1'
+          links:
+            UpdateUser:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: update
+              parameters:
+                user: '$response.body#/Parameters/UserCode'
+            UpdateAuth:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: update
+              parameters:
+                auth: '$response.body#/Parameters/AuthenticationToken'
+            EntitiesUser:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: entities
+              parameters:
+                user: '$response.body#/Parameters/UserCode'
+            EntitiesAuth:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: entities
+              parameters:
+                auth: '$response.body#/Parameters/AuthenticationToken'
+            CommitUser:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: commit
+              parameters:
+                user: '$response.body#/Parameters/UserCode'
+            CommitAuth:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: commit
+              parameters:
+                auth: '$response.body#/Parameters/AuthenticationToken'
+            CheckoutUser:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: checkout
+              parameters:
+                user: '$response.body#/Parameters/UserCode'
+            CheckoutAuth:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: checkout
+              parameters:
+                auth: '$response.body#/Parameters/AuthenticationToken'
+            HistoryUser:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: history
+              parameters:
+                user: '$response.body#/Parameters/UserCode'
+            HistoryAuth:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: history
+              parameters:
+                auth: '$response.body#/Parameters/AuthenticationToken'
+            UsersUser:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: users
+              parameters:
+                user: '$response.body#/Parameters/UserCode'
+            UsersAuth:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: users
+              parameters:
+                auth: '$response.body#/Parameters/AuthenticationToken'
+            TopologyplansUser:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: topologyplans
+              parameters:
+                user: '$response.body#/Parameters/UserCode'
+            TopologyplansAuth:
+              description: >
+                Parametro nombre codigo de usuario.
+              operationId: topologyplans
+              parameters:
+                auth: '$response.body#/Parameters/AuthenticationToken'
                   
   /entities:
     post:
-      operationId: Entities
+      operationId: entities
       tags:
         - Application API
       summary: >
@@ -296,7 +381,7 @@ paths:
 
   /commit:
     post:
-      operationId: Commit
+      operationId: commit
       tags:
         - Application API
       summary: >
@@ -370,7 +455,7 @@ paths:
 
   /checkout:
     post:
-      operationId: Checkout
+      operationId: checkout
       tags:
         - Application API
       summary: >
@@ -403,7 +488,7 @@ paths:
   
   /history:
     post:
-      operationId: History
+      operationId: history
       tags:
         - Application API
       summary: >
@@ -437,7 +522,7 @@ paths:
   
   /users:
     post:
-      operationId: Users
+      operationId: users
       tags:
         - Application API
       summary: >
@@ -456,7 +541,7 @@ paths:
   
   /topologyplans:
     post:
-      operationId: Topologyplans
+      operationId: topologyplans
       tags:
         - Application API
       summary: >
