@@ -672,7 +672,7 @@ components:
                 Name of the table we want to update
             LocalRevisionCode:
               type: string
-              format: string40
+              format: string60
               description: >
                 Code of the revision in which the client data is located
       #example:
@@ -838,7 +838,7 @@ components:
                 Name of the table we want to update
             LocalRevisionCode:
               type: string
-              format: string40
+              format: string60
               description: >
                 Code of the revision in which the client data is located
     
@@ -942,7 +942,7 @@ components:
                 Name of the table we want to update
             LocalRevisionCode:
               type: string
-              format: string40
+              format: string60
               description: >
                 Code of the revision in which the client data is located
     
@@ -1227,7 +1227,7 @@ components:
             Name of the table in which to create the new record
         LocalRevisionCode:
           type: string
-          format: string40
+          format: string60
           description: >
             Code of the revision in which the client data is found
         EfectiveDate:
@@ -1270,7 +1270,7 @@ components:
             the problem.
         RelatedFeatureCode:
           type: string
-          format: string40
+          format: string60
           description: >
             Code assigned to the VCSGISCODE field of the new record, which
             represents the identifier of this in the VCS.
@@ -1281,13 +1281,13 @@ components:
             registry
         EntityCode:
           type: string
-          format: string40
+          format: string60
           description: >
             Internal code associated with the table to identify it in a way
             Unique.
         RevisionCode:
           type: string
-          format: string40
+          format: string60
           description: >
             Code of the revision in which the data is found in the
             server after the operation is performed.
@@ -1314,7 +1314,7 @@ components:
             Name of the table in which the record is requested to be updated
         LocalRevisionCode:
           type: string
-          format: string40
+          format: string60
           description: >
             Code of the revision in which the client data is located
         EfectiveDate:
@@ -1357,12 +1357,12 @@ components:
             Name of the table in which the requested was create the new record
         EntityCode:
           type: string
-          format: string40
+          format: string60
           description: >
             Internal code associated with the table to identify.
         RevisionCode:
           type: string
-          format: string40
+          format: string60
           description: >
             Code of the revision in which the data is found in the
             server after the operation is performed.
@@ -1388,7 +1388,7 @@ components:
             Name of the table in which to delete the record
         LocalRevisionCode:
           type: string
-          format: string40
+          format: string60
           description: >
             Code of the revision in which the client data is located
         EfectiveDate:
@@ -1403,7 +1403,7 @@ components:
             Comment associated with the operation to be performed. It can be null.
         RelatedFeatureCode:
           type: string
-          format: string40
+          format: string60
           description: >
             Code of the record to be deleted. Delete the record that
             have the value of the VCSGISCODE attribute as the value of this field.
@@ -1432,12 +1432,12 @@ components:
             registry
         EntityCode:
           type: string
-          format: string40
+          format: string60
           description: >
             Internal code associated with the table to identify.
         RevisionCode:
           type: string
-          format: string40
+          format: string60
           description: >
             Code of the revision in which the data is found in the
             server after the operation is performed.
