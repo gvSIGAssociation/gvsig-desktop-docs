@@ -480,8 +480,6 @@ paths:
         '200':
           description: >
             The response of the checkout request. 
-            
-            
           content:
             application/json:
               schema:
@@ -497,13 +495,14 @@ paths:
       tags:
         - Application API
       summary: >
-         xxx.
+         Retrieves information about the history of an entity.
       parameters:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
       requestBody:
         description: >
-          XXX.
+          This request allows you to obtain the list of revisions that a 
+          repository entity or table has.
         content:
           application/json:
             schema:
@@ -515,7 +514,8 @@ paths:
         
       responses:
         '200':
-          description: successful operation. A HistoryResponse Object.
+          description: >
+            The response of the history request. 
           content:
             application/json:
               schema:
@@ -1172,58 +1172,66 @@ components:
     HistoryResponse:
       type: object
       description: >
-        XXX.
+        This object is used in the response to a history request.
+
+        It contains a list with the information of the requested revisions.
       properties:
         Parameters:
-          description: >
-            XXX.
-    
           properties:
             StatusCode:
               type: integer
-              description: "Operation status code. Zero when the operation has done correctly."
+              description: >
+                Operation status code. Zero when the operation has done correctly.
             StatusMessage:
               type: string
-              description: "In case the operation did not go well, a message describing the problem."
+              description: >
+                In case the operation did not go well, a message describing the problem.
         Data:
           type: "array"
           items:
             type: object
-            description: >
-              XXX.
             properties:
               EntityCode:
                 type: string
                 format: string60
-                description: "The entity code asociated to this revision."
+                description: >
+                  The entity code asociated to this revision.
               RevisionCode:
                 type: string
                 format: string60
-                description: "The code of this revision"
+                description:  >
+                  The code of this revision
               EfectiveDate:
                 type: string
                 format: timestamp
-                description: "The efective date of this revision"
+                description: >
+                  The efective date of this revision
               RevisionDate:
                 type: string
                 format: timestamp
-                description: "The date of this revision"
+                description: >
+                  The date of this revision
               UserCode:
                 type: string
                 format: string60
-                description: ""
+                description: >
+                  The user code that generate this revision
               Number:
                 type: integer
-                description: "The revision number"
+                description: >
+                  The revision number
               Comment:
                 type: string
-                description: ""
+                description: >
+                  The comment associated to this revision
               Tags:
                 type: string
-                description: ""
+                description: >
+                  Tags associateds to this revision
               TopologyPlan:
                 type: integer
-                description: "Status of the topology plan asociated to this revision."
+                description: >
+                  Status of the topology plan asociated to this revision.
 
     UsersResponse:
       type: object
