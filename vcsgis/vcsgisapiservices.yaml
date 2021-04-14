@@ -1,4 +1,4 @@
-#
+REVISION_GROUPREVISION_GROUPREVISION_GROUP#
 # https://editor.swagger.io/
 #
 openapi: 3.0.0
@@ -459,12 +459,14 @@ paths:
       tags:
         - Application API
       summary: >
-        Check out a working copy from a repository.
+        Check out a table to the working copy from the repository.
       parameters:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
       requestBody:
-        description: XXX.
+        description: >
+          This request allows to obtain from the repository the data of an 
+          entity or table at a given revision.
         content:
           application/json:
             schema:
@@ -476,7 +478,10 @@ paths:
         
       responses:
         '200':
-          description: successful operation. A CheckoutResponse Object.
+          description: >
+            The response of the checkout request. 
+            
+            
           content:
             application/json:
               schema:
@@ -883,8 +888,8 @@ components:
                 
     CommitRequest:
       required:
-      - EntityName
-      - LocalRevisionCode
+      - Parameters
+      - Data
       type: object
       description: >
         This object is used in the body of a update request.
@@ -898,65 +903,47 @@ components:
           description: >
             This object is part of the UpdateRequest object.
           required:
-          - EntityName
-          - LocalRevisionCode
+          - Entities
           properties:
-            EntityName:
+            EfectiveDate:
+              type: string
+              format: timestamp
+              description: >
+                Effective date to assign to the new revision to be created.
+            RevisionDate:
+              type: string
+              format: timestamp
+              description: >
+                Revision date to assign to the new revision to be created. In case 
+                the repository does not allow the assignment of revision dates, 
+                this value will be ignored.
+            Comment:
               type: string
               description: >
-                Name of the table we want to update
-            LocalRevisionCode:
-              type: string
-              format: string60
-              description: >
-                Code of the revision in which the client data is located
-    
-    CommitResponse:
-      type: object
-      description: >
-        This object is used in the response to a update request.
-
-
-        It contains the necessary data to update the local table and to go 
-        from being in the revision in which it is to the last revision 
-        that the server contains.
-      properties:
-        Parameters:
-          type: object
-          description: >
-            This object is part in the response of a update request.
-    
-          properties:
-            StatusCode:
-              type: integer
-              description: "Operation status code. Zero when the operation has done correctly."
-            StatusMessage:
-              type: string
-              description: "In case the operation did not go well, a message describing the problem."
-            Entity:
-              $ref: "#/components/schemas/Entity"
+                Comments to associate with the new revision to be created.
+            Entities:
+              type: array
+              items:
+                $ref: "#/components/schemas/Entity"
+            NewEntityCodes:
+              type: array
+              items:
+                type: string
+                format: string60
         Data:
-          type: "array"
+          type: array
           items:
             type: object
-            description: >
-              This object defines the data associated with a record that has 
-              changed in a table. It tells us if we should delete our record 
-              from the working copy, update it or insert a new one, as well 
-              as the data associated with the records.
             properties:
-              DataCode:
+              Code:
                 type: string
+                format: string60
                 description: >
                   Unique identifier asociated to this entry.
               EntityCode:
                 type: string
                 description: >
-                  The entity code, table, asociated to this entry.
-              RevisionCode:
-                type: string
-                description: >
-                  The revision code asociated to this entry.
+                  The entity code asociated to this entry.
               Operation:
                 type: integer
                 description: >
@@ -968,27 +955,47 @@ components:
                   - 0 # Delete
                   - 1 # Update
                   - 2 # Insert
-              RevisionNumber:
+              RelatedFeatureCode:
                 type: string
+                format: string60
                 description: >
-                  The revision number asociated to this entry
-              EfectiveDate:
-                type: string
-                format: timestamp
-                description: >
-                  The efective date asociated to this entry
-              FeatureRelatedCode:
-                type: string
-                description: >
-                  The code that identify the feature in the VCS.
+                  Code that identifies the feature in the VCS. It must match the
+                  value of the VCSGISCODE field of the Json-encoded feature.
               Data:
                 type: string
-                description: "The feature data coded as a json string."
+                description: >
+                  The feature data coded as a json string. The name of the attributes
+                  in the json is case sensitive.
+
+
+    CommitResponse:
+      type: object
+      description: >
+        This object is used in the response to a commit request.
+        
+        In response to a commit, the list of entities involved in it are returned. 
+        It is important to retrieve from these at least the revision of each entity 
+        in the repository and update the working copy with it.
+      properties:
+        Parameters:
+          type: object
+          properties:
+            StatusCode:
+              type: integer
+              description: >
+                Operation status code. Zero when the operation has done correctly.
+            StatusMessage:
+              type: string
+              description: >
+                In case the operation did not go well, a message describing the problem.
+            Entity:
+              type: array
+              items:
+                $ref: "#/components/schemas/Entity"
 
     CheckoutRequest:
       required:
-      - EntityName
-      - LocalRevisionCode
+      - Parameters
       type: object
       description: >
         This object is used in the body of a update request.
@@ -1063,50 +1070,17 @@ components:
           items:
             type: object
             description: >
-              This object defines the data associated with a record that has 
-              changed in a table. It tells us if we should delete our record 
-              from the working copy, update it or insert a new one, as well 
-              as the data associated with the records.
+              This object defines the data associated with a record of the table. 
             properties:
               DataCode:
                 type: string
                 description: >
                   Unique identifier asociated to this entry.
-              EntityCode:
-                type: string
-                description: >
-                  The entity code, table, asociated to this entry.
-              RevisionCode:
-                type: string
-                description: >
-                  The revision code asociated to this entry.
-              Operation:
-                type: integer
-                description: >
-                  The operation asociated to this entry:
-                    - 0 for delete
-                    - 1 for update
-                    - 2 for insert
-                enum:
-                  - 0 # Delete
-                  - 1 # Update
-                  - 2 # Insert
-              RevisionNumber:
-                type: string
-                description: >
-                  The revision number asociated to this entry
-              EfectiveDate:
-                type: string
-                format: timestamp
-                description: >
-                  The efective date asociated to this entry
-              FeatureRelatedCode:
-                type: string
-                description: >
-                  The code that identify the feature in the VCS.
               Data:
                 type: string
-                description: "The feature data coded as a json string."
+                description: >
+                  The feature data coded as a json string. The name of the attributes
+                  in the json is case sensitive.
 
     EntitiesResponse:
       type: object
@@ -1132,39 +1106,62 @@ components:
 
     HistoryRequest:
       required:
-      - EntityName
-      - LocalRevisionCode
+      - Parameters
       type: object
       description: >
-        XXX.
+        This object is used in the body of a history request.
 
+        It contains the information necessary to obtain a list of revisions between 
+        two revision dates or between two revision numbers. In addition, you can 
+        indicate a maximum number of revisions to retrieve.
+        
+        
+        If MaxDate or MinDate are null, a filter will be performed by revision number. 
+        Otherwise it will be filtered by revision date.
+        
+        When filtering by revision number&
+        <ul>
+        - If MinRevisionNumber is greater than or equal to zero, revisions with a revision number greater than or equal to MinRevisionNumber will be obtained.
+        - If MaxRevisionNumber is greater than or equal to zero, revisions with a revision number less than MaxRevisionNumber will be obtained.
+        - If both MinRevisionNumber and MaxRevisionNumber are -1, all revisions will be obtained.
+        </ul>
       properties:
         Parameters:
-          description: >
-            XXX.
           required:
           - EntityName
           properties:
             EntityName:
               type: string
-              description: "Name of the table we want to update"
+              description: >
+                Name of the table we want to retrieve the revision's list.
             MaxDate:
               type: string
               format: timestamp
-              description: "XXX."
+              description: >
+                It is used together with *MinDate* to apply a filter by revision date, 
+                obtaining the revisions between the two dates.
             MinDate:
               type: string
               format: timestamp
-              description: "XXX."
+              description: >
+                It is used together with *MaxDate* to apply a filter by revision date, 
+                obtaining the revisions between the two dates.
             MaxRevisionNumber:
               type: integer
-              description: "XXX."
+              description: >
+                It is used together with *MinRevisionNumber* to apply a filter by revision number, 
+                obtaining the revisions between the two revision numbers.
             MinRevisionNumber:
               type: integer
-              description: "XXX."
+              description: >
+                It is used together with *MaxRevisionNumber* to apply a filter by revision number, 
+                obtaining the revisions between the two revision numbers.
             MaxNumberOfRevisions:
               type: integer
-              description: "XXX."
+              description: >
+                Maximum number of revisions to retrieve in the request. 
+                The default value will be 1000 revisions.
+                
 
     HistoryResponse:
       type: object
