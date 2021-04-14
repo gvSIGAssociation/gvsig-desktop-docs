@@ -20,7 +20,7 @@ tags:
     description: >
       They provide the commands necessary to implement a 
       desktop client of a VCS.
-  - name: Developers API
+  - name: Integrator's API
     description: >
       It exposes services to facilitate integration with 
       third-party applications.
@@ -29,7 +29,7 @@ paths:
     post:
       operationId: rowcreate
       tags:
-        - Developers API
+        - Integrator's API
       summary: >
           Create a new record in a table/entity. 
           This operacion is a shortcut to use a commit request.
@@ -85,7 +85,7 @@ paths:
     post:
       operationId: rowupdate
       tags:
-        - Developers API
+        - Integrator's API
       summary: >
           Update a record in a table/entity. 
           This operacion is a shortcut to use a commit request.          
@@ -136,7 +136,7 @@ paths:
     post:
       operationId: rowdelete
       tags:
-        - Developers API
+        - Integrator's API
       summary: >
         Delete a record in a table/entity.
         This operacion is a shortcut to use a commit request.
@@ -515,7 +515,7 @@ paths:
       responses:
         '200':
           description: >
-            The response of the history request. 
+            The response of the *history* request. 
           content:
             application/json:
               schema:
@@ -531,10 +531,14 @@ paths:
       tags:
         - Application API
       summary: >
-         xxx.
+         Retrieves information about the users of the repository
+      parameters:
+        - $ref: '#/components/parameters/user'
+        - $ref: '#/components/parameters/auth'
       responses:
         '200':
-          description: successful operation. A UsersResponse Object.
+          description: >
+            The response of the *users* request. 
           content:
             application/json:
               schema:
@@ -550,13 +554,14 @@ paths:
       tags:
         - Application API
       summary: >
-         xxx.
+         Retrieves information about the topology plan of the repository
       parameters:
         - $ref: '#/components/parameters/user'
         - $ref: '#/components/parameters/auth'
       responses:
         '200':
-          description: successful operation. A CommitResponse Object.
+          description: >
+            The response of the *topologyplans* request. 
           content:
             application/json:
               schema:
