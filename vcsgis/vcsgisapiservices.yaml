@@ -1,4 +1,4 @@
-REVISION_GROUPREVISION_GROUPREVISION_GROUP#
+#
 # https://editor.swagger.io/
 #
 openapi: 3.0.0
@@ -1116,14 +1116,20 @@ components:
         indicate a maximum number of revisions to retrieve.
         
         
-        If MaxDate or MinDate are null, a filter will be performed by revision number. 
-        Otherwise it will be filtered by revision date.
+        If *MaxDate* or *MinDate* are null, a filter will be performed by 
+        revision number. Otherwise it will be filtered by revision date.
         
-        When filtering by revision number&
+        When filtering by revision number&#58;
         <ul>
-        - If MinRevisionNumber is greater than or equal to zero, revisions with a revision number greater than or equal to MinRevisionNumber will be obtained.
-        - If MaxRevisionNumber is greater than or equal to zero, revisions with a revision number less than MaxRevisionNumber will be obtained.
-        - If both MinRevisionNumber and MaxRevisionNumber are -1, all revisions will be obtained.
+        <li>If *MinRevisionNumber* is greater than or equal to zero, revisions 
+          with a revision number greater than or equal to *MinRevisionNumber* 
+          will be obtained.</li>
+        <li>If <i>MaxRevisionNumber</i> is greater than or equal to 
+          zero, revisions with a revision number less 
+          than <i>MaxRevisionNumber</i> will be 
+          obtained.</li>
+        <li>If both <i>MinRevisionNumber</i> and <i>MaxRevisionNumber</i> are
+          -1, all revisions will be obtained.</li>
         </ul>
       properties:
         Parameters:
