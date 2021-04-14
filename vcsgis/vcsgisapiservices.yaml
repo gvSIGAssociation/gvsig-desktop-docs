@@ -922,6 +922,7 @@ components:
         that the server contains.
       properties:
         Parameters:
+          type: object
           description: >
             This object is part in the response of a update request.
     
@@ -1026,6 +1027,7 @@ components:
         that the server contains.
       properties:
         Parameters:
+          type: object
           description: >
             This object is part in the response of a update request.
     
@@ -1038,6 +1040,24 @@ components:
               description: "In case the operation did not go well, a message describing the problem."
             Entity:
               $ref: "#/components/schemas/Entity"
+            UsershashCode: 
+              type: string
+              description: >
+                Hash code of the users table contents. It can be used to
+                identify changes between the repository and the copy in the 
+                working copy of the users table. 
+                It is the responsibility of the client to update the user 
+                table, by calling the service "/users", if the contents of this 
+                have changed from those in the repository.
+            TopologyPlansHashCode:
+              type: string
+              description: >
+                Hash code of the topology plans table contents. It can be used to
+                identify changes between the repository and the copy in the 
+                working copy of the topology plans table. 
+                It is the responsibility of the client to update the topology 
+                plans table, by calling the service "/topologyplans", if the
+                contents of this have changed from those in the repository.
         Data:
           type: "array"
           items:
@@ -1091,12 +1111,12 @@ components:
     EntitiesResponse:
       type: object
       description: >
-        XXX.
+        This object is used in the response to a entities request.
+        
+        The *FeatureTypeAsJson* and *Authorizations* fields of the entity list 
+        will always be null.
       properties:
         Parameters:
-          description: >
-            XXXX.
-    
           properties:
             StatusCode:
               type: integer
@@ -1104,6 +1124,11 @@ components:
             StatusMessage:
               type: string
               description: "In case the operation did not go well, a message describing the problem."
+            Entities:
+              type: array
+              items:
+                $ref: "#/components/schemas/Entity"
+              
 
     HistoryRequest:
       required:
