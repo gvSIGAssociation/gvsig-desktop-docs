@@ -44,5 +44,5 @@ Una vez allí hay que obtener su formulario asociado al igual que con la tabla d
 
 ![formulario_entidad_win](topologia_files/54_formulario_entidad_win.png)
 
-Comenzar a editar el formulario se realiza de la misma manera que en el formulario de planes topológicos. Durate la edición de la entidad hay que asignar el plan correspondiente a la tabla en la pestaña *General* desplegable *Plan Topológico*.
+La edición del formulario se realiza de la misma manera que en el formulario de planes topológicos. Durate la edición de la entidad hay que asignar el plan correspondiente a la tabla en la pestaña *General*, desplegable *Plan Topológico*.
 
