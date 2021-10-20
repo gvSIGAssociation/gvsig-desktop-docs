@@ -46,9 +46,9 @@
 
   * [Creación de una copia de trabajo](utilizacion_basica/creacion_de_copia_de_trabajo_t.md)
 
-  * [Añadir una capa al repositorio](utilizacion_basica/añadir_capa_al_repositorio_t.md)
+  * [Añadir una capa al repositorio](utilizacion_basica/anadir_capa_al_repositorio_t.md)
 
-  * [Añadir una capa del repositorio](utilizacion_basica/añadir_una_capa_del_repositorio_t.md)
+  * [Añadir una capa del repositorio](utilizacion_basica/anadir_una_capa_del_repositorio_t.md)
 
   * [Ciclo de trabajo básico](utilizacion_basica/ciclo_de_trabajo_basico/index.md)
 
