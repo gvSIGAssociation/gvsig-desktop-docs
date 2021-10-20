@@ -27,4 +27,4 @@ información sobre tablas y capas (tablas con información geométrica).
 Sin mas dilación comenzamos a detallar las diferentes partes que componen un
 sistema de control de versiones tomando como ejemplo a *Version Control System Gis* (*VCSGis*).
 
-
+hola
