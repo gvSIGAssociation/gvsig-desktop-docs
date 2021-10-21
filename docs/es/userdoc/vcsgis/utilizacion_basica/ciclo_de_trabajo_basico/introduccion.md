@@ -1,5 +1,5 @@
 {% comment %} encoding: utf-8 {% endcomment %}
-{% comment %} Introduccion {% endcomment %} 
+{% comment %} Introducción {% endcomment %} 
 
 
 Una vez que tenemos una copia de trabajo con las tablas del repositorio que necesitemos ya podemos comenzar a trabajar. Los pasos típicos que se siguen cuando se trabaja el bajo control de versiones son:
