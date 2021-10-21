@@ -1,5 +1,5 @@
 {% comment %} encoding: utf-8 {% endcomment %}
-{% comment %} Introduccion {% endcomment %} 
+{% comment %} Introducción {% endcomment %} 
 
 Como se dijo en el apartado anterior *VCSGis* es un sistema centralizado para compartir información, estando en su núcleo un **repositorio**, es decir un almacén central de datos, que salva la información en forma de tablas. Este almacén no es más que un sistema de base de datos que tiene tanto la información que modifican los usuarios del software, en el caso de *VCSGis* tablas o capas, como las tablas que almacenan los cambios producidos en los anteriores.
 
