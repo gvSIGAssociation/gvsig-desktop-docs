@@ -1,7 +1,7 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Creación de una copia de trabajo {% endcomment %} 
 
-El siguiente paso es crear la copia de trabajo, proceso realizad al ejecutar el comando *Inicializar copia de trabajo* dentro de las pestaña *VCSGis* situada en la opción *Herramientas* de gvSIG Desktop.
+El siguiente paso es crear la copia de trabajo, proceso realizado al ejecutar el comando *Inicializar copia de trabajo* dentro de la pestaña *VCSGis* situada en la opción *Herramientas* de gvSIG Desktop.
 
 ![crearCT1](creacion_de_copia_de_trabajo_files/17_ini_copia_tra.png)
 
