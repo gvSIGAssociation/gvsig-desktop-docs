@@ -1,5 +1,5 @@
 {% comment %} encoding: utf-8 {% endcomment %}
-{% comment %} Introduccion {% endcomment %} 
+{% comment %} Introducción {% endcomment %} 
 
 Este documento presenta una introducción resumida al control de versiones **VCSGis** 
 o **Version Control System Gis**. En él se tratan los conceptos generales de un 
