@@ -4,7 +4,7 @@
 
 # Version Control System for Gis (VCSGis)
 
-## Introduccion
+## Introducción
 
 {% include_relative introduccion.md %}
 
