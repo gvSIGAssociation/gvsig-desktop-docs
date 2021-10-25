@@ -1,8 +1,8 @@
 {% comment %} encoding: utf-8 {% endcomment %}
-{% comment %} Introduccion {% endcomment %} 
+{% comment %} Introducción {% endcomment %} 
 
-Antes de empezar con la autorización, hay que decir que que no existe un nivel de autorización básica 
-o avanzada como tal sino que solo existe el nivel de autorización. Esta forma de dividir en dos apartados 
+Antes de empezar con la autorización, hay que decir que no existe un nivel de autorización básica 
+o avanzada como tal, sino que solo existe el nivel de autorización. Esta forma de dividir en dos apartados 
 la autorización se debe a que se puede aplicar la autorización de dos maneras diferentes siendo una más 
 restrictiva que la otra. La autorización básica controla las acciones que pueden realizar los diferentes usuarios,
 mientras que la avanzada define en los propios datos quien y como puede trabajarlos. Por lo tanto la autorización
@@ -33,7 +33,7 @@ La tabla anterior se muestra en la siguiente imagen.
 Para dotar a este repositorio ejemplo de este nivel de seguridad solo hay que registrar un nuevo elemento en
 dicha tabla. Lo anterior puede realizarse mediante el formulario asociado la tabla. 
 Para obtener el formulario de la tabla seleccionaremos la opción *Show form* situada en el menú 
-*Tabla* de *gvSIG Desktop* siempre y cuando la tabla este abierta y seleccionada.
+*Tabla* de *gvSIG Desktop* siempre y cuando la tabla esté abierta y seleccionada.
 
 ![3_showFormPUBLICVCSGISREPO_CONFIG_128](autorizacion_basica_files/3_showFormPUBLICVCSGISREPO_CONFIG_128.png)
 
@@ -85,7 +85,7 @@ El flujo de trabajo para la edición de usuarios  en el formulario anterior es e
 El campo en cuestión sobre el cual hay que realizar las modificaciones es el campo *acciones*.
 
 Como se detalla anteriormente hay campos de estos elementos que son propios para cada usuario,
-pero las acciones son un parámetro generales y como su propio nombre indica son las acciones 
+pero las acciones son unos parámetros generales y como su propio nombre indica son las acciones 
 que ese usuario puede realizar en el repositorio.
 Las acciones disponibles sobre el repositorio se listan a continuación:
  * **add**. Añadir una nueva tabla al repositorio.
@@ -98,7 +98,7 @@ Las acciones disponibles sobre el repositorio se listan a continuación:
  * **user**. Descargar la tabla de usuarios.
 
  > Un usuario sin acceso a las acciones *entities*, *topologyplan* y *user* no solo no podrá descargar dicha 
- información sino que tampoco tendrá autorización para cualquier otra acción relacionada con los elementos 
+ información, sino que tampoco tendrá autorización para cualquier otra acción relacionada con los elementos 
  que habilitan las acciones anteriores.
 
 La siguiente ilustración muestra el ejemplo de un usuario editado con acciones.
@@ -108,7 +108,7 @@ La siguiente ilustración muestra el ejemplo de un usuario editado con acciones.
 El usuario se llama *usuario1*, su contraseña es *usuario1* y presenta permisos para realizar todas las acciones
 posibles sobre el repositorio ejemplo.
 
-Existe como es lógico, la posibilidad de que un usuario no presente autorización e algunas de las acciones. El
+Existe como es lógico, la posibilidad de que un usuario no presente autorización en algunas de las acciones. El
 siguiente usuario ejemplo, *usuario2*, presenta todas las acciones menos la acción *commit*.
 
 ![11_user2FormPUBLICVCSGISREPO_USERS_128](autorizacion_basica_files/11_user2FormPUBLICVCSGISREPO_USERS_128.png)
