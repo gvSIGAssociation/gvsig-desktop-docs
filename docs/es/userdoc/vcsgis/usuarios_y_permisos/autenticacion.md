@@ -33,7 +33,7 @@ La tabla anterior se muestra en la siguiente imagen.
 El proceso de asignación el nivel de autenticación se realiza añadiendo un nuevo elemento a esta tabla.
 Para ello es necesario obtener el formulario asociado la capa *PUBLIC.VCSGISREPO_CONFIG*. 
 Para obtener el formulario de la tabla seleccionaremos la opción *Show form* situada en el menú 
-*Tabla* de *gvSIG Desktop* siempre y cuando la tabla este abierta y seleccionada.
+*Tabla* de *gvSIG Desktop* siempre y cuando la tabla esté abierta y seleccionada.
 
 ![3_showFormPUBLICVCSGISREPO_CONFIG_128](autenticacion_files/3_showFormPUBLICVCSGISREPO_CONFIG_128.png)
 
@@ -93,7 +93,7 @@ usuario y comenzar el trabajo de manera normal. Cuando el usuario se disponga a 
 referidas a la información del repositorio se habilitará una ventana para su identificación mediante nombre
 de usuario y contraseña.
 
-Un ejemplo de lo anterior se ve en la siguinte ilustración. En la imagen se muestra la ventana que pide los
+Un ejemplo de lo anterior se ve en la siguiente ilustración. En la imagen se muestra la ventana que pide los
 credenciales tras intentar subir una nueva capa a la copa de trabajo.
 
 ![11_usuarioContrasenaWin_128](autenticacion_files/11_usuarioContrasenaWin_128.png)
