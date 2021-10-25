@@ -2,7 +2,7 @@
 {% comment %} Autenticacion {% endcomment %} 
 
 Este nivel se basa en autorizar el acceso a determinada información mediante credenciales, usuario y contraseña 
-concretamente. Si se activa  la autenticacion, se garantiza que solo los usuario que puedan certificar su 
+concretamente. Si se activa  la autenticación, se garantiza que solo los usuarios que puedan certificar su 
 identidad tienen acceso al sistema. Ahora bien, solo con este mecanismo, una vez accedan al repositorio, no 
 se dispone de control de que operaciones pueden realizar o a que recursos puede acceder. Para controlar lo anterior
 hay que aplicar los niveles de autorización básica y avanzada respectivamente.
