@@ -96,11 +96,11 @@
   
   * [Consideraciones especiales sobre los modelos de datos](modelo_de_datos/consideraciones_modelo_t.md)
 
-* [Consideraciones](consideraciones_t.md) (**en contruccion**)
+* [Consideraciones](consideraciones_t.md) (**en contrucción**)
 
 * Documentación para integradores
 
-  * [API de los servicios web](vcsgisapiservices.html) (**en contruccion**)
+  * [API de los servicios web](vcsgisapiservices.html) (**en contrucción**)
 
 [Nivel superior](../index.md)
 
