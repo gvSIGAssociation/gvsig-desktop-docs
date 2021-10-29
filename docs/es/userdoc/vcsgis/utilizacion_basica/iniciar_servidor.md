@@ -2,7 +2,7 @@
 {% comment %} Iniciar servidor VCSGis {% endcomment %} 
 
 
-Como se dijo en el apartado anterior, la herramienta de control de versiones VCSGis dispone de la posibilidad de suministrar un repositorio local a otras máquinas mediante la inicialización de este en un servidor propio en gvSIG desktop. En otras palabras VCSGis permite que un único equipo almacene el repositorio y este suministre la información a los demás equipos mediante una conexión (URL) al repositorio remoto. Esta opción se puede configurar ejecutando el comando *Servidor VCSGis* situado dentro de *Herramientas*, desplegable *VCSGis*, despleglable *Administración*.
+Como se dijo en el apartado anterior, la herramienta de control de versiones VCSGis dispone de la posibilidad de suministrar un repositorio local a otras máquinas mediante la inicialización de este en un servidor propio en gvSIG desktop. En otras palabras VCSGis permite que un único equipo almacene el repositorio y este suministre la información a los demás equipos mediante una conexión (URL) al repositorio remoto. Esta opción se puede configurar ejecutando el comando *Servidor VCSGis* situado dentro de *Herramientas*, desplegable *VCSGis*, desplegable *Administración*.
 
 ![servidorVCSGis1](iniciar_servidor_files/100_servidor_VCSGis.png)
 

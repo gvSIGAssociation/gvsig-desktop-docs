@@ -40,7 +40,7 @@ En la siguiente imagen se muestra que la tabla de entidades del repositorio ejem
 
 ![entidad_ejemplo](topologia_files/53_entidad_ejemplo.png)
 
-Una vez allí hay que obtener su formulario asociado al igual que con la tabla de planes topológicos mediante ella ejecución del comando *Show form*. Una vez desplegado, en el formulario aparecen todas las tablas disponibles del repositorio, las cuales mediante edición permite asignar un plan de topología definidos anteriormente en la tabla correspondiente.
+Una vez allí hay que obtener su formulario asociado al igual que con la tabla de planes topológicos mediante ella ejecución del comando *Show form*. Una vez desplegado, en el formulario aparecen todas las tablas disponibles del repositorio, las cuales mediante edición permite asignar un plan de topología definido anteriormente en la tabla correspondiente.
 
 ![formulario_entidad_win](topologia_files/54_formulario_entidad_win.png)
 

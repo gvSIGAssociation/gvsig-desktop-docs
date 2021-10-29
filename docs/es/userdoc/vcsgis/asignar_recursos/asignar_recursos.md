@@ -3,15 +3,15 @@
 
 > * Que son recursos asociados a una entidad (leyenda, etiquetado, formularios...)
 Los recursos son todos aquellos archivos destinados a mejorar la representación gráfica de las
-diferentes capas almacenadas en le repositorio. De lo anterior, se deduce que no son solo de un tipo,
+diferentes capas almacenadas en el repositorio. De lo anterior, se deduce que no son solo de un tipo,
 sino que presentan diferentes extensiones en función del componente que almacenen. Un ejemplo de
 recurso podría ser el archivo que almacena una leyenda, *leyenda.gvsleg*.
 
-A parte de las leyendas, un recurso también podría ser un archivo con la definición del etiquetado 
+Aparte de las leyendas, un recurso también podría ser un archivo con la definición del etiquetado 
 de la capa, archivos con formularios...
 
 La implementación definida en VCSGis para su utilización favorece que todos los usuarios trabajen
-bajo las mismas características de representación favoreciendo aun más la homogeneidad de la 
+bajo las mismas características de representación favoreciendo aún más la homogeneidad de la 
 información aportada por el control de versiones.
 
 
@@ -26,16 +26,16 @@ La tabla de recursos es un archivo de tipo tabla constituida por dos campos, *no
 El campo *nombre* de tipo ```String```, identifica de manera única el recurso y la capa/tabla a la 
 cual esta asociada, mientras que el campo *value* de tipo ```byteArray``` almacena el recuso en sí,
 es decir el archivo que lo almacena. Para realizar la asignación de esta, previa a su creación y 
-actualización con los diferentes recursos, hay que realizar modificaciones en la entidades del 
+actualización con los diferentes recursos, hay que realizar modificaciones en las entidades del 
 repositorio de la tabla **PUBLIC.VCSGISREPO_ENTITIES** asignándole a cada una de ellas su recurso, si
-sta dispone de el. 
+está dispone de él. 
 
-Para facilitar la comprensión del proceso de aignación de recursos a una determinada capa a
+Para facilitar la comprensión del proceso de asignación de recursos a una determinada capa a
 continuación se detalla un ejemplo. Este se basa asignar una leyenda de colores a una capa presente
 en un repositorio.
 
 > * Ejemplo:
->   * Descripcion del escenario (un repo, un wc, un capa subida).
+>   * Descripción del escenario (un repo, un wc, una capa subida).
 La capa utilizada para la realización del ejemplo llamada *EDIFICIOS* es un archivo ```shape```
 que almacena la geometría de los edificios de la ciudad de Alicante. Esta capa presenta las 
 siguientes características;
@@ -98,7 +98,7 @@ entidades, la capa/tabla *EDIFICIOS* y la tabla *BASE_RESOURCES*.
 El proceso de asignación de los recursos se realiza modificando la entidad donde se desea asignar,
 en este caso la capa *EDIFICIOS*. Para ello es necesario obtener el formulario asociado la capa
 *PUBLIC.VCSGISREPO_ENTITIES*. Para obtener el formulario de la tabla seleccionaremos la opción
-*Show form* situada en el menú *Tabla* de *gvSIG Desktop* siempre y cuando la tabla este 
+*Show form* situada en el menú *Tabla* de *gvSIG Desktop* siempre y cuando la tabla esté 
 abierta y seleccionada.
 
 ![5_showForm_128](ejemplo_asignacion_recursos_files/5_showForm_128.png)
@@ -114,7 +114,7 @@ formulario utilizando el botón *Comenzar edición*.
 
 ![7_editarFormPUBLICVCSGISREPO_ENTITIES_128](ejemplo_asignacion_recursos_files/7_editarFormPUBLICVCSGISREPO_ENTITIES_128.png)
 
-De los diferentes campos del formulario hay que identificar el refrente a los recursos, llamado,
+De los diferentes campos del formulario hay que identificar el referente a los recursos, llamado,
 *Resources*. En este hay que especificar el nombre de nuestra tabla de recursos, *BASE_RESOURCES*, 
 ya que la tabla/capa edificios pertenece a la categoría *BASE*.
 
@@ -128,7 +128,7 @@ Y terminar la edición de la tabla.
 
 ![10_tEditarFormPUBLICVCSGISREPO_ENTITIES_128](ejemplo_asignacion_recursos_files/10_tEditarFormPUBLICVCSGISREPO_ENTITIES_128.png)
 
-Tras lo anterior la asignación de los recursos mediante la tabla de recursos a la capa *EDIFICIOS* .
+Tras lo anterior la asignación de los recursos mediante la tabla de recursos a la capa *EDIFICIOS*
 ha concluido. Pero solo ha terminado la asignación de la tabla de recursos, la cual se encuentra 
 sin ningún recurso almacenado en su interior.
 
@@ -146,7 +146,7 @@ La opción anterior despliega la siguiente ventana.
 ![12_propiedadesEDIFICIOSWin_128](ejemplo_asignacion_recursos_files/12_propiedadesEDIFICIOSWin_128.png)
 
 Se selecciona la pestaña *Simbología* pues en esta se especifica todo lo referente a la 
-representación gráfica de la capa. EL panel de de la pestaña anterior es el siguiente.
+representación gráfica de la capa. El panel de la pestaña anterior es el siguiente.
 
 ![13_simbologiaPropiedadesEDIFICIOS_128](ejemplo_asignacion_recursos_files/13_simbologiaPropiedadesEDIFICIOS_128.png)
 
@@ -164,7 +164,7 @@ En el panel se inicia el proceso de definición de nuestra leyenda pulsando el b
 
 En esta nueva ventana hay que definir las características gráficas de los elementos de la capa,
 en este caso polígonos. Por lo tanto hay que definir como se van a representar sus bordes e interior.
-Los parámetros para los bordes e interior de los polígonos de la capa edificios se detallanan
+Los parámetros para los bordes e interior de los polígonos de la capa edificios se detallarán
 a continuación.
 
 |**Componente**|**Color(RGB)**|**Opacidad**|**Ancho (píxel)**
@@ -187,19 +187,19 @@ zona superior derecha de la ventana y seleccionar a continuación la opción *Gu
 ![17_MOSimbologiaEDIFICIOS_128](ejemplo_asignacion_recursos_files/17_MOSimbologiaEDIFICIOS_128.png)
 
 La opción anterior habilita un cuadro de diálogo que nos permite indicar la ruta donde almacenar la
-leyenda y el nombre del fichero que almacenará esta. En el caso del ejemplo se se almacena en 
+leyenda y el nombre del fichero que almacenará esta. En el caso del ejemplo se almacena en 
 una carpeta destinada a almacenar leyendas y el nombre del archivo es el mismo que la capa con la 
-extension ```.gvsleg```, es decir *EDIFICIOS.gvsleg*. Hay que destacar que el archivo con el 
+extensión ```.gvsleg```, es decir *EDIFICIOS.gvsleg*. Hay que destacar que el archivo con el 
 recurso siempre tiene que llamarse de la misma manera que la capa de la que es recurso.
 
 Una vez guardada la leyenda, pulsamos los botones *Aplicar*  y *Aceptar* para terminar el proceso de
-definicion de la simbología de la capa.
+definición de la simbología de la capa.
 
 Con el recurso ya creado hay que introducir este en la tabla de recursos, *BASE_RESOURCES*. Para 
 realizar esto hay que repetir el proceso de edición de una tabla especificado para la edición de la 
 tabla PUNLIC.VCSGISREPO_ENTITIES.
 
-En primer lugar hay que abrir la tabla *BASE_RESOURCES*.Para abrir la tabla hay que realizarlo 
+En primer lugar hay que abrir la tabla *BASE_RESOURCES*. Para abrir la tabla hay que realizarlo 
 desde el *Gestor de proyectos* situado en el menú *Mostrar* de *gvSIG Desktop*. El proceso de 
 abrir una tabla es el genérico a abrir cualquier archivo, primero se selecciona *Tabla* como 
 tipo de datos a abrir, se selecciona la opción de *Nuevo*, lo que habilita una ventana donde se 
@@ -212,7 +212,7 @@ en cuestión y pulsa el botón *Aceptar*.
 
 Como resultado se obtiene la tabla vacía. Para rellenarla hay que obtener su formulario,
 seleccionando la opción *Show form* situada en el menú *Tabla* de *gvSIG Desktop* siempre 
-y cuando la tabla este abierta y seleccionada.
+y cuando la tabla esté abierta y seleccionada.
 
 El formulario de la tabla *BASE_RESOURCES* es el siguiente.
 
@@ -250,13 +250,13 @@ que hacer checkout de esta tabla en cuestión, tal y como se indica en el aparta
 del repositorio*](https://gvsigassociation.github.io/gvsig-desktop-docs/es/userdoc/vcsgis/utilizacion_basica/anadir_una_capa_del_repositorio_t.html).
 
 Tras todo lo realizado anteriormente cualquier usuario que realice una descarga del repositorio de la 
-capa EDIFICIOS presetará la misma leyenda asociada.
+capa EDIFICIOS presentará la misma leyenda asociada.
 
 
 de opciones
->   * Asignacion de una leyenda por defecto a la capa.
->   * Creacion de la leyenda y guardar en disco.
->   * Creacion de la tabla de recursos y cargar la leyenda asociandola a la capa.
+>   * Asignación de una leyenda por defecto a la capa.
+>   * Creación de la leyenda y guardar en disco.
+>   * Creación de la tabla de recursos y cargar la leyenda asociándola a la capa.
 >   * Meter la tabla de recursos en el vcs
 >   * Hacer checkout de la capa y ver que aplica a la entidad.
 

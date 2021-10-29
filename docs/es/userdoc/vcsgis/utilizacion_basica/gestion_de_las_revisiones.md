@@ -1,7 +1,7 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Gestión de las Revisiones {% endcomment %} 
 
-Tal y como se menciona al inicio del documento, las revisiones o cambios que sufren los datos en un software de control de versiones presentan tanta o más importancia que los propios datos. Haciendo hincapié en la idea anterior, la herramienta software VCSGis para el control de versiones dispone de un modulo para la correcta gestión de dicha información. Para la gestión de las revisiones ir a la opción *Herramientas* del menú de gvSIG Desktop, pestaña *VCSGgis* y ejecutar *Mostrar revisiones*.
+Tal y como se menciona al inicio del documento, las revisiones o cambios que sufren los datos en un software de control de versiones presentan tanta o más importancia que los propios datos. Haciendo hincapié en la idea anterior, la herramienta software VCSGis para el control de versiones dispone de un módulo para la correcta gestión de dicha información. Para la gestión de las revisiones ir a la opción *Herramientas* del menú de gvSIG Desktop, pestaña *VCSGgis* y ejecutar *Mostrar revisiones*.
 
 ![mostrarRevisiones](gestion_de_las_revisiones_files/37_mostrar_revisiones.png)
 

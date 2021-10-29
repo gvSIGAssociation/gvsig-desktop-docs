@@ -1,5 +1,5 @@
 {% comment %} encoding: utf-8 {% endcomment %}
-{% comment %} Introduccion {% endcomment %} 
+{% comment %} Introducción {% endcomment %} 
 
 La autorización avanzada representa el mayor grado de seguridad ofrecido por la herramienta *VCSGis* de *gvSIG
 Desktop*. Como se detalla anteriormente se basa en definir en el propio dato los usuarios y acciones autorizados a 
@@ -28,7 +28,7 @@ La tabla anterior se muestra en la siguiente imagen.
 El proceso de definición de acciones y usuarios por dato se realiza modificando elementos a esta tabla.
 Para ello es necesario obtener el formulario asociado la capa *PUBLIC.VCSGISREPO_ENTITIES*. 
 Para obtener el formulario de la tabla seleccionaremos la opción *Show form* situada en el menú 
-*Tabla* de *gvSIG Desktop* siempre y cuando la tabla este abierta y seleccionada.
+*Tabla* de *gvSIG Desktop* siempre y cuando la tabla esté abierta y seleccionada.
 
 ![3_showFormPUBLICVCSGISREPO_ENTITIES_128](autorizacion_avanzada_files/3_showFormPUBLICVCSGISREPO_ENTITIES_128.png)
 
@@ -49,7 +49,7 @@ que pueden realizarlas sobre dicha entidad o capa.
 ![6_authenticationFormPUBLICVCSGISREPO_ENTITIES_128](autorizacion_avanzada_files/6_authenticationFormPUBLICVCSGISREPO_ENTITIES_128.png)
 
 En el caso del ejemplo que se muestra en la siguiente imagen los usuarios *usuario1* y *usuario2*, creado previamente 
-en los apartados anteriores, van a disponer de las posibilidad de  realizar todas las acciones sobre la capa 
+en los apartados anteriores, van a disponer de la posibilidad de  realizar todas las acciones sobre la capa 
 seleccionada.
 
 ![7_authentication2FormPUBLICVCSGISREPO_ENTITIES_128](autorizacion_avanzada_files/7_authentication2FormPUBLICVCSGISREPO_ENTITIES_128.png)
@@ -67,7 +67,7 @@ es importante destacar que la definición propia de cada usuario se mantiene act
 que el *usuario2* aún teniendo permitido el *commit* en la entidad configurada, no podrá realizarlo pues 
 de base este no tiene permitida esa acción.
 
-De igual manera pero en sentido contrario, si tras realizar todo lo anterior se configura que el *usuario1* no pueda
+De igual manera, pero en sentido contrario, si tras realizar todo lo anterior se configura que el *usuario1* no pueda
 realizar *commit* sobre la entidad, por mucho que este presente la acción habilitada en su configuración de usuario no
 podrá hacer *commit* sobre la entidad.
 
@@ -106,7 +106,7 @@ La siguiente ilustración muestra el ejemplo de un usuario editado con roles.
 El *usuario1* presenta ahora el rol de administrador, *admin*.
 
 Con esta nueva posibilidad la configuración del nivel de seguridad autorización avanzada ofrece una nueva posibilidad.
-Esta nueva posibilidad no es otra que permitir en la definición de la acciones y usuarios permitidos para cada dato 
+Esta nueva posibilidad no es otra que permitir en la definición de las acciones y usuarios permitidos para cada dato 
 permitir no solo usuarios concretos, sino grupos de usuarios o roles.
 
 Para hacer lo anterior solo hay que realizar la modificación de la entidad de igual manera que al inicio del apartado,
