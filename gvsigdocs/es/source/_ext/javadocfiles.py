@@ -32,4 +32,5 @@ def javadoc_dict(init_path):
     return dic
 
 def main(*args):
-    pass
+    print os.path.listdir("/../../../javadocs/")
+    

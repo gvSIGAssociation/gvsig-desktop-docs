@@ -30,17 +30,20 @@ from docutils import nodes, utils
 import sphinx
 from sphinx.util.nodes import split_explicit_title
 
-from javadocfiles import JAVADOC_CLASSES
+"""
+Para añadir una version nueva de javadocs:
+- Dejar caer los javadocs en "gvsigdocs/javadocs/<version>/html/...."
+- Modificar y ejecutar el script "gvsigdocs/build_javadoc_index"
+- Añadir el import en este fichero "from javadoc<version>_index import JAVADOC_CLASSES_<version>"
+- Añadir al dict JAVADOC_CLASSES la nueva entrada ""2.4" : JAVADOC_CLASSES_<version>,"
+"""
+from javadoc2_6_index import JAVADOC_CLASSES_2_6
+from javadoc2_4_index import JAVADOC_CLASSES_2_4
 
-
-
-
-def trace(msg):
-  print("javadocs# %s" % msg)
-  f = open("/docs/trace.txt","a")
-  f.write(msg)
-  f.write("\n")
-  f.close()
+JAVADOC_CLASSES = {
+  "2.4" : JAVADOC_CLASSES_2_4,
+  "2.6" : JAVADOC_CLASSES_2_6
+}
 
 
 def javadoc_link(class2htmlfile, name):
@@ -53,25 +56,34 @@ def javadoc_link(class2htmlfile, name):
 class JavadocRole(object):
   def __init__(self, config):
     self.config = config
-    
-  def make_url(self, document_path, javadoc_path):
+
+  def getVersion(self,document_path):
       if not document_path.startswith('/docs/source'):
           return None
       s1 = document_path[13:]
       s1 = os.path.dirname(s1)
-      version = self.config["default_version"]
-      x = []
       for n in s1.split("/"):
           if n in self.config["versions"]:
-            version = n
+            return n
+      return self.config["default_version"]
+  
+  def make_url(self, document_path, javadoc_path, version):
+      if not document_path.startswith('/docs/source'):
+          return None
+      s1 = document_path[13:]
+      s1 = os.path.dirname(s1)
+      x = []
+      for n in s1.split("/"):
           x.insert(0,"..")
       return  ("/".join(x)) + "/../../../javadocs/"+ version+"/" + javadoc_path
       
   def __call__(self,typ, rawtext, text, lineno, inliner, options={}, content=[], **args):
     text = utils.unescape(text)
     has_explicit_title, title, part = split_explicit_title(text)
-    pathInJavadoc = javadoc_link(JAVADOC_CLASSES, part) 
-    path = self.make_url(inliner.document.current_source,pathInJavadoc)
+    version = self.getVersion(inliner.document.current_source)
+    #pathInJavadoc = javadoc_link(JAVADOC_CLASSES, part) 
+    pathInJavadoc = JAVADOC_CLASSES[version].get(part,"#")
+    path = self.make_url(inliner.document.current_source,pathInJavadoc, version)
     if path is None:
       path = "#"
     if not has_explicit_title:

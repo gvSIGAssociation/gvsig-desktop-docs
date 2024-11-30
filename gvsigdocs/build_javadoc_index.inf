@@ -1,0 +1,12 @@
+[Script]
+enable = true
+main = main
+Lang = python
+
+[Unit]
+type = Script
+name = build_javadoc_index
+description = 
+createdBy = 
+version = 
+
