@@ -178,7 +178,7 @@ Ejemplo::
 Ficheros DBF
 ------------
 
-Para trabajar con la creación y carga de ficheros DBF existen las funciones ``createDBF(schema)``  y ``loadDBF(dbfFile)``. Siendo un objecto :javadoc:`DefaultFeatureStore <DefaultFeatureStore>`
+Para trabajar con la creación y carga de ficheros DBF existen las funciones ``createDBF(schema)``  y ``loadDBF(dbfFile)``. Siendo un objecto :javadoc:`FeatureStore <FeatureStore>`
 
 Ejemplo de uso::
 

@@ -31,7 +31,10 @@ extensions = [
 ]
 
 
-javadoc = {'javadoc': ('http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/', 'prefix')}
+javadoc = {
+  "versions" : ( "2.4","2.6"),
+  "default_version" : "2.6"
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
