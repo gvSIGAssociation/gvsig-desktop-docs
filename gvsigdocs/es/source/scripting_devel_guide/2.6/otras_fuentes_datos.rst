@@ -1,18 +1,22 @@
 Otras fuentes de datos
 ======================
 
-En este apartado se incluirán diferentes funciones interesantes para trabajar con diferentes fuentes de datos. Como caso general vamos a introducir la función ``openStore(servertype, parameters)`` para la carga de fuentes de datos desde una ruta o enlace.
+En este apartado se incluirán diferentes funciones interesantes para trabajar con diferentes fuentes de datos. 
+Como caso general vamos a introducir la función ``openStore(servertype, parameters)`` para la carga de 
+fuentes de datos desde una ruta o enlace.
 
-Si estos servicios ya se encuentran abiertos en nuestra Vista, podemos acceder a su contenedor de datos seleccionando la capa y accediendo a ella, por ejemplo, mediante un ``currentLayer()``.
+Si estos servicios ya se encuentran abiertos en nuestra Vista, podemos acceder a su contenedor de datos 
+seleccionando la capa y accediendo a ella, por ejemplo, mediante un ``currentLayer()``.
 
 
 PostgreSQL
 ----------
 
-Desde Scripting podemos abrir conexiones a fuentes de datos de tipo ``PostgreSQL`` por ejemplo. La función a utilizar será ``openStore(servertype, parameters)``.
+Desde Scripting podemos abrir conexiones a fuentes de datos de tipo ``PostgreSQL`` por ejemplo.
+La función a utilizar será ``openStore(servertype, parameters)``.
 
-
-El ejemplo está realizado con una base de datos PostGIS creada en local en una máquina Ubuntu siguiendo los siguientes pasos (puede variar según versiones o distribuciones)::
+El ejemplo está realizado con una base de datos PostGIS creada en local en una máquina 
+Ubuntu siguiendo los siguientes pasos (puede variar según versiones o distribuciones)::
 
     sudo apt-get install postgresql postgresql-contrib
     sudo apt-get install postgresql-9.5-postgis-2.2
@@ -93,7 +97,9 @@ En el siguiente ejemplo vemos como introducimos todos los parámetros necesarios
                                     dbuser='postgres',
                                     ProviderName='PostgreSQL')
 
-Una vez tenemos la conexión hecha, podemos comprobar que el tipo de objeto con el que estamos tratando es un :javadoc:`DefaultFeatureStore <DefaultFeatureStore>`, y por tanto, podemos trabajar de la misma forma que lo haríamos si fuera una capa vectorial, ya que el objeto es del mismo tipo::
+Una vez tenemos la conexión hecha, podemos comprobar que el tipo de objeto con el que estamos tratando 
+es un :javadoc:`DefaultFeatureStore <DefaultFeatureStore>`, y por tanto, podemos trabajar de la misma forma 
+que lo haríamos si fuera una capa vectorial, ya que el objeto es del mismo tipo::
 
     print "** os: ", type(os)
     features = os.features()
@@ -108,56 +114,6 @@ Produciendo por consola una salida similar a::
     {u'gid': 7, u'geom': POINT Z (725000.0 4651000.0 15.0), u'nombre': u'Ciudad A', u'poblacion': 30000}
     {u'gid': 8, u'geom': POINT Z (730000.0 4659000.0 20.0), u'nombre': u'Ciudad A', u'poblacion': 30000}
     {u'gid': 9, u'geom': POINT Z (722000.0 4620000.0 20.0), u'nombre': u'Ciudad A', u'poblacion': 30000}
-
-Geojson
--------
-Para cargar un fichero Geojson haciendo uso de la extensión de GDAL::
-
-    # encoding: utf-8
-
-    import gvsig
-    from gvsig.utils import openStore
-
-    def main(*args):
-
-        os = openStore('OGRDataStoreProvider',file="/home/osc/gvsig-devel/example-data/countries.geojson",
-                                             CRS="EPSG:4326",
-                                             connectionString=None,
-                                             layerName="OGRGeoJSON",
-                                             defaultGeometryField=None,
-                                             ignoreSpatialFilter=True,
-                                             ProviderName="OGRDataStoreProvider"
-                                             )
-        print "geojson: ", type(os)
-        features = os.features()
-        for feature in features:
-            print feature
-
-
-
-
-Fichero LIDAR: Las
-------------------
-
-Cargando ficheros LAS con el driver de Whitebox::
-
-    # encoding: utf-8
-
-    import gvsig
-    from gvsig.utils import openStore
-
-    def main(*args):
-
-        os = openStore('WhiteboxLASDataStoreProvider', file="/home/osc/LiDAR_6429129715959308627.las",
-                                                  thinningResolution=None,
-                                                  CRS="EPSG:25830",
-                                                  thinningDivisor=None,
-                                                  ProviderName="WhiteboxLASDataStoreProvider")
-
-        print os
-        features = os.features()
-        print "Las size: ", features.getSize()
-
 
 Raster
 ------
@@ -174,8 +130,8 @@ Cargando ficheros tif::
         os = openStore('Gdal Store',alphaband0None=None,
                                     visible=None,
                                     crs="EPSG:4326",
-                                    uri="file:/home/osc/Descargas/wc2.0_5m_srad/wc2.0_5m_srad_12.tif",
-                                    rmf_folder="/home/osc/Descargas/wc2.0_5m_srad",
+                                    uri="file:/gvsig/temp/wc2.0_5m_srad/wc2.0_5m_srad_12.tif",
+                                    rmf_folder="/gvsig/temp/Descargas/wc2.0_5m_srad",
                                     frame=None,
                                     selected_option=0
                                     )

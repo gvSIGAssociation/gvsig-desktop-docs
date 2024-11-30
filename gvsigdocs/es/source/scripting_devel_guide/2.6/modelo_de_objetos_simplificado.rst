@@ -2,11 +2,14 @@ Modelo de objetos simplificado
 ==============================
 .. |mo1| image:: images/modelo_de_objetos_simplificado.png
 
-Aquí podemos ver un esquema con los componentes de uso más común desde scripting, la relación entre ellos y cómo podemos acceder a ellos desde nuestro script. Además podemos navegar a la información de la clase Java pulsando sobre el componente.
-	  
+Aquí podemos ver un esquema con los componentes de uso más común desde scripting, la relación 
+entre ellos y cómo podemos acceder a ellos desde nuestro script. 
+Además podemos navegar a la información de la clase Java pulsando sobre el componente.
+  
 .. note::
 
-	Desarrolladores Java y usuarios con conocimientos sobre UML. El diagrama y comentarios está pensado para que sea lo más entendible posible por un usuario sin conocimientos de java ni UML, no para ser estricto con la nomenclatura UML.
+  Desarrolladores Java y usuarios con conocimientos sobre UML. El diagrama y comentarios está pensado 
+  para que sea lo más entendible posible por un usuario sin conocimientos de java ni UML, no para ser estricto con la nomenclatura UML.
 
 .. raw:: html
 
@@ -17,7 +20,7 @@ Aquí podemos ver un esquema con los componentes de uso más común desde script
       <!-- #$-:Please do not edit lines starting with "#$" -->
       <!-- #$VERSION:2.3 -->
       <!-- #$AUTHOR:Joaquin del Cerro Murciano --> 
-	  <area shape="rect" coords="328,96,411,136" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/app/project/Project.html">
+    <area shape="rect" coords="328,96,411,136" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/app/project/Project.html">
       <area shape="rect" coords="326,169,406,216" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/app/project/documents/Document.html">
       <area shape="rect" coords="315,303,427,346" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/app/project/documents/view/ViewDocument.html">
       <area shape="rect" coords="324,433,416,474" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/fmap/mapcontext/MapContext.html">
@@ -39,7 +42,7 @@ Aquí podemos ver un esquema con los componentes de uso más común desde script
       <area shape="rect" coords="654,540,760,576" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/app/project/documents/layout/fframes/FFramePicture.html">
       <area shape="rect" coords="604,502,691,533" href="http://downloads.gvsig.org/download/gvsig-desktop-testing/dists/2.3.0/javadocs/html/org/gvsig/app/project/documents/layout/fframes/FFrameText.html">
     </map>
-	
+
 
 Cómo interpretar el diagrama
 ++++++++++++++++++++++++++++
@@ -52,22 +55,32 @@ En el diagrama anterior podemos ver:
 .. figure::  images/interpretar-funcion.png
    :align:   center
    
-Lo interpretaremos como que disponemos de una **función**, ``currentProject()``, que podemos ejecutar desde nuestro script para obtener el objeto con el que está relacionada, en este caso el **project**. Para los elementos etiquetados como **función** precisaremos haber importado el modulo ``gvsig``::
+Lo interpretaremos como que disponemos de una **función**, ``currentProject()``, que podemos ejecutar desde nuestro 
+script para obtener el objeto con el que está relacionada, en este caso el **project**. Para los elementos etiquetados 
+como **función** precisaremos haber importado el modulo ``gvsig``::
 
     from gvsig import *
 
-- **Cajas en azul**, nos indica que se trata de una entidad abstracta. Nunca encontraremos objetos de este tipo. Hacen referencia de forma genérica a un grupo de objetos con características comunes; por ejemplo, tendremos un :javadoc:`Document <Document>` que agrupa las características comunes de :javadoc:`ViewDocument <ViewDocument>`, :javadoc:`TableDocument <TableDocument>` o :javadoc:`LayoutDocument <LayoutDocument>`. En el diagrama podemos encontrarnos, por ejemplo:
+- **Cajas en azul**, nos indica que se trata de una entidad abstracta. Nunca encontraremos objetos de este tipo. 
+  Hacen referencia de forma genérica a un grupo de objetos con características comunes; por ejemplo, tendremos 
+  un :javadoc:`Document <Document>` que agrupa las características comunes 
+  de :javadoc:`ViewDocument <ViewDocument>`, :javadoc:`TableDocument <TableDocument>` o :javadoc:`LayoutDocument <LayoutDocument>`. 
+  En el diagrama podemos encontrarnos, por ejemplo:
 
 .. figure::  images/interpretar-herencia.png
    :align:   center
    
-Aquí tendríamos una entidad :javadoc:`FFrame <FFrame>` abstracta, no nos encontraremos nunca objetos de este tipo, lo que nos encontraremos será objetos de tipo :javadoc:`FFrameView <FFrameView>`, :javadoc:`FFramePicture <FFramePicture>` o :javadoc:`FFrameText <FFrameText>`, y nos indica que todos los objetos concretos relacionados con :javadoc:`FFrame <FFrame>` tendrán un conjunto de atributos y operaciones comunes.
+Aquí tendríamos una entidad :javadoc:`FFrame <FFrame>` abstracta, no nos encontraremos nunca objetos de este 
+tipo, lo que nos encontraremos será objetos de tipo :javadoc:`FFrameView <FFrameView>`, :javadoc:`FFramePicture <FFramePicture>` 
+o :javadoc:`FFrameText <FFrameText>`, y nos indica que todos los objetos concretos relacionados con :javadoc:`FFrame <FFrame>` tendrán 
+un conjunto de atributos y operaciones comunes.
 
 - **Asociaciones entre objetos**, que nos indican qué a partir de un objeto podemos obtener otro o un conjunto de otros. Por ejemplo:
 
 .. figure::  images/interpretar-asociacion.png
    :align:   center
 
-Nos indica que si disponemos de un objeto :javadoc:`LayoutDocument <LayoutDocument>`, podemos obtener el objeto :javadoc:`LayoutContext <LayoutContext>` invocando a la operación o método ``getLaypoutContext``::
+Nos indica que si disponemos de un objeto :javadoc:`LayoutDocument <LayoutDocument>`, podemos obtener el 
+objeto :javadoc:`LayoutContext <LayoutContext>` invocando a la operación o método ``getLaypoutContext``::
 
-	laypoutContext = layoutDocument.getLaypoutContext()
+  laypoutContext = layoutDocument.getLaypoutContext()

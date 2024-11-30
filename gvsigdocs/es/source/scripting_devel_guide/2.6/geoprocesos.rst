@@ -6,13 +6,15 @@ Geoprocesos
 Librería Toolbox
 ----------------
 
-Esta clase nos ayudará a generar nuestros geoprocesos para insertarlos en la Caja de Herramientas y permitiéndonos algunos extras que iremos explicando.
+Esta clase nos ayudará a generar nuestros geoprocesos para insertarlos en la Caja de Herramientas 
+y permitiéndonos algunos extras que iremos explicando.
 
 La librería Toolbox se encuentra dentro de ``gvsig.libs.toolbox`` y la podemos importar de forma similar::
 
     from gvsig.libs.toolbox import *
 
-La clase principal que utilizaremos será ``ToolboxProcess`` que nos ayudará a extender de ella nuestro proceso, con todo lo necesario para gestionarlo y que funcione correctamente dentro de la Caja de Herramientas.
+La clase principal que utilizaremos será ``ToolboxProcess`` que nos ayudará a extender de ella nuestro 
+proceso, con todo lo necesario para gestionarlo y que funcione correctamente dentro de la Caja de Herramientas.
 
 Las constantes de las que consta esta librería::
 
@@ -31,7 +33,10 @@ Las constantes de las que consta esta librería::
 
 Parámetros de entrada
 ----------------------
-Los parametros de entrada se establecerán en la función defineCharacteristics de la clase del geoproceso nuevo creado. Estos parametros pueden ser muy diversos y hacen referencia a los parámetros que utilizará el geoproceso para su cálculo.Estos parámetros establecidos por código se utilizarán para generar la interfaz visual por la cual el usuario de gvSIG insertará los valores requeridos.
+Los parametros de entrada se establecerán en la función defineCharacteristics de la clase del geoproceso 
+nuevo creado. Estos parametros pueden ser muy diversos y hacen referencia a los parámetros que utilizará 
+el geoproceso para su cálculo.Estos parámetros establecidos por código se utilizarán para generar la interfaz 
+visual por la cual el usuario de gvSIG insertará los valores requeridos.
 
 Primero creamos la variable params::
 
@@ -48,7 +53,8 @@ Se puede añadir un parametro de selección entra un número determinado de opci
 
     params.addSelection("Selection", "Selection description", ["OptionA", "OptionB", "OptionC"])
 
-También es posible añadir un punto que hayamos capturado con el Capturador de coordendaas de la Herramienta de Geoprocesos o poder introducirlo a mano::
+También es posible añadir un punto que hayamos capturado con el Capturador de coordendaas de la Herramienta de 
+Geoprocesos o poder introducirlo a mano::
 
     params.addPoint("Point","Point description")
  
@@ -69,18 +75,23 @@ También en un mismo parámetro se podrían seleccionar varias capas. Aparecerá
     dataType = AdditionalInfoMultipleInput.DATA_TYPE_VECTOR_ANY
     params.addMultipleInput("Multiple", "Description", dataType, True)
 
-Se puede pedir otro tipo de ficheros externos o ubicaciones de carpetas. En el último parámetro se indica el tipo de extensiones aceptadas en el parámetro::
+Se puede pedir otro tipo de ficheros externos o ubicaciones de carpetas. En el último parámetro se indica el 
+tipo de extensiones aceptadas en el parámetro::
 
     params.addFilepath("Filepath","Description",True,True,True,[".rst",".csv",".txt"]) 
 
-Hay cierto tipo de parámetros que son dependientes de otros. De esta forma es posible seleccionar un campo especifico de una capa o una banda de una imagen raster que haya sido seleccionada por el usuario. Para ello se introduce el nombre del parámetro al que va asociado::
+Hay cierto tipo de parámetros que son dependientes de otros. De esta forma es posible seleccionar un campo 
+especifico de una capa o una banda de una imagen raster que haya sido seleccionada por el usuario. 
+Para ello se introduce el nombre del parámetro al que va asociado::
 
     params.addTableField("tableField", i18nManager.getTranslation("_Field"), "inputTable", True)
     params.addBand("Band","Description", "Raster")
 
 Parámetros de salida
 ---------------------
-A la hora de generar los parámetros también debemos indicarle cual van a ser las capas/tablas de salida. De esta forma el geoproceso conocerá de antemano cuales van a ser los resultados. Esto es útil para el uso en el modelizador ya que así se sabe cual serán las capas resultados y se podrán enlazar con los siguientes geoprocesos.
+A la hora de generar los parámetros también debemos indicarle cual van a ser las capas/tablas de salida. 
+De esta forma el geoproceso conocerá de antemano cuales van a ser los resultados. 
+Esto es útil para el uso en el modelizador ya que así se sabe cual serán las capas resultados y se podrán enlazar con los siguientes geoprocesos.
 
 Los valores de salida se configuran sobre el geoproceso (es.unex.sextante.core.GeoAlgorithm) y no sobre los parámetros.
 
@@ -116,7 +127,9 @@ Es posible activar la pestaña de "Región de análisis" en caso de que se vaya 
 
     self.setUserCanDefineAnalysisExtent(False)
     
-También es posible mostrar información al usuario del progreso que lleva el geoproceso durante su ejecución. Para ello se establece un rango el cual se irá incrementando en función de que el proceso avance según lo tengamos programado. Esto se realizará ya en la función processAlgorithm, función que se ejecuta una vez rellenados los parámetros y ejecuntado le proceso::
+También es posible mostrar información al usuario del progreso que lleva el geoproceso durante su ejecución. 
+Para ello se establece un rango el cual se irá incrementando en función de que el proceso avance según lo tengamos programado. 
+Esto se realizará ya en la función processAlgorithm, función que se ejecuta una vez rellenados los parámetros y ejecuntado le proceso::
 
     self.setRangeOfValues(0, 100)
 
@@ -124,19 +137,26 @@ Se realiza la progresión de valores con la función::
 
     self.next()
     
-Se pueden modificar los textos de la pantalla del geoproceso que aparece durante su ejecución. Lo recomendable sería modificar estos textos a la vez que se van incrementando los valores de la función Existen dos diferentes::
+Se pueden modificar los textos de la pantalla del geoproceso que aparece durante su ejecución. 
+Lo recomendable sería modificar estos textos a la vez que se van incrementando los valores de la función Existen dos diferentes::
 
     self.getStatus().setTitle("Processing..")
     self.setProgressText("Processing part"))
 
-Podemos configurar en qué puntos comprobar si el usuario ha presionado la cancelación del geoproceso. En ese caso deberemos configurar la forma de cancelar el proceso::
+Podemos configurar en qué puntos comprobar si el usuario ha presionado la cancelación del geoproceso. 
+En ese caso deberemos configurar la forma de cancelar el proceso::
 
     if self.isCanceled() is True:
       return False
 
 Obtener valor de los parámetros
 --------------------------------
-En el siguiente ejemplo vamos a ver cómo podemos capturar los valores que el usuario haya introducido en los parámetros del geoproceso que hemos definido anteriormente. Estas funciones pueden ser diferentes en algunos casos, por ejemplo, si un vlaor introducido como integer lo queremos usar como text, pudemos usar directamente la función getParameterValueAsString en vez de getParameterValueAsDouble. Esta captura de parámetros se situará en el método processAlgorithm() que es el que se ejecuta una vez el usuario haya rellenado todos los parámetros y presionado en Aceptar.
+En el siguiente ejemplo vamos a ver cómo podemos capturar los valores que el usuario haya introducido en 
+los parámetros del geoproceso que hemos definido anteriormente. Estas funciones pueden ser 
+diferentes en algunos casos, por ejemplo, si un vlaor introducido como integer lo queremos usar como text, 
+podemos usar directamente la función getParameterValueAsString en vez de getParameterValueAsDouble. 
+Esta captura de parámetros se situará en el método processAlgorithm() que es el que se ejecuta una vez el 
+usuario haya rellenado todos los parámetros y presionado en Aceptar.
 
 Ejemplo de captura de parámetros de los ejemplos anteriores::
 
@@ -208,7 +228,10 @@ Por consola aparecerá algo similar a esto, según los parámetros que le establ
 Ayuda del geoproceso
 ---------------------
 
-La ayuda se los geoprocesos se crea en unos determinados ficheros XML. Estos ficheros son los que abrirá el algorimo cuando se solicite su ayuda y se mostrarán en pantalla. Debemos de definiar nosotros el método que selecciona qué ayuda abrir en función del lenguaje en el que este gvSIG en ese momento::
+La ayuda se los geoprocesos se crea en unos determinados ficheros XML. 
+Estos ficheros son los que abrirá el algorimo cuando se solicite su ayuda y se mostrarán en pantalla. 
+Debemos de definiar nosotros el método que selecciona qué ayuda abrir en función del lenguaje en 
+el que este gvSIG en ese momento::
 
     def getHelpFile(self):
         name = "convertfieldtodate"
@@ -284,15 +307,21 @@ La estructura será similar a la siguiente::
             </help>
     <?xml version='1.0' encoding='ISO-8859-1' standalone='yes' ?>
     
-El nombre de los ficheros es importante. Deberá de ser el nombre del script del geoproceso desde el que se ejecuta con un añadido de, por ejemplo, "_es" indicando que ese fichero está en español. El nombre de los ficheros dentro de la carpeta help tendrían que tener unos nombres similares a: "nombrescript_es.xml", "nombrescript_en.xml"
+El nombre de los ficheros es importante. Deberá de ser el nombre del script del geoproceso desde 
+el que se ejecuta con un añadido de, por ejemplo, "_es" indicando que ese fichero está en español. 
+El nombre de los ficheros dentro de la carpeta help tendrían que tener unos nombres similares a: "nombrescript_es.xml", "nombrescript_en.xml"
 
-El método mencionado anteroirmente, getHelpFile, está preparado para que, en caso de no encontrar una ayuda en cierto idioma, intente una busqueda en otro idioma similar al solicitado. Por ejemplo, si el geoproceso no tiene ayuda en Español, abrirá la ayuda en Inglés en caso de tenerla.
+El método mencionado anteroirmente, getHelpFile, está preparado para que, en caso de no encontrar 
+una ayuda en cierto idioma, intente una busqueda en otro idioma similar al solicitado. 
+Por ejemplo, si el geoproceso no tiene ayuda en Español, abrirá la ayuda en Inglés en caso de tenerla.
 
     
 Insertar geoproceso en la Toolbox
 ---------------------------------
 
-Tenemos la posibilidad de añadir nuestros scripts a la Caja de Herramientas para ser accesibles en cualquier momento además de contar con otras ventajas como la de poder añadir nuestros scripts en modelos del Model Builder o ejecutarlos desde gvpy como enseñamos en el siguiente apartado.
+Tenemos la posibilidad de añadir nuestros scripts a la Caja de Herramientas para ser accesibles en cualquier 
+momento además de contar con otras ventajas como la de poder añadir nuestros scripts en modelos del Model Builder 
+o ejecutarlos desde gvpy como enseñamos en el siguiente apartado.
 
 Para ello tenemos que seguir la siguiente plantilla, muy sencilla, creando una clase que extiende de ``ToolboxProcess``.
 
@@ -303,128 +332,128 @@ El ejecutar el siguiente script se registará el proceso en la Caja de Herramien
 
 Ejemplo 1 - XYShift, desplazamiento de una capa de puntos::
 
-	# encoding: utf-8
+  # encoding: utf-8
 
 
-	from gvsig import *
-	from gvsig.commonsdialog import *
+  from gvsig import *
+  from gvsig.commonsdialog import *
 
-	from gvsig.libs.toolbox import *
-	from es.unex.sextante.gui import core
-	from es.unex.sextante.gui.core import NameAndIcon
+  from gvsig.libs.toolbox import *
+  from es.unex.sextante.gui import core
+  from es.unex.sextante.gui.core import NameAndIcon
 
-	class XYShift(ToolboxProcess):
-	  
-	  def defineCharacteristics(self):
-		"""
-	En esta operacion debemos definir los parametros de entrada y salida que va a precisar nuestro proceso.
-		"""
-		# Fijamos el nombre con el que se va a mostrar nuestro proceso
-		self.setName("Prueba desplazamiento en X e Y")
-		
-		# Indicamos el grupo en el que aparecera
-		self.setGroup("Vectorial")
-			
-		params = self.getParameters()
-		# Indicamos que precisamos un parametro LAYER, del tipo punto y que es obligatorio
-		params.addInputVectorLayer("LAYER","Caoa de entrada", SHAPE_TYPE_POINT,True)
-		# Indicamos que precisamos un par de valores numericos, X e Y 
-		params.addNumericalValue("X", "X_traslation",0, NUMERICAL_VALUE_DOUBLE)
-		params.addNumericalValue("Y", "Y_traslation", 0, NUMERICAL_VALUE_DOUBLE)
-		
-		# Y por ultimo indicamos que precisaremos una capa de salida de puntos.
-		self.addOutputVectorLayer("RESULT_POINT", "XYShift_point", SHAPE_TYPE_POINT)
+  class XYShift(ToolboxProcess):
+    
+    def defineCharacteristics(self):
+    """
+  En esta operacion debemos definir los parametros de entrada y salida que va a precisar nuestro proceso.
+    """
+    # Fijamos el nombre con el que se va a mostrar nuestro proceso
+    self.setName("Prueba desplazamiento en X e Y")
+    
+    # Indicamos el grupo en el que aparecera
+    self.setGroup("Vectorial")
+      
+    params = self.getParameters()
+    # Indicamos que precisamos un parametro LAYER, del tipo punto y que es obligatorio
+    params.addInputVectorLayer("LAYER","Caoa de entrada", SHAPE_TYPE_POINT,True)
+    # Indicamos que precisamos un par de valores numericos, X e Y 
+    params.addNumericalValue("X", "X_traslation",0, NUMERICAL_VALUE_DOUBLE)
+    params.addNumericalValue("Y", "Y_traslation", 0, NUMERICAL_VALUE_DOUBLE)
+    
+    # Y por ultimo indicamos que precisaremos una capa de salida de puntos.
+    self.addOutputVectorLayer("RESULT_POINT", "XYShift_point", SHAPE_TYPE_POINT)
 
-	  def processAlgorithm(self):
-		"""
-	Esta operacion es la encargada de realizar nuestro proceso.
-		"""
-		features=None
-	   
-		try:
+    def processAlgorithm(self):
+    """
+  Esta operacion es la encargada de realizar nuestro proceso.
+    """
+    features=None
+     
+    try:
 
-		  """
-		  Recogemos los parametros y creamos el conjunto de entidades asociadas a la capa
-		  de entrada.
-		  """
-		  params = self.getParameters()
-		  layer = params.getParameterValueAsVectorLayer("LAYER")
-		  x = params.getParameterValueAsDouble("X")
-		  y = params.getParameterValueAsDouble("Y")
+      """
+      Recogemos los parametros y creamos el conjunto de entidades asociadas a la capa
+      de entrada.
+      """
+      params = self.getParameters()
+      layer = params.getParameterValueAsVectorLayer("LAYER")
+      x = params.getParameterValueAsDouble("X")
+      y = params.getParameterValueAsDouble("Y")
 
-		  input_store = layer.getFeatureStore()
+      input_store = layer.getFeatureStore()
 
-		  features = input_store.getFeatureSet()
-		  """
-		  Generamos la capa de salida con la misma estructura que la capa de entrada
-		  """
-		  output_store = self.buildOutPutStore(
-			features.getDefaultFeatureType(), 
-			SHAPE_TYPE_POINT,
-			"XYShift_points",
-			"RESULT_POINT"
-		  )
+      features = input_store.getFeatureSet()
+      """
+      Generamos la capa de salida con la misma estructura que la capa de entrada
+      """
+      output_store = self.buildOutPutStore(
+      features.getDefaultFeatureType(), 
+      SHAPE_TYPE_POINT,
+      "XYShift_points",
+      "RESULT_POINT"
+      )
 
-		  """
-		  Nos recorremos todas las entidades de entrada, y creamos las de salida desplazando la geometria
-		  en los valores indicados por la X e Y de los parametros.
-		  """
-		  self.setRangeOfValues(0,features.getSize())
-		  n = 0
-		  for feature in features.iterator():
-			if self.isCanceled():
-			  # Si el usuario indico que quiere cancelar el proceso abortamos.
-			  print "Proceso cancelado"
-			  break
-			
-			# Incrementamos el progreso de nuestro proceso.
-			#self.next()
+      """
+      Nos recorremos todas las entidades de entrada, y creamos las de salida desplazando la geometria
+      en los valores indicados por la X e Y de los parametros.
+      """
+      self.setRangeOfValues(0,features.getSize())
+      n = 0
+      for feature in features.iterator():
+      if self.isCanceled():
+        # Si el usuario indico que quiere cancelar el proceso abortamos.
+        print "Proceso cancelado"
+        break
+      
+      # Incrementamos el progreso de nuestro proceso.
+      #self.next()
 
-			# Creamos una nueva entidad para nuestro almacen de salida.
-			newfeature = self.createNewFeature(output_store,feature)
+      # Creamos una nueva entidad para nuestro almacen de salida.
+      newfeature = self.createNewFeature(output_store,feature)
 
-			# Desplazamos la geometria de la nueva entidad
-			geom = newfeature.getDefaultGeometry()
-			geom.move(x,y)
-			
-			# Guardamos la nueva entidad
-			output_store.insert(newfeature)
-			n+=1
-			self.setCurValue(n)
+      # Desplazamos la geometria de la nueva entidad
+      geom = newfeature.getDefaultGeometry()
+      geom.move(x,y)
+      
+      # Guardamos la nueva entidad
+      output_store.insert(newfeature)
+      n+=1
+      self.setCurValue(n)
 
-		  # Cuando hemos terminado de recorrernos las entidades terminamos la edicion.
-		  output_store.finishEditing()   
-		  
-		finally:
-		  DisposeUtils.disposeQuietly(features)
-		  print "Proceso terminado %s" % self.getCommandLineName() 
-		  return True
-		
+      # Cuando hemos terminado de recorrernos las entidades terminamos la edicion.
+      output_store.finishEditing()   
+      
+    finally:
+      DisposeUtils.disposeQuietly(features)
+      print "Proceso terminado %s" % self.getCommandLineName() 
+      return True
+    
 
-	def main(*args):
-		# Creamos nuesto geoproceso
-		process = XYShift()
-		# Lo registramos entre los procesos disponibles en el grupo de "Scripting"
-		process.selfregister("Scripting")
-		from es.unex.sextante.gui.core import SextanteGUI
-		#SextanteGUI.addAlgorithmProvider(process.__class__)
-		from org.gvsig.geoprocess.lib.api import GeoProcessLocator
-		gm = GeoProcessLocator.getGeoProcessManager()
+  def main(*args):
+    # Creamos nuesto geoproceso
+    process = XYShift()
+    # Lo registramos entre los procesos disponibles en el grupo de "Scripting"
+    process.selfregister("Scripting")
+    from es.unex.sextante.gui.core import SextanteGUI
+    #SextanteGUI.addAlgorithmProvider(process.__class__)
+    from org.gvsig.geoprocess.lib.api import GeoProcessLocator
+    gm = GeoProcessLocator.getGeoProcessManager()
 
-		alg = gm.getAlgorithms()
-		for a in alg:
-			print a
-		#gm.registerGeoProcess(process)
-		
-		# Actualizamos el interface de usuario de la Toolbox
-		process.updateToolbox()
+    alg = gm.getAlgorithms()
+    for a in alg:
+      print a
+    #gm.registerGeoProcess(process)
+    
+    # Actualizamos el interface de usuario de la Toolbox
+    process.updateToolbox()
 
-		msgbox("Incorporado el script '%s/%s/%s' a la paleta de geoprocesos." % (
-			"Scripting",
-			process.getGroup(),
-			process.getName()
-		  )
-		)
+    msgbox("Incorporado el script '%s/%s/%s' a la paleta de geoprocesos." % (
+      "Scripting",
+      process.getGroup(),
+      process.getName()
+      )
+    )
 
 Ejemplo 2 - GridPol, malla uniforme de puntos dentro de polígonos en una capa::
 
@@ -594,29 +623,29 @@ Y tendrá una barra de estado mostrando el progreso durante su ejecución, la cu
 .. figure::  images/post_geo_status.png
    :align:   center
    
-		
+    
 Lanzador de geoprocesos usando gvpy
 -----------------------------------
 
 Una vez registrado en la Toolbox el geoproceso anterior, podemos lanzarlo desde Scripting con la librería gvpy::
 
-	from gvsig import *
-	from gvsig.libs import gvpy
+  from gvsig import *
+  from gvsig.libs import gvpy
 
-	def main(*args):
+  def main(*args):
 
-		x = gvpy.runalg("XYShift", "Locations", "0.0", "10.0",ADDLAYER=True, NAME="Capa desplazada")
+    x = gvpy.runalg("XYShift", "Locations", "0.0", "10.0",ADDLAYER=True, NAME="Capa desplazada")
 
 También puedes lanzar otros geoprocesos, por ejemplo, podemos crear dos capas aleatorias de vectores y raster::
 
-	from gvsig import *
-	from gvsig.libs import gvpy
+  from gvsig import *
+  from gvsig.libs import gvpy
 
-	def main(*args):
+  def main(*args):
 
-		v = gvpy.runalg("randomvector", 100, 1)
-		r = gvpy.runalg("generaterandomnormal", 100, 0, CELLSIZE=100, EXTENT=[250,250,0,500,500,0])
-		
+    v = gvpy.runalg("randomvector", 100, 1)
+    r = gvpy.runalg("generaterandomnormal", 100, 0, CELLSIZE=100, EXTENT=[250,250,0,500,500,0])
+    
 Lanzando el ejemplo 2 anteriormente explicado sobre malla de puntos sobre polígonos::
 
     from gvsig import *
@@ -641,7 +670,8 @@ Puedes encontrar más información en la :ref:`documentación de gvpy <label-gvp
 Scripts en el Modelizador
 -------------------------
 
-Al seguir el ejemplo anterior, estos scripts o geoprocesos pueden ser insertados en la toolbox, y por tanto, hacer uso de ellos en el Modelizador (Model Builder).
+Al seguir el ejemplo anterior, estos scripts o geoprocesos pueden ser insertados en la toolbox, 
+y por tanto, hacer uso de ellos en el Modelizador (Model Builder).
 
 Una vez insertado podemos crear un modelo similar al siguiente:
 

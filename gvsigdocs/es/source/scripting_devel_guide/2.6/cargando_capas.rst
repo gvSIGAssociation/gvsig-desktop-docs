@@ -42,7 +42,10 @@ Cargando capas
 Recursos en rutas relativas: getResource()
 ------------------------------------------
 
-En muchas ocasiones es necesario hacer referencia a ficheros que tengamos dentro de nuestro módulo, es decir, obtener la ruta completa de un fichero a partir de la ruta relativa en la que se encuentre nuestro script, independientemente de donde este instalado o del sistema. Para ello nos ayudamos de la función ``getResource(__file__)`` que devuelve la ruta de la carpeta de nuestro script en ejecución.
+En muchas ocasiones es necesario hacer referencia a ficheros que tengamos dentro de nuestro módulo, 
+es decir, obtener la ruta completa de un fichero a partir de la ruta relativa en la que se encuentre nuestro 
+script, independientemente de donde este instalado o del sistema. Para ello nos ayudamos de la 
+función ``getResource(__file__)`` que devuelve la ruta de la carpeta de nuestro script en ejecución.
 
 Esta constante debe de ser usada siempre usando la función getResource para que obtenga correctamente su ruta.
 
@@ -55,7 +58,7 @@ En este caso, nos devuelve la ruta del script en ejecución::
 
 En mi caso la ruta es::
 
-    /home/osc/gvsig-devel/master_scripts/testing_getResource.py
+    c:/gvsig/gvSIG-desktop-2.6.1-4026-devel-lin-x86_64/preferences/gvSIG/plugins/org.gvsig.scripting.app.mainplugin/2.6.1/scripts/addons/test/test.py
 
 Con la función lo que hacemos es sacar el directorio donde se encuentra el script. Ejemplo de uso::
 
@@ -73,11 +76,13 @@ Con la función lo que hacemos es sacar el directorio donde se encuentra el scri
 
 Salida por consola será::
 
-    Path script:  c:\gvdevel\gvsig\gvSIG-desktop-2.3.0-2441-RC2-win-x86_64\home\gvSIG\plugins\org.gvsig.scripting.app.mainplugin\scripts
-    Ruta relativa: data/fichero.xx
-    Ruta absoluta:  c:\gvdevel\gvsig\gvSIG-desktop-2.3.0-2441-RC2-win-x86_64\home\gvSIG\plugins\org.gvsig.scripting.app.mainplugin\scripts\data\fichero.xx
 
-De esta forma estaríamos accediendo a la carpeta ``/datos/`` dentro de nuestro módulo.
+
+    Path script:  c:/gvsig/gvSIG-desktop-2.6.1-4026-devel-lin-x86_64/preferences/gvSIG/plugins/org.gvsig.scripting.app.mainplugin/2.6.1/scripts/addons/test/test.py
+    Ruta relativa: data/fichero.xx
+    Ruta absoluta:  c:/gvsig/gvSIG-desktop-2.6.1-4026-devel-lin-x86_64/preferences/gvSIG/plugins/org.gvsig.scripting.app.mainplugin/2.6.1/scripts/addons/test/data/fichero.xx
+
+De esta forma estaríamos accediendo a la carpeta ``/data/`` dentro de nuestro módulo.
 
 Por ejemplo::
 
@@ -93,7 +98,7 @@ Por ejemplo::
 
 Podemos comparar la ruta por consola::
 
-    path:  /home/osc/gvsig-devel/master_scripts/testing.py
+    path:  c:/gvsig/gvSIG-desktop-2.6.1-4026-devel-lin-x86_64/preferences/gvSIG/plugins/org.gvsig.scripting.app.mainplugin/2.6.1/scripts/addons/test/testing.py
     type:  <type 'unicode'>
 
 Pudiendo añadirle tantos parámetros como carpetas sea necesario recorrer::
@@ -110,7 +115,7 @@ Pudiendo añadirle tantos parámetros como carpetas sea necesario recorrer::
 
 Muestra por consola la ruta::
 
-    path:  /home/osc/gvsig-devel/master_scripts/Game/data/testing.py
+    path:  c:/gvsig/gvSIG-desktop-2.6.1-4026-devel-lin-x86_64/preferences/gvSIG/plugins/org.gvsig.scripting.app.mainplugin/2.6.1/scripts/addons/test/Game/data/testing.py
     type:  <type 'unicode'>
 
 Podemos usar la función para otro tipo de rutas asegurándonos que será correcta independientemente del sistema::
@@ -130,7 +135,7 @@ Las funciones posteriores se apoyan todas en una función principal denominada `
 
 Ejemplo de uso para un fichero raster::
 
-    layer = loadLayer('Gdal Store', crs=getCRS("EPSG:3042"),uri=File(r"C:\temp\mdt20_3_etrs89.tif").toURI(),gvViewName=currentView())
+    layer = loadLayer('Gdal Store', crs=getCRS("EPSG:3042"),uri=File(r"C:/temp/mdt20_3_etrs89.tif").toURI(),gvViewName=currentView())
 
 Capas Vectoriales
 -----------------
@@ -178,7 +183,8 @@ Ejemplo::
 Ficheros DBF
 ------------
 
-Para trabajar con la creación y carga de ficheros DBF existen las funciones ``createDBF(schema)``  y ``loadDBF(dbfFile)``. Siendo un objecto :javadoc:`DefaultFeatureStore <DefaultFeatureStore>`
+Para trabajar con la creación y carga de ficheros DBF existen las funciones ``createDBF(schema)``  y ``loadDBF(dbfFile)``. 
+Siendo un objecto :javadoc:`DefaultFeatureStore <DefaultFeatureStore>`
 
 Ejemplo de uso::
 

@@ -1,12 +1,14 @@
 
-Consultas de entidades
-==========================
-Las consultas, denominadas querys, se aplicarán a capas que dispongan de entidades.
+Consultas de entidades (features)
+===============================
+Las consultas, denominadas querys, se aplicarán a capas que dispongan de entidades (features).
 
 getFeatureSet
--------------
+------------------------
 
-El método getFeatureSet del store de datos nos permite hacer diferentes consultas que devolverían diferentes featureSet. El parámetro ``expresion`` pide un String que haga de filtro, el parámetro ``sortBy`` el campo sobre el que se ordenará el featureSet, el parámetro ``asc`` ordenará en orden ascendente o descendente según el campo seleccionado.
+El método getFeatureSet del store de datos nos permite hacer diferentes consultas que devolverían diferentes featureSet. 
+El parámetro ``expresion`` pide un String que haga de filtro, el parámetro ``sortBy`` el campo sobre el que se ordenará 
+el featureSet, el parámetro ``asc`` ordenará en orden ascendente o descendente según el campo seleccionado.
 
 Unos ejemplos de consultas y sus resultados::
 
@@ -49,19 +51,19 @@ Salida por consola::
   First feature: 1, Feature1, POINT (1.0 2.0)
   Total count: 7
   Fset expression ID<4 : 3
-  	1, Feature1, POINT (1.0 2.0)
-  	2, Feature2, POINT (5.0 3.0)
-  	3, Feature2, POINT (3.0 3.0)
+    1, Feature1, POINT (1.0 2.0)
+    2, Feature2, POINT (5.0 3.0)
+    3, Feature2, POINT (3.0 3.0)
   Fset expression ID<4 : 3
-  	1, Feature1, POINT (1.0 2.0)
-  	2, Feature2, POINT (5.0 3.0)
-  	3, Feature2, POINT (3.0 3.0)
+    1, Feature1, POINT (1.0 2.0)
+    2, Feature2, POINT (5.0 3.0)
+    3, Feature2, POINT (3.0 3.0)
   Fset expression ID<4 AND NAME='Feature1' : 1
-  	1, Feature1, POINT (1.0 2.0)
+    1, Feature1, POINT (1.0 2.0)
   Fset expression ID<4 AND NAME='Feature1' : 3
-  	2, Feature2, POINT (5.0 3.0)
-  	3, Feature2, POINT (3.0 3.0)
-  	1, Feature1, POINT (1.0 2.0)
+    2, Feature2, POINT (5.0 3.0)
+    3, Feature2, POINT (3.0 3.0)
+    1, Feature1, POINT (1.0 2.0)
 
 Otras opciones más avanzadas usando la API de gvSIG para la generación de consultas::
 
@@ -98,7 +100,7 @@ Otras opciones más avanzadas usando la API de gvSIG para la generación de cons
       for i in fsetorder: print i
 
 Uso de evaluadores
-------------------
+---------------------------------
 
 Evaluadores espaciales
 ++++++++++++++++++++++
@@ -169,7 +171,8 @@ Establecer filtros a las capas
 
 Una posibilidad de los evaluadores es filtrar las geometrías que se muestran en la Vista de una capa concreta.
 
-Por ejemplo, podemos realizar un filtrado de entidades según una expresión. En este caso, creamos una query, donde le aplicamos el evaluador, y luego establecemos esta query como filtro base de la capa::
+Por ejemplo, podemos realizar un filtrado de entidades según una expresión. En este caso, creamos una query, donde 
+le aplicamos el evaluador, y luego establecemos esta query como filtro base de la capa::
 
   # encoding: utf-8
 
@@ -189,4 +192,6 @@ Por ejemplo, podemos realizar un filtrado de entidades según una expresión. En
 
       layer.setBaseQuery(fq)
 
-Nota: Cuidado. Esta forma de realizar filtros eliminará otros posibles filtros que tenga establecida la capa y habrá que tomar medidas especificas si queremos retornar a los filtros anteriores.
+.. note::
+   Cuidado. Esta forma de realizar filtros eliminará otros posibles filtros que tenga establecida la capa y habrá que 
+   tomar medidas especificas si queremos retornar a los filtros anteriores.

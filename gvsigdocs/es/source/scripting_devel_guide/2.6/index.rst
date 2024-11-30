@@ -1,9 +1,5 @@
-.. gvsig documentation master file, created by
-   sphinx-quickstart on Mon Aug 01 08:10:38 2016.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
-Documentación de Scripting en gvSIG 2.6
+Documentación de Scripting para gvSIG desktop 2.6
 ===================================================
 
 Tabla de contenidos
@@ -29,11 +25,9 @@ Tabla de contenidos
    leyendas.rst
    geoprocesos.rst
    docs_gvpy.rst
-
    evaluadores.rst
    capturando_eventos.rst
    usando_librerias_externas.rst
-   rscript.rst
    internacionalizacion.rst
    explorers.rst
    manejando_errores.rst
