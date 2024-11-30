@@ -7,7 +7,7 @@ from StringIO import StringIO
 import os
 
 def build_index(javadoc_version):
-    init_path = getResource(__file__,"javadocs/"+javadoc_version)
+    init_path = getResource(__file__,"javadocs/"+javadoc_version+"/html")
     dic = dict()
     doc_path_web = "html"
     
@@ -46,6 +46,9 @@ def write_index(index, version):
   f.close()
 
 def main(*args):
+  index = build_index("2.3")
+  write_index(index, "2.3")
+
   index = build_index("2.4")
   write_index(index, "2.4")
   

@@ -32,7 +32,6 @@ extensions = [
 
 
 javadoc = {
-  "versions" : ( "2.4","2.6"),
   "default_version" : "2.6"
 }
 

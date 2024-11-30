@@ -39,39 +39,36 @@ Para añadir una version nueva de javadocs:
 """
 from javadoc2_6_index import JAVADOC_CLASSES_2_6
 from javadoc2_4_index import JAVADOC_CLASSES_2_4
+from javadoc2_3_index import JAVADOC_CLASSES_2_3
 
 JAVADOC_CLASSES = {
+  "2.2" : JAVADOC_CLASSES_2_3, # Los de la 2.3 seran los mas parecidos de los que tenemos
+  "2.3" : JAVADOC_CLASSES_2_3,
   "2.4" : JAVADOC_CLASSES_2_4,
   "2.6" : JAVADOC_CLASSES_2_6
 }
 
 
-def javadoc_link(class2htmlfile, name):
-    if name in list(class2htmlfile.keys()):
-        return class2htmlfile[name]
-    else:
-        return ""
-
-
 class JavadocRole(object):
   def __init__(self, config):
     self.config = config
-
+    self.versions = JAVADOC_CLASSES.keys()
+    print("JavadocRole# versions %r" % self.versions)
+    print("JavadocRole# default_version %r" % self.config["default_version"])
+    
   def getVersion(self,document_path):
       if not document_path.startswith('/docs/source'):
           return None
-      s1 = document_path[13:]
-      s1 = os.path.dirname(s1)
+      s1 = os.path.dirname(document_path[13:])# quitamos '/docs/source' y nos quedamos solo con el path
       for n in s1.split("/"):
-          if n in self.config["versions"]:
+          if n in self.versions:
             return n
       return self.config["default_version"]
   
   def make_url(self, document_path, javadoc_path, version):
       if not document_path.startswith('/docs/source'):
           return None
-      s1 = document_path[13:]
-      s1 = os.path.dirname(s1)
+      s1 = os.path.dirname(document_path[13:]) # quitamos '/docs/source' y nos quedamos solo con el path
       x = []
       for n in s1.split("/"):
           x.insert(0,"..")
@@ -81,9 +78,11 @@ class JavadocRole(object):
     text = utils.unescape(text)
     has_explicit_title, title, part = split_explicit_title(text)
     version = self.getVersion(inliner.document.current_source)
-    #pathInJavadoc = javadoc_link(JAVADOC_CLASSES, part) 
-    pathInJavadoc = JAVADOC_CLASSES[version].get(part,"#")
-    path = self.make_url(inliner.document.current_source,pathInJavadoc, version)
+    classname = part
+    doc_path = inliner.document.current_source
+    #print("JavadocRole# version %r, classname %r, path %r" % (version, classname,doc_path))
+    javadoc_path = JAVADOC_CLASSES[version].get(classname,"#")
+    path = self.make_url(doc_path,javadoc_path, version)
     if path is None:
       path = "#"
     if not has_explicit_title:
