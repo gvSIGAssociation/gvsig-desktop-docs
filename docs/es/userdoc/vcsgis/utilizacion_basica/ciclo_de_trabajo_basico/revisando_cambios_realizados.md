@@ -17,7 +17,7 @@ Para solucionar el problema Sara tiene que hacer clic sobre la pestaña *Reposit
 
 ![conflicto2](revisando_cambios_realizados_files/35_ejemplo_download_conflicto.png)
 
-La ventana *Mostrar cambios* contiene ahora los cambios del repositorio, es decir los de Pedro y por tanto Sara tiene que decidir que cambios de este aceptar como buenos y cuales no, marcando con el check, mediante la opción mezclar, componente 11. Es importante destacar que también puede descartar los cambios de Pedro totalmente si realiza un *Merge* sin marcar ninguno de los cambios de la lista de cambios del repositorio o los suyos si marca todo los cambios del repositorio y realiza un *Merge* o si realiza simplemente un *Update*.
+La ventana *Mostrar cambios* contiene ahora los cambios del repositorio, es decir los de Pedro y por tanto Sara tiene que decidir que cambios de este aceptar como buenos y cuáles no, marcando con el check, mediante la opción mezclar, componente 11. Es importante destacar que también puede descartar los cambios de Pedro totalmente si realiza un *Merge* sin marcar ninguno de los cambios de la lista de cambios del repositorio o los suyos si marca todos los cambios del repositorio y realiza un *Merge* o si realiza simplemente un *Update*.
 
 ![conflicto3](revisando_cambios_realizados_files/36_ejemplo_posibilidades_conflicto.png)
 

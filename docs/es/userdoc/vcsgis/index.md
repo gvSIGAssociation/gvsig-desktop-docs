@@ -8,13 +8,13 @@
 
 * [Empezando](empezando/index.md)
 
-  * [Instalacion](empezando/instalacion_t.md)
+  * [Instalación](empezando/instalacion_t.md)
 
   * [Conceptos basicos](empezando/conceptos_basicos_t.md)
 
 * [Repositorio](repositorio/index.md)
 
-  * [Introduccion](repositorio/introduccion_t.md)
+  * [Introducción](repositorio/introduccion_t.md)
 
   * [Modelos de versionado](repositorio/modelos_de_versionado_t.md)
 
@@ -24,7 +24,7 @@
 
 * [Copias de trabajo](copias_de_trabajo/index.md)
 
-  * [Introduccion](copias_de_trabajo/introduccion_t.md)
+  * [Introducción](copias_de_trabajo/introduccion_t.md)
 
   * [Flujo de trabajo (Modelo  Copiar-Modificar-Fusionar)](copias_de_trabajo/flujo_de_trabajo_t.md)
 
@@ -38,7 +38,7 @@
 
 * [Utilización básica](utilizacion_basica/index.md)
 
-  * [Introduccion](utilizacion_basica/introduccion_t.md)
+  * [Introducción](utilizacion_basica/introduccion_t.md)
 
   * [Creación de un repositorio](utilizacion_basica/creacion_de_un_repositorio_t.md)
 
@@ -52,7 +52,7 @@
 
   * [Ciclo de trabajo básico](utilizacion_basica/ciclo_de_trabajo_basico/index.md)
 
-    * [Introduccion](utilizacion_basica/ciclo_de_trabajo_basico/introduccion_t.md)
+    * [Introducción](utilizacion_basica/ciclo_de_trabajo_basico/introduccion_t.md)
 
     * [Actualizar la copia de trabajo](utilizacion_basica/ciclo_de_trabajo_basico/actualizar_copia_de_trabajo_t.md)
 
@@ -80,7 +80,7 @@
 
 * [Asignación de recursos a una entidad](asignar_recursos/index.md) 
 
-  * [Introduccion](asignar_recursos/introduccion_t.md)
+  * [Introducción](asignar_recursos/introduccion_t.md)
 
   * [Tabla de recursos](asignar_recursos/tabla_recursos_t.md)
 
@@ -96,11 +96,11 @@
   
   * [Consideraciones especiales sobre los modelos de datos](modelo_de_datos/consideraciones_modelo_t.md)
 
-* [Consideraciones](consideraciones_t.md) (**en contruccion**)
+* [Consideraciones](consideraciones_t.md) (**en contrucción**)
 
-* Documentacion para integradores
+* Documentación para integradores
 
-  * [API de los servicios web](vcsgisapiservices.html) (**en contruccion**)
+  * [API de los servicios web](vcsgisapiservices.html) (**en contrucción**)
 
 [Nivel superior](../index.md)
 

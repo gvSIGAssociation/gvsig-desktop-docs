@@ -15,5 +15,5 @@ En el caso de que se busque crear una nueva conexión hay que hacer clic sobre e
 
 ![crearConexion](creacion_de_un_repositorio_files/16_param_conex_repo.png)
 
-Como se detallo en la explicación teórica, la creación es un proceso destinado a ser ejecutado por el administrador, un usuario regular no debería llevar a cabo este proceso.
+Como se detalla en la explicación teórica, la creación es un proceso destinado a ser ejecutado por el administrador, un usuario regular no debería llevar a cabo este proceso.
 

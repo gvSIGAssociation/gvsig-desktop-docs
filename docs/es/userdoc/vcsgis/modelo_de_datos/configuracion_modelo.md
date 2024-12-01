@@ -1,10 +1,10 @@
 {% comment %} encoding: utf-8 {% endcomment %}
 {% comment %} Configuracion modelo {% endcomment %}
 
-Configurar un modelo de datos en *VCSGis* requiere cierto análisis y organización. No esta pensado 
+Configurar un modelo de datos en *VCSGis* requiere cierto análisis y organización. No está pensado 
 para crearse sin una planificación previa. Antes de añadir las tablas que forman el modelo se deben tener 
 bien claras y declaradas las relaciones entre ellas, así como las restricciones que se buscan aplicar a 
-los atributos de estas. Adicionalmente, también hy que declarar como se deben presentar los datos de las 
+los atributos de estas. Adicionalmente, también hay que declarar como se deben presentar los datos de las 
 distintas tablas al usuario, normalmente en forma de *formularios*. 
 
 Para realizar toda esta tarea hay que apoyarse en las herramientas de gvSIG desktop de *Crear nueva tabla o capa*
@@ -13,11 +13,11 @@ las tablas que lo componen al repositorio de la herramienta de control de versio
 
 Ahora solo queda indicar a *VCSGis* que tablas de las que hay en el repositorio forman parte de un
 modelo de datos. Para ello se necesita disponer de acceso de escritura a la base de datos en la
-que reside el repositorio donde estan las tablas que forman el modelo. Cargaremos en el proyecto
+que reside el repositorio donde están las tablas que forman el modelo. Cargaremos en el proyecto
 de *gvSIG desktop* la tabla *PUBLIC.VCSGISREPO_ENTITIES* y, bien directamente sobre la tabla o en el formulario 
 asociado a ella, indicaremos para cada "entidad" a que modelo de datos pertenece.
 
-Para facilitar la compresión de la configuación de modelos de datos en la herramienta de control de
+Para facilitar la compresión de la configuración de modelos de datos en la herramienta de control de
 versiones *VCSGis* de *gvSIG Desktop* se utiliza el siguiente ejemplo. El ejemplo se basa en 4 tablas; 
 **MD1_CONTINENTS**, **MD1_COUNTRIES**, **MD1_ECONOMY** y **MD1_REGION**, siendo el conjunto de ellas el 
 modelo de datos **MD1**.
@@ -40,9 +40,9 @@ De lo anterior se obtiene la siguiente tabla.
 
 En la tabla se muestran las cuatro tablas anteriores cargadas, pero hay que especificar, que aún no conforman un
 modelo de datos. Para definirlo se tiene que modificar y añadir en ellas a que modelo de datos pertenecen. Para
-realizar lo anterior hay que editar cada tabla de manera manual o mediante su fomulario. Para obtener el formulario
+realizar lo anterior hay que editar cada tabla de manera manual o mediante su formulario. Para obtener el formulario
 se ejecuta la opción *Show form* situada en el menú *Tabla* de *gvSIG Desktop* siempre 
-y cuando la tabla este abierta y seleccionada.
+y cuando la tabla esté abierta y seleccionada.
 
 ![4_showFormPUBLICVCSGISREPOENTITIES_128](configuracion_modelo_files/4_showFormPUBLICVCSGISREPOENTITIES_128.png)
 

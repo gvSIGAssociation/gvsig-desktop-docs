@@ -2,17 +2,17 @@
 {% comment %} Añadir capa VCSGis usando el diálogo "Añadir Capa" de gvSIG Desktop {% endcomment %} 
 
 
-Una vez en la ventana de añadir capa existen 2 maneras de proceder para cargar un capa/tabla con control de versiones VCSGis;
+Una vez en la ventana de añadir capa existen 2 maneras de proceder para cargar una capa/tabla con control de versiones VCSGis;
  * Seleccionar la capa como si fuera un archivo de base de datos genérico utilizando la conexión a la base de datos asociada a la *Copia de trabajo*.
  * Utilizar la pestaña VCSGis que permite cargar de manera automática este tipo de archivos con control de versiones. Opción más lógica.
 
-A continuación, se muestra el aspecto de dicha ventana al seleccionar la pestaña *VCSGis* y cargar una capa la cual ya estaba en local pero que fue eliminada de la vista.
+A continuación, se muestra el aspecto de dicha ventana al seleccionar la pestaña *VCSGis* y cargar una capa la cual ya estaba en local, pero que fue eliminada de la vista.
 
 ![añadirCapaVCSGis1](dialogo_de_anadir_capa_files/55_load_capa_prexistente_copia_tra.png)
 
-Como se puede apreciar hay que identificar la copia de trabajo y tras eso seleccionar ( marcar el check) en el área de elección de tablas la tabla/capa en cuestión. A parte de lo anterior, es importante cumplimentar la información de campos de información presentes.
+Como se puede apreciar hay que identificar la copia de trabajo y tras eso seleccionar (marcar el check) en el área de elección de tablas la tabla/capa en cuestión. Aparte de lo anterior, es importante cumplimentar la información de campos de información presentes.
 
-En el caso de que la copia de trabajo nunca halla presentado la capa que se pretende cargar, la ventana muestra un comportamiento diferentes. Ver siguiente ilustración.
+En el caso de que la copia de trabajo nunca haya presentado la capa que se pretende cargar, la ventana muestra un comportamiento diferente. Ver siguiente ilustración.
 
 ![añadirCapaVCSGis2](dialogo_de_anadir_capa_files/56_load_capa_no_prexistente_copia_tra.png)
 

@@ -2,9 +2,9 @@
 {% comment %} Importación o carga de historial de datos {% endcomment %} 
 
 
-Otra funcionalidad presente en el control de versiones *VCSGis* de *gvSIG Desktop* es la de realizar el proceso de carga o importación de datos históricos siempre y cuando estos presenten un campo de carácter temporal que indique cualquier modificación de estado del elemento. Un ejemplo de esos estados sería su fecha de implantación, modificación , actualización, eliminación…
+Otra funcionalidad presente en el control de versiones *VCSGis* de *gvSIG Desktop* es la de realizar el proceso de carga o importación de datos históricos siempre y cuando estos presenten un campo de carácter temporal que indique cualquier modificación de estado del elemento. Un ejemplo de esos estados sería su fecha de implantación, modificación, actualización, eliminación…
 
-La opción *Importar historial* se encuentra en en la opción *Herramientas* del menú de gvSIG Desktop, pestaña *VCSGis*.
+La opción *Importar historial* se encuentra en la opción *Herramientas* del menú de gvSIG Desktop, pestaña *VCSGis*.
 
 ![importarHistorial](importacion_de_historial_de_datos_files/42_importar_historial.png)
 
